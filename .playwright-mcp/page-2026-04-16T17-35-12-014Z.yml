@@ -1,0 +1,326 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Speakli" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+        - img "Logo Speakli" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Nos solutions" [ref=e7] [cursor=pointer]:
+          - /url: "#Cartes-produits"
+          - strong [ref=e8]: Nos solutions
+        - link "Nous contacter" [ref=e9] [cursor=pointer]:
+          - /url: mailto:ruben@speakli.fr?subject=Demande%20d'informations%20Speakli
+          - strong [ref=e10]: Nous contacter
+        - link "Nous rejoindre" [ref=e11] [cursor=pointer]:
+          - /url: https://dorian-opinion-85e.notion.site/Work-Speakli-29597d4da4398073b861f00b9c38d24a?source=copy_link
+          - strong [ref=e12]: Nous rejoindre
+      - link "Réservez une démo" [ref=e14] [cursor=pointer]:
+        - /url: https://calendly.com/ruben-speakli/30min
+        - generic [ref=e15]: Réservez une démo
+  - generic [ref=e17]:
+    - link "Logo Speakli" [ref=e19] [cursor=pointer]:
+      - /url: /
+      - img "Logo Speakli" [ref=e20]
+    - generic [ref=e21]:
+      - link "Nos solutions" [ref=e22] [cursor=pointer]:
+        - /url: "#Cartes-produits"
+        - generic [ref=e23]: Nos solutions
+      - link "Nous contacter" [ref=e24] [cursor=pointer]:
+        - /url: mailto:ruben@speakli.fr?subject=Demande%20d'information%20Speakli
+        - generic [ref=e25]: Nous contacter
+      - link "Nous rejoindre" [ref=e26] [cursor=pointer]:
+        - /url: https://dorian-opinion-85e.notion.site/Work-Speakli-29597d4da4398073b861f00b9c38d24a?source=copy_link
+        - generic [ref=e27]: Nous rejoindre
+    - link "Réservez une démo" [ref=e29] [cursor=pointer]:
+      - /url: https://calendly.com/ruben-speakli/30min
+      - generic [ref=e30]: Réservez une démo
+  - generic [ref=e33]:
+    - generic [ref=e35]: Speakli
+    - heading "Redonnez du temps à vos soignants" [level=1] [ref=e37]:
+      - text: Redonnez du
+      - generic [ref=e38]: temps
+      - strong [ref=e40]: à vos
+      - strong [ref=e42]: soignants
+    - generic [ref=e43]:
+      - paragraph [ref=e44]: Réinventez vos pratiques de traçabilité grâce à la voix et l'IA
+      - link "Réservez une démo" [ref=e45] [cursor=pointer]:
+        - /url: https://calendly.com/ruben-speakli/30min
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - strong [ref=e51]: "#1 Assistant IA des paramédicaux"
+      - heading "Speakli, l'assistant vocal des soignants." [level=1] [ref=e52]
+      - paragraph [ref=e53]: Fini la saisie manuelle. Speakli garantit une traçabilité conforme, sans effort. La voix des soignants, amplifiée par l’IA.
+      - link "Échanger avec un expert" [ref=e54] [cursor=pointer]:
+        - /url: https://calendly.com/ruben-speakli/30min
+    - img "Interface Speakli - assistant vocal pour soignants" [ref=e56]
+  - generic [ref=e59]:
+    - generic [ref=e60]:
+      - img "Logo Station F" [ref=e62]
+      - img "Company logo" [ref=e64]
+      - img "Logo SilverEco" [ref=e66]
+      - img "Logo lauréat meilleure innovation managériale, qualité de vie au travail et RSE" [ref=e68]
+      - img "Prix du public SilverEco 2025" [ref=e70]
+      - img "Logo HEC Startup Launchpad" [ref=e72]
+      - img "Company logo" [ref=e74]
+    - generic [ref=e75]:
+      - img "Logo Défis d'Or" [ref=e78]
+      - img "Company logo" [ref=e80]
+      - img "Company logo" [ref=e84]
+      - img "Company logo" [ref=e86]
+  - generic [ref=e87]:
+    - heading "Trois piliers pour transformer votre établissement" [level=2] [ref=e88]
+    - generic [ref=e89]:
+      - link "Qualité & sécurité des opérations Fini la saisie manuelle. Utilisez la voix de vos soignants pour générer des rapports structurés instantanément. Icône qualité et sécurité des opérations" [ref=e90] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e91]:
+          - heading "Qualité & sécurité des opérations" [level=3] [ref=e94]
+          - paragraph [ref=e97]: Fini la saisie manuelle. Utilisez la voix de vos soignants pour générer des rapports structurés instantanément.
+        - img "Icône qualité et sécurité des opérations" [ref=e98]
+      - link "Sécurité financière & réglementaire Bénéficiez d'une documentation conforme et exploitable en temps réel. Justifiez vos coupes PATHOS et GIR Icône sécurité financière et réglementaire" [ref=e100] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e101]:
+          - heading "Sécurité financière & réglementaire" [level=3] [ref=e104]
+          - paragraph [ref=e107]: Bénéficiez d'une documentation conforme et exploitable en temps réel. Justifiez vos coupes PATHOS et GIR
+        - img "Icône sécurité financière et réglementaire" [ref=e108]
+      - 'link "Attractivité & fidélité des équipes Améliorez la qualité de vie au travail de vos soignants. Rapprochez-les enfin de leur coeur de métier : l''humain. Icône attractivité et fidélité des équipes soignantes" [ref=e110] [cursor=pointer]':
+        - /url: "#"
+        - generic [ref=e111]:
+          - heading "Attractivité & fidélité des équipes" [level=3] [ref=e114]
+          - paragraph [ref=e117]: "Améliorez la qualité de vie au travail de vos soignants. Rapprochez-les enfin de leur coeur de métier : l'humain."
+        - img "Icône attractivité et fidélité des équipes soignantes" [ref=e118]
+  - generic [ref=e120]:
+    - heading "Une solution construite pour et avec les soignants" [level=2] [ref=e121]
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - heading "Sécurisez vos établissements Accompagnez vos résidents Valorisez vos équipes" [level=1] [ref=e124]:
+          - text: Sécurisez vos établissements
+          - text: Accompagnez vos résidents
+          - text: Valorisez vos équipes
+        - paragraph [ref=e125]: Grâce à la voix et à l’IA, vos soignants peuvent maintenant documenter leurs soins en temps réel, maximisant ainsi leur temps auprès des résidents.
+        - link "Demander une démo" [ref=e126] [cursor=pointer]:
+          - /url: https://calendly.com/ruben-speakli/30min
+      - iframe [ref=e129]:
+        - iframe [ref=f1e4]:
+          - generic [active] [ref=f3e1]:
+            - generic "Lecteur vidéo YouTube" [ref=f3e3]
+            - generic [ref=f3e5]:
+              - generic:
+                - generic:
+                  - button "Regarder la vidéo" [ref=f3e10] [cursor=pointer]
+                  - button "Masquer les commandes du lecteur" [ref=f3e12] [cursor=pointer]
+                  - generic [ref=f3e14]:
+                    - generic [ref=f3e19]:
+                      - generic [ref=f3e20]:
+                        - link "Présentation de Speakli" [ref=f3e21] [cursor=pointer]:
+                          - /url: https://www.youtube.com/watch?v=9ci8qHV5Vnk
+                        - link "Speakli" [ref=f3e22] [cursor=pointer]:
+                          - /url: /channel/UCBRUiITRZnxMZaRrfb6r8Lw
+                          - generic [ref=f3e23]: Speakli
+                      - generic [ref=f3e24]:
+                        - button [ref=f3e25] [cursor=pointer]
+                        - generic [ref=f3e27]:
+                          - generic: Speakli
+                          - generic: 6 abonnés
+                    - generic [ref=f3e28]:
+                      - button "Copier le lien" [ref=f3e31] [cursor=pointer]:
+                        - generic [ref=f3e35]:
+                          - img
+                      - link "Regarder sur YouTube" [ref=f3e42] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=9ci8qHV5Vnk
+                        - generic [ref=f3e45]:
+                          - text: Regarder sur
+                          - img [ref=f3e47]:
+                            - generic [ref=f3e49]:
+                              - img
+  - generic [ref=e130]:
+    - heading "Des résultats concrets, instantanément." [level=2] [ref=e131]
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - heading "4x" [level=1] [ref=e134]
+        - paragraph [ref=e135]: Plus exploitable par vos cadres de santé.
+      - img "4 fois plus exploitable par les cadres de santé" [ref=e137]
+      - generic [ref=e138]:
+        - heading "3x" [level=1] [ref=e139]
+        - paragraph [ref=e140]: Volume de traçabilité supplémentaire.
+      - img "3 fois plus de volume de traçabilité" [ref=e142]
+      - generic [ref=e143]:
+        - heading "3h" [level=1] [ref=e144]
+        - paragraph [ref=e145]: Économisées par semaine par soignant en moyenne.
+      - img "3 heures économisées par soignant par semaine" [ref=e147]
+  - generic [ref=e148]:
+    - heading "Parlez pour documenter. Pilotez et sécurisez votre établissement." [level=2] [ref=e149]:
+      - text: Parlez pour
+      - generic [ref=e150]:
+        - text: documenter.
+        - text: Pilotez
+      - text: et sécurisez votre établissement.
+    - generic [ref=e151]:
+      - generic [ref=e154]:
+        - heading "Le pouvoir de la voix, au service du soin." [level=3] [ref=e155]:
+          - text: Le pouvoir de la voix,
+          - text: au service du soin.
+        - paragraph [ref=e156]: Une IA simple, intuitive et précise. Speakli transforme le plus simple des gestes en rapports structurés et exploitables, directement intégrés dans votre DPI. Moins de saisie, plus de temps pour vos résidents.
+        - list [ref=e157]:
+          - listitem [ref=e158]:
+            - generic [ref=e160]: Traçabilité en temps réel
+          - listitem [ref=e161]:
+            - generic [ref=e163]: Disponible 24h/24, 7j/7
+          - listitem [ref=e164]:
+            - generic [ref=e166]: Accents et bruits filtrés
+          - listitem [ref=e167]:
+            - generic [ref=e169]: Mode asynchrone
+        - link "Contactez un expert" [ref=e170] [cursor=pointer]:
+          - /url: https://calendly.com/ruben-speakli/30min
+      - generic [ref=e173]:
+        - heading "Données de qualité. Décisions éclairées." [level=2] [ref=e174]:
+          - text: Données de qualité.
+          - text: Décisions éclairées.
+        - paragraph [ref=e175]: "Un tableau de bord conçu pour les cadres : pilotez la traçabilité de vos équipes, assurez la conformité et renforcez la sécurité des résidents. Accessible en un regard, à tout moment."
+        - list [ref=e176]:
+          - listitem [ref=e177]:
+            - generic [ref=e179]: Identifiez les priorités
+          - listitem [ref=e180]:
+            - generic [ref=e182]: Animez les réunions
+          - listitem [ref=e183]:
+            - generic [ref=e185]: Optimisez la coordination
+          - listitem [ref=e186]:
+            - generic [ref=e188]: Filtres personnalisés
+        - link "Contactez un expert" [ref=e189] [cursor=pointer]:
+          - /url: https://calendly.com/ruben-speakli/30min
+      - generic [ref=e192]:
+        - heading "Sécurité et conformité. Vos données protégées." [level=2] [ref=e193]:
+          - text: Sécurité et conformité.
+          - text: Vos données protégées.
+        - paragraph [ref=e194]: La sécurité de vos résidents est notre priorité. Speakli protège leurs données sensibles grâce à un chiffrement avancé, un hébergement certifié HDS et une conformité totale au RGPD, pour garantir confidentialité, fiabilité et sérénité à chaque utilisation.
+        - list [ref=e195]:
+          - listitem [ref=e196]:
+            - generic [ref=e198]: Données chiffrées
+          - listitem [ref=e199]:
+            - generic [ref=e201]: Conformité RGPD
+          - listitem [ref=e202]:
+            - generic [ref=e204]: Hébergement HDS
+          - listitem [ref=e205]:
+            - generic [ref=e207]: Anonymisation continue
+        - link "Contactez un expert" [ref=e208] [cursor=pointer]:
+          - /url: https://calendly.com/ruben-speakli/30min
+  - generic [ref=e210]:
+    - generic [ref=e213]:
+      - heading "Déjà utilisé par +350 soignants" [level=2] [ref=e216]
+      - paragraph [ref=e218]: Plusieurs milliers de rapports déjà été générés au sein de nos établissements partenaires.
+    - iframe [ref=e221]:
+      - iframe [ref=f2e4]:
+        - generic [active] [ref=f4e1]:
+          - generic "Lecteur vidéo YouTube" [ref=f4e3]
+          - generic [ref=f4e5]:
+            - generic:
+              - generic:
+                - button "Regarder la vidéo" [ref=f4e10] [cursor=pointer]
+                - button "Masquer les commandes du lecteur" [ref=f4e12] [cursor=pointer]
+                - generic [ref=f4e14]:
+                  - generic [ref=f4e19]:
+                    - generic [ref=f4e20]:
+                      - link "Vidéo Speakli aux Pervenches" [ref=f4e21] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=dDhcaLacDPI
+                      - link "Speakli" [ref=f4e22] [cursor=pointer]:
+                        - /url: /channel/UCBRUiITRZnxMZaRrfb6r8Lw
+                        - generic [ref=f4e23]: Speakli
+                    - generic [ref=f4e24]:
+                      - button [ref=f4e25] [cursor=pointer]
+                      - generic [ref=f4e27]:
+                        - generic: Speakli
+                        - generic: 6 abonnés
+                  - generic [ref=f4e28]:
+                    - button "Copier le lien" [ref=f4e31] [cursor=pointer]:
+                      - generic [ref=f4e35]:
+                        - img
+                    - link "Regarder sur YouTube" [ref=f4e42] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=dDhcaLacDPI
+                      - generic [ref=f4e45]:
+                        - text: Regarder sur
+                        - img [ref=f4e47]:
+                          - generic [ref=f4e49]:
+                            - img
+  - generic [ref=e223]:
+    - generic [ref=e226]:
+      - heading "Vos questions les plus fréquentes" [level=2] [ref=e229]
+      - paragraph [ref=e231]: Tout sur la dictée vocale, l’intégration et la conformité. Simplifiez la traçabilité, gagnez du temps et sécurisez vos soins au quotidien.
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - generic [ref=e235] [cursor=pointer]:
+          - heading "Speakli s'intègre t-il à nos outils ?" [level=3] [ref=e238]
+          - paragraph [ref=e242]: Oui, notre interface s’adapte à votre DUI. L’intégration est rapide, sans double saisie ni perte de temps.
+        - generic [ref=e245] [cursor=pointer]:
+          - heading "La solution est-elle conforme aux normes de sécurité ?" [level=3] [ref=e248]
+          - paragraph [ref=e252]: Oui, la sécurité et la confidentialité sont au cœur du produit. Notre solution respecte l’ensemble des exigences RGPD et HDS, garantissant la sécurité et la confidentialité des données.
+        - generic [ref=e255] [cursor=pointer]:
+          - heading "Quels bénéfices pour les équipes ?" [level=3] [ref=e258]
+          - paragraph [ref=e262]: "Des équipes libérées de leur charge administrative et mentale, et plus de confort de vie au quotidien : ils documentent à la voix, en temps réel, pour pouvoir enfin se concentrer sur ce qui compte vraiment : les résidents."
+      - generic [ref=e264]:
+        - generic [ref=e266] [cursor=pointer]:
+          - heading "Quel est l’impact sur la prise en charge des résidents ?" [level=3] [ref=e269]
+          - paragraph [ref=e273]: Le temps économisé sur la saisie des informations est maintenant consacré pleinement aux résidents (écoute active, activités, accompagnement). Une traçabilité de qualité en temps réel permet également d'assurer une prise en charge continue et adaptée.
+        - generic [ref=e276] [cursor=pointer]:
+          - heading "Quel est l’impact sur les financements ?" [level=3] [ref=e279]
+          - paragraph [ref=e283]: Une grande partie des dotations soin/dépendance se justifie via la traçabilité. Speakli augmente la qualité et la quantité d’informations documentées en temps réel, ce qui facilite la justification des besoins et limite le risque de sous-dotation.
+        - generic [ref=e286] [cursor=pointer]:
+          - heading "Speakli fonctionne sur quel support ?" [level=3] [ref=e289]
+          - paragraph [ref=e293]: L’outil est pensé mobile-first, pour une utilisation simple sur le terrain (smartphone, tablette, selon vos équipements). La solution a même été pensée pour fonctionner hors-ligne (sans wifi).
+  - generic [ref=e297]:
+    - generic [ref=e298]:
+      - heading "Un échange, Un nouveau souffle" [level=1] [ref=e300]:
+        - text: Un échange,
+        - text: Un nouveau souffle
+      - paragraph [ref=e303]:
+        - text: Des questions ?
+        - text: Écrivez-nous, un conseiller vous recontactera dans les plus brefs délais.
+      - generic [ref=e304]:
+        - generic [ref=e308]: Découvrez comment Speakli s’intègre à vos outils existants
+        - generic [ref=e312]: Bénéficiez d'un accompagnement sur mesure
+        - generic [ref=e316]: Des équipes pleinement autonomes en quelques jours
+    - form "BRIX - Hero Form V7" [ref=e319]:
+      - generic [ref=e320]:
+        - generic [ref=e321]:
+          - generic [ref=e322]: Prénom
+          - textbox "Prénom" [ref=e323]:
+            - /placeholder: Daniel
+        - generic [ref=e324]:
+          - generic [ref=e325]: Nom
+          - textbox "Nom" [ref=e326]:
+            - /placeholder: Dupont
+        - generic [ref=e327]:
+          - generic [ref=e328]: Email
+          - textbox "Email" [ref=e329]:
+            - /placeholder: ddupont@gmail.com
+        - generic [ref=e330]:
+          - generic [ref=e331]: Téléphone
+          - textbox "Téléphone" [ref=e332]:
+            - /placeholder: 07 88 77 66 55
+        - generic [ref=e333]:
+          - generic [ref=e334]: Établissement
+          - textbox "Établissement" [ref=e335]
+        - generic [ref=e336]:
+          - generic [ref=e337]: Rôle
+          - textbox "Rôle" [ref=e338]:
+            - /placeholder: Votre rôle
+        - button "Nous contacter" [ref=e339] [cursor=pointer]
+  - text: 
+  - generic [ref=e342]:
+    - generic [ref=e344]:
+      - generic [ref=e345]: Contactez nous
+      - generic [ref=e346]:
+        - link "icon + 33 6 95 34 79 78" [ref=e347] [cursor=pointer]:
+          - /url: tel:+33695347978
+          - img "icon" [ref=e349]
+          - generic [ref=e350]: + 33 6 95 34 79 78
+        - link "icon contact@speakli.fr" [ref=e351] [cursor=pointer]:
+          - /url: mailto:contact@speakli.fr
+          - img "icon" [ref=e353]
+          - generic [ref=e354]: contact@speakli.fr
+    - link [ref=e355] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=e357]:
+      - link "Linkedin Logo" [ref=e358] [cursor=pointer]:
+        - /url: https://fr.linkedin.com/company/speakli
+        - img "Linkedin Logo" [ref=e359]
+      - link [ref=e360] [cursor=pointer]:
+        - /url: https://www.youtube.com/@Speakli-app/videos

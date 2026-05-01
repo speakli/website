@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  /* Speakli brand palette — light to dark */
+  --sp-50:  #EAF3FF;
+  --sp-100: #D4E8FF;
+  --sp-200: #A8CFFF;
+  --sp-300: #60AAFF;
+  --sp-400: #2E8EFF;
+  --sp-500: #007AFF;  /* elephant blue — primary */
+  --sp-600: #1A5CE0;
+  --sp-700: #1242C0;
+  --sp-800: #0D30A0;
+  --sp-900: #1A2E49;  /* speech bubble — dark text */
+  --sp-950: #0A1628;  /* footer / darkest */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: #FAFAF7;
+  color: var(--sp-900);
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Text justification: blog articles only ── */
+.article-body p,
+.article-body li,
+.prose p,
+.prose li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* ── Override: preserve centering inside or on .text-center elements ── */
+.text-center,
+.text-center p,
+.text-center h1,
+.text-center h2,
+.text-center h3,
+.text-center h4,
+.text-center h5,
+.text-center h6,
+.text-center li,
+p.text-center,
+h1.text-center,
+h2.text-center,
+h3.text-center {
+  text-align: center;
+}
+
+::selection {
+  background: var(--sp-200);
+  color: var(--sp-900);
+}
+
+/* Logo scrolling marquee */
+@keyframes marquee-rtl {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-ltr {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-rtl { animation: marquee-rtl 28s linear infinite; animation-play-state: running !important; }
+.marquee-ltr { animation: marquee-ltr 28s linear infinite; animation-play-state: running !important; }
+.marquee-track { pointer-events: none; }
+.marquee-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}

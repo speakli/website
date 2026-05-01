@@ -1,0 +1,614 @@
+- generic [active] [ref=e1]:
+  - navigation "Navigation principale" [ref=e3]:
+    - generic [ref=e4]:
+      - link "Speakli — accueil" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e7]: Speakli
+      - generic [ref=e8]:
+        - button [ref=e9] [cursor=pointer]:
+          - text: Qui sommes-nous ?
+          - img [ref=e10]
+        - button [ref=e12] [cursor=pointer]:
+          - text: Les solutions
+          - img [ref=e13]
+        - button [ref=e15] [cursor=pointer]:
+          - text: L'expérience Speakli
+          - img [ref=e16]
+      - link "Réserver une démo" [ref=e19] [cursor=pointer]:
+        - /url: https://calendly.com/speakli/demo
+    - generic [ref=e20]:
+      - generic [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: Qui sommes-nous ?
+          - generic [ref=e27]:
+            - button [ref=e28]:
+              - img [ref=e29]
+              - text: Notre histoire
+            - button [ref=e31]:
+              - img [ref=e32]
+              - text: Nous rejoindre
+            - button [ref=e34]:
+              - img [ref=e35]
+              - text: Partenaires & soutiens
+      - generic [ref=e37] [cursor=pointer]:
+        - img [ref=e39]
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Les solutions
+          - generic [ref=e43]:
+            - button [ref=e44]:
+              - img [ref=e45]
+              - text: Assistant vocal IA
+            - button [ref=e47]:
+              - img [ref=e48]
+              - text: Tableau de bord
+            - button [ref=e50]:
+              - img [ref=e51]
+              - text: Sécurité & Conformité
+            - button [ref=e53]:
+              - img [ref=e54]
+              - text: Interopérabilité
+      - generic [ref=e56] [cursor=pointer]:
+        - img [ref=e58]
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: L'expérience Speakli
+          - generic [ref=e62]:
+            - button [ref=e63]:
+              - img [ref=e64]
+              - text: Témoignages
+            - button [ref=e66]:
+              - img [ref=e67]
+              - text: L'impact
+  - main [ref=e69]:
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]: Assistant vocal IA pour soignants
+        - heading "Redonnez du temps à vos soignants" [level=1] [ref=e76]:
+          - generic [ref=e77]: Redonnez du
+          - generic [ref=e78]: temps
+          - generic [ref=e79]: à vos
+          - generic [ref=e80]: soignants
+        - paragraph [ref=e81]:
+          - text: Fini la saisie manuelle chronophage.
+          - text: Parlez simplement — Speakli s'occupe du reste.
+          - text: Votre assistant vocal qui redonne du sens au soin.
+        - generic [ref=e82]:
+          - link "Demander une démo gratuite" [ref=e83] [cursor=pointer]:
+            - /url: https://calendly.com/speakli/demo
+            - text: Demander une démo gratuite
+            - img [ref=e84]
+          - button "Témoignages" [ref=e86]:
+            - img [ref=e87]
+            - text: Témoignages
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: A
+              - generic [ref=e93]: I
+              - generic [ref=e94]: C
+              - generic [ref=e95]: M
+            - generic [ref=e96]:
+              - generic [ref=e97]:
+                - img [ref=e98]
+                - img [ref=e100]
+                - img [ref=e102]
+                - img [ref=e104]
+                - img [ref=e106]
+              - paragraph [ref=e108]: 350+ soignants nous font confiance
+          - generic [ref=e109]:
+            - generic [ref=e110]: HDS Certifié
+            - generic [ref=e112]: RGPD Conforme
+            - generic [ref=e114]: Chiffrement E2E
+      - generic [ref=e119]:
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - img "Speakli" [ref=e122]
+            - generic [ref=e123]: Speakli
+          - generic [ref=e124]:
+            - img "Jean Noël" [ref=e125]
+            - generic [ref=e126]:
+              - generic [ref=e127]: Jean Noël
+              - generic [ref=e128]: Ch. 23
+        - generic [ref=e131]: Dictée en cours · 00:00
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - img [ref=e143]
+            - generic [ref=e145]:
+              - generic [ref=e146]: Sommeil
+              - generic [ref=e147]: Nuit calme, pas d'agitation
+          - generic [ref=e148]:
+            - img [ref=e149]
+            - generic [ref=e151]:
+              - generic [ref=e152]: Alimentation
+              - generic [ref=e153]: Petit-déj. pris en totalité
+          - generic [ref=e154]:
+            - img [ref=e155]
+            - generic [ref=e157]:
+              - generic [ref=e158]: Activité
+              - generic [ref=e159]: Kiné 10h — bonne mobilité
+        - generic [ref=e161]:
+          - generic [ref=e162]: Constantes vitales
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - generic [ref=e165]: L2
+              - generic [ref=e166]: Selles
+            - generic [ref=e167]:
+              - generic [ref=e168]: 37.2°
+              - generic [ref=e169]: Temp.
+            - generic [ref=e170]:
+              - generic [ref=e171]: 97 %
+              - generic [ref=e172]: SpO₂
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - img [ref=e175]
+            - generic [ref=e177]: Synchronisé au DUI
+          - img [ref=e179]
+    - generic [ref=e182]:
+      - paragraph [ref=e183]: Ils nous font confiance
+      - generic [ref=e186]:
+        - img "GCSMS Comète Bretagne" [ref=e188]
+        - img "Groupe Solila" [ref=e190]
+        - img "Fondation Saint Charles" [ref=e192]
+        - img "Résidence du Marais" [ref=e194]
+        - img "Les Pâtes des Fleurs Bleues" [ref=e196]
+        - img "Groupe Hom'Age" [ref=e198]
+        - generic [ref=e199]:
+          - img "Résidence les Pervenches"
+        - img "GCSMS Comète Bretagne" [ref=e201]
+        - img "Groupe Solila" [ref=e203]
+        - img "Fondation Saint Charles" [ref=e205]
+        - img "Résidence du Marais" [ref=e207]
+        - img "Les Pâtes des Fleurs Bleues" [ref=e209]
+        - img "Groupe Hom'Age" [ref=e211]
+        - generic [ref=e212]:
+          - img "Résidence les Pervenches"
+    - generic [ref=e214]:
+      - generic [ref=e215]:
+        - paragraph [ref=e216]: Solution de traçabilité IA tout-en-un
+        - heading "Tout ce dont vos équipes ont besoin." [level=2] [ref=e217]
+        - paragraph [ref=e218]: De la dictée vocale à l'intégration logicielle, Speakli couvre chaque maillon de la chaîne de soin.
+      - generic [ref=e220]:
+        - button "Assistant vocal IA" [ref=e221]: Assistant vocal IA
+        - button "Tableau de bord" [ref=e223]
+        - button "Sécurité & Conformité" [ref=e224]
+        - button "Interopérabilité" [ref=e225]
+      - generic [ref=e227]:
+        - generic [ref=e228]:
+          - generic [ref=e229]:
+            - generic [ref=e230]: +30 000
+            - generic [ref=e231]: transmissions documentées
+          - heading "Le pouvoir de la voix au service du soin" [level=3] [ref=e232]
+          - paragraph [ref=e233]: Une IA simple, intuitive et précise. Speakli transforme le plus simple des gestes en rapports structurés et exploitables, directement intégrés dans votre DPI. Moins de saisie, plus de temps pour vos résidents.
+          - list [ref=e234]:
+            - listitem [ref=e235]:
+              - img [ref=e237]
+              - generic [ref=e239]: Filtrage du bruit ambiant et accents régionaux
+            - listitem [ref=e240]:
+              - img [ref=e242]
+              - generic [ref=e244]: Mode offline — fonctionne sans connexion
+            - listitem [ref=e245]:
+              - img [ref=e247]
+              - generic [ref=e249]: IA entraînée sur le vocabulaire médico-social
+            - listitem [ref=e250]:
+              - img [ref=e252]
+              - generic [ref=e254]: Animez vos réunions d'équipe à la voix
+            - listitem [ref=e255]:
+              - img [ref=e257]
+              - generic [ref=e259]: Optimisez la coordination des soignants
+        - img "Soignante utilisant l'assistant vocal Speakli" [ref=e261]
+    - generic [ref=e263]:
+      - generic [ref=e264]:
+        - paragraph [ref=e265]: Témoignages
+        - heading "Ils l'utilisent, ils en parlent" [level=2] [ref=e266]
+        - paragraph [ref=e267]: Directeurs, IDEC, soignants — ils ont adopté Speakli et partagent leur expérience.
+      - generic [ref=e269]:
+        - img "Résidence Les Pervenches — Groupe Hom'Age"
+        - img "Groupe Hom'Age"
+      - generic [ref=e273]:
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - img [ref=e278]
+              - img [ref=e280]
+              - img [ref=e282]
+              - img [ref=e284]
+              - img [ref=e286]
+            - generic [ref=e288]:
+              - generic [ref=e289]: −55%
+              - generic [ref=e290]: temps de documentation
+          - blockquote [ref=e291]: “Cette application est une vraie révolution. Elle nous permet d'économiser un temps fou. Et en plus, ça nous motive à bien faire notre travail.”
+          - generic [ref=e292]:
+            - generic [ref=e293]: Astou B.
+            - generic [ref=e294]: IDEC, Résidence du Marais
+        - generic [ref=e296]:
+          - generic [ref=e297]:
+            - generic [ref=e298]:
+              - img [ref=e299]
+              - img [ref=e301]
+              - img [ref=e303]
+              - img [ref=e305]
+              - img [ref=e307]
+            - generic [ref=e309]:
+              - generic [ref=e310]: < 1 semaine
+              - generic [ref=e311]: prise en main
+          - blockquote [ref=e312]: “L'intégration avec notre logiciel métier s'est faite très rapidement. L'équipe Speakli nous a vraiment accompagnés. Nos soignants ont adopté l'outil en moins d'une semaine.”
+          - generic [ref=e313]:
+            - generic [ref=e314]: Claire D.
+            - generic [ref=e315]: Responsable qualité, Résidence Les Tilleuls
+      - generic [ref=e316]:
+        - generic [ref=e317]:
+          - generic [ref=e318]: "+0"
+          - generic [ref=e319]: établissements
+        - generic [ref=e320]:
+          - generic [ref=e321]: "+0"
+          - generic [ref=e322]: soignants utilisateurs quotidiens
+        - generic [ref=e323]:
+          - generic [ref=e324]: "0"
+          - generic [ref=e325]: résidents accompagnés
+    - generic [ref=e327]:
+      - generic [ref=e328]:
+        - paragraph [ref=e329]: Résultats mesurés
+        - heading "Des résultats concrets, instantanément." [level=2] [ref=e330]
+      - generic [ref=e331]:
+        - generic [ref=e332]:
+          - generic [ref=e334]:
+            - generic [ref=e335]: "+0"
+            - generic [ref=e336]:
+              - paragraph [ref=e337]: transmissions documentées
+              - paragraph [ref=e338]: et ce chiffre augmente chaque jour
+          - img "Soignante utilisant l'assistant vocal" [ref=e340]
+        - generic [ref=e341]:
+          - img "Équipe soignante en réunion" [ref=e343]
+          - generic [ref=e345]:
+            - generic [ref=e346]: 0×
+            - generic [ref=e347]:
+              - paragraph [ref=e348]: plus de traçabilité
+              - paragraph [ref=e349]: directement exploitable dans votre DUI
+        - generic [ref=e350]:
+          - generic [ref=e352]:
+            - generic [ref=e353]: 0h
+            - generic [ref=e354]:
+              - paragraph [ref=e355]: économisées par semaine
+              - paragraph [ref=e356]: par soignant en moyenne
+          - img "Soignante avec résident" [ref=e358]
+        - generic [ref=e359]:
+          - img "Soignants satisfaits" [ref=e361]
+          - generic [ref=e363]:
+            - generic [ref=e364]: 0%
+            - generic [ref=e365]:
+              - paragraph [ref=e366]: satisfaction des soignants
+              - paragraph [ref=e367]: utilisateurs Speakli
+    - generic [ref=e369]:
+      - generic [ref=e370]:
+        - paragraph [ref=e371]: Pour les soignants, par les soignants
+        - heading "Parlez. Speakli s'occupe du reste." [level=2] [ref=e372]
+        - paragraph [ref=e373]: Trois modules intégrés qui couvrent chaque moment de la tournée — sans changer vos habitudes.
+      - generic [ref=e374]:
+        - generic [ref=e375]:
+          - generic [ref=e376]:
+            - img [ref=e378]
+            - generic [ref=e381]:
+              - paragraph [ref=e382]: Transmissions
+              - paragraph [ref=e383]: "Générez vos transmissions ciblées. N'a jamais été aussi simple : une note vocale, un rapport généré et synchronisé dans le DUI, une fois validé par le soignant."
+          - generic [ref=e384]:
+            - img [ref=e386]
+            - generic [ref=e388]:
+              - paragraph [ref=e389]: Plan de soin
+              - paragraph [ref=e390]: Signez votre plan de soin vocalement. Chaque acte — réalisé, refusé, reporté ou hors plan — est détecté, commenté et synchronisé immédiatement dans le DUI.
+          - generic [ref=e391]:
+            - img [ref=e393]
+            - generic [ref=e395]:
+              - paragraph [ref=e396]: Relevés de constantes
+              - paragraph [ref=e397]: Dictez les constantes à voix haute. Speakli les détecte, les extrait et les synchronise instantanément dans le logiciel métier, sans interrompre le soin.
+        - generic [ref=e398]:
+          - generic [ref=e400]:
+            - generic [ref=e402]:
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - generic [ref=e405]:
+                    - img [ref=e407]
+                    - generic [ref=e410]: Transmissions
+                  - heading "Générez vos transmissions ciblées." [level=3] [ref=e411]
+                  - paragraph [ref=e412]:
+                    - text: "N'a jamais été aussi simple : une note vocale, un rapport structuré en"
+                    - strong [ref=e413]: Données · Actions · Résultats
+                    - text: ou par thématiques, validé par le soignant, puis synchronisé dans le DUI.
+                  - generic [ref=e414]:
+                    - generic [ref=e415]: DAR automatique
+                    - generic [ref=e416]: Multi-thématiques
+                    - generic [ref=e417]: Validation soignant
+                    - generic [ref=e418]: Mode hors ligne
+                - generic [ref=e419]:
+                  - img [ref=e420]
+                  - generic [ref=e422]: Synchronisé dans le logiciel métier
+              - generic [ref=e423]:
+                - generic [ref=e427]: REC · 00:31
+                - generic [ref=e444]:
+                  - generic [ref=e445]:
+                    - generic [ref=e446]: D
+                    - generic [ref=e447]: Nuit calme, agitation à 3h
+                  - generic [ref=e448]:
+                    - generic [ref=e449]: A
+                    - generic [ref=e450]: Traitement administré à 6h
+                  - generic [ref=e451]:
+                    - generic [ref=e452]: R
+                    - generic [ref=e453]: Retour au calme, douleur 2/10
+            - generic [ref=e455]:
+              - generic [ref=e456]:
+                - generic [ref=e457]:
+                  - generic [ref=e458]:
+                    - img [ref=e460]
+                    - generic [ref=e462]: Plan de soin
+                  - heading "Signez votre plan de soin vocalement." [level=3] [ref=e463]
+                  - paragraph [ref=e464]: "N'a jamais été aussi simple :"
+                  - list [ref=e465]:
+                    - listitem [ref=e466]:
+                      - img [ref=e467]
+                      - generic [ref=e469]: Acte réalisé
+                    - listitem [ref=e470]:
+                      - img [ref=e471]
+                      - generic [ref=e473]: Acte refusé
+                    - listitem [ref=e474]:
+                      - img [ref=e475]
+                      - generic [ref=e477]: Acte reporté
+                    - listitem [ref=e478]:
+                      - img [ref=e479]
+                      - generic [ref=e481]: Soins et relevés ponctuels détectés
+                    - listitem [ref=e482]:
+                      - img [ref=e483]
+                      - generic [ref=e485]: Commentaire intelligent ajouté
+                - generic [ref=e486]:
+                  - img [ref=e487]
+                  - generic [ref=e489]: Synchronisé dans le logiciel métier
+              - generic [ref=e490]:
+                - generic [ref=e491]: M. Dupont — Tournée 14h
+                - generic [ref=e492]:
+                  - img [ref=e493]
+                  - generic [ref=e495]:
+                    - generic [ref=e496]: Toilette complète
+                    - generic [ref=e497]: Réalisé
+                - generic [ref=e498]:
+                  - img [ref=e499]
+                  - generic [ref=e501]:
+                    - generic [ref=e502]: Kinésithérapie
+                    - generic [ref=e503]: Refusé
+                - generic [ref=e504]:
+                  - img [ref=e505]
+                  - generic [ref=e507]:
+                    - generic [ref=e508]: Pansement jambe G
+                    - generic [ref=e509]: Reporté
+                - generic [ref=e510]:
+                  - img [ref=e511]
+                  - generic [ref=e513]:
+                    - generic [ref=e514]: Chute détectée 14h
+                    - generic [ref=e515]: Hors plan
+            - generic [ref=e517]:
+              - generic [ref=e518]:
+                - generic [ref=e519]:
+                  - generic [ref=e520]:
+                    - img [ref=e522]
+                    - generic [ref=e524]: Relevés de constantes
+                  - heading "Parlez simplement." [level=3] [ref=e525]
+                  - paragraph [ref=e526]:
+                    - text: Dictez les constantes à voix haute. Speakli les détecte, les extrait et les synchronise instantanément dans le logiciel métier —
+                    - strong [ref=e527]: sans poser le matériel.
+                  - generic [ref=e528]:
+                    - generic [ref=e529]: Détection auto
+                    - generic [ref=e530]: Zéro saisie manuelle
+                    - generic [ref=e531]: Tous les capteurs
+                - generic [ref=e532]:
+                  - img [ref=e533]
+                  - generic [ref=e535]: Synchronisé dans le logiciel métier
+              - generic [ref=e536]:
+                - generic [ref=e537]:
+                  - generic [ref=e540]: Écoute en cours…
+                  - paragraph [ref=e541]: "\"Tension douze-huit, température trente-sept deux, sat quatre-vingt-dix-sept…\""
+                - generic [ref=e542]:
+                  - generic [ref=e543]:
+                    - img [ref=e544]
+                    - generic [ref=e546]: Tension
+                  - generic [ref=e547]: 12/8 mmHg
+                - generic [ref=e548]:
+                  - generic [ref=e549]:
+                    - img [ref=e550]
+                    - generic [ref=e552]: Température
+                  - generic [ref=e553]: 37,2 °C
+                - generic [ref=e554]:
+                  - generic [ref=e555]:
+                    - img [ref=e556]
+                    - generic [ref=e558]: SpO₂
+                  - generic [ref=e559]: 97 %
+                - generic [ref=e560]:
+                  - generic [ref=e561]:
+                    - img [ref=e562]
+                    - generic [ref=e564]: Poids
+                  - generic [ref=e565]: 68 kg
+          - button "Carte suivante" [ref=e570]:
+            - img [ref=e571]
+    - generic [ref=e574]:
+      - generic [ref=e575]:
+        - generic [ref=e576]:
+          - paragraph [ref=e577]: Partenaires & Soutiens
+          - heading "Un écosystème qui croit en nous" [level=2] [ref=e578]
+        - link "En savoir plus" [ref=e579] [cursor=pointer]:
+          - /url: /qui-sommes-nous/partenaires-et-soutiens
+          - text: En savoir plus
+          - img [ref=e580]
+      - generic [ref=e584]:
+        - img "BPI France" [ref=e586]
+        - img "Agence du Numérique en Santé" [ref=e588]
+        - img "HEC Incubateur" [ref=e590]
+        - img "HEC Launchpad" [ref=e592]
+        - generic [ref=e593]:
+          - img "Fédération Hospitalière de France"
+        - img "Défi Autonomie" [ref=e595]
+        - generic [ref=e596]:
+          - img "Keyrus"
+        - generic [ref=e597]:
+          - img "SilverEco"
+        - generic [ref=e598]:
+          - img "IESEG"
+        - img "BPI France" [ref=e600]
+        - img "Agence du Numérique en Santé" [ref=e602]
+        - img "HEC Incubateur" [ref=e604]
+        - img "HEC Launchpad" [ref=e606]
+        - generic [ref=e607]:
+          - img "Fédération Hospitalière de France"
+        - img "Défi Autonomie" [ref=e609]
+        - generic [ref=e610]:
+          - img "Keyrus"
+        - generic [ref=e611]:
+          - img "SilverEco"
+        - generic [ref=e612]:
+          - img "IESEG"
+    - generic [ref=e614]:
+      - generic [ref=e615]:
+        - paragraph [ref=e616]: Déploiement
+        - heading "Un échange. Un nouveau souffle." [level=2] [ref=e617]
+        - paragraph [ref=e618]: De la première prise de contact à la mise en production, on vous tient par la main.
+      - generic [ref=e621]:
+        - generic [ref=e622]:
+          - img [ref=e625]
+          - text: "01"
+          - heading "Consultation initiale" [level=3] [ref=e627]
+          - paragraph [ref=e628]: On prend le temps de comprendre votre établissement, vos contraintes, vos objectifs. Pas de pitch — une vraie conversation.
+        - generic [ref=e629]:
+          - img [ref=e632]
+          - text: "02"
+          - heading "Plan de déploiement" [level=3] [ref=e634]
+          - paragraph [ref=e635]: Une feuille de route sur mesure avec des jalons clairs. Vous savez exactement ce qui va se passer et quand.
+        - generic [ref=e636]:
+          - img [ref=e639]
+          - text: "03"
+          - heading "Intégration technique" [level=3] [ref=e642]
+          - paragraph [ref=e643]: Notre équipe connecte Speakli à votre logiciel métier existant. Vous ne touchez à rien.
+        - generic [ref=e644]:
+          - img [ref=e647]
+          - text: "04"
+          - heading "Formation & support" [level=3] [ref=e651]
+          - paragraph [ref=e652]: Formation de vos équipes, accompagnement au lancement, et support continu. On ne disparaît pas après la signature.
+    - generic [ref=e654]:
+      - generic [ref=e655]:
+        - paragraph [ref=e656]: FAQ
+        - heading "Vos questions les plus fréquentes" [level=2] [ref=e657]
+        - paragraph [ref=e658]: Tout ce que vous devez savoir avant de nous rencontrer.
+      - generic [ref=e659]:
+        - generic [ref=e660]:
+          - button "Comment Speakli s'intègre-t-il à mon logiciel métier ?" [ref=e661]:
+            - generic [ref=e662]: Comment Speakli s'intègre-t-il à mon logiciel métier ?
+            - img [ref=e664]
+          - generic [ref=e666]: Speakli s'intègre via API avec les principaux logiciels du secteur (NetSoins, Titan, Ogyris, etc.). Notre équipe technique prend en charge toute la partie intégration — vous n'avez rien à faire.
+        - button "Quelle est la conformité réglementaire de la solution ?" [ref=e668]:
+          - generic [ref=e669]: Quelle est la conformité réglementaire de la solution ?
+          - img [ref=e671]
+        - button "Quels bénéfices concrets pour mes équipes soignantes ?" [ref=e674]:
+          - generic [ref=e675]: Quels bénéfices concrets pour mes équipes soignantes ?
+          - img [ref=e677]
+        - button "Quel impact sur la qualité de vie des résidents ?" [ref=e680]:
+          - generic [ref=e681]: Quel impact sur la qualité de vie des résidents ?
+          - img [ref=e683]
+        - button "Quels financements sont disponibles ?" [ref=e686]:
+          - generic [ref=e687]: Quels financements sont disponibles ?
+          - img [ref=e689]
+        - button "Comment se passe la formation des équipes ?" [ref=e692]:
+          - generic [ref=e693]: Comment se passe la formation des équipes ?
+          - img [ref=e695]
+    - generic [ref=e700]:
+      - generic [ref=e701]:
+        - paragraph [ref=e702]: Prêt à vous lancer ?
+        - heading "30 minutes. Un nouveau départ." [level=2] [ref=e703]:
+          - text: 30 minutes.
+          - text: Un nouveau départ.
+        - paragraph [ref=e704]: Réservez une démo personnalisée. On vous montre Speakli en action sur un cas concret de votre établissement.
+        - list [ref=e705]:
+          - listitem [ref=e706]:
+            - img [ref=e708]
+            - text: Démo adaptée à votre établissement
+          - listitem [ref=e710]:
+            - img [ref=e712]
+            - text: Réponses à toutes vos questions
+          - listitem [ref=e714]:
+            - img [ref=e716]
+            - text: Accompagnement sur les financements
+          - listitem [ref=e718]:
+            - img [ref=e720]
+            - text: Aucun engagement requis
+        - link "Réserver ma démo gratuite" [ref=e722] [cursor=pointer]:
+          - /url: https://calendly.com/speakli/demo
+          - text: Réserver ma démo gratuite
+          - img [ref=e723]
+      - generic [ref=e725]:
+        - heading "Vous préférez nous écrire directement ?" [level=3] [ref=e726]
+        - generic [ref=e727]:
+          - link "Téléphone +33 6 95 34 79 78" [ref=e728] [cursor=pointer]:
+            - /url: tel:+33695347978
+            - img [ref=e730]
+            - generic [ref=e732]:
+              - generic [ref=e733]: Téléphone
+              - generic [ref=e734]: +33 6 95 34 79 78
+          - link "Email contact@speakli.fr" [ref=e735] [cursor=pointer]:
+            - /url: mailto:contact@speakli.fr
+            - img [ref=e737]
+            - generic [ref=e739]:
+              - generic [ref=e740]: Email
+              - generic [ref=e741]: contact@speakli.fr
+          - link "LinkedIn Speakli" [ref=e742] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/speakli
+            - img [ref=e744]
+            - generic [ref=e746]:
+              - generic [ref=e747]: LinkedIn
+              - generic [ref=e748]: Speakli
+  - contentinfo [ref=e749]:
+    - generic [ref=e750]:
+      - generic [ref=e751]:
+        - generic [ref=e752]:
+          - generic [ref=e753]:
+            - img "Speakli" [ref=e754]
+            - generic [ref=e755]: Speakli
+          - paragraph [ref=e756]: L'assistant vocal IA pour soignants. Traçabilité en temps réel, sécurité maximale, équipes épanouies.
+          - generic [ref=e757]:
+            - generic [ref=e758]: HDS Certifié
+            - generic [ref=e760]: RGPD Conforme
+        - generic [ref=e762]:
+          - heading "Solution" [level=4] [ref=e763]
+          - list [ref=e764]:
+            - listitem [ref=e765]:
+              - link "Nos solutions" [ref=e766] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e767]:
+              - link "Sécurité" [ref=e768] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e769]:
+              - link "Intégrations" [ref=e770] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e771]:
+              - link "Tarifs" [ref=e772] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e773]:
+          - heading "Entreprise" [level=4] [ref=e774]
+          - list [ref=e775]:
+            - listitem [ref=e776]:
+              - link "À propos" [ref=e777] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e778]:
+              - link "Nous rejoindre" [ref=e779] [cursor=pointer]:
+                - /url: "#contact"
+            - listitem [ref=e780]:
+              - link "Blog" [ref=e781] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e782]:
+              - link "Contact" [ref=e783] [cursor=pointer]:
+                - /url: "#contact"
+      - generic [ref=e784]:
+        - paragraph [ref=e785]: © 2026 Speakli SAS. Tous droits réservés.
+        - generic [ref=e786]:
+          - link "Politique de confidentialité" [ref=e787] [cursor=pointer]:
+            - /url: "#"
+          - link "Mentions légales" [ref=e788] [cursor=pointer]:
+            - /url: "#"
+          - link "CGU" [ref=e789] [cursor=pointer]:
+            - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e795] [cursor=pointer]:
+    - img [ref=e796]
+  - alert [ref=e799]

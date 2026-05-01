@@ -1,0 +1,305 @@
+/* ============================================================
+   CardNav.css — Speakli floating pill navbar with hover cards
+   ============================================================ */
+
+/* ── Outer wrapper (the fixed pill container) ── */
+.cardnav-wrapper {
+  position: fixed;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 92%;
+  max-width: 900px;
+  z-index: 9999;
+}
+
+/* ── Nav shell (the white pill itself) ── */
+.cardnav-shell {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 40, 120, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 40, 120, 0.08);
+  overflow: hidden;
+  height: 60px; /* GSAP animates this */
+}
+
+/* ── Top bar row ── */
+.cardnav-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 60px;
+  padding: 0 1.25rem;
+  flex-shrink: 0;
+}
+
+/* ── Logo ── */
+.cardnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.cardnav-logo-text {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: #1a2e49;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ── Center section labels (desktop) ── */
+.cardnav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.cardnav-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #4b5563;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.cardnav-pill-btn:hover {
+  background: linear-gradient(135deg, #ddeeff 0%, #eef5ff 50%, #f0f6ff 100%);
+  color: #1a2e49;
+}
+
+.cardnav-pill-chevron {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+/* Rotate chevrons when nav is expanded */
+.cardnav-shell[aria-expanded="true"] .cardnav-pill-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── CTA button ── */
+.cardnav-cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1a5ce0 0%, #007aff 100%);
+  border-radius: 0.625rem;
+  padding: 0.5rem 1.125rem;
+  text-decoration: none;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardnav-cta:hover {
+  background: linear-gradient(135deg, #1649c7 0%, #0068d9 100%);
+  box-shadow: 0 4px 14px rgba(0, 104, 217, 0.40);
+  transform: translateY(-1px);
+}
+
+/* ── Cards container ── */
+.cardnav-cards {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+  padding: 0.75rem 0.75rem 0.75rem;
+}
+
+/* LightRays canvas sits behind all cards */
+.cardnav-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ── Individual card ── */
+.cardnav-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 0.65rem;
+  /* overflow: hidden removed — moved to bg/overlay so link shadows are not clipped */
+  min-height: 192px;
+  cursor: pointer;
+  /* Cards start invisible; GSAP animates them in */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Background image layer — clips the image to the card radius */
+.cardnav-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+/* Dark overlay on top of the image */
+.cardnav-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 0.65rem;
+  transition: opacity 0.25s ease;
+}
+
+.cardnav-card:hover .cardnav-card-overlay {
+  opacity: 0.35 !important; /* override the inline 0.22 value */
+}
+
+/* Inner content (sits above bg + overlay) */
+.cardnav-card-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1.1rem 1rem 1.1rem;
+}
+
+/* Card title */
+.cardnav-card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #007AFF;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Card links list */
+.cardnav-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: auto;
+  padding-top: 0.625rem;
+}
+
+/* Individual link */
+.cardnav-card-link {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(10, 30, 70, 0.70);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cardnav-card-link:hover {
+  color: #0a1e46;
+}
+
+/* ── Mobile hamburger button ── */
+.cardnav-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: #4b5563;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.cardnav-hamburger:hover {
+  background: rgba(0, 40, 120, 0.06);
+}
+
+/* ── Mobile drawer ── */
+.cardnav-mobile-drawer {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem 0.75rem;
+  border-top: 1px solid rgba(0, 40, 120, 0.06);
+}
+
+.cardnav-mobile-card {
+  border-radius: 0.65rem;
+  height: auto;
+}
+
+/* ── Responsive: ≤768px ── */
+@media (max-width: 768px) {
+  .cardnav-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cardnav-center {
+    display: none;
+  }
+
+  .cardnav-cta {
+    display: none;
+  }
+
+  .cardnav-hamburger {
+    display: flex;
+  }
+
+  /* On mobile the shell is not height-animated; auto-fit */
+  .cardnav-shell {
+    height: auto !important; /* override GSAP inline style on mobile */
+  }
+
+  .cardnav-cards {
+    display: none; /* desktop card grid hidden on mobile */
+  }
+
+  .cardnav-mobile-drawer {
+    display: flex;
+  }
+
+  .cardnav-mobile-drawer .cardnav-card {
+    opacity: 1 !important;      /* override GSAP on mobile */
+    transform: none !important; /* override GSAP on mobile */
+    min-height: 130px;
+  }
+}
+
+/* ── Reduced-motion override ── */
+@media (prefers-reduced-motion: reduce) {
+  .cardnav-card,
+  .cardnav-pill-chevron,
+  .cardnav-card-overlay,
+  .cardnav-card-link,
+  .cardnav-cta {
+    transition: none !important;
+  }
+}

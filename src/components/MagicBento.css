@@ -1,0 +1,69 @@
+/* MagicBento — Speakli blue theme */
+
+.magic-bento-card {
+  position: relative;
+  overflow: hidden;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 260px;
+  --glow-color-rgb: 0, 122, 255;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.magic-bento-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Cursor-following border glow via ::after mask trick */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color-rgb, 0, 122, 255), calc(var(--glow-intensity) * 0.9)) 0%,
+    rgba(var(--glow-color-rgb, 0, 122, 255), calc(var(--glow-intensity) * 0.45)) 35%,
+    transparent 65%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.magic-bento-card--border-glow:hover {
+  box-shadow:
+    0 6px 28px rgba(0, 40, 120, 0.12),
+    0 0 24px rgba(var(--glow-color-rgb, 0, 122, 255), 0.12);
+}
+
+/* Particle container */
+.magic-particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating particles injected by JS */
+.magic-particle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: rgba(0, 122, 255, 0.2);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Bento section boundary for spotlight detection */
+.bento-section {
+  position: relative;
+  user-select: none;
+}

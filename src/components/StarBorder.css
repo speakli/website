@@ -1,0 +1,26 @@
+.star-border-container {
+  display: inline-block;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Rotating comet — conic-gradient spins around the container */
+.sb-orbit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  animation: sb-rotate linear infinite;
+}
+
+/* Inner chip — sits above the orbit layer */
+.star-border-inner {
+  position: relative;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+@keyframes sb-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
