@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
         <!-- Footer -->
         <tr><td style="padding:20px 40px;border-top:1px solid #e2e8f0;">
           <p style="font-size:11px;color:#a0aec0;margin:0;text-align:center;">
-            SAS CT (Speakli) · contact@speakli.fr · speakli.fr<br>
+            SAS CTSUR (Speakli) · contact@speakli.fr · speakli.fr<br>
             Ce rapport est confidentiel et établi à titre indicatif.
           </p>
         </td></tr>

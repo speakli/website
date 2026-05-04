@@ -119,11 +119,11 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
   const PageFooter = () => (
     <View style={s.footer}>
       <View style={s.footerRow}>
-        <Text style={s.footerText}>SAS CT (Speakli) · contact@speakli.fr</Text>
+        <Text style={s.footerText}>SAS CTSUR (Speakli) · contact@speakli.fr</Text>
         <Text style={s.footerText}>speakli.fr</Text>
       </View>
       <Text style={s.disclaimer}>
-        Ce document est confidentiel et établi à titre indicatif. Les estimations sont basées sur des moyennes terrain et peuvent varier selon votre contexte. SAS CT (Speakli) ne saurait être tenu responsable des écarts avec les résultats réels.
+        Ce document est confidentiel et établi à titre indicatif. Les estimations sont basées sur des moyennes terrain et peuvent varier selon votre contexte. SAS CTSUR (Speakli) ne saurait être tenu responsable des écarts avec les résultats réels.
       </Text>
     </View>
   );
@@ -266,7 +266,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             Total valeur temps libéré : {fmt(roi.val_an)}
           </Text>
           <Text style={s.methodNote}>
-            Ce montant représente la valeur financière des heures de traçage récupérées grâce à Speakli,
+            Ce montant représente la valeur financière des heures de traçabilité récupérées grâce à Speakli,
             réaffectables au soin direct ou à d'autres tâches à valeur ajoutée.
           </Text>
         </View>
