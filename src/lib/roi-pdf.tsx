@@ -240,7 +240,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             <Text style={s.extraBullet}>• Réduction des erreurs de retranscription et des oublis</Text>
             <Text style={s.extraBullet}>• Amélioration de la continuité des soins inter-équipes</Text>
             <Text style={s.extraBullet}>• Données fiables pour le suivi clinique et les évaluations internes</Text>
-            <Text style={s.extraBullet}>• Temps libéré directement réalloué au soin et à l'accompagnement des résidents</Text>
+            <Text style={s.extraBullet}>• Temps libéré directement alloué au résident</Text>
           </View>
           <View style={[s.extraCard, { borderLeftColor: GREEN }]}>
             <Text style={[s.extraCardTitle, { color: "#16a34a" }]}>Qualité de Vie au Travail (QVT)</Text>
@@ -265,7 +265,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             <Text style={s.extraBullet}>• Traçabilité exhaustive = preuve en cas de plainte ou litige</Text>
             <Text style={s.extraBullet}>• Conformité renforcée lors des contrôles ARS / tutelles</Text>
             <Text style={s.extraBullet}>• Réduction des non-conformités documentaires en inspection</Text>
-            <Text style={s.extraBullet}>• Protection des équipes soignantes par la documentation opposable</Text>
+            <Text style={s.extraBullet}>• Protection des équipes soignantes par la documentation</Text>
           </View>
         </View>
 
