@@ -200,7 +200,13 @@ function NavCard({ card, cardRef, onLinkClick, onHover, onLeave, isMobile = fals
     >
       {/* Inner content */}
       <div className="cardnav-card-inner">
-        <p className="cardnav-card-title">{card.title}</p>
+        <button
+            type="button"
+            className="cardnav-card-title"
+            onClick={() => onLinkClick(card.links[0])}
+          >
+            {card.title}
+          </button>
 
         <div className="cardnav-card-links">
           {card.links.map((link) => (
