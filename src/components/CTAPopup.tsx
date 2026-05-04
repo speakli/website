@@ -8,11 +8,13 @@ export default function CTAPopup() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (sessionStorage.getItem('speakli:popup_shown')) return;
     const t = setTimeout(() => setVisible(true), DELAY_MS);
     return () => clearTimeout(t);
   }, []);
 
   function dismiss() {
+    sessionStorage.setItem('speakli:popup_shown', '1');
     setVisible(false);
   }
 

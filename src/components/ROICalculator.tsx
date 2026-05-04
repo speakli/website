@@ -142,12 +142,17 @@ function EmailPopup({
   };
   onClose: () => void;
 }) {
+  const [civility, setCivility] = useState<"M." | "Mme">("M.");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+  const canSend = email.trim() && firstName.trim() && lastName.trim();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!canSend) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/roi", {
@@ -155,6 +160,9 @@ function EmailPopup({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
+          civility,
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
           ...formData,
           roi: {
             val_an: Math.round(roi.val_an),
@@ -172,6 +180,8 @@ function EmailPopup({
       setStatus("error");
     }
   };
+
+  const inputStyle = { border: "1.5px solid rgba(0,40,120,0.14)", background: "#f7f9ff", color: "var(--sp-900)" };
 
   return (
     <div
@@ -207,7 +217,7 @@ function EmailPopup({
               Résultats envoyés !
             </h3>
             <p className="text-sm font-medium mb-6" style={{ color: "#6b7280" }}>
-              Vérifiez votre boîte mail. Notre équipe est disponible pour vous accompagner.
+              Vérifiez votre boîte mail (et vos spams). Notre équipe est disponible pour vous accompagner.
             </p>
             <button
               onClick={onClose}
@@ -223,10 +233,62 @@ function EmailPopup({
               Recevez votre analyse complète
             </h3>
             <p className="text-sm font-medium mb-6" style={{ color: "#6b7280" }}>
-              Renseignez votre email pour recevoir les résultats détaillés.
+              Renseignez vos coordonnées pour recevoir le rapport PDF personnalisé.
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {/* Civility + name */}
+              <div className="flex gap-3">
+                <div className="flex-shrink-0">
+                  <Label>Civilité</Label>
+                  <div className="relative">
+                    <select
+                      value={civility}
+                      onChange={(e) => setCivility(e.target.value as "M." | "Mme")}
+                      className="rounded-xl px-3 py-3 text-sm font-semibold outline-none appearance-none cursor-pointer pr-7"
+                      style={inputStyle}
+                    >
+                      <option value="M.">M.</option>
+                      <option value="Mme">Mme</option>
+                    </select>
+                    <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" style={{ color: "#9ca3af" }}>
+                      <svg width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <Label>Prénom</Label>
+                  <input
+                    type="text"
+                    required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="Jean"
+                    className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none transition-colors"
+                    style={inputStyle}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "var(--sp-500)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,40,120,0.14)")}
+                  />
+                </div>
+                <div className="flex-1">
+                  <Label>Nom</Label>
+                  <input
+                    type="text"
+                    required
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Dupont"
+                    className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none transition-colors"
+                    style={inputStyle}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "var(--sp-500)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,40,120,0.14)")}
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
               <div>
                 <Label>Email professionnel</Label>
                 <input
@@ -236,11 +298,12 @@ function EmailPopup({
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="directeur@monehpad.fr"
                   className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none transition-colors"
-                  style={{ border: "1.5px solid rgba(0,40,120,0.14)", background: "#f7f9ff", color: "var(--sp-900)" }}
+                  style={inputStyle}
                   onFocus={(e) => (e.currentTarget.style.borderColor = "var(--sp-500)")}
                   onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,40,120,0.14)")}
                 />
               </div>
+
               {status === "error" && (
                 <p className="text-xs font-medium" style={{ color: "#ef4444" }}>
                   Une erreur est survenue. Réessayez ou contactez contact@speakli.fr
@@ -248,11 +311,11 @@ function EmailPopup({
               )}
               <button
                 type="submit"
-                disabled={!email.trim() || status === "loading"}
+                disabled={!canSend || status === "loading"}
                 className="w-full rounded-xl py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0"
                 style={{ background: "var(--sp-500)" }}
               >
-                {status === "loading" ? "Envoi en cours…" : "Recevoir mes résultats"}
+                {status === "loading" ? "Envoi en cours…" : "Recevoir mon rapport PDF"}
               </button>
             </form>
           </>

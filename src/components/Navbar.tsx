@@ -432,22 +432,30 @@ export default function Navbar() {
 
           {/* Center pill labels (desktop only) */}
           <div className="cardnav-center" aria-hidden="true">
-            {SECTION_LABELS.map((label, idx) => (
-              <button
-                key={label}
-                className="cardnav-pill-btn"
-                type="button"
-                tabIndex={-1}
-                onMouseEnter={() => setActiveIndex(idx)}
-                onMouseLeave={() => setActiveIndex(null)}
-                style={{
-                  background: isExpanded && idx === activeIndex ? "linear-gradient(135deg, #ddeeff 0%, #eef5ff 50%, #f0f6ff 100%)" : "transparent",
-                }}
-              >
-                {label}
-                <ChevronDown />
-              </button>
-            ))}
+            {SECTION_LABELS.map((label, idx) => {
+              const defaultLinks: NavLink[] = [
+                { label, sectionId: "solutions", href: "#solutions", tabId: "voice" },
+                { label, href: "/qui-sommes-nous/notre-histoire" },
+                { label, sectionId: "temoignages", href: "#temoignages" },
+              ];
+              return (
+                <button
+                  key={label}
+                  className="cardnav-pill-btn"
+                  type="button"
+                  tabIndex={-1}
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                  onClick={() => handleLinkClick(defaultLinks[idx])}
+                  style={{
+                    background: isExpanded && idx === activeIndex ? "linear-gradient(135deg, #ddeeff 0%, #eef5ff 50%, #f0f6ff 100%)" : "transparent",
+                  }}
+                >
+                  {label}
+                  <ChevronDown />
+                </button>
+              );
+            })}
           </div>
 
           {/* Right side */}
