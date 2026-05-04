@@ -70,6 +70,11 @@ const s = StyleSheet.create({
   calcLine:     { fontSize: 8.5, color: DARK, marginBottom: 3, lineHeight: 1.4 },
   calcResult:   { fontSize: 9, fontFamily: "Helvetica-Bold", color: DARK, borderTopWidth: 1, borderTopColor: BORDER, paddingTop: 4, marginTop: 4 },
   sourceLine:   { fontSize: 7.5, color: LGREY, lineHeight: 1.5 },
+
+  /* ─── Extra-financial page ─── */
+  extraCard:      { flex: 1, backgroundColor: "#FAFBFF", borderRadius: 8, padding: 10, borderLeftWidth: 3, borderTopWidth: 1, borderTopColor: BORDER, borderRightWidth: 1, borderRightColor: BORDER, borderBottomWidth: 1, borderBottomColor: BORDER },
+  extraCardTitle: { fontSize: 9.5, fontFamily: "Helvetica-Bold", marginBottom: 6 },
+  extraBullet:    { fontSize: 8.5, color: DARK, marginBottom: 3, lineHeight: 1.4 },
 });
 
 function fmt(n: number) {
@@ -324,6 +329,64 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
           </Text>
           <Text style={s.sourceLine}>
             • Coefficient PMP → GMP (2,59) : référentiel GMPS, grille Pathos nationale
+          </Text>
+        </View>
+
+        <View style={{ marginTop: "auto" }}>
+          <PageFooter />
+        </View>
+      </Page>
+
+      {/* ══════════════════ PAGE 3 — IMPACTS EXTRA-FINANCIERS ══════════════════ */}
+      <Page size="A4" style={s.page}>
+        <PageHeader />
+
+        <Text style={[s.sectionTitle, { marginBottom: 6 }]}>Impacts extra-financiers</Text>
+        <Text style={s.intro}>
+          Au-delà du ROI financier quantifié, Speakli génère des bénéfices significatifs sur 4 dimensions clés — non directement monétisables, mais stratégiquement déterminants pour la performance et la pérennité de votre établissement.
+        </Text>
+
+        {/* Row 1 */}
+        <View style={{ flexDirection: "row", gap: 10, marginBottom: 10 }}>
+          <View style={[s.extraCard, { borderLeftColor: BLUE }]}>
+            <Text style={[s.extraCardTitle, { color: BLUE }]}>Qualité des soins & des opérations</Text>
+            <Text style={s.extraBullet}>• Traçabilité complète et en temps réel des actes de soin</Text>
+            <Text style={s.extraBullet}>• Réduction des erreurs de retranscription et des oublis</Text>
+            <Text style={s.extraBullet}>• Amélioration de la continuité des soins inter-équipes</Text>
+            <Text style={s.extraBullet}>• Données fiables pour le suivi clinique et les bilans ARS</Text>
+          </View>
+          <View style={[s.extraCard, { borderLeftColor: GREEN }]}>
+            <Text style={[s.extraCardTitle, { color: "#16a34a" }]}>Qualité de Vie au Travail (QVT)</Text>
+            <Text style={s.extraBullet}>• Allègement de la charge administrative perçue comme contrainte</Text>
+            <Text style={s.extraBullet}>• Recentrage sur le soin direct, source de sens professionnel</Text>
+            <Text style={s.extraBullet}>• Réduction du stress lié aux fins de poste (traçage en retard)</Text>
+            <Text style={s.extraBullet}>• Amélioration du rapport à l'outil numérique au quotidien</Text>
+          </View>
+        </View>
+
+        {/* Row 2 */}
+        <View style={{ flexDirection: "row", gap: 10, marginBottom: 12 }}>
+          <View style={[s.extraCard, { borderLeftColor: "#a78bfa" }]}>
+            <Text style={[s.extraCardTitle, { color: "#7c3aed" }]}>Attractivité employeur & fidélisation</Text>
+            <Text style={s.extraBullet}>• Image d'établissement innovant auprès des candidats</Text>
+            <Text style={s.extraBullet}>• Réduction du turn-over lié à la charge administrative</Text>
+            <Text style={s.extraBullet}>• Argument différenciant dans les offres d'emploi</Text>
+            <Text style={s.extraBullet}>• Meilleur onboarding grâce à une documentation structurée</Text>
+          </View>
+          <View style={[s.extraCard, { borderLeftColor: "#f59e0b" }]}>
+            <Text style={[s.extraCardTitle, { color: "#d97706" }]}>Risques médico-légaux</Text>
+            <Text style={s.extraBullet}>• Traçabilité exhaustive = preuve en cas de plainte ou litige</Text>
+            <Text style={s.extraBullet}>• Conformité renforcée lors des contrôles ARS / tutelles</Text>
+            <Text style={s.extraBullet}>• Réduction des non-conformités documentaires en inspection</Text>
+            <Text style={s.extraBullet}>• Protection des équipes soignantes par la documentation opposable</Text>
+          </View>
+        </View>
+
+        {/* Closing note */}
+        <View style={[s.methodBox, { backgroundColor: "#FFFBF0", borderColor: "#f59e0b" }]}>
+          <Text style={[s.methodTitle, { color: "#92400e" }]}>Note méthodologique</Text>
+          <Text style={s.methodNote}>
+            Ces impacts ne sont pas intégrés au calcul financier, car leur monétisation dépend du contexte propre à chaque établissement. Ils représentent néanmoins des leviers de valeur réels et mesurables à moyen terme. Notre équipe peut vous aider à les qualifier lors d'une session de travail dédiée.
           </Text>
         </View>
 
