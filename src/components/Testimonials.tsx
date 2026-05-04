@@ -163,17 +163,15 @@ export default function Testimonials() {
               style={{ maxHeight: 52, width: "auto" }}
             />
           </div>
-          <div className="relative w-full bg-black" style={{ aspectRatio: "16/9" }}>
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster="/photos/testimonial-poster.jpg"
-              className="w-full h-full object-cover"
-              style={{ display: "block" }}
-            >
-              <source src="/videos/pervenches-testimonial.mp4" type="video/mp4" />
-            </video>
+          <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+            <iframe
+              src="https://www.youtube.com/embed/dDhcaLacDPI?rel=0"
+              title="Témoignage Les Pervenches — Speakli"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 0 }}
+            />
           </div>
         </div>
 

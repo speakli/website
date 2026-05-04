@@ -250,15 +250,15 @@ export default function JoinUs() {
 
           <div
             className="overflow-hidden rounded-3xl shadow-xl"
-            style={{ backgroundColor: "#000" }}
+            style={{ aspectRatio: "16/9" }}
           >
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <video
-              src="/videos/speakli-presentation.mp4"
-              controls
-              playsInline
-              className="w-full"
-              style={{ display: "block", maxHeight: 520 }}
+            <iframe
+              src="https://www.youtube.com/embed/9ci8qHV5Vnk?rel=0"
+              title="Présentation Speakli"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+              style={{ border: 0, display: "block" }}
             />
           </div>
         </div>
