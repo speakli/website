@@ -119,6 +119,8 @@ function SonarRings() {
 }
 
 function AppMockup() {
+  const { t } = useLanguage();
+  const h = t.hero;
   const [phase, setPhase] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [waveH, setWaveH] = useState([4, 8, 5, 10, 6, 9, 4, 7]);
@@ -220,17 +222,8 @@ function AppMockup() {
     setThumbDragX(null); // snap back to left
   };
 
-  const sections = [
-    { label: "Sommeil", value: "Nuit calme, pas d'agitation" },
-    { label: "Alimentation", value: "Petit-déj. pris en totalité" },
-    { label: "Activité", value: "Kiné 10h — bonne mobilité" },
-  ];
-
-  const constantes = [
-    { label: "Selles", value: "L2" },
-    { label: "Temp.", value: "37.2°" },
-    { label: "SpO₂", value: "97 %" },
-  ];
+  const sections = h.phone_sections;
+  const constantes = h.phone_constantes;
 
   const fadeStyle = (visible: boolean) => ({
     opacity: visible ? 1 : 0,
@@ -311,7 +304,7 @@ function AppMockup() {
           }}
         />
         <span style={{ color: "#ffffff", fontSize: 11, fontWeight: 600 }}>
-          Dictée en cours · {mins}:{secs}
+          {h.phone_dictee} · {mins}:{secs}
         </span>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 2, marginLeft: "auto", height: 21, overflow: "hidden" }}>
           {waveH.map((h, i) => (
@@ -373,7 +366,7 @@ function AppMockup() {
             <div style={{ padding: "0 14px 6px" }}>
               <div style={{ background: "rgba(0,122,255,0.06)", border: "1px solid rgba(0,122,255,0.15)", borderRadius: 12, padding: "8px 12px", ...fadeStyle(phase >= 4) }}>
                 <div style={{ color: "rgba(0,40,120,0.5)", fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>
-                  Constantes vitales
+                  {h.phone_vitals}
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   {constantes.map(({ label, value }, i) => (
@@ -416,7 +409,7 @@ function AppMockup() {
                   transition: "color 0.35s, padding-left 0.3s",
                   pointerEvents: "none",
                 }}>
-                  {sliderDone ? "✓ Validé" : "Glissez pour valider"}
+                  {sliderDone ? h.phone_confirmed : h.phone_slide}
                 </span>
 
                 {/* Shimmer qui accompagne le thumb */}
@@ -519,10 +512,10 @@ function AppMockup() {
             </div>
 
             <div style={{ color: "var(--sp-900)", fontWeight: 800, fontSize: 13, textAlign: "center", marginBottom: 4 }}>
-              Synchronisé au DUI
+              {h.phone_synced}
             </div>
             <div style={{ color: "#64748b", fontSize: 10, textAlign: "center", marginBottom: 14 }}>
-              Transmissions envoyées{syncTime ? ` à ${syncTime}` : ""}
+              {h.phone_sent_at}{syncTime ? `${h.phone_at}${syncTime}` : ""}
             </div>
 
             {/* Resident recap */}

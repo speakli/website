@@ -27,6 +27,23 @@ const fr = {
     badge_hds: "HDS Certifié",
     badge_rgpd: "RGPD Conforme",
     badge_e2e: "Chiffrement E2E",
+    phone_dictee: "Dictée en cours",
+    phone_slide: "Glissez pour valider",
+    phone_confirmed: "✓ Validé",
+    phone_synced: "Synchronisé au DUI",
+    phone_sent_at: "Transmissions envoyées",
+    phone_at: " à ",
+    phone_vitals: "Constantes vitales",
+    phone_sections: [
+      { label: "Sommeil", value: "Nuit calme, pas d'agitation" },
+      { label: "Alimentation", value: "Petit-déj. pris en totalité" },
+      { label: "Activité", value: "Kiné 10h — bonne mobilité" },
+    ],
+    phone_constantes: [
+      { label: "Selles", value: "L2" },
+      { label: "Temp.", value: "37.2°" },
+      { label: "SpO₂", value: "97 %" },
+    ],
   },
   stats: [
     { label: "transmissions documentées", sub: "grâce à la voix et l'IA" },
@@ -135,6 +152,17 @@ const fr = {
     ],
     phone_recording: "Dictée en cours",
     phone_validate: "Valider",
+    dar: [
+      { label: "DONNÉES", text: "Résidente retrouvée au sol dans sa chambre, consciente, se plaignant de douleurs au poignet droit à 8/10." },
+      { label: "ACTIONS", text: "Aide à se relever, installation au fauteuil, application de glace sur le poignet." },
+      { label: "RÉSULTATS", text: "Résidente calme, poignet légèrement enflé, médecin prévenu." },
+    ],
+    flow: [
+      { label: "Traçabilité vocale", sublabel: "Dictée vocale" },
+      { label: "Documentation suggérée par Speakli", sublabel: "Transcription & structuration IA" },
+      { label: "Validation soignant", sublabel: "L'humain toujours dans la boucle" },
+      { label: "Synchronisation DUI", sublabel: "Instantanée · Zéro délai" },
+    ],
   },
   testimonials: {
     tag: "Témoignages",
@@ -333,6 +361,23 @@ const en: Translations = {
     badge_hds: "HDS Certified",
     badge_rgpd: "GDPR Compliant",
     badge_e2e: "End-to-End Encryption",
+    phone_dictee: "Recording",
+    phone_slide: "Slide to confirm",
+    phone_confirmed: "✓ Confirmed",
+    phone_synced: "Synced to EHR",
+    phone_sent_at: "Transmissions sent",
+    phone_at: " at ",
+    phone_vitals: "Vital signs",
+    phone_sections: [
+      { label: "Sleep", value: "Calm night, no agitation" },
+      { label: "Nutrition", value: "Breakfast fully eaten" },
+      { label: "Activity", value: "Physio 10am — good mobility" },
+    ],
+    phone_constantes: [
+      { label: "Stools", value: "L2" },
+      { label: "Temp.", value: "37.2°" },
+      { label: "SpO₂", value: "97 %" },
+    ],
   },
   stats: [
     { label: "documented transmissions", sub: "thanks to voice and AI" },
@@ -441,6 +486,17 @@ const en: Translations = {
     ],
     phone_recording: "Recording",
     phone_validate: "Confirm",
+    dar: [
+      { label: "DATA", text: "Resident found on the floor in her room, conscious, complaining of right wrist pain at 8/10." },
+      { label: "ACTIONS", text: "Helped up, settled in armchair, ice pack applied to wrist." },
+      { label: "RESULTS", text: "Resident calm, wrist slightly swollen, doctor notified." },
+    ],
+    flow: [
+      { label: "Voice traceability", sublabel: "Voice dictation" },
+      { label: "Speakli-suggested documentation", sublabel: "AI transcription & structuring" },
+      { label: "Caregiver validation", sublabel: "Human always in the loop" },
+      { label: "EHR synchronisation", sublabel: "Instant · Zero delay" },
+    ],
   },
   testimonials: {
     tag: "Testimonials",

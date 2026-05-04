@@ -148,10 +148,8 @@ function PhoneUI({ recording, validate, inView }: { recording: string; validate:
 }
 
 /* ─── DAR cards ────────────────────────────────────────────── */
-const DAR_ITEMS = [
+const DAR_ICONS = [
   {
-    label: "DONNÉES",
-    text: "Résidente retrouvée au sol dans sa chambre, consciente, se plaignant de douleurs au poignet droit à 8/10.",
     icon: (
       <svg width="14" height="14" fill="none" stroke="#007AFF" strokeWidth="1.8" viewBox="0 0 24 24">
         <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" strokeLinecap="round" strokeLinejoin="round" />
@@ -160,8 +158,6 @@ const DAR_ITEMS = [
     color: "#007AFF",
   },
   {
-    label: "ACTIONS",
-    text: "Aide à se relever, installation au fauteuil, application de glace sur le poignet.",
     icon: (
       <svg width="14" height="14" fill="none" stroke="#34d399" strokeWidth="1.8" viewBox="0 0 24 24">
         <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
@@ -170,8 +166,6 @@ const DAR_ITEMS = [
     color: "#34d399",
   },
   {
-    label: "RÉSULTATS",
-    text: "Résidente calme, poignet légèrement enflé, médecin prévenu.",
     icon: (
       <svg width="14" height="14" fill="none" stroke="#a78bfa" strokeWidth="1.8" viewBox="0 0 24 24">
         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
@@ -181,7 +175,9 @@ const DAR_ITEMS = [
   },
 ];
 
-function DARCard({ item, delay, inView }: { item: typeof DAR_ITEMS[0]; delay: number; inView: boolean }) {
+type DARItem = typeof DAR_ICONS[0] & { label: string; text: string };
+
+function DARCard({ item, delay, inView }: { item: DARItem; delay: number; inView: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 24 }}
@@ -214,10 +210,8 @@ function DARCard({ item, delay, inView }: { item: typeof DAR_ITEMS[0]; delay: nu
 }
 
 /* ─── DUI flow overlay ─────────────────────────────────────── */
-const FLOW_STEPS = [
+const FLOW_STEP_ICONS = [
   {
-    label: "Traçabilité vocale",
-    sublabel: "Dictée vocale",
     color: "#007AFF",
     Icon: () => (
       <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -227,8 +221,6 @@ const FLOW_STEPS = [
     ),
   },
   {
-    label: "Documentation suggérée par Speakli",
-    sublabel: "Transcription & structuration IA",
     color: "#fb923c",
     Icon: () => (
       <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -237,8 +229,6 @@ const FLOW_STEPS = [
     ),
   },
   {
-    label: "Validation soignant",
-    sublabel: "L'humain toujours dans la boucle",
     color: "#a78bfa",
     Icon: () => (
       <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -247,8 +237,6 @@ const FLOW_STEPS = [
     ),
   },
   {
-    label: "Synchronisation DUI",
-    sublabel: "Instantanée · Zéro délai",
     color: "#a78bfa",
     Icon: () => (
       <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -259,6 +247,9 @@ const FLOW_STEPS = [
 ];
 
 function DUIConnectionCard() {
+  const { t } = useLanguage();
+  const flowSteps = FLOW_STEP_ICONS.map((icon, i) => ({ ...icon, ...t.pillars.flow[i] }));
+
   const [phase, setPhase] = useState(-1);
   const [slidingStarted, setSlidingStarted] = useState(false);
   const [validationSlid, setValidationSlid] = useState(false);
@@ -273,7 +264,7 @@ function DUIConnectionCard() {
         setTimeout(() => { if (!cancelled) setSlidingStarted(true); }, 2000);
         setTimeout(() => { if (!cancelled) setValidationSlid(true); }, 3200);
         setTimeout(() => advance(3), 5200);
-      } else if (p < FLOW_STEPS.length) {
+      } else if (p < flowSteps.length) {
         setTimeout(() => advance(p + 1), 2000);
       } else {
         setTimeout(() => {
@@ -320,7 +311,7 @@ function DUIConnectionCard() {
 
       {/* Flow steps */}
       <div className="px-3 pb-4">
-        {FLOW_STEPS.map((step, i) => {
+        {flowSteps.map((step, i) => {
           // Step 3 skips "active" — appears directly green when phase reaches it
           const isValidating = i === 2 && phase === 2 && slidingStarted && !validationSlid;
           const isDone = i === 3 ? phase >= 3 : (phase > i || (i === 2 && validationSlid));
@@ -359,7 +350,7 @@ function DUIConnectionCard() {
                       className="absolute inset-0 flex items-center justify-center text-[8px] font-bold tracking-wide pointer-events-none"
                       style={{ color: "rgba(167,139,250,0.50)" }}
                     >
-                      Validation soignant
+                      {t.pillars.flow[2].label}
                     </span>
                   </div>
                 </div>
@@ -392,7 +383,7 @@ function DUIConnectionCard() {
               )}
 
               {/* Connector */}
-              {i < FLOW_STEPS.length - 1 && (
+              {i < flowSteps.length - 1 && (
                 <div
                   className="ml-[11px] w-[2px] h-3 rounded-full"
                   style={{ background: isDone ? "rgba(52,211,153,0.28)" : "rgba(255,255,255,0.07)" }}
@@ -438,6 +429,8 @@ function InteropPanel() {
 
 /* ─── Voice right panel ────────────────────────────────────── */
 function VoicePanel({ recording, validate }: { recording: string; validate: string }) {
+  const { t } = useLanguage();
+  const darItems: DARItem[] = DAR_ICONS.map((icon, i) => ({ ...icon, ...t.pillars.dar[i] }));
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -463,7 +456,7 @@ function VoicePanel({ recording, validate }: { recording: string; validate: stri
         <PhoneUI recording={recording} validate={validate} inView={inView} />
       </div>
       <div className="hidden sm:flex absolute bottom-5 right-5 flex-col gap-2">
-        {DAR_ITEMS.map((item, i) => (
+        {darItems.map((item, i) => (
           <DARCard key={item.label} item={item} delay={0.8 + i * 1.5} inView={inView} />
         ))}
       </div>

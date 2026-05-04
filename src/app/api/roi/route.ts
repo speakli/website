@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getSupabase } from "@/lib/supabase";
 
 function fmt(n: number) {
   return new Intl.NumberFormat("fr-FR").format(Math.round(n)) + " €";
@@ -27,6 +28,26 @@ export async function POST(req: NextRequest) {
     const salutation = civility && firstName && lastName
       ? `${civility} ${firstName} ${lastName}`
       : null;
+
+    // Persist to Supabase
+    const { error: dbError } = await getSupabase().from("roi_simulations").insert({
+      email,
+      civility: civility || null,
+      first_name: firstName || null,
+      last_name: lastName || null,
+      lits,
+      nb_as: nbAS,
+      nb_ide: nbIDE,
+      logiciel: logiciel || null,
+      support: support || null,
+      temps_trace: tempsTrace,
+      pmp_actuel: pmpActuel,
+      pmp_cible: pmpCible,
+      val_an: roi.val_an,
+      gain_dotation: roi.gain_dotation,
+      roi_total: roi.roi_total,
+    });
+    if (dbError) console.error("[roi] Supabase insert failed:", dbError.message);
 
     const greetingLine = salutation ? `Bonjour ${salutation},` : "Bonjour,";
 
