@@ -131,7 +131,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
           <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.22)" }}>
-            © {new Date().getFullYear()} Speakli SAS · {f.copyright}
+            © {new Date().getFullYear()} SAS CT (Speakli) · {f.copyright}
           </p>
           <div className="flex gap-6">
             <Link

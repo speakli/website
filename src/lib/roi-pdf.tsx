@@ -51,7 +51,7 @@ const s = StyleSheet.create({
 });
 
 function fmt(n: number) {
-  return new Intl.NumberFormat("fr-FR").format(Math.round(n)) + " €";
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " \u20ac";
 }
 
 interface Props {
@@ -169,7 +169,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
 
         {/* Footer */}
         <View style={s.footer}>
-          <Text style={s.footerText}>Speakli SAS · contact@speakli.fr</Text>
+          <Text style={s.footerText}>SAS CT (Speakli) · contact@speakli.fr</Text>
           <Text style={s.footerText}>speakli.fr</Text>
         </View>
         <Text style={s.disclaimer}>
