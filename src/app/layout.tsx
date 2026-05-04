@@ -10,7 +10,9 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
-const BASE_URL = "https://www.speakli.fr";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://www.speakli.fr");
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
