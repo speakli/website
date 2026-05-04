@@ -7,47 +7,47 @@ const LIGHT = "#EAF3FF";
 const WHITE = "#ffffff";
 
 const s = StyleSheet.create({
-  page:       { backgroundColor: WHITE, padding: 40, fontFamily: "Helvetica" },
-  header:     { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 32, paddingBottom: 20, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
-  logo:       { fontSize: 22, fontFamily: "Helvetica-Bold", color: DARK, letterSpacing: -0.5 },
+  page:       { backgroundColor: WHITE, padding: 32, fontFamily: "Helvetica" },
+  header:     { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 18, paddingBottom: 14, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
+  logo:       { fontSize: 20, fontFamily: "Helvetica-Bold", color: DARK, letterSpacing: -0.5 },
   logoAccent: { color: BLUE },
   headerDate: { fontSize: 9, color: GREY },
   badge:      { backgroundColor: LIGHT, borderRadius: 6, paddingHorizontal: 10, paddingVertical: 4, marginTop: 4 },
   badgeText:  { fontSize: 8, color: BLUE, fontFamily: "Helvetica-Bold" },
 
-  greeting:   { fontSize: 14, color: DARK, fontFamily: "Helvetica-Bold", marginBottom: 6 },
-  intro:      { fontSize: 10, color: GREY, lineHeight: 1.6, marginBottom: 28 },
+  greeting:   { fontSize: 13, color: DARK, fontFamily: "Helvetica-Bold", marginBottom: 4 },
+  intro:      { fontSize: 9.5, color: GREY, lineHeight: 1.5, marginBottom: 16 },
 
-  sectionTitle: { fontSize: 11, fontFamily: "Helvetica-Bold", color: DARK, marginBottom: 12, paddingBottom: 6, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
+  sectionTitle: { fontSize: 10, fontFamily: "Helvetica-Bold", color: DARK, marginBottom: 8, paddingBottom: 5, borderBottomWidth: 1, borderBottomColor: "#E2E8F0" },
 
-  row:        { flexDirection: "row", justifyContent: "space-between", marginBottom: 7 },
-  rowLabel:   { fontSize: 9.5, color: GREY },
-  rowValue:   { fontSize: 9.5, color: DARK, fontFamily: "Helvetica-Bold" },
+  row:        { flexDirection: "row", justifyContent: "space-between", marginBottom: 5 },
+  rowLabel:   { fontSize: 9, color: GREY },
+  rowValue:   { fontSize: 9, color: DARK, fontFamily: "Helvetica-Bold" },
 
-  mb20:       { marginBottom: 20 },
-  mb28:       { marginBottom: 28 },
+  mb20:       { marginBottom: 14 },
+  mb28:       { marginBottom: 18 },
 
-  kpiRow:     { flexDirection: "row", gap: 12, marginBottom: 28 },
-  kpiCard:    { flex: 1, backgroundColor: LIGHT, borderRadius: 10, padding: 14 },
-  kpiAmount:  { fontSize: 18, fontFamily: "Helvetica-Bold", color: BLUE, marginBottom: 2 },
-  kpiLabel:   { fontSize: 8, color: GREY, lineHeight: 1.4 },
+  kpiRow:     { flexDirection: "row", gap: 10, marginBottom: 16 },
+  kpiCard:    { flex: 1, backgroundColor: LIGHT, borderRadius: 8, padding: 11 },
+  kpiAmount:  { fontSize: 16, fontFamily: "Helvetica-Bold", color: BLUE, marginBottom: 2 },
+  kpiLabel:   { fontSize: 7.5, color: GREY, lineHeight: 1.3 },
 
-  barSection: { marginBottom: 28 },
-  barRow:     { flexDirection: "row", alignItems: "center", marginBottom: 8 },
+  barSection: { marginBottom: 16 },
+  barRow:     { flexDirection: "row", alignItems: "center", marginBottom: 7 },
   barLabel:   { fontSize: 8.5, color: DARK, width: 150 },
-  barTrack:   { flex: 1, height: 10, backgroundColor: "#EDF2F7", borderRadius: 5, overflow: "hidden" },
-  barFill:    { height: 10, backgroundColor: BLUE, borderRadius: 5 },
+  barTrack:   { flex: 1, height: 9, backgroundColor: "#EDF2F7", borderRadius: 5, overflow: "hidden" },
+  barFill:    { height: 9, backgroundColor: BLUE, borderRadius: 5 },
   barValue:   { fontSize: 8.5, color: DARK, fontFamily: "Helvetica-Bold", width: 80, textAlign: "right" },
 
-  ctaBox:     { backgroundColor: DARK, borderRadius: 12, padding: 20, marginBottom: 28, alignItems: "center" },
-  ctaTitle:   { fontSize: 13, fontFamily: "Helvetica-Bold", color: WHITE, marginBottom: 6, textAlign: "center" },
-  ctaSub:     { fontSize: 9, color: "rgba(255,255,255,0.7)", marginBottom: 14, textAlign: "center", lineHeight: 1.5 },
-  ctaLink:    { backgroundColor: BLUE, borderRadius: 8, paddingHorizontal: 20, paddingVertical: 9 },
-  ctaLinkText:{ fontSize: 10, fontFamily: "Helvetica-Bold", color: WHITE },
+  ctaBox:     { backgroundColor: DARK, borderRadius: 10, padding: 14, marginBottom: 16, alignItems: "center" },
+  ctaTitle:   { fontSize: 12, fontFamily: "Helvetica-Bold", color: WHITE, marginBottom: 4, textAlign: "center" },
+  ctaSub:     { fontSize: 8.5, color: "rgba(255,255,255,0.7)", marginBottom: 10, textAlign: "center", lineHeight: 1.4 },
+  ctaLink:    { backgroundColor: BLUE, borderRadius: 7, paddingHorizontal: 18, paddingVertical: 7 },
+  ctaLinkText:{ fontSize: 9.5, fontFamily: "Helvetica-Bold", color: WHITE },
 
-  footer:     { borderTopWidth: 1, borderTopColor: "#E2E8F0", paddingTop: 14, flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  footerText: { fontSize: 8, color: GREY },
-  disclaimer: { fontSize: 7.5, color: "#A0AEC0", marginTop: 8, textAlign: "center", lineHeight: 1.5 },
+  footer:     { borderTopWidth: 1, borderTopColor: "#E2E8F0", paddingTop: 10, flexDirection: "column", gap: 4 },
+  footerText: { fontSize: 7.5, color: GREY },
+  disclaimer: { fontSize: 7, color: "#A0AEC0", lineHeight: 1.4 },
 });
 
 function fmt(n: number) {
@@ -169,13 +169,14 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
 
         {/* Footer */}
         <View style={s.footer}>
-          <Text style={s.footerText}>SAS CT (Speakli) · contact@speakli.fr</Text>
-          <Text style={s.footerText}>speakli.fr</Text>
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <Text style={s.footerText}>SAS CT (Speakli) · contact@speakli.fr</Text>
+            <Text style={s.footerText}>speakli.fr</Text>
+          </View>
+          <Text style={s.disclaimer}>
+            Ce document est confidentiel et établi à titre indicatif. Les estimations sont basées sur des moyennes terrain et peuvent varier selon votre contexte. SAS CT (Speakli) ne saurait être tenu responsable des écarts avec les résultats réels.
+          </Text>
         </View>
-        <Text style={s.disclaimer}>
-          Ce document est confidentiel et établi à titre indicatif. Les estimations sont basées sur des moyennes terrain
-          et peuvent varier selon votre contexte. Speakli ne saurait être tenu responsable des écarts avec les résultats réels.
-        </Text>
 
       </Page>
     </Document>
