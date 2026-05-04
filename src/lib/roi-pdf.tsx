@@ -353,13 +353,14 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             <Text style={s.extraBullet}>• Traçabilité complète et en temps réel des actes de soin</Text>
             <Text style={s.extraBullet}>• Réduction des erreurs de retranscription et des oublis</Text>
             <Text style={s.extraBullet}>• Amélioration de la continuité des soins inter-équipes</Text>
-            <Text style={s.extraBullet}>• Données fiables pour le suivi clinique et les bilans ARS</Text>
+            <Text style={s.extraBullet}>• Données fiables pour le suivi clinique et les évaluations internes</Text>
+            <Text style={s.extraBullet}>• Temps libéré directement réalloué au soin et à l'accompagnement des résidents</Text>
           </View>
           <View style={[s.extraCard, { borderLeftColor: GREEN }]}>
             <Text style={[s.extraCardTitle, { color: "#16a34a" }]}>Qualité de Vie au Travail (QVT)</Text>
-            <Text style={s.extraBullet}>• Allègement de la charge administrative perçue comme contrainte</Text>
+            <Text style={s.extraBullet}>• Allègement de la charge administrative des soignants</Text>
             <Text style={s.extraBullet}>• Recentrage sur le soin direct, source de sens professionnel</Text>
-            <Text style={s.extraBullet}>• Réduction du stress lié aux fins de poste (traçage en retard)</Text>
+            <Text style={s.extraBullet}>• Réduction du stress lié aux fins de poste (traçabilité différée)</Text>
             <Text style={s.extraBullet}>• Amélioration du rapport à l'outil numérique au quotidien</Text>
           </View>
         </View>
