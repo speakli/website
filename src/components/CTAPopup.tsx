@@ -8,13 +8,11 @@ export default function CTAPopup() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('speakli:popup_shown')) return;
     const t = setTimeout(() => setVisible(true), DELAY_MS);
     return () => clearTimeout(t);
   }, []);
 
   function dismiss() {
-    sessionStorage.setItem('speakli:popup_shown', '1');
     setVisible(false);
   }
 
@@ -53,7 +51,7 @@ export default function CTAPopup() {
           style={{ background: 'rgba(0,122,255,0.08)', border: '1px solid rgba(0,122,255,0.18)', color: 'var(--sp-600)' }}
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--sp-500)' }} />
-          #1 des assistants IA en EHPAD
+          L'assistant vocal IA n°1 pour soignants
         </div>
 
         <h2
