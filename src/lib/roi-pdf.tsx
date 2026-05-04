@@ -73,7 +73,7 @@ const s = StyleSheet.create({
 });
 
 function fmt(n: number) {
-  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u202f") + " \u20ac";
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " \u20ac";
 }
 
 function fmtN(n: number, dec = 1) {
