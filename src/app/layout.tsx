@@ -53,21 +53,12 @@ export const metadata: Metadata = {
     siteName: "Speakli",
     locale: "fr_FR",
     type: "website",
-    images: [
-      {
-        url: "/photos/og-speakli.png",
-        width: 1200,
-        height: 630,
-        alt: "Speakli – Assistant vocal IA pour soignants",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Speakli – Assistant vocal IA pour soignants en EHPAD",
     description:
       "Documentez vos soins par la voix. Traçabilité en temps réel, conformité RGPD, hébergement HDS certifié.",
-    images: ["/photos/og-speakli.png"],
     creator: "@speakli_fr",
   },
   alternates: {
