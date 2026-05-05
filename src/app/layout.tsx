@@ -55,6 +55,14 @@ export const metadata: Metadata = {
     siteName: "Speakli",
     locale: "fr_FR",
     type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 800,
+        alt: "Soignante utilisant Speakli dans un couloir d'EHPAD",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -62,6 +70,7 @@ export const metadata: Metadata = {
     description:
       "Documentez vos soins par la voix. Traçabilité en temps réel, conformité RGPD, hébergement HDS certifié.",
     creator: "@speakli_fr",
+    images: [`${BASE_URL}/og-image.png`],
   },
   alternates: {
     canonical: BASE_URL,
