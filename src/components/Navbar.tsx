@@ -426,14 +426,12 @@ export default function Navbar() {
           {/* Logo */}
           <a href="/" className="cardnav-logo" aria-label="Speakli, accueil">
             <Image
-              src="/logo-speakli.svg"
-              alt=""
-              width={28}
-              height={22}
+              src="/logo-speakli-navbar.svg"
+              alt="Speakli"
+              width={88}
+              height={25}
               className="object-contain"
-              aria-hidden="true"
             />
-            <span className="cardnav-logo-text">Speakli</span>
           </a>
 
           {/* Center pill labels (desktop only) */}

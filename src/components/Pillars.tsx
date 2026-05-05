@@ -94,7 +94,7 @@ function PhoneUI({ recording, validate, inView }: { recording: string; validate:
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-4 pb-3">
         <div className="flex items-center gap-2">
-          <Image src="/logo-speakli.svg" alt="" width={14} height={14} className="opacity-90" />
+          <Image src="/logo-speakli-icon.svg" alt="" width={18} height={13} className="opacity-90" />
           <span className="text-white text-xs font-bold">Speakli</span>
         </div>
         <div className="text-right">

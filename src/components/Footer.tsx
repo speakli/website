@@ -39,17 +39,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
           {/* Brand · wider column */}
           <div className="col-span-2 md:col-span-5">
-            <a href="/" className="inline-flex items-center gap-3 mb-5 group">
+            <a href="/" className="inline-flex items-center mb-5 group">
               <Image
-                src="/logo-speakli.svg"
+                src="/logo-speakli-footer.svg"
                 alt="Speakli"
-                width={36}
-                height={26}
-                className="object-contain brightness-0 invert"
+                width={120}
+                height={47}
+                className="object-contain"
               />
-              <span className="font-extrabold text-2xl tracking-tight text-white leading-none">
-                Speak<span style={{ color: "#007AFF" }}>li</span>
-              </span>
             </a>
             <p className="text-sm leading-relaxed max-w-xs mb-6" style={{ color: "rgba(255,255,255,0.40)" }}>
               {f.tagline}

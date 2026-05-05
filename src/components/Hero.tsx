@@ -255,11 +255,10 @@ function AppMockup() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
           <img
-            src="/logo-speakli.svg"
+            src="/logo-speakli-navbar.svg"
             alt="Speakli"
             style={{ height: 22, width: "auto", flexShrink: 0 }}
           />
-          <span style={{ color: "var(--sp-900)", fontWeight: 700, fontSize: 13 }}>Speakli</span>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
