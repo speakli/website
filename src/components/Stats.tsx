@@ -29,7 +29,7 @@ const STAT_CONFIGS = [
     imageTop: false,
   },
   {
-    prefix: "", numTo: 97, suffix: "%", separator: "",
+    prefix: "", numTo: 98, suffix: "%", separator: "",
     image: "/photos/human/10.png",
     imageAlt: "Soignante montrant son téléphone à une résidente",
     bg: "linear-gradient(135deg, #0c1d50 0%, #142875 40%, #1a3388 60%, #0a1840 100%)",
