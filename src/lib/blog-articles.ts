@@ -1042,6 +1042,116 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       },
     ],
   },
+  {
+    slug: "silvereco-parole-expert-ia-tracabilite",
+    title: "Parole d'expert SilverEco : l'IA vocale qui révolutionne la traçabilité en médico-social",
+    category: "Médias & Interviews",
+    categoryBg: "#F0FDF4",
+    categoryColor: "#166534",
+    date: "Avril 2026",
+    excerpt:
+      "Ruben Weinstein, cofondateur de Speakli, revient pour SilverEco sur les transformations profondes du secteur médico-social et les réponses concrètes que l'IA vocale apporte aux soignants en matière de traçabilité.",
+    coverLogo: "/logos/silvereco-festival.png",
+    coverIsPhoto: false,
+    cardBg: "#0a2a1a",
+    youtubeUrl: "https://www.youtube.com/embed/ZN1I59uSZ0k?rel=0",
+    externalLink: {
+      label: "Lire l'article sur SilverEco.fr",
+      href: "https://www.silvereco.fr/parole-dexpert-speakli-lia-vocale-qui-revolutionne-la-tracabilite-des-soignants-en-medico-social/",
+    },
+    content: [
+      {
+        heading: "Une traçabilité indispensable mais chronophage",
+        paragraphs: [
+          "Dans les établissements de santé et médico-sociaux, la traçabilité des soins constitue un pilier fondamental de la qualité de prise en charge. Elle permet d'assurer le suivi des patients et résidents, de coordonner les équipes et de répondre aux exigences des autorités de santé.",
+          "Pourtant, cette mission occupe encore aujourd'hui une part considérable du temps des soignants. Jusqu'à 30 % de leur temps est consacré à des tâches de documentation, souvent réalisées sur des outils peu adaptés au terrain — majoritairement conçus pour des postes fixes, s'intégrant difficilement au rythme réel des soins. Résultat : une perte de temps, une charge mentale accrue et un éloignement du cœur de métier des professionnels.",
+        ],
+      },
+      {
+        heading: "Des risques majeurs pour les établissements",
+        paragraphs: [
+          "Une traçabilité défaillante ne se limite pas à un simple enjeu organisationnel. Sur le plan médico-légal, l'absence de documentation peut être interprétée comme une absence de soin : ce qui n'est pas tracé est considéré comme non réalisé. La responsabilité des professionnels peut être engagée et les établissements s'exposent à des contentieux.",
+          "L'impact est également financier : une part significative du budget des établissements dépend directement de la qualité de la traçabilité, utilisée comme base de justification auprès des autorités de tutelle. Enfin, les conséquences sont aussi humaines et organisationnelles : une mauvaise documentation entraîne une prise en charge moins adaptée et accentue la désorganisation des équipes.",
+        ],
+      },
+      {
+        heading: "L'IA comme réponse aux défis du secteur",
+        paragraphs: [
+          "Le secteur médico-social fait face à une double pression structurelle. D'un côté, le vieillissement de la population entraîne une hausse massive des besoins d'accompagnement. De l'autre, les ressources humaines se raréfient. Les métiers du soin, exigeants physiquement et mentalement, peinent à recruter et à fidéliser. Turnover, absentéisme et burnout fragilisent les organisations.",
+          "Dans ce contexte, l'intelligence artificielle vocale de Speakli s'impose comme une réponse pragmatique. Elle permet d'automatiser des tâches chronophages à faible valeur ajoutée — la saisie des comptes rendus, la navigation dans les menus, la structuration administrative — afin de recentrer les soignants sur leur mission principale : le soin et l'accompagnement.",
+        ],
+      },
+      {
+        heading: "Une technologie au service du terrain",
+        paragraphs: [
+          "L'approche repose sur une idée simple : permettre aux soignants de documenter leurs actions à la voix, directement pendant leur tournée. Concrètement, la solution capte les informations vocales et les transforme en documents structurés, conformes et directement intégrés aux logiciels métiers des établissements.",
+          "Les résultats sont mesurés sur le terrain : jusqu'à 40 % de temps gagné sur la traçabilité, plus de 90 heures économisées par soignant chaque année, et une amélioration significative de la qualité et de la continuité des soins. Ce temps libéré peut être réattribué à des tâches à plus forte valeur humaine, comme l'accompagnement des résidents ou la coordination des équipes.",
+        ],
+      },
+      {
+        heading: "L'accompagnement au changement, levier stratégique",
+        paragraphs: [
+          "Si la technologie est essentielle, elle ne suffit pas à garantir le succès des projets numériques en santé. Une grande majorité des échecs est liée à un manque d'accompagnement des équipes. La conduite du changement repose sur plusieurs piliers : l'implication des soignants dès la conception des outils, la désignation de référents au sein des établissements, et la mise en place de rituels réguliers pour accompagner la montée en compétence.",
+          "Cette approche progressive permet une appropriation rapide des solutions par les équipes, jusqu'à une autonomie complète en quelques semaines. Au-delà de l'outil, c'est une transformation des pratiques qui s'opère, au service d'une meilleure qualité de vie au travail et d'une prise en charge optimisée des résidents.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "fnadepa-35-table-ronde-ia-ethique-ehpad",
+    title: "Table ronde FNADEPA 35 : l'IA en EHPAD sous l'angle de l'éthique et du consentement",
+    category: "Événements & Prises de parole",
+    categoryBg: "#FFF7ED",
+    categoryColor: "#9A3412",
+    date: "Mai 2026",
+    excerpt:
+      "Invité par la FNADEPA 35 à la table ronde \"Une révolution silencieuse au sein de nos EHPAD\", Ruben Weinstein a défendu une vision de l'IA médicosociale pensée avant tout comme éthique : conception, usage, accompagnement et données de confiance.",
+    coverIsPhoto: true,
+    cardBg: "#1a0a00",
+    gallery: [
+      {
+        src: "/photos/blog/fnadepa-table-ronde.jpg",
+        alt: "Table ronde FNADEPA 35 — Speakli présente sa vision de l'IA éthique en EHPAD",
+      },
+    ],
+    content: [
+      {
+        heading: "L'éthique au cœur du produit, pas en marge",
+        paragraphs: [
+          "Chez Speakli, nous essayons de penser l'éthique non pas comme un sujet séparé du produit, mais comme quelque chose qui traverse toute la chaîne : la conception, l'usage, l'accompagnement et la donnée. La question de fond qui guide nos décisions est simple : est-ce que ce que l'on construit est profondément bon ? juste ? utile ?",
+          "C'est dans cet esprit que Ruben Weinstein, cofondateur de Speakli, est intervenu à la table ronde organisée par la FNADEPA 35 sur le thème \"Une révolution silencieuse au sein de nos EHPAD\", aux côtés de directeurs d'établissements, de professionnels de santé et d'acteurs institutionnels.",
+        ],
+      },
+      {
+        heading: "1. Éthique dans la conception : la technologie s'adapte au soin",
+        paragraphs: [
+          "L'éthique de conception, c'est faire en sorte que la technologie s'adapte au soin, et non que le soin s'adapte à la technologie. Une IA en EHPAD ne peut pas être pensée hors-sol, depuis un bureau, puis simplement « déployée » auprès des équipes. Elle doit partir des pratiques réelles, des contraintes du terrain et des irritants vécus au quotidien par les professionnels.",
+          "Chez Speakli, on part de choses très concrètes : la charge de rédaction, les interfaces complexes, les menus, les ressaisies, la peur de mal formuler, ou encore le risque de perdre une information entre le moment du soin et le moment où elle est tracée. C'est pour cela que la co-construction est centrale — l'outil est conçu avec les soignants, les IDEC, les directions et les médecins coordonnateurs.",
+        ],
+      },
+      {
+        heading: "2. Éthique dans l'usage : liberté, jugement et cœur de métier",
+        paragraphs: [
+          "Speakli ne met pas l'IA à la place du soignant ; Speakli met l'IA au service du soignant. Le professionnel reste maître de bout en bout. Ce n'est pas une écoute continue, ce n'est pas un outil de surveillance, ce n'est pas un micro ouvert dans l'établissement. Le soignant choisit quand il souhaite tracer une information : il déclenche l'enregistrement, il dicte, il relit, il corrige si nécessaire, puis il valide. Cette validation humaine n'est pas une formalité : c'est une condition d'usage.",
+          "L'objectif est d'automatiser des tâches chronophages à faible valeur humaine — la navigation dans les menus, la saisie répétitive, la structuration administrative — en laissant intact tout ce qui relève du jugement clinique, de l'observation fine, de la connaissance du résident et de l'intelligence relationnelle. Une bonne IA en EHPAD est une IA qui rapproche le professionnel de son cœur de métier : observer, accompagner, soigner, transmettre. Elle valorise le soignant plutôt que de le supplanter, et accompagne sa montée en compétence.",
+        ],
+      },
+      {
+        heading: "3. Éthique dans l'accompagnement et la conduite du changement",
+        paragraphs: [
+          "L'éthique, ce n'est pas seulement ce que fait l'outil ; c'est aussi la manière dont on le fait entrer dans l'établissement. Déployer une IA en EHPAD, ce n'est pas seulement installer un logiciel. C'est accompagner une transformation des pratiques. Un outil peut être techniquement excellent, mais s'il est mal expliqué, mal intégré ou mal accompagné, il peut créer de la défiance, de la charge supplémentaire, voire un rejet.",
+          "Chez Speakli, l'accompagnement fait partie intégrante du produit : cadrage opérationnel, formation des équipes, identification de référents à différents niveaux hiérarchiques, suivi d'usage, remontées terrain, adaptation des fonctionnalités. L'objectif est que l'outil soit compris, approprié, et qu'il reste vivant. Si une fonctionnalité ne correspond pas au terrain, elle doit évoluer.",
+        ],
+      },
+      {
+        heading: "4. Éthique dans la confidentialité et la sécurisation des données",
+        paragraphs: [
+          "La donnée de santé n'est pas une simple donnée métier : c'est une donnée de confiance. En EHPAD, on parle de données de santé, de personnes vulnérables, d'informations parfois très intimes. La protection de la donnée n'est donc pas un sujet technique secondaire : c'est un sujet éthique central.",
+          "Cela implique plusieurs principes : ne collecter que ce qui est nécessaire, sécuriser les flux, protéger le stockage, encadrer les accès, tracer les actions, et s'assurer que les données ne soient utilisées que pour la finalité prévue. Speakli n'enregistre pas en continu — on ne capte pas la vie de l'établissement. On accompagne un acte professionnel précis, à un moment choisi par le soignant, dans le respect total de la vie privée des résidents.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
