@@ -94,7 +94,7 @@ export default function AwardsBlog() {
                       width={220}
                       height={80}
                       className="object-contain"
-                      style={{ maxHeight: 80, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.9 }}
+                      style={{ maxHeight: 80, width: "auto", filter: article.coverLogoNatural ? "none" : "brightness(0) invert(1)", opacity: 0.9 }}
                     />
                     )}
                   </div>
@@ -204,8 +204,8 @@ export default function AwardsBlog() {
                         style={{
                           maxHeight: 72,
                           width: "auto",
-                          filter: "brightness(0) invert(1)",
-                          opacity: 0.85,
+                          filter: article.coverLogoNatural ? "none" : "brightness(0) invert(1)",
+                          opacity: 0.9,
                         }}
                       />
                     </div>

@@ -25,7 +25,8 @@ export interface BlogArticle {
   content: BlogSection[];
   isThematic?: boolean; // thematic articles vs press/awards
   isUpcoming?: boolean; // upcoming event (shown separately at the top)
-  isNew?: boolean;      // recent article — shown first with a "Nouveau" badge
+  isNew?: boolean;           // recent article — shown first with a "Nouveau" badge
+  coverLogoNatural?: boolean; // show logo without brightness/invert filter (light bg)
   readingTime?: string; // e.g. "7 min"
 }
 
@@ -1055,7 +1056,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Ruben Weinstein, cofondateur de Speakli, revient pour SilverEco sur les transformations profondes du secteur médico-social et les réponses concrètes que l'IA vocale apporte aux soignants en matière de traçabilité.",
     coverLogo: "/logos/silvereco-festival.png",
     coverIsPhoto: false,
-    cardBg: "#0a2a1a",
+    cardBg: "#0c3320",
     youtubeUrl: "https://www.youtube.com/embed/ZN1I59uSZ0k?rel=0",
     externalLink: {
       label: "Lire l'article sur SilverEco.fr",
@@ -1109,8 +1110,10 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "Mai 2026",
     excerpt:
       "Invité par la FNADEPA 35 à la table ronde \"Une révolution silencieuse au sein de nos EHPAD\", Ruben Weinstein a défendu une vision de l'IA médicosociale pensée avant tout comme éthique : conception, usage, accompagnement et données de confiance.",
-    coverIsPhoto: true,
-    cardBg: "#1a0a00",
+    coverLogo: "/logos/fnadepa.png",
+    coverIsPhoto: false,
+    coverLogoNatural: true,
+    cardBg: "#f5f0ff",
     gallery: [
       {
         src: "/photos/blog/fnadepa-table-ronde.jpg",
