@@ -25,6 +25,7 @@ export interface BlogArticle {
   content: BlogSection[];
   isThematic?: boolean; // thematic articles vs press/awards
   isUpcoming?: boolean; // upcoming event (shown separately at the top)
+  isNew?: boolean;      // recent article — shown first with a "Nouveau" badge
   readingTime?: string; // e.g. "7 min"
 }
 
@@ -1044,6 +1045,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "silvereco-parole-expert-ia-tracabilite",
+    isNew: true,
     title: "Parole d'expert SilverEco : l'IA vocale qui révolutionne la traçabilité en médico-social",
     category: "Médias & Interviews",
     categoryBg: "#F0FDF4",
@@ -1099,6 +1101,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "fnadepa-35-table-ronde-ia-ethique-ehpad",
+    isNew: true,
     title: "Table ronde FNADEPA 35 : l'IA en EHPAD sous l'angle de l'éthique et du consentement",
     category: "Événements & Prises de parole",
     categoryBg: "#FFF7ED",

@@ -28,7 +28,9 @@ function MicrophoneIcon() {
 
 const pressArticles = BLOG_ARTICLES.filter((a) => !a.isThematic);
 const upcomingArticles = pressArticles.filter((a) => a.isUpcoming);
-const regularArticles = pressArticles.filter((a) => !a.isUpcoming);
+const regularArticles = pressArticles
+  .filter((a) => !a.isUpcoming)
+  .sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
 
 export default function AwardsBlog() {
   const { t } = useLanguage();
@@ -170,6 +172,17 @@ export default function AwardsBlog() {
                   className="absolute top-0 left-0 right-0 h-1"
                   style={{ backgroundColor: article.categoryColor }}
                 />
+
+                {/* New badge */}
+                {article.isNew && (
+                  <div
+                    className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold text-white"
+                    style={{ background: "#16a34a" }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                    Nouveau
+                  </div>
+                )}
 
                 {article.coverLogo ? (
                   article.coverIsPhoto ? (
