@@ -28,9 +28,61 @@ export interface BlogArticle {
   isNew?: boolean;           // recent article — shown first with a "Nouveau" badge
   coverLogoNatural?: boolean; // show logo without brightness/invert filter (light bg)
   readingTime?: string; // e.g. "7 min"
+  heroCta?: { label: string; href: string; subtitle: string }; // CTA block at top of article body
 }
 
 export const BLOG_ARTICLES: BlogArticle[] = [
+  {
+    slug: "santexpo-2026-stand-w692",
+    isUpcoming: true,
+    isNew: true,
+    title: "Speakli à Santexpo 2026 — Stand W692, Espace Innovation FHF",
+    category: "Événements & Prises de parole",
+    categoryBg: "#EFF6FF",
+    categoryColor: "#1D4ED8",
+    date: "19–21 mai 2026",
+    excerpt:
+      "Du 19 au 21 mai 2026, retrouvez Speakli au stand W692 de l'Espace Innovation FHF, Parc des Expositions Porte de Versailles. Venez découvrir en direct notre assistant vocal IA pour soignants et repartir avec une démonstration personnalisée.",
+    coverLogo: "/logos/FHF.jpg",
+    coverIsPhoto: false,
+    coverLogoNatural: false,
+    cardBg: "#0c1d50",
+    heroCta: {
+      label: "Demander une démo sur le stand",
+      href: "https://calendly.com/ruben-speakli/30min",
+      subtitle: "Réservez votre créneau pour une démonstration en direct au stand W692",
+    },
+    content: [
+      {
+        heading: "Santexpo, le rendez-vous incontournable de la santé numérique",
+        paragraphs: [
+          "Santexpo est le salon de référence pour les professionnels de santé, les établissements et les acteurs de la santé numérique en France. Chaque année, il réunit plusieurs milliers de visiteurs autour des innovations qui transforment les pratiques de soin, de la gestion hospitalière à la prise en charge en établissement médico-social.",
+          "Cette édition 2026 se tiendra du 19 au 21 mai au Parc des Expositions de la Porte de Versailles, Paris.",
+        ],
+      },
+      {
+        heading: "Speakli dans l'Espace Innovation FHF — Stand W692",
+        paragraphs: [
+          "Speakli sera présent dans l'Espace Innovation de la Fédération Hospitalière de France (FHF), au stand W692. Cet espace est dédié aux startups et entreprises innovantes sélectionnées par la FHF pour leur impact concret sur les établissements de santé et médico-sociaux.",
+          "C'est une reconnaissance de l'ancrage terrain de Speakli : aujourd'hui déployé dans plus de 40 EHPAD, notre assistant vocal IA permet aux soignants de documenter leurs actes à la voix, en temps réel, directement depuis leur téléphone — sans clavier, sans perte de temps, sans ressaisie.",
+        ],
+      },
+      {
+        heading: "Ce que vous pourrez découvrir sur notre stand",
+        paragraphs: [
+          "Sur place, notre équipe vous présentera l'assistant vocal Speakli en situation réelle : de la dictée vocale d'une observation au sein d'un dossier résident, jusqu'à la synchronisation automatique avec les principaux logiciels métier (NetSoins, Titan, Cédric, Osiris et bien d'autres). Vous pourrez manipuler la solution, poser vos questions terrain, et échanger directement avec les fondateurs.",
+          "Vous êtes directeur(trice) d'EHPAD, IDEC, médecin coordonnateur, DSI ou responsable d'achat ? Venez nous rendre visite. Si vous préférez planifier une rencontre à l'avance, vous pouvez réserver un créneau ci-dessous.",
+        ],
+      },
+      {
+        heading: "Pourquoi choisir Speakli ?",
+        paragraphs: [
+          "98 % de satisfaction terrain. Plus de 350 soignants utilisent Speakli au quotidien et déclarent gagner en moyenne 40 % de temps sur leurs transmissions. Ce temps retrouvé, c'est du temps rendu aux résidents, à l'équipe, à la qualité du soin.",
+          "Hébergement certifié HDS, conformité RGPD, interopérabilité native avec les logiciels métier : Speakli est conçu pour s'intégrer dans vos établissements sans friction, avec un accompagnement complet de la formation au suivi d'usage.",
+        ],
+      },
+    ],
+  },
   {
     slug: "silvereco-2025",
     title: "Deux Trophées au Festival International SilverEco 2025",

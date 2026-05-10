@@ -163,6 +163,32 @@ export default async function BlogArticlePage({
               {article.excerpt}
             </p>
 
+            {/* Hero CTA (e.g. SantéExpo demo booking) */}
+            {article.heroCta && (
+              <div
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl p-6 mb-10 border"
+                style={{ background: "linear-gradient(135deg, #0c1d50 0%, #1a3a8f 100%)", borderColor: "transparent" }}
+              >
+                <div className="flex-1">
+                  <p className="text-sm font-medium mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>
+                    {article.heroCta.subtitle}
+                  </p>
+                </div>
+                <a
+                  href={article.heroCta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 inline-flex items-center gap-2 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  style={{ background: "linear-gradient(135deg, #1a5ce0 0%, #007aff 100%)", color: "#fff" }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                    <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {article.heroCta.label}
+                </a>
+              </div>
+            )}
+
             {/* External link (e.g. IESEG blog) */}
             {article.externalLink && (
               <a
