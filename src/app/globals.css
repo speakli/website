@@ -25,7 +25,6 @@ html {
 }
 
 body {
-  padding-top: var(--banner-height, 0px);
   background: #FAFAF7;
   color: var(--sp-900);
   font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
