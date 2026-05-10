@@ -5,7 +5,7 @@
 /* ── Outer wrapper (the fixed pill container) ── */
 .cardnav-wrapper {
   position: fixed;
-  top: 1.25rem;
+  top: calc(var(--banner-height, 0px) + 1.25rem);
   left: 0;
   right: 0;
   margin-left: auto;

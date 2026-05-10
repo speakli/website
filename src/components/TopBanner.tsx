@@ -1,14 +1,21 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const STORAGE_KEY = 'speakli:banner-santexpo-2026';
 
 export default function TopBanner() {
   const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sessionStorage.getItem(STORAGE_KEY)) setVisible(true);
   }, []);
+
+  useEffect(() => {
+    const h = visible && ref.current ? ref.current.offsetHeight : 0;
+    document.documentElement.style.setProperty('--banner-height', `${h}px`);
+    return () => document.documentElement.style.setProperty('--banner-height', '0px');
+  }, [visible]);
 
   function dismiss() {
     sessionStorage.setItem(STORAGE_KEY, '1');
@@ -19,8 +26,9 @@ export default function TopBanner() {
 
   return (
     <div
-      className="w-full z-50 relative flex items-center justify-center gap-3 px-4 py-2.5 text-sm font-medium"
-      style={{ background: '#0c1d50', color: '#e8effe' }}
+      ref={ref}
+      className="w-full fixed top-0 left-0 right-0 flex items-center justify-center gap-3 px-4 py-2.5 text-sm font-medium"
+      style={{ background: '#0c1d50', color: '#e8effe', zIndex: 10000 }}
     >
       {/* Pulse dot */}
       <span className="relative flex-shrink-0 flex w-2 h-2">
