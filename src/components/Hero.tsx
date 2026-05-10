@@ -563,41 +563,6 @@ export default function Hero() {
 
           {/* ── Left: copy ── */}
           <div>
-
-            {/* ── Santexpo event chip ── */}
-            <a
-              href="/blog/fhf-trophees-innovation-2026"
-              className="inline-flex items-center gap-3 mb-5 rounded-2xl px-4 py-3 transition-all hover:-translate-y-0.5 hover:shadow-lg group"
-              style={{
-                background: '#0c1d50',
-                border: '1px solid rgba(147,197,253,0.15)',
-                boxShadow: '0 4px 20px rgba(12,29,80,0.18)',
-                textDecoration: 'none',
-              }}
-            >
-              {/* Calendar icon */}
-              <div className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(0,122,255,0.25)' }}>
-                <svg width="16" height="16" fill="none" stroke="#93c5fd" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="4" width="18" height="18" rx="2" />
-                  <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
-                </svg>
-              </div>
-              {/* Text */}
-              <div>
-                <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-xs font-bold tracking-wide" style={{ color: '#93c5fd' }}>SANTEXPO 2026</span>
-                  <span className="text-xs px-1.5 py-0.5 rounded font-bold" style={{ background: 'rgba(0,122,255,0.3)', color: '#bfdbfe' }}>Stand W692</span>
-                </div>
-                <div className="text-xs font-medium" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                  19–21 mai · Espace Innovation FHF · Paris Expo
-                </div>
-              </div>
-              {/* Arrow */}
-              <svg width="14" height="14" fill="none" stroke="#93c5fd" strokeWidth="2.5" viewBox="0 0 24 24" className="ml-auto opacity-60 group-hover:opacity-100 transition-opacity">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
             <div className="badge-spin-wrapper">
               <BadgeSpinner />
               <div

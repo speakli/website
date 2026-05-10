@@ -82,56 +82,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
-    slug: "fhf-trophees-innovation-2026",
-    title: "Finaliste aux Trophées de l'Innovation FHF 2026",
-    category: "Prix & Récompenses",
-    categoryBg: "#EEF2FF",
-    categoryColor: "#3B4FCF",
-    date: "Mai 2026",
-    isUpcoming: true,
-    excerpt:
-      "Sélectionné parmi les finalistes des Trophées de l'Innovation FHF, Speakli sera exposé à Santexpo 2026, et participera à une table ronde sur l'IA en EHPAD aux côtés de la FHF, du GCSMS Comète Bretagne et du gérond'If.",
-    coverLogo: "/photos/blog/santexpo.png",
-    coverIsPhoto: false,
-    cardBg: "#0f2952",
-    gallery: [
-      {
-        src: "/photos/blog/santexpo.png",
-        alt: "Santexpo 2026, Trophées de l'Innovation FHF",
-      },
-    ],
-    content: [
-      {
-        heading: "Les Trophées de l'Innovation FHF",
-        paragraphs: [
-          "La Fédération Hospitalière de France (FHF) fédère les établissements publics de santé, hôpitaux, cliniques, EHPAD. Chaque année, dans le cadre du salon Santexpo, elle récompense les solutions les plus innovantes capables de transformer les pratiques hospitalières et médico-sociales.",
-          "Les Trophées FHF figurent parmi les distinctions les plus prestigieuses du secteur hospitalier public en France. Être finaliste signifie avoir été reconnu par les acteurs institutionnels de la santé publique comme l'une des solutions à suivre.",
-        ],
-      },
-      {
-        heading: "Santexpo 2026 : un espace d'exposition",
-        paragraphs: [
-          "En tant que finaliste, Speakli bénéficiera d'un espace d'exposition dédié lors du salon Santexpo 2026, qui se tient au Parc des Expositions de Paris, Paris Expo Porte de Versailles, Hall 1, les 19, 20 et 21 mai 2026. Santexpo est le plus grand rendez-vous professionnel du secteur hospitalier français, réunissant des milliers de professionnels de santé, directeurs d'établissements et décideurs institutionnels.",
-          "C'est pour nous une opportunité unique de rencontrer directement les acteurs de terrain qui font face aux défis de documentation et de traçabilité que Speakli résout au quotidien.",
-        ],
-      },
-      {
-        heading: "Table ronde, IA en EHPAD : éthique, accessibilité et avenir",
-        paragraphs: [
-          "Nous aurons l'honneur de participer à une table ronde dédiée à l'intelligence artificielle en EHPAD, aux côtés de Quentin Poitou, directeur de la FHF, Julien Brunet, administrateur du GCSMS Comète Bretagne, nos partenaires bretons, ainsi que Mme Isabelle Dufour, présidente du gérond'If (gérontopôle d'Île-de-France).",
-          "Au programme : IA en EHPAD, éthique, accessibilité, conduite du changement, perspectives d'avenir pour les soignants du secteur, et bien d'autres sujets. Rendez-vous à 13h sur l'espace de la FHF pour cette table ronde qui s'annonce riche en apprentissages.",
-        ],
-      },
-      {
-        heading: "La validation de l'écosystème hospitalier public",
-        paragraphs: [
-          "Cette sélection confirme que Speakli répond à des enjeux identifiés par la FHF elle-même : alléger la charge administrative des soignants, améliorer la qualité des transmissions et garantir une traçabilité fiable des soins.",
-          "Nous développons une solution qui s'intègre dans les systèmes d'information hospitaliers existants, respecte les exigences de sécurité et d'interopérabilité du secteur public, et répond aux standards définis par l'Agence du Numérique en Santé.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "ieseg-entrepreneur-2026",
     title: "Lauréat du Prix Entrepreneur de l'Année 2026, IESEG",
     category: "Prix & Récompenses",
