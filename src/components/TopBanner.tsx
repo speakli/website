@@ -33,7 +33,14 @@ export default function TopBanner() {
         <span className="relative inline-flex rounded-full w-2 h-2 bg-blue-400" />
       </span>
 
-      <span className="text-center leading-snug">
+      {/* Mobile: 2 lignes condensées */}
+      <span className="sm:hidden text-center leading-snug">
+        <span className="font-bold text-white block">Santexpo 2026 &nbsp;·&nbsp; 19–21 mai</span>
+        <span>Retrouvez-nous au stand <span className="font-bold" style={{ color: '#93c5fd' }}>W692</span></span>
+      </span>
+
+      {/* Desktop: une ligne complète */}
+      <span className="hidden sm:inline text-center leading-snug">
         <span className="font-bold text-white">Santexpo 2026 &nbsp;·&nbsp; 19–21 mai &nbsp;·&nbsp;</span>
         Retrouvez-nous au stand{' '}
         <span className="inline-block font-bold px-1.5 py-0.5 rounded text-xs" style={{ background: '#1a3a8f', color: '#93c5fd' }}>
