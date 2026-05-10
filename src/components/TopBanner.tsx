@@ -40,7 +40,7 @@ export default function TopBanner() {
           W692
         </span>
         <span className="mx-1 opacity-40">·</span>
-        Espace Innovation FHF — Paris Expo, Porte de Versailles
+        Espace Innovation FHF — Parc des Expositions, Porte de Versailles
       </span>
 
       <button
