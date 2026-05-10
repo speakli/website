@@ -43,10 +43,15 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "19–21 mai 2026",
     excerpt:
       "Du 19 au 21 mai 2026, retrouvez Speakli au stand W692 de l'Espace Innovation FHF, Parc des Expositions Porte de Versailles. Venez découvrir en direct notre assistant vocal IA pour soignants et repartir avec une démonstration personnalisée.",
-    coverLogo: "/logos/FHF.jpg",
-    coverIsPhoto: false,
-    coverLogoNatural: false,
+    coverLogo: "/photos/blog/santexpo-w692.jpg",
+    coverIsPhoto: true,
     cardBg: "#0c1d50",
+    gallery: [
+      {
+        src: "/photos/blog/santexpo-w692.jpg",
+        alt: "Speakli au stand W692, Espace Innovation FHF — Santexpo 2026",
+      },
+    ],
     heroCta: {
       label: "Demander une démo sur le stand",
       href: "https://calendly.com/ruben-speakli/30min",
