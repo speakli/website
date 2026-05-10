@@ -915,7 +915,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           "CNSA, Programme ESMS Numérique : gains mesurés sur les établissements pilotes ANS Structure 3.0 (cnsa.fr)",
           "Revue Soins Gérontologie, Étude sur la relève structurée SBAR en EHPAD : -30 % de durée (2022)",
           "OPCO Santé, Guide RH EHPAD : ETP équivalents dégagés par la réduction de la charge administrative (opcosante.fr)",
-          "Retours terrain éditeurs logiciels EHPAD (Titan, Netsoins, Osiris), Gains de temps par formation aux fonctionnalités avancées",
+          "Retours terrain éditeurs logiciels EHPAD, Gains de temps par formation aux fonctionnalités avancées",
         ],
       },
     ],

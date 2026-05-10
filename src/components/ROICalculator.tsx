@@ -13,7 +13,6 @@ const TAUX_IDE = 29.11;
 const VALEUR_POINT = 13.6;
 
 const SUPPORTS = ["Tablette", "Smartphone", "Mixte"] as const;
-const LOGICIELS = ["NETSoins", "Titan", "Livia", "Autre (Préciser)"] as const;
 
 /* ─── Formatting ──────────────────────────────────────────── */
 function eur(n: number) {
@@ -330,8 +329,7 @@ export default function ROICalculator() {
   const [lits, setLits] = useState(82);
   const [nbAS, setNbAS] = useState(17);
   const [nbIDE, setNbIDE] = useState(7);
-  const [logiciel, setLogiciel] = useState("NETSoins");
-  const [logicielAutre, setLogicielAutre] = useState("");
+  const [logiciel, setLogiciel] = useState("");
   const [support, setSupport] = useState<string>("Tablette");
   const [tempsTrace, setTempsTrace] = useState(1.5);
   const [pmpActuel, setPmpActuel] = useState(180);
@@ -349,14 +347,13 @@ export default function ROICalculator() {
   const gain_dotation = Math.max(0, pmpCible - pmpActuel) * 2.59 * lits * VALEUR_POINT;
   const roi_total = val_an + gain_dotation;
 
-  const logicielFinal = logiciel === "Autre (Préciser)" ? logicielAutre.trim() || "Autre" : logiciel;
+  const logicielFinal = logiciel.trim() || "Non précisé";
 
   const canSubmit =
     lits > 0 &&
     nbAS > 0 &&
     nbIDE > 0 &&
-    logiciel !== "" &&
-    (logiciel !== "Autre (Préciser)" || logicielAutre.trim() !== "") &&
+    logiciel.trim() !== "" &&
     tempsTrace > 0 &&
     pmpActuel > 0;
 
@@ -403,15 +400,12 @@ export default function ROICalculator() {
               <NumberInput label="Nombre de lits" value={lits} onChange={setLits} min={1} />
               <NumberInput label="Aides-soignants (AS)" value={nbAS} onChange={setNbAS} min={1} />
               <NumberInput label="Infirmiers diplômés (IDE)" value={nbIDE} onChange={setNbIDE} min={1} />
-              <SelectInput label="Logiciel DUI" options={LOGICIELS} value={logiciel} onChange={setLogiciel} />
-              {logiciel === "Autre (Préciser)" && (
-                <TextInput
-                  label="Préciser le logiciel"
-                  value={logicielAutre}
-                  onChange={setLogicielAutre}
-                  placeholder="Nom de votre logiciel DUI…"
-                />
-              )}
+              <TextInput
+                label="Logiciel DUI"
+                value={logiciel}
+                onChange={setLogiciel}
+                placeholder="Nom de votre logiciel DUI…"
+              />
               <SelectInput label="Support utilisé" options={SUPPORTS} value={support} onChange={setSupport} />
               <NumberInput
                 label="Temps de traçabilité / soignant (h/jour)"
