@@ -75,7 +75,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       {
         heading: "Ce que vous pourrez découvrir sur notre stand",
         paragraphs: [
-          "Sur place, notre équipe vous présentera l'assistant vocal Speakli en situation réelle : de la dictée vocale d'une observation au sein d'un dossier résident, jusqu'à la synchronisation automatique avec les principaux logiciels métier (NetSoins, Titan, Cédric, Osiris et bien d'autres). Vous pourrez manipuler la solution, poser vos questions terrain, et échanger directement avec les fondateurs.",
+          "Sur place, notre équipe vous présentera l'assistant vocal Speakli en situation réelle : de la dictée vocale d'une observation au sein d'un dossier résident, jusqu'à la synchronisation automatique avec les principaux logiciels métier. Vous pourrez manipuler la solution, poser vos questions terrain, et échanger directement avec les fondateurs.",
           "Vous êtes directeur(trice) d'EHPAD, IDEC, médecin coordonnateur, DSI ou responsable d'achat ? Venez nous rendre visite. Si vous préférez planifier une rencontre à l'avance, vous pouvez réserver un créneau ci-dessous.",
         ],
       },
