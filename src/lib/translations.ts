@@ -188,7 +188,7 @@ const fr = {
     subtitle: "Trois modules intégrés qui couvrent chaque moment de la tournée, sans changer vos habitudes.",
     items: [
       { title: "Transmissions", desc: "Générer une transmission ciblée n'a jamais été aussi simple. Grâce à Speakli, plus aucune observation à tracer n'est oubliée. Sécurisez vos pratiques et votre établissement." },
-      { title: "Plan de soin", desc: "100 % de vos plans de soins signés. Vos soignants signent, commentent et détectent les soins ponctuels à la voix, directement la qualité de la prise en charge de vos résidents." },
+      { title: "Plan de soin", desc: "100 % de vos plans de soins signés. Vos soignants signent, commentent et détectent les soins ponctuels à la voix, impactant directement la qualité de la prise en charge de vos résidents." },
       { title: "Relevés de constantes", desc: "Des constantes tracées instantanément, sans aucune contrainte. La voix de vos soignants et l'IA de Speakli s'occupent du reste, sans interrompre le soin." },
     ],
     swipe: "Glisser pour envoyer au DUI",
