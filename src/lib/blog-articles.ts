@@ -36,20 +36,20 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "santexpo-2026-stand-w692",
     isUpcoming: true,
     isNew: true,
-    title: "Speakli à Santexpo 2026 — Espace Innovation FHF",
+    title: "Speakli à Santexpo 2026 — Espace Innovation du Fonds FHF",
     category: "Événements & Prises de parole",
     categoryBg: "#EFF6FF",
     categoryColor: "#1D4ED8",
     date: "19–21 mai 2026",
     excerpt:
-      "Du 19 au 21 mai 2026, retrouvez Speakli dans l'Espace Innovation FHF, catégorie Santé des soignants, au Parc des Expositions Porte de Versailles. Venez découvrir en direct notre assistant vocal IA pour soignants et repartir avec une démonstration personnalisée.",
+      "Du 19 au 21 mai 2026, retrouvez Speakli dans l'Espace Innovation du Fonds FHF, Catégorie Santé des soignants, au Parc des Expositions Porte de Versailles. Venez découvrir en direct notre assistant vocal IA pour soignants et repartir avec une démonstration personnalisée.",
     coverLogo: "/photos/blog/santexpo-w692.jpg",
     coverIsPhoto: true,
     cardBg: "#0c1d50",
     gallery: [
       {
         src: "/photos/blog/santexpo-w692.jpg",
-        alt: "Speakli dans l'Espace Innovation FHF — Santexpo 2026",
+        alt: "Speakli dans l'Espace Innovation du Fonds FHF — Santexpo 2026",
       },
     ],
     heroCta: {
@@ -66,9 +66,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         ],
       },
       {
-        heading: "Speakli dans l'Espace Innovation FHF",
+        heading: "Speakli dans l'Espace Innovation du Fonds FHF",
         paragraphs: [
-          "Speakli sera présent dans l'Espace Innovation de la Fédération Hospitalière de France (FHF), dans la catégorie Santé des soignants. Cet espace est dédié aux startups et entreprises innovantes sélectionnées par la FHF pour leur impact concret sur les établissements de santé et médico-sociaux.",
+          "Speakli sera présent dans l'Espace Innovation de la Fédération Hospitalière de France (FHF), dans la Catégorie Santé des soignants. Cet espace est dédié aux startups et entreprises innovantes sélectionnées par la FHF pour leur impact concret sur les établissements de santé et médico-sociaux.",
           "C'est une reconnaissance de l'ancrage terrain de Speakli : aujourd'hui déployé dans plus de 40 EHPAD, notre assistant vocal IA permet aux soignants de documenter leurs actes à la voix, en temps réel, directement depuis leur téléphone — sans clavier, sans perte de temps, sans ressaisie.",
         ],
       },
