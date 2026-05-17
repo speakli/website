@@ -37,18 +37,15 @@ export default function TopBanner() {
       {/* Mobile: 2 lignes condensées */}
       <Link href="/blog/santexpo-2026-stand-w692" className="sm:hidden text-center leading-snug hover:underline decoration-white/40">
         <span className="font-bold text-white block">Santexpo 2026 &nbsp;·&nbsp; 19–21 mai</span>
-        <span>Retrouvez-nous au stand <span className="font-bold" style={{ color: '#93c5fd' }}>W692</span></span>
+        <span>Retrouvez-nous dans <span className="font-bold" style={{ color: '#93c5fd' }}>l'Espace Innovation FHF</span></span>
       </Link>
 
       {/* Desktop: une ligne complète */}
       <Link href="/blog/santexpo-2026-stand-w692" className="hidden sm:inline text-center leading-snug hover:underline decoration-white/40">
         <span className="font-bold text-white">Santexpo 2026 &nbsp;·&nbsp; 19–21 mai &nbsp;·&nbsp;</span>
-        Retrouvez-nous au stand{' '}
-        <span className="inline-block font-bold px-1.5 py-0.5 rounded text-xs" style={{ background: '#1a3a8f', color: '#93c5fd' }}>
-          W692
-        </span>
+        Retrouvez-nous dans l'Espace Innovation FHF
         <span className="mx-1 opacity-40">·</span>
-        Espace Innovation FHF — Parc des Expositions, Porte de Versailles
+        catégorie Santé des soignants — Parc des Expositions, Porte de Versailles
       </Link>
 
       <button
