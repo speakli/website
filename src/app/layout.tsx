@@ -3,7 +3,6 @@ import { Manrope } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "@/components/Providers";
-import TopBanner from "@/components/TopBanner";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -164,7 +163,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body style={{ fontFamily: "var(--font-manrope), sans-serif" }}>
-        <TopBanner />
         <Providers>{children}</Providers>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){
