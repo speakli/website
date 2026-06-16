@@ -89,6 +89,100 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
+    slug: "silver-valley-laureat-2026",
+    isNew: true,
+    title: "Lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
+    category: "Prix & Récompenses",
+    categoryBg: "#EEF2FF",
+    categoryColor: "#3B4FCF",
+    date: "2026",
+    excerpt:
+      "Speakli est désigné lauréat du Prix Silver Valley 2026 dans la catégorie Sanitaire & Médico-social. Une reconnaissance de l'écosystème de référence de la Silver Économie pour l'impact de notre assistant vocal IA dans les EHPAD.",
+    coverLogo: "/photos/blog/silver-valley-laureat-2026.jpg",
+    coverIsPhoto: true,
+    cardBg: "#1a2e4a",
+    gallery: [
+      {
+        src: "/photos/blog/silver-valley-laureat-2026.jpg",
+        alt: "Speakli lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
+      },
+    ],
+    externalLink: {
+      label: "Voir l'annonce sur LinkedIn",
+      href: "https://www.linkedin.com/posts/speakli_silvervalley-silvereconomie-grandage-activity-7472532174186033152-orG6",
+    },
+    content: [
+      {
+        heading: "Silver Valley, l'écosystème de référence de la Silver Économie",
+        paragraphs: [
+          "Silver Valley est le premier cluster dédié à la Silver Économie en France. Il fédère plus de 300 acteurs — startups, grands groupes, institutionnels, établissements de soin — autour d'une mission commune : développer des solutions innovantes pour améliorer la qualité de vie des personnes âgées et de leurs aidants.",
+          "Chaque année, les Prix Silver Valley distinguent les entreprises et solutions les plus impactantes dans plusieurs catégories : habitat, mobilité, lien social, numérique en santé, et sanitaire & médico-social. Le palmarès fait référence dans l'ensemble du secteur du grand âge.",
+        ],
+      },
+      {
+        heading: "Speakli distingué dans la catégorie Sanitaire & Médico-social",
+        paragraphs: [
+          "En 2026, Speakli a été désigné lauréat du Prix Silver Valley dans la catégorie Sanitaire & Médico-social. Cette distinction récompense les solutions numériques qui apportent un impact mesurable et concret sur la qualité des soins et les conditions de travail des professionnels en EHPAD et en structures médico-sociales.",
+          "Pour Speakli, c'est une validation directe de notre approche : un assistant vocal IA conçu pour le terrain, pensé avec et pour les soignants, qui réduit la charge documentaire et restitue du temps au soin.",
+        ],
+      },
+      {
+        heading: "Ce que cette reconnaissance signifie",
+        paragraphs: [
+          "Être reconnu par Silver Valley, c'est être reconnu par les acteurs qui font la Silver Économie au quotidien. Ce prix valide non seulement la pertinence de notre solution, mais aussi son ancrage réel dans les établissements : aujourd'hui présent dans plus de 40 EHPAD, Speakli est utilisé chaque jour par des équipes soignantes qui ont fait le choix de la dictée vocale IA pour alléger leur travail administratif.",
+          "Cette distinction vient s'ajouter aux Trophées SilverEco 2025, au Prix Entrepreneur IESEG 2026 et à notre sélection dans le programme ANS Structure 3.0 — autant de signaux qui confirment que Speakli répond à un besoin structurel du secteur.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "gcsms-comete-resultats-ans",
+    isNew: true,
+    title: "Premiers résultats de Speakli au GCSMS Comète Bretagne — AAP ANS Structures 3.0",
+    category: "Appel à Projet",
+    categoryBg: "#FFF7ED",
+    categoryColor: "#C2410C",
+    date: "2026",
+    excerpt:
+      "Les premiers résultats du déploiement de Speakli au sein du GCSMS Comète Bretagne, dans le cadre de l'Appel à Projets ANS Structures 3.0, confirment l'impact de l'assistant vocal IA sur la charge documentaire des soignants.",
+    coverLogo: "/photos/blog/gcsms-ans-resultats.png",
+    coverIsPhoto: true,
+    cardBg: "#1a3a2a",
+    gallery: [
+      {
+        src: "/photos/blog/gcsms-ans-resultats.png",
+        alt: "Premiers résultats Speakli — GCSMS Comète Bretagne, ANS Structures 3.0",
+      },
+    ],
+    externalLink: {
+      label: "Voir l'annonce sur LinkedIn",
+      href: "https://www.linkedin.com/posts/speakli_ehpad-santenumerique-ia-activity-7472166052815212545-l7fp",
+    },
+    content: [
+      {
+        heading: "Un déploiement institutionnel dans 18 établissements bretons",
+        paragraphs: [
+          "Sélectionné en janvier 2026 dans le cadre de l'Appel à Projets ANS Structures 3.0, Speakli a été déployé dans les établissements du GCSMS Comète Bretagne, un groupement de coopération sanitaire et médico-sociale qui rassemble 18 EHPAD publics en Bretagne.",
+          "Ce programme, piloté par l'Agence du Numérique en Santé, vise à financer et accompagner l'intégration de solutions numériques innovantes dans les établissements médico-sociaux, avec une exigence forte sur l'interopérabilité, la sécurité des données et la mesure de l'impact terrain.",
+        ],
+      },
+      {
+        heading: "Des premiers résultats qui confirment l'impact",
+        paragraphs: [
+          "Les premiers retours du déploiement au sein du GCSMS Comète Bretagne confirment ce que nos utilisateurs observent depuis le début : l'assistant vocal Speakli réduit significativement le temps consacré à la documentation des soins. Les soignants dictent leurs observations, transmissions et comptes-rendus directement à la voix — l'IA structure automatiquement les informations et les intègre dans les logiciels métier existants.",
+          "Au-delà des gains de temps, les équipes rapportent une amélioration de la qualité des transmissions : plus complètes, plus homogènes, mieux tracées. C'est un bénéfice direct pour la continuité des soins et la coordination entre professionnels.",
+        ],
+      },
+      {
+        heading: "Une étape vers la généralisation nationale",
+        paragraphs: [
+          "Le cadre Structure 3.0 prévoit un suivi rigoureux des indicateurs d'impact, dont les résultats alimenteront directement les réflexions de l'ANS sur la généralisation de solutions d'IA vocale dans le secteur médico-social. Speakli s'inscrit pleinement dans cette démarche en participant à la production de données de terrain objectives et reproductibles.",
+          "Ces premiers résultats au GCSMS Comète Bretagne sont une nouvelle étape dans notre mission : démontrer, à l'échelle et dans un cadre institutionnel rigoureux, que l'IA vocale peut transformer durablement le quotidien des soignants — et, par extension, améliorer la qualité de vie des résidents qu'ils accompagnent.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "silvereco-2025",
     title: "Deux Trophées au Festival International SilverEco 2025",
     category: "Prix & Récompenses",

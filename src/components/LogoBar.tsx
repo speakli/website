@@ -10,6 +10,7 @@ const CLIENT_LOGOS = [
   { src: "/logos/clients/fleurs-bleues.jpg", alt: "Les Pâtes des Fleurs Bleues" },
   { src: "/logos/homage-group.png",          alt: "Groupe Hom'Age" },
   { src: "/logos/pervenches-homage.png",     alt: "Résidence les Pervenches" },
+  { src: "/logos/clients/mdf.png",           alt: "Maisons de Famille" },
 ];
 
 const TRACK = [...CLIENT_LOGOS, ...CLIENT_LOGOS];

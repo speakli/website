@@ -179,6 +179,7 @@ function Block({ block, index }: { block: CareBlock; index: number }) {
 export default function CareSection() {
   return (
     <section
+      id="impact-quotidien"
       className="py-16 sm:py-24 px-4 sm:px-6"
       style={{ background: "transparent" }}
     >

@@ -2,14 +2,26 @@
 import { useEffect, useState } from 'react';
 
 const DEMO_URL = 'https://calendly.com/ruben-speakli/30min';
-const DELAY_MS = 10000;
 
 export default function CTAPopup() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), DELAY_MS);
-    return () => clearTimeout(t);
+    const target = document.getElementById('impact-quotidien');
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
   }, []);
 
   function dismiss() {

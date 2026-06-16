@@ -14,6 +14,7 @@ const ECOSYSTEM_LOGOS = [
   { src: "/logos/events/keyrus-logo.png",           alt: "Keyrus" },
   { src: "/logos/events/silvereco-innov.jpg",       alt: "SilverEco" },
   { src: "/logos/events/ieseg-logo.png",            alt: "IESEG" },
+  { src: "/logos/events/silver-valley.png",         alt: "Silver Valley" },
 ];
 
 const TRACK = [...ECOSYSTEM_LOGOS, ...ECOSYSTEM_LOGOS];
