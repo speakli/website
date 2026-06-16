@@ -14,6 +14,7 @@ const ECOSYSTEM_LOGOS = [
   { src: "/logos/silvereco-festival.png",    alt: "SilverEco International Festival" },
   { src: "/logos/events/defis-autonomie-logo.png", alt: "Défi Autonomie" },
   { src: "/logos/events/keyrus-logo.png",    alt: "Keyrus" },
+  { src: "/logos/events/silver-valley.png", alt: "Silver Valley" },
 ];
 const ECOSYSTEM_TRACK = [...ECOSYSTEM_LOGOS, ...ECOSYSTEM_LOGOS];
 
@@ -45,6 +46,21 @@ interface TimelineItem {
 }
 
 const TIMELINE: TimelineItem[] = [
+  {
+    month_fr: "Juin",
+    month_en: "Jun.",
+    year: "2026",
+    title_fr: "Lauréat : Prix Silver Valley 2026 — Sanitaire & Médico-social",
+    title_en: "Winner : Silver Valley Prize 2026 — Healthcare & Medico-social",
+    type: "Competition",
+    status: "Remporté",
+    description_fr:
+      "Speakli est désigné lauréat du Prix Silver Valley 2026 dans la catégorie Sanitaire & Médico-social. Silver Valley est le premier cluster dédié à la Silver Économie en France, fédérant plus de 300 acteurs autour de l'innovation pour le grand âge.",
+    description_en:
+      "Speakli is named winner of the Silver Valley Prize 2026 in the Healthcare & Medico-social category. Silver Valley is France's leading Silver Economy cluster, bringing together over 300 stakeholders around innovation for ageing.",
+    logo: "/logos/events/silver-valley.png",
+    logoAlt: "Silver Valley",
+  },
   {
     month_fr: "Mai",
     month_en: "May",
