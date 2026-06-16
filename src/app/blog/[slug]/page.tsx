@@ -127,7 +127,7 @@ export default async function BlogArticlePage({
               <div
                 className="inline-flex items-center justify-center rounded-xl p-4 mt-2"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.08)",
+                  backgroundColor: article.coverLogoNatural ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
@@ -140,7 +140,7 @@ export default async function BlogArticlePage({
                   style={{
                     maxHeight: 88,
                     width: "auto",
-                    filter: "brightness(0) invert(1)",
+                    filter: article.coverLogoNatural ? "none" : "brightness(0) invert(1)",
                     opacity: 0.85,
                   }}
                 />

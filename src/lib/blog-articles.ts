@@ -107,6 +107,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         alt: "Speakli lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
       },
     ],
+    youtubeUrl: "https://www.youtube.com/embed/N4V-jiRgJ-c",
     externalLink: {
       label: "Voir l'annonce sur LinkedIn",
       href: "https://www.linkedin.com/posts/speakli_silvervalley-silvereconomie-grandage-activity-7472532174186033152-orG6",
@@ -160,9 +161,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     content: [
       {
-        heading: "Un déploiement institutionnel dans 18 établissements bretons",
+        heading: "Un déploiement au sein du GCSMS Comète Bretagne",
         paragraphs: [
-          "Sélectionné en janvier 2026 dans le cadre de l'Appel à Projets ANS Structures 3.0, Speakli a été déployé dans les établissements du GCSMS Comète Bretagne, un groupement de coopération sanitaire et médico-sociale qui rassemble 18 EHPAD publics en Bretagne.",
+          "Sélectionné en janvier 2026 dans le cadre de l'Appel à Projets ANS Structures 3.0, Speakli a été déployé au sein du GCSMS Comète Bretagne, un groupement de coopération sanitaire et médico-sociale qui compte plus de 45 structures en Bretagne. 18 EHPAD sont actuellement en phase de déploiement actif.",
           "Ce programme, piloté par l'Agence du Numérique en Santé, vise à financer et accompagner l'intégration de solutions numériques innovantes dans les établissements médico-sociaux, avec une exigence forte sur l'interopérabilité, la sécurité des données et la mesure de l'impact terrain.",
         ],
       },
@@ -280,7 +281,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryColor: "#C2410C",
     date: "Janvier 2026",
     excerpt:
-      "Sélectionnés par l'Agence du Numérique en Santé, Speakli déploie sa technologie dans 18 établissements du GCSMS Comet Bretagne dans le cadre du programme national Structure 3.0.",
+      "Sélectionnés par l'Agence du Numérique en Santé, Speakli déploie sa technologie au sein du GCSMS Comète Bretagne — plus de 45 structures médico-sociales bretonnes — avec 18 EHPAD en phase de déploiement actif dans le cadre du programme national Structure 3.0.",
     coverLogo: "/logos/events/ans-logo.png",
     cardBg: "#1a3a4a",
     gallery: [
@@ -298,9 +299,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         ],
       },
       {
-        heading: "Speakli sélectionné pour 18 établissements",
+        heading: "Speakli sélectionné au sein du GCSMS Comète Bretagne",
         paragraphs: [
-          "En janvier 2026, Speakli a été désigné lauréat de l'appel à projet ANS Structure 3.0. Ce résultat ouvre la voie au déploiement de la solution au sein de 18 établissements publics regroupés au sein du GCSMS Comet Bretagne, un groupement de coopération sanitaire et médico-sociale breton.",
+          "En janvier 2026, Speakli a été désigné lauréat de l'appel à projet ANS Structure 3.0. Ce résultat ouvre la voie au déploiement de la solution au sein du GCSMS Comète Bretagne — un groupement de coopération sanitaire et médico-sociale qui regroupe plus de 45 structures en Bretagne — en commençant par 18 EHPAD publics en phase pilote.",
           "Ce partenariat institutionnel est une étape majeure : il valide la conformité de notre solution aux exigences de sécurité, d'interopérabilité et de gouvernance des données définies par l'ANS, et ouvre la voie à un déploiement à l'échelle nationale.",
         ],
       },
@@ -1155,9 +1156,15 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "Avril 2026",
     excerpt:
       "Ruben Weinstein, cofondateur de Speakli, revient pour SilverEco sur les transformations profondes du secteur médico-social et les réponses concrètes que l'IA vocale apporte aux soignants en matière de traçabilité.",
-    coverLogo: "/logos/silvereco-festival.png",
-    coverIsPhoto: false,
+    coverLogo: "/photos/blog/silvereco-ceremonie.jpg",
+    coverIsPhoto: true,
     cardBg: "#0c3320",
+    gallery: [
+      {
+        src: "/photos/blog/silvereco-ceremonie.jpg",
+        alt: "Speakli au Festival International SilverEco",
+      },
+    ],
     youtubeUrl: "https://www.youtube.com/embed/ZN1I59uSZ0k?rel=0",
     externalLink: {
       label: "Lire l'article sur SilverEco.fr",
