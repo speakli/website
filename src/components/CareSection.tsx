@@ -42,7 +42,7 @@ const BLOCKS: CareBlock[] = [
     title: "Chaque soin tracé",
     titleAccent: "sans effort",
     body: "La voix capte chaque moment de soin en temps réel. Plus besoin de retourner au bureau pour remplir le dossier résident, la traçabilité se fait naturellement, dans le mouvement.",
-    metric: "+92 %",
+    metric: "+75 %",
     metricLabel: "des soins planifiés signés",
     icon: (
       <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
@@ -59,8 +59,8 @@ const BLOCKS: CareBlock[] = [
     title: "Des équipes soignantes",
     titleAccent: "épanouies",
     body: "Moins de charge administrative, plus de sens au travail. Speakli allège le quotidien pour que vos soignants restent ce qu'ils sont : des professionnels de l'humain.",
-    metric: "−20 %",
-    metricLabel: "de congés maladie",
+    metric: "+85 %",
+    metricLabel: "de soignants autonomes en moins de 2 semaines",
     icon: (
       <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
