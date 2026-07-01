@@ -140,8 +140,8 @@ const fr = {
   },
   pillars: {
     tag: "Solution de traçabilité IA tout-en-un",
-    h2: "Tout ce dont vos équipes ont",
-    h2_accent: "besoin.",
+    h2: "La documentation comme prolongement",
+    h2_accent: "naturel du soin.",
     subtitle: "De la dictée vocale à l'intégration logicielle, Speakli couvre chaque maillon de la chaîne de soin.",
     tabs: ["Assistant vocal IA", "Tableau de bord", "Sécurité & Conformité", "Interopérabilité"],
     panels: [
