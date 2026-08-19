@@ -5,6 +5,7 @@ export interface BlogImage {
 
 export interface BlogSection {
   heading?: string;
+  image?: BlogImage; // optional illustration shown right below the section heading
   paragraphs: string[];
 }
 
@@ -491,6 +492,92 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
 
   /* ── Thematic articles ─────────────────────────────────── */
+  {
+    slug: "histoire-evolution-tracabilite-ehpad",
+    title: "Traçabilité en EHPAD : petite histoire d'une évolution silencieuse",
+    category: "Numérique & IA",
+    categoryBg: "#EEF2FF",
+    categoryColor: "#3730a3",
+    date: "Août 2026",
+    excerpt:
+      "De l'oral à l'intelligence artificielle : comment les pratiques de traçabilité en EHPAD ont évolué en trois vagues, et pourquoi la troisième change la donne pour les soignants comme pour les résidents.",
+    coverLogo: "/photos/blog/tracabilite-1-0-oral.jpg",
+    coverIsPhoto: true,
+    cardBg: "#0d1b2e",
+    isThematic: true,
+    readingTime: "7 min",
+    content: [
+      {
+        paragraphs: [
+          "Derrière chaque dossier de soin, chaque transmission, chaque note rédigée en fin de tournée, se cache une histoire qu'on raconte peu : celle de la traçabilité elle-même. Ce geste presque invisible du quotidien des soignants a pourtant connu, en quelques décennies, trois grandes mutations. Comprendre ce chemin permet de mieux saisir pourquoi la période actuelle constitue un tournant.",
+        ],
+      },
+      {
+        heading: "Traçabilité 1.0 : l'oral, une culture de transmission ancienne",
+        image: {
+          src: "/photos/blog/tracabilite-1-0-oral.jpg",
+          alt: "Soignante rédigeant une transmission papier dans le couloir d'un EHPAD",
+        },
+        paragraphs: [
+          "Longtemps, la traçabilité en établissement a reposé presque exclusivement sur l'oral. Les réunions de roulement, les échanges entre équipe du matin et équipe de l'après-midi, les transmissions verbales au chevet du résident : c'est ainsi que l'information circulait, portée par la mémoire et la parole des soignants.",
+          "Cette culture orale a progressivement laissé place à l'écrit, dans un mouvement de structuration et de sécurisation des pratiques. Les carnets de liaison sont apparus en établissement, permettant de conserver une trace tangible des observations. Puis, plus significativement encore, la méthode des transmissions ciblées s'est imposée dans le secteur sanitaire et médico-social français. Cette méthode, qui structure l'écrit autour de la Donnée, l'Action et le Résultat (DAR), a été conçue aux États-Unis en 1980 par des infirmières de l'université de Minneapolis, avant d'être introduite en France en 1986.",
+          "Ce passage à l'écrit a représenté un vrai progrès en matière de traçabilité et de sécurisation juridique des pratiques. Mais il a aussi créé une nouvelle difficulté, largement documentée dans la littérature professionnelle infirmière : structurer sa pensée et ses observations cliniques à l'écrit n'est pas un réflexe naturel pour tous les métiers du soin. De nombreux soignants, en particulier les aides-soignants, ont exprimé des difficultés à transmettre sous cette forme normée, avec en creux un risque réel d'oubli ou d'appauvrissement de l'information transmise.",
+        ],
+      },
+      {
+        heading: "Traçabilité 2.0 : la digitalisation du secteur",
+        image: {
+          src: "/photos/blog/tracabilite-2-0-digitalisation.jpg",
+          alt: "Soignante stressée face à un ordinateur pour saisir ses transmissions",
+        },
+        paragraphs: [
+          "À partir des années 2000-2010, une seconde vague a transformé en profondeur les pratiques : la digitalisation. Logiciels métiers, dossiers usagers informatisés, dossiers médicaux partagés se sont progressivement généralisés dans les établissements. En 2024, environ 85 % des EHPAD étaient déjà équipés d'un logiciel de dossier médical partagé.",
+          "Ces outils ont indéniablement apporté de la structuration, de la traçabilité renforcée et une meilleure circulation de l'information entre professionnels. Mais ils ont aussi ajouté une nouvelle couche de complexité : des interfaces parfois peu intuitives, une multiplicité de fonctionnalités souvent sous-exploitées faute de temps pour se former, et une nouvelle barrière, technologique celle-ci, venue s'ajouter à la barrière rédactionnelle héritée de la vague précédente.",
+          "Le résultat est un paradoxe bien connu des équipes de terrain : des outils toujours plus complets, mais un temps de saisie toujours plus important, au détriment du temps consacré directement à l'accompagnement des résidents.",
+        ],
+      },
+      {
+        heading: "Un contexte qui rend l'équation de plus en plus difficile à tenir",
+        paragraphs: [
+          "Cette complexification des pratiques de traçabilité intervient dans un contexte structurel particulièrement tendu, sur deux fronts simultanés.",
+          "D'un côté, des résidents plus âgés et plus dépendants. Selon les dernières données de la DREES (enquête EHPA 2023), l'âge moyen d'entrée en EHPAD atteint désormais 85 ans et 11 mois, contre 85 ans et 8 mois quelques années plus tôt, un âge qui recule progressivement d'année en année. Un quart des résidents entrants ont aujourd'hui plus de 91 ans et 10 mois. Plus significatif encore : 83 % des résidents relèvent des groupes de dépendance GIR 1 à 4, et plus de la moitié des résidents en EHPAD sont classés en GIR 1 ou 2, les niveaux de dépendance les plus lourds. Autrement dit, les personnes accueillies aujourd'hui nécessitent des prises en soin plus complexes, plus fréquentes, et donc davantage de traçabilité clinique fine.",
+          "De l'autre, une raréfaction continue des ressources soignantes. Près de 44 % des EHPAD déclarent aujourd'hui des difficultés de recrutement, en particulier sur les postes d'aides-soignants et d'infirmiers. Le secteur médico-social devrait avoir besoin de pourvoir plusieurs centaines de milliers de postes d'ici 2030. Cette tension se traduit concrètement sur le terrain par des taux d'absentéisme élevés, pouvant atteindre 20 % dans certaines régions, et un recours croissant à l'intérim ou au CDD pour combler les vacances de poste.",
+          "Le constat est sans appel : on demande aux équipes soignantes de tracer des situations de plus en plus complexes, avec de moins en moins de temps et de moins en moins de bras pour le faire. Or, dans ce contexte, jusqu'à 30 % du temps de travail d'un soignant peut aujourd'hui être consacré aux tâches de traçabilité et de saisie administrative, un temps précieux qui n'est pas dédié à l'accompagnement direct des résidents.",
+        ],
+      },
+      {
+        heading: "Traçabilité 3.0 : renouer avec l'oral, augmenté par l'intelligence artificielle",
+        image: {
+          src: "/photos/blog/tracabilite-3-0-voix-ia.jpg",
+          alt: "Soignante souriante enregistrant une note vocale au chevet d'une résidente",
+        },
+        paragraphs: [
+          "C'est dans ce contexte qu'émerge une troisième vague, portée notamment par des solutions comme Speakli : et si l'on pouvait retrouver la simplicité et la naturalité de l'oral, tout en bénéficiant de la structuration et de la richesse apportées par l'écrit, sans en subir la charge ?",
+          "Le principe est simple : le soignant enregistre une note vocale, au chevet du résident ou en sortie de chambre, dans le prolongement naturel du soin. Cette note est ensuite transformée automatiquement, grâce à des modèles de langage avancés, en documentation structurée et exploitable dans le dossier de soin. Un professionnel reste toujours dans la boucle pour relire et valider l'information générée, ce qui permet également une montée en compétence progressive sur la structuration de l'écrit professionnel.",
+          "Cette approche répond simultanément à plusieurs enjeux. Un gain de temps concret d'abord : entre 40 % et 60 % de temps économisé sur la saisie manuelle des informations dans le dossier de soin.",
+          "Une réduction du risque d'oubli ensuite : la traçabilité se fait au fil de l'eau, et non plus en fin de service, moment où la charge mentale et la fatigue favorisent les omissions.",
+          "Un renforcement du lien avec le résident aussi : tracer au chevet, à la voix, c'est rester présent auprès de la personne accompagnée plutôt que de s'échapper vers un écran ailleurs dans l'établissement. C'est réintégrer le résident dans son propre parcours de soin, au lieu de le tenir à distance du geste de documentation qui le concerne pourtant directement.",
+          "Une sécurisation renforcée enfin : sur le plan juridique, une information tracée est une information qui existe légalement ; sur le plan de l'optimisation des dotations soins et autonomie ; et sur le plan de la qualité et de la continuité de l'accompagnement.",
+        ],
+      },
+      {
+        heading: "Ce que ce changement de paradigme signifie pour les directions d'établissement",
+        paragraphs: [
+          "Dans un secteur confronté à une pénurie durable de personnel et à une complexification continue des besoins de soin, automatiser les tâches de traçabilité à faible valeur ajoutée humaine (saisie, navigation dans les logiciels, remplissage de formulaires) n'est plus un confort optionnel. C'est devenu une nécessité pour préserver le temps soignant là où il a le plus de valeur : auprès des résidents.",
+          "La traçabilité 3.0 ne consiste pas à ajouter un outil de plus à une pile déjà complexe. Elle consiste, au contraire, à retirer une couche de charge, la charge rédactionnelle et technologique accumulée au fil des deux vagues précédentes, pour redonner du temps et du sens au geste de soin.",
+        ],
+      },
+      {
+        heading: "Sources",
+        paragraphs: [
+          "DREES, enquête EHPA 2023 / Études et Résultats n°1351, novembre 2025",
+          "DREES, étude sur les difficultés de recrutement en EHPAD (juin 2024)",
+          "Sénat, rapport sur la situation des EHPAD",
+          "Littérature professionnelle infirmière sur les transmissions ciblées (méthode DAR)",
+        ],
+      },
+    ],
+  },
   {
     slug: "pathos-gmps-dotation-ehpad",
     title: "La grille PATHOS : comprendre et améliorer votre dotation GMPS",

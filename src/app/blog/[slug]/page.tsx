@@ -265,6 +265,17 @@ export default async function BlogArticlePage({
                       {section.heading}
                     </h2>
                   )}
+                  {section.image && (
+                    <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square max-w-sm mx-auto sm:mx-0 sm:max-w-md">
+                      <Image
+                        src={section.image.src}
+                        alt={section.image.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 448px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex flex-col gap-4">
                     {section.paragraphs.map((p, j) => (
                       <p key={j} className="text-base leading-relaxed" style={{ color: "#4A5568" }}>
