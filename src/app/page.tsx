@@ -13,7 +13,6 @@ import ROITeaser from "@/components/ROITeaser";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CareSection from "@/components/CareSection";
-import CTAPopup from "@/components/CTAPopup";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.speakli.fr" },
@@ -112,7 +111,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <CTAPopup />
     </>
   );
 }

@@ -46,7 +46,7 @@ const fr = {
     ],
   },
   stats: [
-    { label: "transmissions documentées", sub: "grâce à la voix et l'IA" },
+    { label: "documents générés", sub: "grâce à la voix et l'IA" },
     { label: "plus de traçabilité", sub: "directement exploitable dans votre DUI" },
     { label: "économisées par semaine", sub: "par soignant en moyenne" },
     { label: "satisfaction des soignants", sub: "utilisateurs Speakli" },
@@ -380,7 +380,7 @@ const en: Translations = {
     ],
   },
   stats: [
-    { label: "documented transmissions", sub: "thanks to voice and AI" },
+    { label: "documents generated", sub: "thanks to voice and AI" },
     { label: "more traceability", sub: "directly usable in your DUI" },
     { label: "saved per week", sub: "per caregiver on average" },
     { label: "caregiver satisfaction", sub: "Speakli users" },

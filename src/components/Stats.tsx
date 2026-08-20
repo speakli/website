@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const STAT_CONFIGS = [
   {
-    prefix: "+", numTo: 30000, suffix: "", separator: "\u00a0",
+    prefix: "+", numTo: 120000, suffix: "", separator: "\u00a0",
     image: "/photos/human/13.png",
     imageAlt: "Soignante aidant une résidente à s'habiller",
     bg: "linear-gradient(135deg, #1A5CE0 0%, #007AFF 100%)",
