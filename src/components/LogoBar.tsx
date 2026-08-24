@@ -11,6 +11,7 @@ const CLIENT_LOGOS = [
   { src: "/logos/homage-group.png",          alt: "Groupe Hom'Age" },
   { src: "/logos/pervenches-homage.png",     alt: "Résidence les Pervenches" },
   { src: "/logos/clients/mdf.png",           alt: "Maisons de Famille" },
+  { src: "/logos/clients/emera.png",         alt: "Emera" },
 ];
 
 const TRACK = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
