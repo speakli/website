@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -513,6 +514,12 @@ export default function Pillars() {
           </h2>
           <p className="text-lg font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>
             {p.subtitle}
+          </p>
+          <p className="text-sm font-medium mt-3" style={{ color: "rgba(255,255,255,0.45)" }}>
+            Découvrez notre{" "}
+            <Link href="/logiciel-transmission-ehpad" className="underline hover:text-white transition-colors" style={{ color: "var(--sp-300)" }}>
+              logiciel de transmission en EHPAD
+            </Link>.
           </p>
         </div>
 

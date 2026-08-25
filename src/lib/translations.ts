@@ -20,7 +20,7 @@ const fr = {
   hero: {
     badge: "L'assistant vocal IA n°1 pour soignants",
     h1: ["Redonnez du", "temps", "à vos", "soignants"],
-    subtitle: "Fini la saisie manuelle chronophage.\nParlez simplement, Speakli s'occupe du reste.\nVotre assistant vocal qui redonne du sens au soin.",
+    subtitle: "Fini la saisie manuelle des transmissions.\nParlez simplement, Speakli structure et trace vos soins.\nVotre assistant vocal qui redonne du sens au soin.",
     cta_demo: "Demander une démo gratuite",
     cta_testimonials: "Témoignages",
     social_proof: "350+ soignants nous font confiance",
@@ -125,7 +125,7 @@ const fr = {
     phone_placeholder: "+33 6 00 00 00 00",
   },
   footer: {
-    tagline: "L'assistant vocal IA pour soignants. Traçabilité en temps réel, sécurité maximale, équipes épanouies.",
+    tagline: "L'assistant vocal IA pour soignants. Traçabilité et transmissions en temps réel, sécurité maximale, équipes épanouies.",
     badge_hds: "HDS Certifié",
     badge_rgpd: "RGPD Conforme",
     badge_e2e: "Chiffrement E2E",

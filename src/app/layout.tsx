@@ -22,10 +22,12 @@ export const metadata: Metadata = {
     template: "%s — Speakli",
   },
   description:
-    "Speakli redonne du temps à vos soignants grâce à la documentation vocale IA. Traçabilité en temps réel, conformité RGPD, hébergement HDS certifié (France). Utilisé dans 40+ EHPAD.",
+    "Speakli est le logiciel vocal IA qui simplifie les transmissions et la traçabilité des soins en EHPAD. Conforme RGPD, hébergé HDS en France. Déployé dans 40+ EHPAD.",
   keywords: [
     "assistant vocal EHPAD",
+    "logiciel de transmission EHPAD",
     "traçabilité soins EHPAD",
+    "logiciel médico-social",
     "logiciel soignants",
     "IA santé",
     "documentation vocale",
@@ -51,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Speakli – L'assistant vocal IA pour soignants en EHPAD",
     description:
-      "Documentez vos soins par la voix. Traçabilité en temps réel, conformité RGPD, hébergement HDS certifié. 350+ soignants nous font confiance.",
+      "Le logiciel vocal qui simplifie les transmissions et la traçabilité des soins en EHPAD. Conformité RGPD, hébergement HDS certifié. 350+ soignants nous font confiance.",
     url: BASE_URL,
     siteName: "Speakli",
     locale: "fr_FR",
@@ -112,6 +114,7 @@ const jsonLd = {
       },
       sameAs: [
         "https://www.linkedin.com/company/speakli",
+        "https://www.youtube.com/@Speakli-app",
       ],
     },
     {

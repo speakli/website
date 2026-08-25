@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { useInView, motion } from "motion/react";
 
@@ -195,6 +196,12 @@ export default function CareSection() {
           </h2>
           <p className="text-lg font-medium max-w-2xl mx-auto" style={{ color: "#4A5568" }}>
             Une technologie pensée pour s&apos;effacer derrière l&apos;essentiel : la relation humaine entre soignants et résidents.
+          </p>
+          <p className="text-sm font-medium max-w-2xl mx-auto mt-3" style={{ color: "#6B7280" }}>
+            En savoir plus sur la{" "}
+            <Link href="/blog/tracabilite-soins-ehpad-reglementation" className="underline hover:opacity-75" style={{ color: "var(--sp-500)" }}>
+              traçabilité des soins en EHPAD
+            </Link>.
           </p>
         </div>
 

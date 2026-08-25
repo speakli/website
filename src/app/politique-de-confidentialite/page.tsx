@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Speakli",
+  title: "Politique de confidentialité",
   description:
     "Politique de confidentialité de Speakli (SAS CTSUR) — traitement des données personnelles, droits RGPD, conservation et sécurité.",
+  alternates: { canonical: "https://www.speakli.fr/politique-de-confidentialite" },
 };
 
 const SECTIONS = [

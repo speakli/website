@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import CardSwap, { Card, CardSwapHandle } from './CardSwap';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -566,6 +567,12 @@ export default function Features() {
           </h2>
           <p className="text-lg font-medium max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.60)' }}>
             {f.subtitle}
+          </p>
+          <p className="text-sm font-medium max-w-2xl mx-auto mt-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            Ce que dit la réglementation sur la{" "}
+            <Link href="/blog/tracabilite-soins-ehpad-reglementation" className="underline hover:text-white transition-colors" style={{ color: 'var(--sp-300)' }}>
+              traçabilité des soins en EHPAD
+            </Link>.
           </p>
         </div>
 

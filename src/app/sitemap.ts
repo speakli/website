@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { BLOG_ARTICLES } from "@/lib/blog-articles";
+import { BLOG_ARTICLES, parseFrenchDateToISO } from "@/lib/blog-articles";
 
 const BASE_URL = "https://www.speakli.fr";
 
@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${BASE_URL}/logiciel-transmission-ehpad`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/roi`,
@@ -61,12 +67,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.map((article) => ({
-    url: `${BASE_URL}/blog/${article.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: article.isThematic ? 0.85 : 0.65,
-  }));
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.map((article) => {
+    const isoDate = parseFrenchDateToISO(article.date);
+    return {
+      url: `${BASE_URL}/blog/${article.slug}`,
+      lastModified: isoDate ? new Date(isoDate) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: article.isThematic ? 0.85 : 0.65,
+    };
+  });
 
   return [...staticRoutes, ...blogRoutes];
 }

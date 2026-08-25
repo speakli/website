@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Concepts logo — Speakli",
+  robots: { index: false, follow: false },
+};
+
 export default function LogoConcepts() {
   return (
     <div className="min-h-screen bg-[#FAFAF7] py-16 px-6">

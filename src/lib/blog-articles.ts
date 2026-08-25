@@ -9,6 +9,11 @@ export interface BlogSection {
   paragraphs: string[];
 }
 
+export interface RelatedLink {
+  label: string;
+  href: string;
+}
+
 export interface BlogArticle {
   slug: string;
   title: string;
@@ -30,6 +35,48 @@ export interface BlogArticle {
   coverLogoNatural?: boolean; // show logo without brightness/invert filter (light bg)
   readingTime?: string; // e.g. "7 min"
   heroCta?: { label: string; href: string; subtitle: string }; // CTA block at top of article body
+  metaTitle?: string;       // overrides the <title> tag when the display title is too long for SERPs
+  metaDescription?: string; // overrides the meta description when the excerpt isn't ideal for search
+  relatedLinks?: RelatedLink[]; // internal links to pillar pages / complementary articles, shown before "Autres articles"
+}
+
+const FR_MONTHS: Record<string, string> = {
+  "janvier": "01", "février": "02", "mars": "03", "avril": "04",
+  "mai": "05", "juin": "06", "juillet": "07", "août": "08",
+  "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12",
+};
+
+/**
+ * Best-effort conversion of the site's display dates ("Avril 2026", "12 février 2026",
+ * "19–21 mai 2026", "2025"…) into an ISO 8601 string usable in Article structured data.
+ * Falls back to undefined rather than guessing when the format isn't recognized —
+ * datePublished is then simply omitted instead of being fabricated.
+ */
+export function parseFrenchDateToISO(display: string): string | undefined {
+  const normalized = display.trim().toLowerCase();
+
+  // "2025" / "2026"
+  if (/^\d{4}$/.test(normalized)) return normalized;
+
+  // "avril 2026" / "septembre 2025"
+  const monthYear = normalized.match(/^([a-zéû]+)\s+(\d{4})$/);
+  if (monthYear && FR_MONTHS[monthYear[1]]) {
+    return `${monthYear[2]}-${FR_MONTHS[monthYear[1]]}`;
+  }
+
+  // "12 février 2026"
+  const dayMonthYear = normalized.match(/^(\d{1,2})\s+([a-zéû]+)\s+(\d{4})$/);
+  if (dayMonthYear && FR_MONTHS[dayMonthYear[2]]) {
+    return `${dayMonthYear[3]}-${FR_MONTHS[dayMonthYear[2]]}-${dayMonthYear[1].padStart(2, "0")}`;
+  }
+
+  // "19–21 mai 2026" (date range — use the first day)
+  const rangeMatch = normalized.match(/^(\d{1,2})[–-]\d{1,2}\s+([a-zéû]+)\s+(\d{4})$/);
+  if (rangeMatch && FR_MONTHS[rangeMatch[2]]) {
+    return `${rangeMatch[3]}-${FR_MONTHS[rangeMatch[2]]}-${rangeMatch[1].padStart(2, "0")}`;
+  }
+
+  return undefined;
 }
 
 export const BLOG_ARTICLES: BlogArticle[] = [
@@ -581,6 +628,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "pathos-gmps-dotation-ehpad",
     title: "La grille PATHOS : comprendre et améliorer votre dotation GMPS",
+    metaTitle: "PATHOS et GMPS : comprendre et améliorer votre dotation EHPAD",
+    metaDescription:
+      "Comment le GMPS détermine la dotation soins de votre EHPAD, le rôle de la documentation soignante dans la cotation PATHOS, et les leviers concrets pour améliorer votre PMP.",
     category: "Financement & GMPS",
     categoryBg: "#E6F4F1",
     categoryColor: "#0a7c5c",
@@ -590,6 +640,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#0a2030",
     isThematic: true,
     readingTime: "8 min",
+    relatedLinks: [
+      { label: "Calculer l'impact sur votre dotation GMPS", href: "/roi" },
+      { label: "Traçabilité des soins en EHPAD : obligations et bonnes pratiques", href: "/blog/tracabilite-soins-ehpad-reglementation" },
+      { label: "Réduire la charge administrative des soignants", href: "/blog/charge-administrative-soignants-solutions" },
+    ],
     content: [
       {
         heading: "Qu'est-ce que PATHOS ?",
@@ -776,6 +831,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "intelligence-artificielle-soins-ehpad",
     title: "L'IA en EHPAD : ce qui change vraiment pour vos équipes et vos résidents",
+    metaTitle: "IA en EHPAD : assistant vocal, cas d'usage et cadre réglementaire",
+    metaDescription:
+      "Ce que l'intelligence artificielle fait réellement en EHPAD aujourd'hui : IA vocale pour la traçabilité, détection de chutes, cadre HDS/RGPD et limites de l'automatisation.",
     category: "Numérique & IA",
     categoryBg: "#EEF2FF",
     categoryColor: "#3730a3",
@@ -785,6 +843,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#071428",
     isThematic: true,
     readingTime: "8 min",
+    relatedLinks: [
+      { label: "Découvrir notre assistant vocal IA pour la transmission EHPAD", href: "/logiciel-transmission-ehpad" },
+      { label: "HDS et RGPD : les obligations pour votre logiciel de soins", href: "/blog/hds-rgpd-logiciel-soins-ehpad" },
+      { label: "Réussir l'adoption d'un outil numérique en EHPAD", href: "/blog/conduite-changement-numerique-ehpad" },
+    ],
     content: [
       {
         heading: "L'IA en EHPAD : sortir des fantasmes",
@@ -848,6 +911,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "tracabilite-soins-ehpad-reglementation",
     title:
       "Traçabilité des soins en EHPAD : obligations réglementaires et bonnes pratiques",
+    metaTitle: "Traçabilité des soins en EHPAD : obligations et bonnes pratiques",
+    metaDescription:
+      "Traçabilité des soins en EHPAD : ce que le CASF et la HAS imposent, ce qui est réellement contrôlé en inspection, et comment sécuriser vos transmissions et votre dossier de soins.",
     category: "Réglementation & Conformité",
     categoryBg: "#FFF3E0",
     categoryColor: "#C65900",
@@ -857,6 +923,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#1a1005",
     isThematic: true,
     readingTime: "9 min",
+    relatedLinks: [
+      { label: "Découvrir notre logiciel de transmission EHPAD", href: "/logiciel-transmission-ehpad" },
+      { label: "Traçabilité et dotation GMPS : le lien direct", href: "/blog/pathos-gmps-dotation-ehpad" },
+      { label: "Calculer le ROI de la traçabilité vocale", href: "/roi" },
+    ],
     content: [
       {
         heading: "Le cadre légal : ce que le CASF et la HAS imposent",
@@ -1042,6 +1113,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "charge-administrative-soignants-solutions",
     title:
       "Réduire la charge administrative des soignants en EHPAD : 5 leviers concrets",
+    metaTitle: "Réduire la charge administrative des soignants en EHPAD",
+    metaDescription:
+      "Transmissions, saisie, formulaires : 5 leviers concrets pour réduire la charge administrative des soignants en EHPAD et redonner du temps au soin, avec leur ROI estimé.",
     category: "Management & RH",
     categoryBg: "#FEF3C7",
     categoryColor: "#92400e",
@@ -1051,6 +1125,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#001829",
     isThematic: true,
     readingTime: "7 min",
+    relatedLinks: [
+      { label: "Découvrir notre logiciel de transmission EHPAD", href: "/logiciel-transmission-ehpad" },
+      { label: "Calculer le gain de temps soignant", href: "/roi" },
+      { label: "PATHOS et GMPS : améliorer votre dotation EHPAD", href: "/blog/pathos-gmps-dotation-ehpad" },
+    ],
     content: [
       {
         heading: "Quantifier le problème : combien de temps perd-on réellement ?",
@@ -1106,6 +1185,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "hds-rgpd-logiciel-soins-ehpad",
     title:
       "HDS et RGPD en EHPAD : ce que la loi impose à votre logiciel de soins",
+    metaTitle: "HDS et RGPD en EHPAD : les obligations pour votre logiciel de soins",
+    metaDescription:
+      "Certification HDS, RGPD et données de santé en EHPAD : ce qu'il faut vérifier dans votre contrat prestataire, les sanctions encourues, et comment un logiciel de soins doit être hébergé et sécurisé.",
     category: "Réglementation & Conformité",
     categoryBg: "#FFF3E0",
     categoryColor: "#C65900",
@@ -1115,6 +1197,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#0d0420",
     isThematic: true,
     readingTime: "8 min",
+    relatedLinks: [
+      { label: "Dossier de soins informatisé : critères de choix", href: "/blog/dossier-soin-informatise-ehpad-guide" },
+      { label: "Traçabilité des soins en EHPAD : obligations et bonnes pratiques", href: "/blog/tracabilite-soins-ehpad-reglementation" },
+      { label: "Découvrir notre logiciel de transmission EHPAD", href: "/logiciel-transmission-ehpad" },
+    ],
     content: [
       {
         heading: "La certification HDS : obligatoire depuis 2018, encore mal connue",
@@ -1171,6 +1258,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "dossier-soin-informatise-ehpad-guide",
     title:
       "Dossier de Soins Informatisé en EHPAD : avantages, transition et critères de choix",
+    metaTitle: "Dossier de soins informatisé (DUI) en EHPAD : guide de choix",
+    metaDescription:
+      "DUI en EHPAD : exigences réglementaires ANS, critères de choix d'un logiciel de soins, pièges de la transition papier-numérique et questions à poser avant de signer.",
     category: "Numérique & IA",
     categoryBg: "#EEF2FF",
     categoryColor: "#3730a3",
@@ -1180,6 +1270,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     cardBg: "#001820",
     isThematic: true,
     readingTime: "9 min",
+    relatedLinks: [
+      { label: "Découvrir notre logiciel de transmission EHPAD", href: "/logiciel-transmission-ehpad" },
+      { label: "Traçabilité des soins en EHPAD : obligations et bonnes pratiques", href: "/blog/tracabilite-soins-ehpad-reglementation" },
+      { label: "HDS et RGPD : les obligations pour votre logiciel de soins", href: "/blog/hds-rgpd-logiciel-soins-ehpad" },
+    ],
     content: [
       {
         heading: "DSI vs papier : pourquoi la comparaison ne tient plus",
