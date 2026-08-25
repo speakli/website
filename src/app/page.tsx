@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { translations } from "@/lib/translations";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LogoBar from "@/components/LogoBar";
@@ -18,51 +19,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.speakli.fr" },
 };
 
+// Mirrors the FAQ actually rendered by <FAQ /> (translations.fr.faq.items) so the
+// structured data never drifts from what visitors — and Google — see on the page.
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Comment fonctionne l'assistant vocal Speakli en EHPAD ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les soignants dictent leurs observations vocalement via l'application Speakli. L'IA transcrit, structure et enregistre automatiquement les transmissions dans le dossier résident. Aucune saisie manuelle n'est nécessaire.",
-      },
+  mainEntity: translations.fr.faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
     },
-    {
-      "@type": "Question",
-      name: "Speakli est-il conforme au RGPD et à la certification HDS ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui. Speakli est hébergé sur une infrastructure HDS (Hébergement Données de Santé) certifiée en France. Les données sont chiffrées de bout en bout, aucune voix n'est conservée après traitement, et l'accès est strictement limité aux équipes autorisées.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Speakli s'intègre-t-il avec mon logiciel métier DUI existant ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Speakli s'intègre par API sécurisée avec les principaux logiciels de soins utilisés en EHPAD. Le transfert de données est instantané et ne nécessite aucune double saisie.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quel est l'impact de Speakli sur la dotation GMPS ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Une meilleure documentation quotidienne améliore la précision du codage PATHOS lors de la coupe annuelle. Des établissements utilisateurs ont constaté des gains significatifs sur leur PMP — jusqu'à plusieurs dizaines de milliers d'euros de dotation annuelle supplémentaire.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Combien de temps prend la mise en place de Speakli ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le déploiement est conçu pour être rapide : formation des équipes en moins de 2 heures, intégration technique en quelques jours. La plupart des établissements sont opérationnels en moins d'une semaine.",
-      },
-    },
-  ],
+  })),
 };
 
 const breadcrumbJsonLd = {

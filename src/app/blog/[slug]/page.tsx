@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { BLOG_ARTICLES, getArticleBySlug } from "@/lib/blog-articles";
+import { BLOG_ARTICLES, getArticleBySlug, parseFrenchDateToISO } from "@/lib/blog-articles";
+
+const BASE_URL = "https://www.speakli.fr";
 
 export function generateStaticParams() {
   return BLOG_ARTICLES.map((a) => ({ slug: a.slug }));
@@ -18,17 +20,29 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
-  const BASE_URL = "https://www.speakli.fr";
+  const title = article.metaTitle ?? article.title;
+  const description = article.metaDescription ?? article.excerpt;
+  const isoDate = parseFrenchDateToISO(article.date);
+  const image = article.coverIsPhoto && article.coverLogo ? article.coverLogo : `${BASE_URL}/og-image.png`;
   return {
-    title: `${article.title} | Speakli`,
-    description: article.excerpt,
+    title,
+    description,
     openGraph: {
-      title: article.title,
-      description: article.excerpt,
+      title,
+      description,
       url: `${BASE_URL}/blog/${slug}`,
+      siteName: "Speakli",
+      locale: "fr_FR",
       type: "article",
-      publishedTime: article.date,
+      publishedTime: isoDate,
       authors: ["Speakli"],
+      images: [{ url: image, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
     alternates: { canonical: `${BASE_URL}/blog/${slug}` },
   };
@@ -45,21 +59,35 @@ export default async function BlogArticlePage({
 
   const otherArticles = BLOG_ARTICLES.filter((a) => a.slug !== slug).slice(0, 3);
 
-  const BASE_URL = "https://www.speakli.fr";
+  const isoDate = parseFrenchDateToISO(article.date);
+  const hubHref = article.isThematic ? "/ressources" : "/qui-sommes-nous/partenaires-et-soutiens";
+  const hubLabel = article.isThematic ? "Ressources" : "Partenaires & Soutiens";
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": article.isThematic ? "Article" : "NewsArticle",
     headline: article.title,
     description: article.excerpt,
-    datePublished: article.date,
+    ...(isoDate ? { datePublished: isoDate, dateModified: isoDate } : {}),
     author: { "@type": "Organization", name: "Speakli", url: BASE_URL },
     publisher: {
       "@type": "Organization",
       name: "Speakli",
       logo: { "@type": "ImageObject", url: `${BASE_URL}/logo-speakli.png` },
     },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/${slug}` },
     url: `${BASE_URL}/blog/${slug}`,
     inLanguage: "fr-FR",
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: hubLabel, item: `${BASE_URL}${hubHref}` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${BASE_URL}/blog/${slug}` },
+    ],
   };
 
   return (
@@ -67,6 +95,10 @@ export default async function BlogArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Navbar />
       <main>
@@ -92,11 +124,11 @@ export default async function BlogArticlePage({
                 <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <Link
-                href={article.isThematic ? "/ressources" : "/qui-sommes-nous/partenaires-et-soutiens"}
+                href={hubHref}
                 className="transition-opacity hover:opacity-75"
                 style={{ color: "rgba(255,255,255,0.6)" }}
               >
-                {article.isThematic ? "Ressources" : "Partenaires & Soutiens"}
+                {hubLabel}
               </Link>
               <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" style={{ color: "rgba(255,255,255,0.3)" }}>
                 <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
@@ -286,6 +318,34 @@ export default async function BlogArticlePage({
                 </div>
               ))}
             </div>
+
+            {/* Pour aller plus loin — related pillar pages / articles */}
+            {article.relatedLinks && article.relatedLinks.length > 0 && (
+              <div
+                className="mt-14 rounded-2xl p-6 sm:p-8"
+                style={{ background: "var(--sp-50)", border: "1px solid var(--sp-100)" }}
+              >
+                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "var(--sp-500)" }}>
+                  Pour aller plus loin
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {article.relatedLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-75"
+                        style={{ color: "var(--sp-700)" }}
+                      >
+                        <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Back link */}
             <div className="mt-16 pt-10 border-t" style={{ borderColor: "var(--sp-100)" }}>

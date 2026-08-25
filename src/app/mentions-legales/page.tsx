@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Speakli",
+  title: "Mentions légales",
   description:
     "Mentions légales de Speakli (SAS CTSUR) — éditeur du site, hébergement, propriété intellectuelle et responsabilité.",
+  alternates: { canonical: "https://www.speakli.fr/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {

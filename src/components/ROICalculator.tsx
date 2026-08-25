@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react"; // useEffect kept for pmpCible sync
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import elephantAnim from "@/data/elephant-happy.json";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
@@ -372,14 +373,25 @@ export default function ROICalculator() {
           {/* ── Header ── */}
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>
-              Calculateur de ROI
+              Calculateur ROI logiciel EHPAD
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--sp-900)" }}>
-              Estimez votre gain réel{" "}
-              <span style={{ color: "var(--sp-500)" }}>avec Speakli</span>
-            </h2>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--sp-900)" }}>
+              Estimez le retour sur investissement{" "}
+              <span style={{ color: "var(--sp-500)" }}>de Speakli pour votre EHPAD</span>
+            </h1>
             <p className="text-lg font-medium max-w-xl mx-auto" style={{ color: "#4A5568" }}>
-              Renseignez les caractéristiques de votre établissement pour obtenir votre estimation personnalisée.
+              Renseignez les caractéristiques de votre établissement pour estimer le temps soignant libéré, la réduction de la charge administrative et l&apos;impact sur votre dotation GMPS.
+            </p>
+            <p className="text-sm font-medium max-w-xl mx-auto mt-3" style={{ color: "#6B7280" }}>
+              Ces gains reposent sur la réduction du temps de saisie des{" "}
+              <Link href="/logiciel-transmission-ehpad" className="underline hover:opacity-75" style={{ color: "var(--sp-500)" }}>
+                transmissions en EHPAD
+              </Link>{" "}
+              et sur l&apos;amélioration de la{" "}
+              <Link href="/blog/pathos-gmps-dotation-ehpad" className="underline hover:opacity-75" style={{ color: "var(--sp-500)" }}>
+                dotation GMPS via la cotation PATHOS
+              </Link>
+              .
             </p>
           </div>
 

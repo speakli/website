@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const SOLUTION_LINKS = [
+  { label: "Logiciel de transmission EHPAD", href: "/logiciel-transmission-ehpad", tabId: null },
   { label: "Calculateur ROI",   href: "/roi",          tabId: null },
   { label: "Assistant vocal",   href: "/#solutions",   tabId: "voice" },
   { label: "Tableau de bord",   href: "/#solutions",   tabId: "dashboard" },
@@ -19,6 +20,7 @@ const COMPANY_LINKS = [
   { label: "Témoignages",             href: "/#temoignages" },
   { label: "Contact",                 href: "/#contact" },
   { label: "Blog",                    href: "/ressources" },
+  { label: "Traçabilité des soins en EHPAD", href: "/blog/tracabilite-soins-ehpad-reglementation" },
 ];
 
 export default function Footer() {

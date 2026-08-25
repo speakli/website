@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Conditions Générales d'Utilisation — Speakli",
+  title: "Conditions Générales d'Utilisation",
   description:
     "Conditions Générales d'Utilisation de Speakli (SAS CTSUR) — modalités d'accès et d'utilisation de l'assistant vocal IA pour établissements médico-sociaux.",
+  alternates: { canonical: "https://www.speakli.fr/cgu" },
 };
 
 const SECTIONS = [
