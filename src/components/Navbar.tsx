@@ -141,7 +141,7 @@ export default function Navbar() {
     { ...n.experience_links[0], target: { section: "temoignages" }, image: "/photos/nav/temoignages-equipe.jpg" },
     { ...n.experience_links[1], target: { href: "/ressources" }, image: "/photos/nav/ressources-equipe.jpg" },
     { ...n.experience_links[2], target: { section: "evenements" }, image: "/photos/nav/evenements-silvereco.jpg" },
-    { ...n.experience_links[3], target: { href: "/roi" }, image: "/photos/etablissements/sainte-famille-solila.png" },
+    { ...n.experience_links[3], target: { href: "/roi" }, image: "/photos/nav/calculateur-pathos.jpg" },
   ];
 
   // Section de la page d'accueil : défilement si on y est, sinon navigation vers /#section
