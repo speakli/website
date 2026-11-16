@@ -639,7 +639,7 @@ export default function Pillars() {
                     className="mt-8"
                   >
                     <a
-                      href="https://calendly.com/ruben-speakli/30min"
+                      href="https://meetings-eu1.hubspot.com/ruben-weinstein"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5"

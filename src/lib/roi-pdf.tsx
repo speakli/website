@@ -10,10 +10,6 @@ const WHITE = "#ffffff";
 const BORDER= "#E2E8F0";
 
 /* ─── Hypothèses de calcul (identiques au composant ROICalculator) ─── */
-const TAUX_GAIN    = 0.40;   // 40 % de réduction du temps de traçage
-const JOURS_MOIS   = 21.67;  // jours travaillés / mois (base conventionnelle)
-const TAUX_AS      = 22.27;  // coût horaire chargé Aide-soignant (€/h)
-const TAUX_IDE     = 29.11;  // coût horaire chargé Infirmier IDE (€/h)
 const VALEUR_POINT = 13.60;  // valeur du point GMPS 2024 (€/point)
 const COEF_GMP     = 2.59;   // coefficient PMP → GMP
 
@@ -91,7 +87,7 @@ interface Props {
   lastName:  string;
   formData: {
     lits: number; nbAS: number; nbIDE: number; logiciel: string;
-    support: string; tempsTrace: number; pmpActuel: number; pmpCible: number;
+    support: string; pmpActuel: number; pmpCible: number;
   };
   roi: { val_an: number; gain_dotation: number; roi_total: number };
 }
@@ -109,16 +105,9 @@ export async function generatePdfBuffer(props: Props): Promise<Buffer> {
 }
 
 export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) {
-  const total = roi.roi_total;
-  const pct1  = total > 0 ? Math.min((roi.val_an       / total) * 100, 100) : 0;
-  const pct2  = total > 0 ? Math.min((roi.gain_dotation / total) * 100, 100) : 0;
   const date  = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
   /* ─── Calculs intermédiaires pour la page méthodologie ─── */
-  const hAS_mois    = formData.nbAS  * formData.tempsTrace * TAUX_GAIN * JOURS_MOIS;
-  const hIDE_mois   = formData.nbIDE * formData.tempsTrace * TAUX_GAIN * JOURS_MOIS;
-  const val_as_an   = hAS_mois  * TAUX_AS  * 12;
-  const val_ide_an  = hIDE_mois * TAUX_IDE * 12;
   const delta_pmp   = Math.max(0, formData.pmpCible - formData.pmpActuel);
 
   const PageFooter = () => (
@@ -137,7 +126,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
     <View style={s.header}>
       <View>
         <Text style={s.logo}>Speak<Text style={s.logoAccent}>li</Text></Text>
-        <View style={s.badge}><Text style={s.badgeText}>Simulation ROI confidentielle</Text></View>
+        <View style={s.badge}><Text style={s.badgeText}>Simulation PATHOS confidentielle</Text></View>
       </View>
       <Text style={s.headerDate}>Établi le {date}</Text>
     </View>
@@ -152,7 +141,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
 
         <Text style={s.greeting}>Bonjour {civility} {firstName} {lastName},</Text>
         <Text style={s.intro}>
-          Suite à votre simulation sur speakli.fr, voici votre rapport personnalisé d'estimation de retour sur investissement.
+          Suite à votre simulation sur speakli.fr, voici votre estimation personnalisée du gain de dotation soins (PATHOS).
           Ces résultats sont calculés sur la base des informations que vous avez renseignées et restent des estimations.
           La page 2 présente les impacts extra-financiers, la page 3 détaille les hypothèses et le calcul pas à pas.
         </Text>
@@ -160,32 +149,9 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
         {/* KPI cards */}
         <Text style={s.sectionTitle}>Résultats estimés</Text>
         <View style={s.kpiRow}>
-          <View style={s.kpiCard}>
-            <Text style={s.kpiAmount}>{fmt(roi.val_an)}</Text>
-            <Text style={s.kpiLabel}>Valeur du temps libéré / an</Text>
-          </View>
-          <View style={s.kpiCard}>
-            <Text style={s.kpiAmount}>{fmt(roi.gain_dotation)}</Text>
-            <Text style={s.kpiLabel}>Gain de dotation GMPS / an</Text>
-          </View>
           <View style={[s.kpiCard, { backgroundColor: BLUE }]}>
-            <Text style={[s.kpiAmount, { color: WHITE }]}>{fmt(roi.roi_total)}</Text>
-            <Text style={[s.kpiLabel, { color: "rgba(255,255,255,0.8)" }]}>ROI TOTAL estimé / an</Text>
-          </View>
-        </View>
-
-        {/* Bar chart */}
-        <View style={s.barSection}>
-          <Text style={[s.sectionTitle, { marginBottom: 12 }]}>Répartition du gain</Text>
-          <View style={s.barRow}>
-            <Text style={s.barLabel}>Temps libéré</Text>
-            <View style={s.barTrack}><View style={[s.barFill, { width: `${pct1}%` }]} /></View>
-            <Text style={s.barValue}>{fmt(roi.val_an)}</Text>
-          </View>
-          <View style={s.barRow}>
-            <Text style={s.barLabel}>Gain dotation GMPS</Text>
-            <View style={s.barTrack}><View style={[s.barFill, { width: `${pct2}%`, backgroundColor: GREEN }]} /></View>
-            <Text style={s.barValue}>{fmt(roi.gain_dotation)}</Text>
+            <Text style={[s.kpiAmount, { color: WHITE }]}>{fmt(roi.gain_dotation)}</Text>
+            <Text style={[s.kpiLabel, { color: "rgba(255,255,255,0.8)" }]}>Gain de dotation soins estimé / an</Text>
           </View>
         </View>
 
@@ -197,7 +163,6 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             ["Aides-soignants",           `${formData.nbAS} ETP`],
             ["Infirmiers (IDE)",           `${formData.nbIDE} ETP`],
             ["Logiciel DUI",              formData.logiciel],
-            ["Temps de traçage actuel",   `${formData.tempsTrace} h / soignant / jour`],
             ["PMP actuel",                `${formData.pmpActuel} pts`],
             ["PMP cible avec Speakli",    `${formData.pmpCible} pts`],
           ].map(([label, value]) => (
@@ -216,7 +181,7 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
             Réservez une démo gratuite de 30 minutes avec notre équipe.
           </Text>
           <View style={s.ctaLink}>
-            <Text style={s.ctaLinkText}>calendly.com/ruben-speakli/30min</Text>
+            <Text style={s.ctaLinkText}>meetings-eu1.hubspot.com/ruben-weinstein</Text>
           </View>
         </View>
 
@@ -292,10 +257,6 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
         <View style={s.methodBox}>
           <Text style={s.methodTitle}>Hypothèses générales</Text>
           {[
-            ["Taux de réduction du temps de traçage",  `${TAUX_GAIN * 100} % — basé sur les retours terrain Speakli`],
-            ["Jours travaillés / mois",                `${JOURS_MOIS} j (base conventionnelle 260 j / an)`],
-            ["Coût horaire chargé Aide-soignant",      `${fmtN(TAUX_AS)} €/h (charges patronales incluses)`],
-            ["Coût horaire chargé Infirmier (IDE)",    `${fmtN(TAUX_IDE)} €/h (charges patronales incluses)`],
             ["Valeur du point GMPS (2024)",            `${fmtN(VALEUR_POINT)} €/point`],
             ["Coefficient PMP → GMP",                  `× ${COEF_GMP} (référentiel GMPS)`],
           ].map(([label, value]) => (
@@ -306,38 +267,9 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
           ))}
         </View>
 
-        {/* Calcul 1 — Temps libéré */}
-        <View style={s.calcBox}>
-          <Text style={s.calcTitle}>Calcul 1 — Valeur du temps libéré / an</Text>
-          <Text style={s.calcLine}>
-            Formule : (ETP × h/j × {TAUX_GAIN * 100} % × {JOURS_MOIS} j × coût/h) × 12 mois
-          </Text>
-          {formData.nbAS > 0 && (
-            <Text style={s.calcLine}>
-              {"Aides-soignants : "}
-              {formData.nbAS} ETP × {fmtN(formData.tempsTrace)} h/j × {TAUX_GAIN * 100} % × {JOURS_MOIS} j × {fmtN(TAUX_AS)} €/h × 12
-              {" = "}{fmt(val_as_an)}
-            </Text>
-          )}
-          {formData.nbIDE > 0 && (
-            <Text style={s.calcLine}>
-              {"Infirmiers (IDE) : "}
-              {formData.nbIDE} ETP × {fmtN(formData.tempsTrace)} h/j × {TAUX_GAIN * 100} % × {JOURS_MOIS} j × {fmtN(TAUX_IDE)} €/h × 12
-              {" = "}{fmt(val_ide_an)}
-            </Text>
-          )}
-          <Text style={s.calcResult}>
-            Total valeur temps libéré : {fmt(roi.val_an)}
-          </Text>
-          <Text style={s.methodNote}>
-            Ce montant représente la valeur financière des heures de traçabilité récupérées grâce à Speakli,
-            réaffectables au soin direct ou à d'autres tâches à valeur ajoutée.
-          </Text>
-        </View>
-
         {/* Calcul 2 — Gain dotation GMPS */}
         <View style={s.calcBox}>
-          <Text style={s.calcTitle}>Calcul 2 — Gain de dotation GMPS / an</Text>
+          <Text style={s.calcTitle}>Calcul — Gain de dotation GMPS / an</Text>
           <Text style={s.calcLine}>
             Formule : (PMP cible − PMP actuel) × {COEF_GMP} × nb lits × {fmtN(VALEUR_POINT)} €/point
           </Text>
@@ -357,34 +289,11 @@ export function ROIPdf({ civility, firstName, lastName, formData, roi }: Props) 
           </Text>
         </View>
 
-        {/* ROI total */}
-        <View style={[s.methodBox, { borderColor: BLUE, backgroundColor: "#F0F7FF" }]}>
-          <Text style={s.methodTitle}>ROI Total = Temps libéré + Gain dotation GMPS</Text>
-          <View style={s.methodRow}>
-            <Text style={s.methodLabel}>Valeur du temps libéré</Text>
-            <Text style={s.methodValue}>{fmt(roi.val_an)}</Text>
-          </View>
-          <View style={s.methodRow}>
-            <Text style={s.methodLabel}>Gain de dotation GMPS</Text>
-            <Text style={s.methodValue}>{fmt(roi.gain_dotation)}</Text>
-          </View>
-          <View style={[s.methodRow, { borderTopWidth: 1, borderTopColor: BORDER, paddingTop: 5, marginTop: 2 }]}>
-            <Text style={[s.methodLabel, { fontFamily: "Helvetica-Bold", color: DARK }]}>ROI TOTAL estimé / an</Text>
-            <Text style={[s.methodValue, { color: BLUE, fontSize: 11 }]}>{fmt(roi.roi_total)}</Text>
-          </View>
-        </View>
-
         {/* Sources */}
         <View style={{ marginTop: 4 }}>
           <Text style={[s.methodTitle, { fontSize: 8.5, color: GREY }]}>Sources & références</Text>
           <Text style={s.sourceLine}>
-            • Coûts horaires chargés : grille salariale FPH 2024 + charges patronales estimées à 46 %
-          </Text>
-          <Text style={s.sourceLine}>
             • Valeur du point GMPS : circulaire budgétaire DGCS 2024 — 13,60 €/point
-          </Text>
-          <Text style={s.sourceLine}>
-            • Taux de réduction du traçage (40 %) : mesure interne Speakli sur établissements pilotes (n=12, 2023-2024)
           </Text>
           <Text style={s.sourceLine}>
             • Coefficient PMP → GMP (2,59) : référentiel GMPS, grille Pathos nationale

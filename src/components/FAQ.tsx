@@ -11,7 +11,7 @@ function FAQItem({ question, answer, index, isOpen, onToggle }: {
   onToggle: () => void;
 }) {
   return (
-    <div className="group" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+    <div className="group" style={{ borderBottom: "1px solid rgba(26,46,73,0.08)" }}>
       <button
         className="w-full flex items-start gap-5 py-6 text-left transition-colors duration-150"
         onClick={onToggle}
@@ -26,7 +26,7 @@ function FAQItem({ question, answer, index, isOpen, onToggle }: {
 
         <span
           className="flex-1 font-semibold text-base leading-snug transition-colors duration-200 pr-4"
-          style={{ color: isOpen ? "#ffffff" : "rgba(255,255,255,0.78)" }}
+          style={{ color: isOpen ? "var(--sp-900)" : "#3B4A60" }}
         >
           {question}
         </span>
@@ -34,8 +34,8 @@ function FAQItem({ question, answer, index, isOpen, onToggle }: {
         <div
           className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 mt-0.5"
           style={{
-            backgroundColor: isOpen ? "var(--sp-500)" : "rgba(255,255,255,0.08)",
-            color: isOpen ? "#fff" : "rgba(255,255,255,0.5)",
+            backgroundColor: isOpen ? "var(--sp-500)" : "#EAF3FF",
+            color: isOpen ? "#fff" : "var(--sp-500)",
           }}
         >
           <svg
@@ -51,7 +51,7 @@ function FAQItem({ question, answer, index, isOpen, onToggle }: {
         <div style={{ overflow: "hidden" }}>
           <div
             className="pb-6 text-sm leading-relaxed font-medium"
-            style={{ color: "rgba(255,255,255,0.50)", paddingLeft: "calc(1.75rem + 1.25rem)" }}
+            style={{ color: "#5B6B82", paddingLeft: "calc(1.75rem + 1.25rem)" }}
           >
             {answer}
           </div>
@@ -67,24 +67,24 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6" id="faq" style={{ background: "linear-gradient(135deg, #0c1d50 0%, #142875 40%, #1a3388 60%, #0a1840 100%)" }}>
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="faq" style={{ background: "linear-gradient(180deg, #ffffff 0%, #F4F8FF 100%)" }}>
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>
             {f.tag}
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "#ffffff" }}>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--sp-900)" }}>
             {f.h2}{" "}
             <span style={{ color: "var(--sp-500)" }}>{f.h2_accent}</span>
           </h2>
-          <p className="text-lg font-medium" style={{ color: "rgba(255,255,255,0.55)" }}>
+          <p className="text-lg font-medium" style={{ color: "#5B6B82" }}>
             {f.subtitle}
           </p>
         </div>
 
         <div
-          className="rounded-2xl overflow-hidden"
-          style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 40px rgba(0,0,0,0.20)" }}
+          className="rounded-3xl overflow-hidden"
+          style={{ background: "#ffffff", border: "1px solid rgba(0,40,120,0.08)", boxShadow: "0 24px 50px -32px rgba(13,48,160,0.45)" }}
         >
           <div className="px-4 sm:px-8">
             {f.items.map((item, index) => (
@@ -100,7 +100,7 @@ export default function FAQ() {
           </div>
         </div>
 
-        <p className="text-center text-sm font-medium mt-8" style={{ color: "rgba(255,255,255,0.35)" }}>
+        <p className="text-center text-sm font-medium mt-8" style={{ color: "#7A8699" }}>
           {f.contact_text}{" "}
           <a
             href="mailto:contact@speakli.fr"

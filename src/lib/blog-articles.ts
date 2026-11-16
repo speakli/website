@@ -82,8 +82,6 @@ export function parseFrenchDateToISO(display: string): string | undefined {
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "santexpo-2026-stand-w692",
-    isUpcoming: true,
-    isNew: true,
     title: "Speakli à Santexpo 2026 — Espace Innovation du Fonds FHF",
     category: "Événements & Prises de parole",
     categoryBg: "#EFF6FF",
@@ -102,7 +100,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
     heroCta: {
       label: "Demander une démo sur le stand",
-      href: "https://calendly.com/ruben-speakli/30min",
+      href: "https://meetings-eu1.hubspot.com/ruben-weinstein",
       subtitle: "Réservez votre créneau pour une démonstration en direct à Santexpo 2026",
     },
     content: [

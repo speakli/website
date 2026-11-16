@@ -168,7 +168,7 @@ export default function Onboarding() {
             Prêt à démarrer ? Un échange de 30 minutes suffit.
           </p>
           <a
-            href="https://calendly.com/ruben-speakli/30min"
+            href="https://meetings-eu1.hubspot.com/ruben-weinstein"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-white text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"

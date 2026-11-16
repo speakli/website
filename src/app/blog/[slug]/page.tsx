@@ -448,7 +448,7 @@ export default async function BlogArticlePage({
               Contactez-nous pour en apprendre davantage sur notre parcours et nos partenariats.
             </p>
             <a
-              href="https://calendly.com/ruben-speakli/30min"
+              href="https://meetings-eu1.hubspot.com/ruben-weinstein"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg text-base"

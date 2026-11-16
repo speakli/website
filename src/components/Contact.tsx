@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
+import { CONTACT_MODE_EVENT, type ContactMode } from "@/lib/contactMode";
 import { useLanguage } from "@/context/LanguageContext";
 
-const DEMO_URL = "https://calendly.com/ruben-speakli/30min";
+const DEMO_URL = "https://meetings-eu1.hubspot.com/ruben-weinstein";
 
 interface FormState {
   prenom: string;
@@ -16,11 +17,31 @@ interface FormState {
 
 const INITIAL: FormState = { prenom: "", nom: "", email: "", telephone: "", etablissement: "", message: "" };
 
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-1.5">
+      <span className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>{label} <span style={{ color: "#ef4444" }}>*</span></span>
+      {children}
+    </label>
+  );
+}
+
 export default function Contact() {
   const { t } = useLanguage();
   const c = t.contact;
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  // Deux façons d'échanger : choisir un créneau de démo, ou être rappelé
+  const [mode, setMode] = useState<ContactMode>("slot");
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const onMode = (e: Event) => setMode((e as CustomEvent<ContactMode>).detail);
+    window.addEventListener(CONTACT_MODE_EVENT, onMode);
+    const fromUrl = new URLSearchParams(window.location.search).get("contact");
+    if (fromUrl === "callback" || fromUrl === "slot") onMode(new CustomEvent(CONTACT_MODE_EVENT, { detail: fromUrl }));
+    return () => window.removeEventListener(CONTACT_MODE_EVENT, onMode);
+  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -33,7 +54,7 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, message: `${c.callback_message} · ${c.callback_times[time]}${form.message ? ` · ${form.message}` : ""}` }),
       });
       setStatus(res.ok ? "sent" : "error");
     } catch {
@@ -50,7 +71,6 @@ export default function Contact() {
     background: "#fff",
     border: "1px solid rgba(0,40,120,0.12)",
     borderRadius: "0.625rem",
-    outline: "none",
     transition: "border-color 0.15s ease",
   };
 
@@ -68,7 +88,7 @@ export default function Contact() {
             {/* Left — dark CTA panel */}
             <div
               className="p-6 sm:p-10 md:p-14 flex flex-col justify-between relative overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #0c1d50 0%, #142875 40%, #1a3388 60%, #0a1840 100%)" }}
+              style={{ background: "radial-gradient(70% 55% at 50% 35%, rgba(96, 170, 255, 0.45) 0%, rgba(96, 170, 255, 0) 100%), linear-gradient(160deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%)" }}
             >
               <div
                 className="absolute pointer-events-none"
@@ -89,27 +109,27 @@ export default function Contact() {
               <div className="relative z-10">
                 <p
                   className="text-xs font-bold uppercase tracking-widest mb-5 inline-flex items-center gap-2"
-                  style={{ color: "rgba(0,122,255,0.9)" }}
+                  style={{ color: "#BFDBFF" }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#BFDBFF" }} />
                   {c.tag}
                 </p>
                 <h2
                   className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-5 tracking-tight leading-tight"
                   style={{ color: "#ffffff" }}
                 >
-                  {c.title}<br />
-                  <span style={{ color: "#007AFF" }}>{c.title_accent}</span>
+                  {mode === "callback" ? c.cb_title : c.title}<br />
+                  <span style={{ color: "#BFDBFF" }}>{mode === "callback" ? c.cb_title_accent : c.title_accent}</span>
                 </h2>
                 <p className="mb-8 leading-relaxed font-medium text-sm" style={{ color: "rgba(255,255,255,0.60)" }}>
-                  {c.description}
+                  {mode === "callback" ? c.cb_description : c.description}
                 </p>
                 <ul className="space-y-3 mb-10">
-                  {c.bullets.map((item) => (
+                  {(mode === "callback" ? c.cb_bullets : c.bullets).map((item) => (
                     <li key={item} className="flex items-center gap-3 text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>
                       <div
                         className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: "rgba(0,122,255,0.25)", border: "1px solid rgba(0,122,255,0.4)" }}
+                        style={{ backgroundColor: "#ffffff", border: "1px solid rgba(255,255,255,0.6)" }}
                       >
                         <svg width="10" height="10" fill="none" stroke="#007AFF" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
@@ -120,186 +140,115 @@ export default function Contact() {
                   ))}
                 </ul>
               </div>
-              <a
-                href={DEMO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-10 inline-flex items-center justify-center gap-2.5 font-bold px-7 py-4 rounded-xl transition-all duration-200 text-base hover:-translate-y-0.5"
-                style={{
-                  background: "linear-gradient(135deg, #1A5CE0 0%, #007AFF 100%)",
-                  color: "#ffffff",
-                  boxShadow: "0 4px 20px rgba(0,122,255,0.45), 0 1px 0 rgba(255,255,255,0.12) inset",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 6px 28px rgba(0,122,255,0.60), 0 1px 0 rgba(255,255,255,0.12) inset"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,122,255,0.45), 0 1px 0 rgba(255,255,255,0.12) inset"; }}
-              >
-                {c.cta}
-                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
             </div>
 
-            {/* Right — contact form */}
-            <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center" style={{ backgroundColor: "#ffffff" }}>
-              {status === "sent" ? (
-                <div className="text-center py-8">
-                  <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ backgroundColor: "rgba(0,122,255,0.10)" }}
+            {/* Right — « Comment préférez-vous échanger ? » */}
+            <div className="p-6 sm:p-10 md:p-12 flex flex-col" style={{ backgroundColor: "#ffffff" }}>
+              <h3 className="font-bold text-lg mb-4" style={{ color: "var(--sp-900)" }}>{c.choose_title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6" role="radiogroup">
+                {([["slot", c.slot_title, c.slot_sub], ["callback", c.callback_title, c.callback_sub]] as const).map(([m, title, sub]) => {
+                  const on = mode === m;
+                  return (
+                    <button
+                      key={m}
+                      type="button"
+                      role="radio"
+                      aria-checked={on}
+                      onClick={() => setMode(m)}
+                      className="text-left rounded-2xl px-4 py-3.5 transition-all duration-200"
+                      style={{
+                        border: `1.5px solid ${on ? "var(--sp-500)" : "rgba(0,40,120,0.12)"}`,
+                        background: on ? "#EAF3FF" : "#fff",
+                        boxShadow: on ? "0 8px 24px -12px rgba(0,122,255,0.45)" : "none",
+                      }}
+                    >
+                      <span className="flex items-center gap-2 font-bold text-sm" style={{ color: "var(--sp-900)" }}>
+                        <span
+                          className="w-4 h-4 rounded-full flex-shrink-0"
+                          style={{ border: `2px solid ${on ? "var(--sp-500)" : "#C5CDD8"}`, boxShadow: on ? "inset 0 0 0 3px #fff" : "none", background: on ? "var(--sp-500)" : "#fff" }}
+                        />
+                        {title}
+                      </span>
+                      <span className="block text-xs mt-1 ml-6" style={{ color: "#7A8699" }}>{sub}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {mode === "slot" ? (
+                <div className="flex flex-col gap-5">
+                  <p className="text-sm leading-relaxed" style={{ color: "#4A5568" }}>{c.slot_text}</p>
+                  <a
+                    href={DEMO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 self-start"
+                    style={{ background: "linear-gradient(135deg, #1A5CE0 0%, #007AFF 100%)", color: "#ffffff", boxShadow: "0 4px 14px rgba(0,122,255,0.35)" }}
                   >
-                    <svg width="24" height="24" fill="none" stroke="#007AFF" strokeWidth="2.5" viewBox="0 0 24 24">
+                    {c.slot_cta}
+                    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
+                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              ) : status === "sent" ? (
+                <div className="text-center py-8">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "rgba(0,122,255,0.10)" }}>
+                    <svg width="24" height="24" fill="none" stroke="#007AFF" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
                       <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <p className="font-bold text-lg mb-1" style={{ color: "var(--sp-900)" }}>{c.success_title}</p>
-                  <p className="text-sm" style={{ color: "#9CA3AF" }}>{c.success_desc}</p>
+                  <p className="font-bold text-lg mb-1" style={{ color: "var(--sp-900)" }}>{c.callback_success}</p>
+                  <p className="text-sm" style={{ color: "#9CA3AF" }}>{c.callback_success_desc}</p>
                 </div>
               ) : (
-                <>
-                  <h3 className="font-bold text-lg mb-1" style={{ color: "var(--sp-900)" }}>
-                    {c.form_title}
-                  </h3>
-                  <p className="text-sm font-medium mb-7" style={{ color: "#9CA3AF" }}>
-                    {c.form_subtitle}
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Field label={c.first_name}><input type="text" name="prenom" required placeholder={c.first_name_placeholder} value={form.prenom} onChange={handleChange} style={inputBase} /></Field>
+                    <Field label={c.last_name}><input type="text" name="nom" required placeholder={c.last_name_placeholder} value={form.nom} onChange={handleChange} style={inputBase} /></Field>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Field label={c.phone}><input type="tel" name="telephone" required placeholder={c.phone_placeholder} value={form.telephone} onChange={handleChange} style={inputBase} /></Field>
+                    <Field label={c.email}><input type="email" name="email" required placeholder={c.email_placeholder} value={form.email} onChange={handleChange} style={inputBase} /></Field>
+                  </div>
+                  <Field label={c.etablissement}><input type="text" name="etablissement" required placeholder={c.etablissement_placeholder} value={form.etablissement} onChange={handleChange} style={inputBase} /></Field>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>{c.callback_time}</span>
+                    <div className="flex gap-2">
+                      {c.callback_times.map((label, i) => (
+                        <button
+                          key={label}
+                          type="button"
+                          onClick={() => setTime(i)}
+                          className="flex-1 text-xs font-semibold py-2 rounded-lg transition-colors"
+                          style={{ border: `1px solid ${time === i ? "var(--sp-500)" : "rgba(0,40,120,0.12)"}`, background: time === i ? "#EAF3FF" : "#fff", color: time === i ? "var(--sp-700)" : "#6B7280" }}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <label className="flex flex-col gap-1.5">
+                    <span className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>{c.callback_more}</span>
+                    <textarea name="message" rows={3} placeholder={c.callback_more_placeholder} value={form.message} onChange={handleChange} style={{ ...inputBase, resize: "none" }} />
+                  </label>
+
+                  {status === "error" && <p className="text-xs font-medium" style={{ color: "#ef4444" }}>{c.error_msg}</p>}
+
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="inline-flex items-center justify-center gap-2 font-bold text-sm px-6 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 mt-1"
+                    style={{ background: "linear-gradient(135deg, #1A5CE0 0%, #007AFF 100%)", color: "#ffffff", boxShadow: "0 4px 14px rgba(0,122,255,0.35)" }}
+                  >
+                    {status === "sending" ? c.sending : c.callback_submit}
+                  </button>
+                  <p className="text-xs" style={{ color: "#9CA3AF" }}>
+                    {c.privacy}{" "}
+                    <a href="/politique-de-confidentialite" className="underline hover:opacity-70" style={{ color: "var(--sp-500)" }}>{c.privacy_link}</a>.
                   </p>
-
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                          {c.first_name} <span style={{ color: "#ef4444" }}>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="prenom"
-                          required
-                          placeholder={c.first_name_placeholder}
-                          value={form.prenom}
-                          onChange={handleChange}
-                          style={inputBase}
-                          onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                          onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                          {c.last_name} <span style={{ color: "#ef4444" }}>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="nom"
-                          required
-                          placeholder={c.last_name_placeholder}
-                          value={form.nom}
-                          onChange={handleChange}
-                          style={inputBase}
-                          onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                          onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                        {c.email} <span style={{ color: "#ef4444" }}>*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder={c.email_placeholder}
-                        value={form.email}
-                        onChange={handleChange}
-                        style={inputBase}
-                        onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                        onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                        {c.phone} <span style={{ color: "#ef4444" }}>*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        name="telephone"
-                        required
-                        placeholder={c.phone_placeholder}
-                        value={form.telephone}
-                        onChange={handleChange}
-                        style={inputBase}
-                        onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                        onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                        {c.etablissement} <span style={{ color: "#ef4444" }}>*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="etablissement"
-                        required
-                        placeholder={c.etablissement_placeholder}
-                        value={form.etablissement}
-                        onChange={handleChange}
-                        style={inputBase}
-                        onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                        onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "var(--sp-700)" }}>
-                        {c.message_label} <span style={{ color: "#ef4444" }}>*</span>
-                      </label>
-                      <textarea
-                        name="message"
-                        required
-                        rows={4}
-                        placeholder={c.message_placeholder}
-                        value={form.message}
-                        onChange={handleChange}
-                        style={{ ...inputBase, resize: "none" }}
-                        onFocus={(e) => { e.target.style.borderColor = "var(--sp-500)"; }}
-                        onBlur={(e) => { e.target.style.borderColor = "rgba(0,40,120,0.12)"; }}
-                      />
-                    </div>
-
-                    {status === "error" && (
-                      <p className="text-xs font-medium" style={{ color: "#ef4444" }}>
-                        {c.error_msg}
-                      </p>
-                    )}
-
-                    <button
-                      type="submit"
-                      disabled={status === "sending"}
-                      className="inline-flex items-center justify-center gap-2 font-bold text-sm px-6 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60"
-                      style={{
-                        background: "linear-gradient(135deg, #1A5CE0 0%, #007AFF 100%)",
-                        color: "#ffffff",
-                        boxShadow: "0 4px 14px rgba(0,122,255,0.35)",
-                      }}
-                    >
-                      {status === "sending" ? c.sending : c.submit}
-                      {status !== "sending" && (
-                        <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                    </button>
-
-                    <p className="text-xs" style={{ color: "#9CA3AF" }}>
-                      {c.privacy}{" "}
-                      <a href="/politique-de-confidentialite" className="underline hover:opacity-70" style={{ color: "var(--sp-500)" }}>
-                        {c.privacy_link}
-                      </a>.
-                    </p>
-                  </form>
-                </>
+                </form>
               )}
             </div>
           </div>

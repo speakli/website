@@ -589,7 +589,7 @@ export default function PartnersContent() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://calendly.com/ruben-speakli/30min"
+              href="https://meetings-eu1.hubspot.com/ruben-weinstein"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-xl transition-all text-base shadow-md hover:-translate-y-0.5 hover:shadow-lg"

@@ -1,0 +1,65 @@
+/*
+ * Page d'accueil d'un seul tenant : un fond continu derrière toutes les sections (plus de
+ * blocs « pleine page » délimités), et des animations liées au scroll : les titres et cartes
+ * montent en fondu, les images et visuels s'agrandissent en entrant dans l'écran.
+ * Animations pilotées par le scroll (CSS scroll-driven) : sans support, tout reste affiché.
+ */
+.home-flow {
+  position: relative;
+  background:
+    radial-gradient(55% 28% at 0% 14%, rgba(150, 196, 255, 0.32) 0%, rgba(150, 196, 255, 0) 70%),
+    radial-gradient(45% 24% at 100% 30%, rgba(120, 180, 255, 0.26) 0%, rgba(120, 180, 255, 0) 70%),
+    radial-gradient(55% 26% at 0% 52%, rgba(150, 196, 255, 0.28) 0%, rgba(150, 196, 255, 0) 70%),
+    radial-gradient(45% 24% at 100% 72%, rgba(120, 180, 255, 0.24) 0%, rgba(120, 180, 255, 0) 70%),
+    radial-gradient(55% 22% at 0% 92%, rgba(150, 196, 255, 0.26) 0%, rgba(150, 196, 255, 0) 70%),
+    #F7FAFF;
+}
+/* Toutes les sections laissent voir le fond commun */
+.home-flow > section:not(.hero-video),
+.home-flow .story, .home-flow .products, .home-flow .trust, .home-flow .events { background: transparent !important; }
+/* Hauteur naturelle et respiration régulière au lieu d'écrans pleins */
+.home-flow .story, .home-flow .products, .home-flow .trust {
+  min-height: 0;
+  padding-top: clamp(64px, 9vh, 110px);
+  padding-bottom: clamp(64px, 9vh, 110px);
+}
+.home-flow .events { padding-top: clamp(64px, 9vh, 110px); padding-bottom: clamp(64px, 9vh, 110px); }
+/* Le header vidéo se fond dans la page */
+.home-flow > .hero-video { border-bottom-left-radius: clamp(28px, 4vw, 56px); border-bottom-right-radius: clamp(28px, 4vw, 56px); overflow: hidden; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Titres, textes et cartes : montée en fondu */
+    .home-flow :is(
+      .story__eyebrow, .story__title, .story__subtitle,
+      .trust__eyebrow, .trust__title, .trust__lede, .trust__cols > div, .istep,
+      .events__eyebrow, .events__title, .events__lede, .event,
+      .products h2, .products-list, .prod-switch,
+      .impact-card, .impact-sim, .impact-pathos, .voice-main > div, .voice-marquee,
+      #faq h2, #faq .rounded-3xl, #contact .rounded-3xl, #partenaires p
+    ) {
+      animation: flowUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+    /* Images et visuels : zoom à l'entrée dans l'écran */
+    .home-flow :is(.products-photo, .products-stage, .ba__img, .secu-globe, .voice-main__video) {
+      animation: flowZoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    /* Photos dans un cadre arrondi : l'image se resserre dans son cadre */
+    .home-flow .impact-card > img {
+      animation: flowZoomIn linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
+@keyframes flowUp { from { opacity: 0; translate: 0 44px; } to { opacity: 1; translate: 0 0; } }
+@keyframes flowZoom { from { scale: 0.86; opacity: 0.4; } to { scale: 1; opacity: 1; } }
+@keyframes flowZoomIn { from { scale: 1.22; } to { scale: 1; } }
+
+/* « Ils nous soutiennent » juste sous le formulaire : on resserre l'espace entre les deux */
+.home-flow #contact { padding-bottom: clamp(24px, 4vh, 40px); }
+.home-flow #partenaires { padding-top: 8px; }

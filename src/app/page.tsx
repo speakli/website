@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
+import "./home-flow.css";
 import { translations } from "@/lib/translations";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import LogoBar from "@/components/LogoBar";
-import Pillars from "@/components/Pillars";
-import Testimonials from "@/components/Testimonials";
-import Stats from "@/components/Stats";
-import Features from "@/components/Features";
+import Products from "@/components/Products";
+import { StakesSection, BeforeAfterSection, ImpactSection, VoicesSection } from "@/components/StorySections";
+import { SecuritySection, InteropSection } from "@/components/TrustSections";
 import PartnersStrip from "@/components/PartnersStrip";
-import Onboarding from "@/components/Onboarding";
+import EventsSection from "@/components/EventsSection";
 import FAQ from "@/components/FAQ";
-import ROITeaser from "@/components/ROITeaser";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import CareSection from "@/components/CareSection";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.speakli.fr" },
@@ -59,25 +56,19 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Navbar />
-      <main>
+      <main className="home-flow">
         <Hero />
-        <LogoBar />
-        <Pillars />
-        <div style={{ background: "linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%)" }}>
-          <Testimonials />
-          <Stats />
-          <CareSection />
-        </div>
-        <div style={{ background: "linear-gradient(135deg, #0c1d50 0%, #142875 40%, #1a3388 60%, #0a1840 100%)" }}>
-          <Features />
-        </div>
-        <div style={{ background: "linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%)" }}>
-          <ROITeaser />
-          <Onboarding />
-          <PartnersStrip />
-        </div>
+        <StakesSection />
+        <Products />
+        <BeforeAfterSection />
+        <VoicesSection />
+        <ImpactSection />
+        <SecuritySection />
+        <InteropSection />
+        <EventsSection />
         <FAQ />
         <Contact />
+        <PartnersStrip />
       </main>
       <Footer />
     </>

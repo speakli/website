@@ -7,10 +7,6 @@ import elephantAnim from "@/data/elephant-happy.json";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 /* ─── Constants ──────────────────────────────────────────── */
-const TAUX_GAIN = 0.4;
-const JOURS_MOIS = 21.67;
-const TAUX_AS = 22.27;
-const TAUX_IDE = 29.11;
 const VALEUR_POINT = 13.6;
 
 const SUPPORTS = ["Tablette", "Smartphone", "Mixte"] as const;
@@ -138,7 +134,7 @@ function EmailPopup({
   roi: { val_an: number; gain_dotation: number; roi_total: number };
   formData: {
     lits: number; nbAS: number; nbIDE: number; logiciel: string;
-    support: string; tempsTrace: number; pmpActuel: number; pmpCible: number;
+    support: string; pmpActuel: number; pmpCible: number;
   };
   onClose: () => void;
 }) {
@@ -332,7 +328,6 @@ export default function ROICalculator() {
   const [nbIDE, setNbIDE] = useState(7);
   const [logiciel, setLogiciel] = useState("");
   const [support, setSupport] = useState<string>("Tablette");
-  const [tempsTrace, setTempsTrace] = useState(1.5);
   const [pmpActuel, setPmpActuel] = useState(180);
   const [pmpCible, setPmpCible] = useState(200);
   const [showPopup, setShowPopup] = useState(false);
@@ -342,11 +337,9 @@ export default function ROICalculator() {
   }, [pmpActuel]);
 
   /* ── Calculations ── */
-  const hAS = nbAS * tempsTrace * TAUX_GAIN * JOURS_MOIS;
-  const hIDE = nbIDE * tempsTrace * TAUX_GAIN * JOURS_MOIS;
-  const val_an = (hAS * TAUX_AS + hIDE * TAUX_IDE) * 12;
   const gain_dotation = Math.max(0, pmpCible - pmpActuel) * 2.59 * lits * VALEUR_POINT;
-  const roi_total = val_an + gain_dotation;
+  const val_an = 0; // le calculateur ne porte plus que sur la dotation PATHOS
+  const roi_total = gain_dotation;
 
   const logicielFinal = logiciel.trim() || "Non précisé";
 
@@ -355,10 +348,9 @@ export default function ROICalculator() {
     nbAS > 0 &&
     nbIDE > 0 &&
     logiciel.trim() !== "" &&
-    tempsTrace > 0 &&
     pmpActuel > 0;
 
-  const formData = { lits, nbAS, nbIDE, logiciel: logicielFinal, support, tempsTrace, pmpActuel, pmpCible };
+  const formData = { lits, nbAS, nbIDE, logiciel: logicielFinal, support, pmpActuel, pmpCible };
   const roiData = { val_an, gain_dotation, roi_total };
 
   return (
@@ -373,21 +365,17 @@ export default function ROICalculator() {
           {/* ── Header ── */}
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>
-              Calculateur ROI logiciel EHPAD
+              Calculateur PATHOS
             </p>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--sp-900)" }}>
-              Estimez le retour sur investissement{" "}
-              <span style={{ color: "var(--sp-500)" }}>de Speakli pour votre EHPAD</span>
+              Estimez l&apos;impact de Speakli{" "}
+              <span style={{ color: "var(--sp-500)" }}>sur votre dotation soins</span>
             </h1>
             <p className="text-lg font-medium max-w-xl mx-auto" style={{ color: "#4A5568" }}>
-              Renseignez les caractéristiques de votre établissement pour estimer le temps soignant libéré, la réduction de la charge administrative et l&apos;impact sur votre dotation GMPS.
+              Renseignez les caractéristiques de votre établissement et votre PMP pour estimer le gain de dotation lié à une meilleure traçabilité des soins.
             </p>
             <p className="text-sm font-medium max-w-xl mx-auto mt-3" style={{ color: "#6B7280" }}>
-              Ces gains reposent sur la réduction du temps de saisie des{" "}
-              <Link href="/logiciel-transmission-ehpad" className="underline hover:opacity-75" style={{ color: "var(--sp-500)" }}>
-                transmissions en EHPAD
-              </Link>{" "}
-              et sur l&apos;amélioration de la{" "}
+              Ce gain repose sur l&apos;amélioration de la{" "}
               <Link href="/blog/pathos-gmps-dotation-ehpad" className="underline hover:opacity-75" style={{ color: "var(--sp-500)" }}>
                 dotation GMPS via la cotation PATHOS
               </Link>
@@ -419,14 +407,6 @@ export default function ROICalculator() {
                 placeholder="Nom de votre logiciel DUI…"
               />
               <SelectInput label="Support utilisé" options={SUPPORTS} value={support} onChange={setSupport} />
-              <NumberInput
-                label="Temps de traçabilité / soignant (h/jour)"
-                value={tempsTrace}
-                onChange={setTempsTrace}
-                min={0.1}
-                step={0.25}
-                hint="Estimez le temps moyen passé sur la documentation"
-              />
             </div>
 
             <div className="mt-7 mb-5">
@@ -462,7 +442,7 @@ export default function ROICalculator() {
                 className="inline-flex items-center gap-3 rounded-2xl px-10 py-4 text-base font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
                 style={{ background: canSubmit ? "var(--sp-500)" : "#9ca3af" }}
               >
-                Calculer mon ROI
+                Calculer mon gain PATHOS
                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -486,7 +466,7 @@ export default function ROICalculator() {
             Réservez une démo de 30 minutes.
           </p>
           <a
-            href="https://calendly.com/ruben-speakli/30min"
+            href="https://meetings-eu1.hubspot.com/ruben-weinstein"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg text-base"

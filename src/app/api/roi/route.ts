@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const {
       email, civility, firstName, lastName,
       lits, nbAS, nbIDE, logiciel, support,
-      tempsTrace, pmpActuel, pmpCible,
+      pmpActuel, pmpCible,
       roi,
     } = body;
 
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       nb_ide: nbIDE,
       logiciel: logiciel || null,
       support: support || null,
-      temps_trace: tempsTrace,
+      temps_trace: null,
       pmp_actuel: pmpActuel,
       pmp_cible: pmpCible,
       val_an: roi.val_an,
@@ -63,14 +63,14 @@ export async function POST(req: NextRequest) {
         <!-- Header -->
         <tr><td style="background:#0b1c38;padding:28px 40px;">
           <span style="font-size:22px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">Speak<span style="color:#60aaff;">li</span></span>
-          <p style="margin:6px 0 0;font-size:11px;color:rgba(255,255,255,0.55);">Votre rapport ROI confidentiel</p>
+          <p style="margin:6px 0 0;font-size:11px;color:rgba(255,255,255,0.55);">Votre simulation PATHOS confidentielle</p>
         </td></tr>
 
         <!-- Greeting -->
         <tr><td style="padding:36px 40px 20px;">
           <p style="font-size:16px;font-weight:700;color:#1a2e49;margin:0 0 8px;">${greetingLine}</p>
           <p style="font-size:14px;color:#4a5568;line-height:1.7;margin:0;">
-            Suite à votre simulation sur <strong>speakli.fr</strong>, voici votre rapport personnalisé d'estimation de retour sur investissement.
+            Suite à votre simulation sur <strong>speakli.fr</strong>, voici votre estimation personnalisée du gain de dotation soins (PATHOS).
             Vous trouverez en pièce jointe votre rapport PDF complet.
           </p>
         </td></tr>
@@ -80,19 +80,9 @@ export async function POST(req: NextRequest) {
           <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#007aff;margin:0 0 16px;">Résultats estimés</p>
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="32%" style="background:#eaf3ff;border-radius:12px;padding:18px;text-align:center;">
-                <p style="font-size:22px;font-weight:800;color:#007aff;margin:0 0 4px;">${fmt(roi.val_an)}</p>
-                <p style="font-size:11px;color:#718096;margin:0;">Valeur du temps libéré / an</p>
-              </td>
-              <td width="4%"></td>
-              <td width="32%" style="background:#eaf3ff;border-radius:12px;padding:18px;text-align:center;">
-                <p style="font-size:22px;font-weight:800;color:#007aff;margin:0 0 4px;">${fmt(roi.gain_dotation)}</p>
-                <p style="font-size:11px;color:#718096;margin:0;">Gain de dotation GMPS / an</p>
-              </td>
-              <td width="4%"></td>
-              <td width="32%" style="background:#007aff;border-radius:12px;padding:18px;text-align:center;">
-                <p style="font-size:22px;font-weight:800;color:#ffffff;margin:0 0 4px;">${fmt(roi.roi_total)}</p>
-                <p style="font-size:11px;color:rgba(255,255,255,0.8);margin:0;">ROI TOTAL estimé / an</p>
+              <td style="background:#007aff;border-radius:12px;padding:18px;text-align:center;">
+                <p style="font-size:26px;font-weight:800;color:#ffffff;margin:0 0 4px;">${fmt(roi.gain_dotation)}</p>
+                <p style="font-size:12px;color:rgba(255,255,255,0.8);margin:0;">Gain de dotation soins estimé / an</p>
               </td>
             </tr>
           </table>
@@ -107,7 +97,6 @@ export async function POST(req: NextRequest) {
               ["Aides-soignants", `${nbAS} ETP`],
               ["Infirmiers (IDE)", `${nbIDE} ETP`],
               ["Logiciel DUI", logiciel],
-              ["Temps de traçage", `${tempsTrace} h / soignant / jour`],
               ["PMP actuel", `${pmpActuel} pts`],
               ["PMP cible avec Speakli", `${pmpCible} pts`],
             ].map(([label, value]) => `
@@ -126,7 +115,7 @@ export async function POST(req: NextRequest) {
               <p style="font-size:13px;color:rgba(255,255,255,0.65);margin:0 0 20px;line-height:1.6;">
                 Discutons de votre établissement en détail.<br>Réservez une démo gratuite de 30 minutes.
               </p>
-              <a href="https://calendly.com/ruben-speakli/30min" style="display:inline-block;background:#007aff;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;text-decoration:none;">
+              <a href="https://meetings-eu1.hubspot.com/ruben-weinstein" style="display:inline-block;background:#007aff;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;text-decoration:none;">
                 Réserver ma démo gratuite →
               </a>
             </td></tr>
@@ -155,11 +144,11 @@ export async function POST(req: NextRequest) {
         civility: civility || "M.",
         firstName: firstName || "",
         lastName: lastName || "",
-        formData: { lits, nbAS, nbIDE, logiciel, support, tempsTrace, pmpActuel, pmpCible },
+        formData: { lits, nbAS, nbIDE, logiciel, support, pmpActuel, pmpCible },
         roi,
       });
       attachments = [{
-        filename: "simulation-roi-speakli.pdf",
+        filename: "simulation-pathos-speakli.pdf",
         content: Buffer.from(buffer).toString("base64"),
       }];
     } catch (pdfErr) {
@@ -169,7 +158,7 @@ export async function POST(req: NextRequest) {
     const visitorPayload: Record<string, unknown> = {
       from: "resultats@speakli.fr",
       to: email,
-      subject: "Votre rapport ROI Speakli",
+      subject: "Votre simulation PATHOS Speakli",
       html: htmlBody,
     };
     if (attachments.length > 0) {
@@ -188,12 +177,12 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           from: "simulateur@speakli.fr",
           to: "contact@speakli.fr",
-          subject: `Nouveau calcul ROI — ${salutation ?? email}`,
+          subject: `Nouveau calcul PATHOS — ${salutation ?? email}`,
           text: [
             `Contact : ${salutation ?? "inconnu"} <${email}>`,
             `Lits: ${lits} | AS: ${nbAS} | IDE: ${nbIDE} | DUI: ${logiciel}`,
             `PMP actuel: ${pmpActuel} → cible: ${pmpCible}`,
-            `ROI total estimé : ${fmt(roi.roi_total)} / an`,
+            `Gain de dotation estimé : ${fmt(roi.gain_dotation)} / an`,
           ].join("\n"),
         }),
       }),

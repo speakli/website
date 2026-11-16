@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const DEMO_URL = "https://calendly.com/ruben-speakli/30min";
+const DEMO_URL = "https://meetings-eu1.hubspot.com/ruben-weinstein";
 
 const DAR_EXAMPLE = [
   { label: "DONNÉES", text: "Résidente retrouvée au sol dans sa chambre, consciente, se plaignant de douleurs au poignet droit à 8/10." },

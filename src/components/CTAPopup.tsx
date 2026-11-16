@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const DEMO_URL = 'https://calendly.com/ruben-speakli/30min';
+const DEMO_URL = 'https://meetings-eu1.hubspot.com/ruben-weinstein';
 
 export default function CTAPopup() {
   const [visible, setVisible] = useState(false);

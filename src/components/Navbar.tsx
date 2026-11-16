@@ -1,222 +1,114 @@
 "use client";
 
-import { useState, useRef, useLayoutEffect, useCallback, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { motion, AnimatePresence } from "motion/react";
-import "./CardNav.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import "./Navbar.css";
 import { useLanguage } from "@/context/LanguageContext";
-import { LOCALES, type Locale } from "@/lib/translations";
+import { LOCALES } from "@/lib/translations";
+import { PRODUCT_EVENT } from "@/lib/productSwitch";
+import { openContact } from "@/lib/contactMode";
 
-/* ─────────────────────────────────────────────────────────
-   Constants
-───────────────────────────────────────────────────────── */
-const DEMO_URL = "https://calendly.com/ruben-speakli/30min";
-const COLLAPSED_H = 60;
-const EXPANDED_H = 290;
-const LEAVE_DEBOUNCE = 500; // ms — panel stays open long enough to move comfortably
+/*
+ * Barre de navigation au format de la maquette initiale (refonte 2026) :
+ * barre pleine largeur translucide, logo à gauche, menus déroulants avec description,
+ * « Être rappelé » et « Réserver une démo » à droite. Menu repliable sous 1080 px.
+ */
 
-/* ─────────────────────────────────────────────────────────
-   Data
-───────────────────────────────────────────────────────── */
-interface NavLink {
-  label: string;
-  sectionId?: string; // if provided → smooth-scroll; otherwise href is used
-  href: string;
-  tabId?: string; // if provided → dispatch pillar-tab event after scroll
-}
+const DEMO_URL = "https://meetings-eu1.hubspot.com/ruben-weinstein";
 
-interface NavCard {
-  title: string;
-  bgColor: string;
-  image: string;
-  links: NavLink[];
-}
+type Target = { section?: string; href?: string };
+type Item = { title: string; desc?: string; target: Target; image?: string; visual?: "secu" | "interop" };
 
-function buildNavCards(nav: { who: string; solutions: string; experience: string; who_links: string[]; solutions_links: string[]; experience_links: string[] }): NavCard[] {
-  return [
-    {
-      title: nav.solutions,
-      bgColor: "#EEF3FF",
-      image: "/photos/hero-nurse.png",
-      links: [
-        { label: nav.solutions_links[0], sectionId: "solutions", href: "#solutions", tabId: "voice" },
-        { label: nav.solutions_links[1], sectionId: "solutions", href: "#solutions", tabId: "dashboard" },
-        { label: nav.solutions_links[2], sectionId: "solutions", href: "#solutions", tabId: "security" },
-        { label: nav.solutions_links[3], sectionId: "solutions", href: "#solutions", tabId: "interop" },
-      ],
-    },
-    {
-      title: nav.who,
-      bgColor: "#EEF3FF",
-      image: "/photos/team-nav.webp",
-      links: [
-        { label: nav.who_links[0], href: "/qui-sommes-nous/notre-histoire" },
-        { label: nav.who_links[1], href: "/qui-sommes-nous/nous-rejoindre" },
-        { label: nav.who_links[2], href: "/qui-sommes-nous/partenaires-et-soutiens" },
-      ],
-    },
-    {
-      title: nav.experience,
-      bgColor: "#EEF3FF",
-      image: "/photos/care-moment.png",
-      links: [
-        { label: nav.experience_links[0], sectionId: "temoignages", href: "#temoignages" },
-        { label: nav.experience_links[1], href: "/ressources" },
-        { label: nav.experience_links[2], href: "/roi" },
-      ],
-    },
-  ];
-}
-
-/* ─────────────────────────────────────────────────────────
-   Sub-components
-───────────────────────────────────────────────────────── */
-
-/** Arrow-up-right icon (14 × 14) */
-function ArrowUpRight({ className }: { className?: string }) {
+function Chevron() {
   return (
-    <svg
-      width="11"
-      height="11"
-      viewBox="0 0 11 11"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M2.5 8.5L8.5 2.5M8.5 2.5H3.5M8.5 2.5V7.5"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-/** Chevron-down icon (12 × 12) */
-function ChevronDown() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-      className="cardnav-pill-chevron"
-    >
-      <path
-        d="M2.5 4.5L6 8L9.5 4.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden className="snav-chev">
+      <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 function LanguagePicker() {
   const { locale, setLocale } = useLanguage();
-  const next = LOCALES.find((l) => l.code !== locale) ?? LOCALES[0];
-
+  const next = LOCALES.find(l => l.code !== locale) ?? LOCALES[0];
   return (
-    <button
-      type="button"
-      aria-label="Changer de langue"
-      onClick={() => setLocale(next.code)}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.3rem",
-        padding: "0.3rem 0.6rem",
-        borderRadius: "0.5rem",
-        border: "1px solid rgba(0,40,120,0.12)",
-        background: "transparent",
-        cursor: "pointer",
-        color: "#4b5563",
-        fontSize: "0.75rem",
-        fontWeight: 600,
-        flexShrink: 0,
-        transition: "background 0.15s ease",
-        lineHeight: 1,
-      }}
-    >
-      <span style={{ fontSize: "0.9rem" }}>{locale === "fr" ? "🇫🇷" : "🇬🇧"}</span>
-      <span>{locale === "fr" ? "FR" : "EN"}</span>
+    <button type="button" className="snav-lang" aria-label="Changer de langue" onClick={() => setLocale(next.code)}>
+      <span aria-hidden>{locale === "fr" ? "🇫🇷" : "🇬🇧"}</span>
+      {locale === "fr" ? "FR" : "EN"}
     </button>
   );
 }
 
-/** Hamburger / close icon */
-function HamburgerIcon({ open }: { open: boolean }) {
-  return open ? (
-    <svg
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <path d="M15 5L5 15M5 5l10 10" strokeLinecap="round" />
-    </svg>
-  ) : (
-    <svg
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <path d="M3 6h14M3 10h14M3 14h14" strokeLinecap="round" />
-    </svg>
+// Visuel « Sécurité et conformité » : la planète centrée sur la France et les trois garanties
+function SecuVisual({ on }: { on: boolean }) {
+  const { t } = useLanguage();
+  return (
+    <div className={`snav-secu${on ? " is-on" : ""}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/securite/globe-europe.svg" alt="" />
+      <ul>{t.nav.secu_badges.map(b => <li key={b}>{b}</li>)}</ul>
+    </div>
   );
 }
 
-/* ─────────────────────────────────────────────────────────
-   Single dropdown card
-───────────────────────────────────────────────────────── */
-interface CardProps {
-  card: NavCard;
-  cardRef: (el: HTMLDivElement | null) => void;
-  onLinkClick: (link: NavLink) => void;
-  onHover?: () => void;
-  onLeave?: () => void;
-  isMobile?: boolean;
+// Visuel « Interopérabilité » : Speakli échange avec les logiciels de soins
+function InteropVisual({ on }: { on: boolean }) {
+  const { t } = useLanguage();
+  return (
+    <div className={`snav-interop${on ? " is-on" : ""}`}>
+      <span className="snav-interop__card snav-interop__card--speakli">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo-speakli-full.png" alt="" />
+      </span>
+      <span className="snav-interop__link" aria-hidden>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 12l4 4-4 4M21 16H7" /></svg>
+      </span>
+      <span className="snav-interop__card">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logos/netsoins-teranga.png" alt="" />
+      </span>
+      <span className="snav-interop__card">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logos/netvie-teranga.png" alt="" />
+      </span>
+      <small>{t.nav.interop_caption}</small>
+    </div>
+  );
 }
 
-function NavCard({ card, cardRef, onLinkClick, onHover, onLeave, isMobile = false }: CardProps) {
+// Menu déroulant : photo à gauche (celle de l'élément survolé), liste à droite,
+// l'élément actif est mis en avant par le dégradé bleu Speakli
+function Dropdown({ label, items, go }: { label: string; items: Item[]; go: (t: Target) => void }) {
+  const [active, setActive] = useState(0);
   return (
-    <div
-      ref={cardRef}
-      className={`cardnav-card${isMobile ? " cardnav-mobile-card" : ""}`}
-      style={{ background: "linear-gradient(135deg, #ddeeff 0%, #eef5ff 50%, #f0f6ff 100%)", border: "1px solid rgba(0,100,255,0.10)" }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      {/* Inner content */}
-      <div className="cardnav-card-inner">
-        <button
-            type="button"
-            className="cardnav-card-title"
-            onClick={() => onLinkClick(card.links[0])}
-          >
-            {card.title}
-          </button>
-
-        <div className="cardnav-card-links">
-          {card.links.map((link) => (
+    <div className="snav-dd" onMouseLeave={() => setActive(0)}>
+      <button type="button" aria-haspopup="true" onClick={() => go(items[0].target)}>
+        {label} <Chevron />
+      </button>
+      <div className="snav-dd__panel">
+        <div className="snav-dd__media" aria-hidden>
+          {items.map((it, i) => it.visual === "secu" ? (
+            <SecuVisual key={it.title} on={i === active} />
+          ) : it.visual === "interop" ? (
+            <InteropVisual key={it.title} on={i === active} />
+          ) : it.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={it.title} src={it.image} alt="" className={i === active ? "is-on" : ""} loading="lazy" />
+          ))}
+        </div>
+        <div className="snav-dd__list">
+          {items.map((it, i) => (
             <button
-              key={link.label}
-              className="cardnav-card-link"
-              onClick={() => onLinkClick(link)}
+              key={it.title}
               type="button"
+              className={i === active ? "is-on" : ""}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              onClick={() => go(it.target)}
             >
-              {link.label}
+              <strong>{it.title}</strong>
+              {it.desc && <span>{it.desc}</span>}
             </button>
           ))}
         </div>
@@ -225,312 +117,86 @@ function NavCard({ card, cardRef, onLinkClick, onHover, onLeave, isMobile = fals
   );
 }
 
-/* ─────────────────────────────────────────────────────────
-   Main Navbar component
-───────────────────────────────────────────────────────── */
 export default function Navbar() {
   const router = useRouter();
-  const { t, locale } = useLanguage();
-  const NAV_CARDS = buildNavCards(t.nav);
-  const SECTION_LABELS = [t.nav.solutions, t.nav.who, t.nav.experience];
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
+  const n = t.nav;
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  // Refs for GSAP
-  const shellRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // Cancel token: incremented on every mouse-enter so stale collapse .then() callbacks abort
-  const collapseIdRef = useRef(0);
-
-  /* ── Build / rebuild the GSAP timeline ── */
-  const buildTimeline = useCallback(() => {
-    // Kill previous timeline if it exists
-    if (tlRef.current) {
-      tlRef.current.kill();
-    }
-
-    const shell = shellRef.current;
-    const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
-
-    if (!shell || cards.length === 0) return;
-
-    // Only run the height animation on desktop
-    const isMobile = window.innerWidth <= 768;
-
-    const tl = gsap.timeline({ paused: true });
-
-    if (!isMobile) {
-      // Phase 1: expand the shell height
-      tl.to(shell, {
-        height: EXPANDED_H,
-        duration: 0.32,
-        ease: "power2.out",
-      });
-
-      // Phase 2: stagger cards in
-      tl.to(
-        cards,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.28,
-          ease: "power2.out",
-          stagger: 0.06,
-        },
-        "-=0.1" // overlap slightly with height animation
-      );
-    }
-
-    tlRef.current = tl;
-  }, []);
-
-  /* ── Build timeline after mount + on resize ── */
-  useLayoutEffect(() => {
-    buildTimeline();
-
-    const onResize = () => buildTimeline();
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("resize", onResize);
-      if (tlRef.current) tlRef.current.kill();
-    };
-  }, [buildTimeline]);
-
-  /* ── Reset card positions on mount and on locale change ── */
-  useLayoutEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) return;
-
-    // After locale change, card DOM nodes are remounted, rebuild timeline and reset positions
-    buildTimeline();
-
-    // Small defer so React has committed the new DOM nodes to cardsRef
-    const id = setTimeout(() => {
-      const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
-      cards.forEach((card) => {
-        gsap.set(card, { y: 40, opacity: 0 });
-      });
-      buildTimeline();
-      // Collapse shell back to correct height after language switch
-      if (shellRef.current) gsap.set(shellRef.current, { height: COLLAPSED_H });
-    }, 0);
-    return () => clearTimeout(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale]);
-
-  /* ── Highlight active card, dim others ── */
   useEffect(() => {
-    const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
-    if (cards.length === 0) return;
-
-    cards.forEach((card, i) => {
-      const targetOpacity = activeIndex === null ? 1 : i === activeIndex ? 1 : 0.35;
-      gsap.to(card, { opacity: targetOpacity, duration: 0.18, overwrite: "auto" });
-    });
-  }, [activeIndex, isExpanded]);
-
-  /* ── Collapse helper ── */
-  const collapse = useCallback(() => {
-    const tl = tlRef.current;
-    const shell = shellRef.current;
-    if (!tl || !shell) return;
-
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) return;
-
-    // Snapshot the current token — if mouse re-enters before .then() fires, token will differ
-    const myId = ++collapseIdRef.current;
-
-    tl.reverse().then(() => {
-      if (collapseIdRef.current !== myId) return; // mouse re-entered: abort collapse
-      setIsExpanded(false);
-      setActiveIndex(null);
-      gsap.set(shell, { height: COLLAPSED_H });
-    });
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Mouse enter (desktop) ── */
-  const handleMouseEnter = useCallback(() => {
-    if (window.innerWidth <= 768) return;
+  const products: Item[] = [
+    { ...n.products_links[0], target: { section: "assistant-vocal" }, image: "/products/assistant-soignant.jpg" },
+    { ...n.products_links[1], target: { section: "tableau-de-pilotage" }, image: "/products/pilotage-idec.jpg" },
+    { ...n.products_links[2], target: { section: "securite" }, visual: "secu" },
+    { ...n.products_links[3], target: { section: "interoperabilite" }, visual: "interop" },
+  ];
+  const experience: Item[] = [
+    { ...n.experience_links[0], target: { section: "temoignages" }, image: "/photos/nav/temoignages-pervenches.jpg" },
+    { ...n.experience_links[1], target: { href: "/ressources" }, image: "/photos/nav/ressources-equipe.jpg" },
+    { ...n.experience_links[2], target: { section: "evenements" }, image: "/photos/nav/evenements-silvereco.jpg" },
+    { ...n.experience_links[3], target: { href: "/roi" }, image: "/photos/etablissements/sainte-famille-solila.png" },
+  ];
 
-    // Invalidate any in-flight collapse .then() callback
-    collapseIdRef.current++;
-
-    // Cancel any pending leave timer
-    if (leaveTimerRef.current !== null) {
-      clearTimeout(leaveTimerRef.current);
-      leaveTimerRef.current = null;
-    }
-
-    setIsExpanded(true);
-    tlRef.current?.play();
-  }, []);
-
-  /* ── Mouse leave (desktop), debounced ── */
-  const handleMouseLeave = useCallback(() => {
-    if (window.innerWidth <= 768) return;
-
-    leaveTimerRef.current = setTimeout(() => {
-      collapse();
-    }, LEAVE_DEBOUNCE);
-  }, [collapse]);
-
-  /* ── Link click handler ── */
-  const handleLinkClick = useCallback(
-    (link: NavLink) => {
-      if (link.sectionId) {
-        const el = document.getElementById(link.sectionId);
-        if (el) {
-          // Same page — smooth scroll
-          el.scrollIntoView({ behavior: "smooth" });
-          if (link.tabId) {
-            window.dispatchEvent(new CustomEvent("speakli:pillar-tab", { detail: link.tabId }));
-          }
-        } else {
-          // Different page — navigate home with hash; store pending tab if any
-          if (link.tabId) {
-            sessionStorage.setItem("speakli:pending-tab", link.tabId);
-          }
-          window.location.href = `/${link.href}`;
-        }
-      } else if (link.href && link.href !== "#") {
-        if (link.href.startsWith("http")) {
-          window.open(link.href, "_blank", "noopener,noreferrer");
-        } else {
-          router.push(link.href);
-        }
-      }
-      collapse();
-      setMobileOpen(false);
-    },
-    [collapse]
-  );
+  // Section de la page d'accueil : défilement si on y est, sinon navigation vers /#section
+  const go = (target: Target) => {
+    setOpen(false);
+    if (target.href) { router.push(target.href); return; }
+    if (!target.section) return;
+    // L'assistant vocal et le tableau de pilotage partagent la même section : on sélectionne le bon
+    const product = target.section === "assistant-vocal" ? "assistant" : target.section === "tableau-de-pilotage" ? "dashboard" : null;
+    if (product) window.dispatchEvent(new CustomEvent(PRODUCT_EVENT, { detail: product }));
+    const el = document.getElementById(target.section);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    else router.push(`/#${target.section}`);
+  };
 
   return (
-    <div
-      className="cardnav-wrapper"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <nav
-        ref={shellRef}
-        className="cardnav-shell"
-        aria-expanded={isExpanded}
-        aria-label="Navigation principale"
-      >
-        {/* ── Top bar ── */}
-        <div className="cardnav-topbar">
-          {/* Logo */}
-          <a href="/" className="cardnav-logo" aria-label="Speakli, accueil">
-            <Image
-              src="/logo-speakli-navbar.svg"
-              alt="Speakli"
-              width={88}
-              height={25}
-              className="object-contain"
-            />
-          </a>
+    <header className={`snav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
+      <div className="snav__in">
+        <Link className="snav__brand" href="/" aria-label="Speakli, accueil">
+          <Image src="/logo-speakli-navbar.png" alt="Speakli" width={152} height={30} priority />
+        </Link>
 
-          {/* Center pill labels (desktop only) */}
-          <div className="cardnav-center" aria-hidden="true">
-            {SECTION_LABELS.map((label, idx) => {
-              const defaultLinks: NavLink[] = [
-                { label, sectionId: "solutions", href: "#solutions", tabId: "voice" },
-                { label, href: "/qui-sommes-nous/notre-histoire" },
-                { label, sectionId: "temoignages", href: "#temoignages" },
-              ];
-              return (
-                <button
-                  key={label}
-                  className="cardnav-pill-btn"
-                  type="button"
-                  tabIndex={-1}
-                  onMouseEnter={() => setActiveIndex(idx)}
-                  onMouseLeave={() => setActiveIndex(null)}
-                  onClick={() => handleLinkClick(defaultLinks[idx])}
-                  style={{
-                    background: isExpanded && idx === activeIndex ? "linear-gradient(135deg, #ddeeff 0%, #eef5ff 50%, #f0f6ff 100%)" : "transparent",
-                  }}
-                >
-                  {label}
-                  <ChevronDown />
-                </button>
-              );
-            })}
-          </div>
+        <nav className="snav__links" aria-label="Navigation principale">
+          <Dropdown label={n.products} items={products} go={go} />
+          <Dropdown label={n.experience} items={experience} go={go} />
+        </nav>
 
-          {/* Right side */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* Language picker */}
-            <LanguagePicker />
-
-            {/* CTA, visible on desktop always, on mobile too */}
-            <a
-              href={DEMO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cardnav-cta"
-            >
-              {t.nav.demo}
-            </a>
-
-            {/* Hamburger, mobile only */}
-            <button
-              className="cardnav-hamburger"
-              type="button"
-              onClick={() => setMobileOpen((prev) => !prev)}
-              aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={mobileOpen}
-            >
-              <HamburgerIcon open={mobileOpen} />
-            </button>
-          </div>
+        <div className="snav__cta">
+          <LanguagePicker />
+          <button type="button" className="snav-btn snav-btn--ghost" onClick={() => { setOpen(false); openContact("callback"); }}>{n.callback}</button>
+          <a className="snav-btn" href={DEMO_URL} target="_blank" rel="noopener noreferrer">{n.demo}</a>
+          <button
+            type="button"
+            className="snav__burger"
+            aria-label={open ? n.menu_close : n.menu_open}
+            aria-expanded={open}
+            onClick={() => setOpen(o => !o)}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+              {open ? <path d="M15 5L5 15M5 5l10 10" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
+            </svg>
+          </button>
         </div>
+      </div>
 
-        {/* ── Desktop card grid ── */}
-        <div className="cardnav-cards" aria-hidden={!isExpanded}>
-          {NAV_CARDS.map((card, idx) => (
-            <NavCard
-              key={card.title}
-              card={card}
-              cardRef={(el) => {
-                cardsRef.current[idx] = el;
-              }}
-              onLinkClick={handleLinkClick}
-              onHover={() => setActiveIndex(idx)}
-              onLeave={() => setActiveIndex(null)}
-            />
-          ))}
+      {/* Menu mobile */}
+      {open && (
+        <div className="snav__drawer">
+          <p className="snav__group">{n.products}</p>
+          {products.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
+          <p className="snav__group">{n.experience}</p>
+          {experience.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
+          <button type="button" className="snav-btn snav-btn--ghost snav__drawer-cta" onClick={() => { setOpen(false); openContact("callback"); }}>{n.callback}</button>
         </div>
-
-        {/* ── Mobile drawer ── */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              className="cardnav-mobile-drawer"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-            >
-              {NAV_CARDS.map((card, idx) => (
-                <NavCard
-                  key={card.title}
-                  card={card}
-                  cardRef={(el) => {
-                    void (el && idx);
-                  }}
-                  onLinkClick={handleLinkClick}
-                  isMobile
-                />
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </div>
+      )}
+    </header>
   );
 }

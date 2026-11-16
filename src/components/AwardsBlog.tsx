@@ -39,10 +39,10 @@ export default function AwardsBlog() {
   return (
     <section
       className="py-16 sm:py-20 px-4 sm:px-6"
-      style={{ background: "linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%)" }}
+      style={{ background: "#ffffff" }}
       id="blog-recompenses"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* ── Upcoming events ── */}
         {upcomingArticles.length > 0 && (
@@ -61,14 +61,14 @@ export default function AwardsBlog() {
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group block rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                className="group block rounded-3xl overflow-hidden border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                 style={{ borderColor: "var(--sp-100)" }}
               >
                 <div className="grid sm:grid-cols-[280px_1fr]">
                   {/* Cover */}
                   <div
                     className="relative flex items-center justify-center px-10 py-10 sm:py-0 overflow-hidden"
-                    style={{ backgroundColor: article.cardBg, minHeight: 180 }}
+                    style={{ background: "radial-gradient(70% 60% at 30% 30%, rgba(96,170,255,0.45) 0%, rgba(96,170,255,0) 100%), linear-gradient(150deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%)", minHeight: 180 }}
                   >
                     {/* Top stripe */}
                     <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: article.categoryColor }} />
@@ -148,7 +148,7 @@ export default function AwardsBlog() {
             {ab.h2_pre}{" "}
             <span style={{ color: "var(--sp-500)" }}>{ab.h2_accent}</span>
           </h2>
-          <p className="mt-3 font-medium max-w-2xl" style={{ color: "#4A5568" }}>
+          <p className="mt-3 font-medium max-w-2xl mx-auto" style={{ color: "#4A5568" }}>
             {ab.subtitle}
           </p>
         </div>
@@ -159,13 +159,13 @@ export default function AwardsBlog() {
             <Link
               key={article.slug}
               href={`/blog/${article.slug}`}
-              className="group flex flex-col rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex flex-col rounded-3xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{ borderColor: "var(--sp-100)" }}
             >
               {/* Cover panel */}
               <div
                 className="relative flex items-center justify-center overflow-hidden"
-                style={{ height: 160, backgroundColor: article.cardBg }}
+                style={{ height: 160, background: "radial-gradient(70% 60% at 30% 30%, rgba(96,170,255,0.45) 0%, rgba(96,170,255,0) 100%), linear-gradient(150deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%)" }}
               >
                 {/* Category color stripe at top */}
                 <div

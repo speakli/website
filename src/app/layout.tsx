@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Geist, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
-const manrope = Manrope({
+// Texte : Geist (grotesque sobre). Grands titres : Source Serif 4 (sérif éditoriale)
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-geist",
+});
+const serif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-source-serif",
 });
 
 const BASE_URL =
@@ -110,7 +117,7 @@ const jsonLd = {
         "@type": "ContactPoint",
         contactType: "sales",
         email: "contact@speakli.fr",
-        url: "https://calendly.com/ruben-speakli/30min",
+        url: "https://meetings-eu1.hubspot.com/ruben-weinstein",
       },
       sameAs: [
         "https://www.linkedin.com/company/speakli",
@@ -158,14 +165,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={manrope.variable}>
+    <html lang="fr" className={`${geist.variable} ${serif.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ fontFamily: "var(--font-manrope), sans-serif" }}>
+      <body style={{ fontFamily: "var(--font-geist), sans-serif" }}>
         <Providers>{children}</Providers>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){

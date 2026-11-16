@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BLOG_ARTICLES } from "@/lib/blog-articles";
 import AwardsBlog from "@/components/AwardsBlog";
 import { useLanguage } from "@/context/LanguageContext";
+import CtaPair from "@/components/CtaPair";
 
 function ClockIcon() {
   return (
@@ -23,155 +24,114 @@ function ArrowRight() {
   );
 }
 
+const BLUE = "radial-gradient(70% 60% at 30% 30%, rgba(96,170,255,0.45) 0%, rgba(96,170,255,0) 100%), linear-gradient(150deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%)";
+
 export default function ResourcesContent() {
   const { t } = useLanguage();
   const rp = t.resources_page;
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const thematicArticles = useMemo(() => BLOG_ARTICLES.filter((a) => a.isThematic), []);
-
-  const categories = useMemo(() => {
-    const seen = new Set<string>();
-    const result: string[] = [];
-    for (const a of thematicArticles) {
-      if (!seen.has(a.category)) {
-        seen.add(a.category);
-        result.push(a.category);
-      }
-    }
-    return result;
-  }, [thematicArticles]);
-
+  const categories = useMemo(() => [...new Set(thematicArticles.map((a) => a.category))], [thematicArticles]);
   const filteredArticles = useMemo(
-    () => activeCategory ? thematicArticles.filter((a) => a.category === activeCategory) : thematicArticles,
+    () => (activeCategory ? thematicArticles.filter((a) => a.category === activeCategory) : thematicArticles),
     [thematicArticles, activeCategory]
   );
+  // Sans filtre, le premier article est mis en avant en grand
+  const featured = activeCategory ? null : filteredArticles[0];
+  const grid = featured ? filteredArticles.slice(1) : filteredArticles;
 
   return (
     <>
-      {/* ── Hero ── */}
-      <section
-        className="pt-20 pb-16 px-4 sm:px-6"
-        style={{ background: "linear-gradient(135deg, #0c1d50 0%, #142875 40%, #1a3388 60%, #0a1840 100%)" }}
-      >
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "rgba(147,197,253,0.85)" }}>
-            {rp.tag}
-          </p>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "#ffffff" }}>
-            {rp.h1_pre}{" "}
-            <span style={{ color: "var(--sp-500)" }}>{rp.h1_accent}</span>
-          </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.65)" }}>
-            {rp.subtitle}
-          </p>
+      {/* ── En-tête ── */}
+      <section className="px-4 sm:px-6 pt-16 sm:pt-20 pb-10" style={{ background: "linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%)" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>{rp.tag}</p>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold tracking-tight leading-[1.1]" style={{ color: "var(--sp-900)" }}>
+                {rp.h1_pre} <span style={{ color: "var(--sp-500)" }}>{rp.h1_accent}</span>
+              </h1>
+              <p className="mt-4 text-lg leading-relaxed" style={{ color: "#5B6B82" }}>{rp.subtitle}</p>
+            </div>
+            <CtaPair />
+          </div>
+
+          {/* Article à la une */}
+          {featured && (
+            <Link
+              href={`/blog/${featured.slug}`}
+              className="group mt-10 grid md:grid-cols-[1.1fr_1fr] rounded-[28px] overflow-hidden bg-white transition-transform hover:-translate-y-1"
+              style={{ border: "1px solid rgba(0,40,120,0.08)", boxShadow: "0 30px 60px -40px rgba(13,48,160,0.6)" }}
+            >
+              <div className="relative flex flex-col justify-end gap-4 p-8 sm:p-10 min-h-[240px] text-white" style={{ background: BLUE }}>
+                <span className="self-start text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.16)" }}>{rp.featured}</span>
+                <h2 className="text-2xl sm:text-[1.7rem] font-extrabold leading-tight">{featured.title}</h2>
+              </div>
+              <div className="flex flex-col gap-4 p-8 sm:p-10">
+                <span className="self-start text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: featured.categoryBg, color: featured.categoryColor }}>{featured.category}</span>
+                <p className="text-base leading-relaxed flex-1" style={{ color: "#4A5568" }}>{featured.excerpt}</p>
+                <div className="flex items-center justify-between">
+                  <span className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: "#9AA3B2" }}><ClockIcon /> {featured.readingTime ?? "5 min"}</span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: "var(--sp-500)" }}>
+                    {rp.read_article}<span className="transition-transform group-hover:translate-x-1"><ArrowRight /></span>
+                  </span>
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
       </section>
 
-      {/* ── Thematic articles ── */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ background: "linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: "var(--sp-900)" }}>
-              {rp.thematic_h2}
-            </h2>
+      {/* ── Articles ── */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16" style={{ background: "linear-gradient(180deg, #ffffff 0%, #F4F8FF 100%)" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: "var(--sp-900)" }}>{rp.thematic_h2}</h2>
+            <span className="text-sm font-semibold" style={{ color: "#9AA3B2" }}>
+              {filteredArticles.length} article{filteredArticles.length > 1 ? "s" : ""}
+            </span>
           </div>
 
-          {/* ── Category filter chips ── */}
+          {/* Filtres */}
           <div className="flex flex-wrap gap-2 mb-8">
-            <button
-              type="button"
-              onClick={() => setActiveCategory(null)}
-              className="text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all"
-              style={{
-                background: activeCategory === null ? "var(--sp-500)" : "transparent",
-                color: activeCategory === null ? "#fff" : "var(--sp-700)",
-                borderColor: activeCategory === null ? "var(--sp-500)" : "rgba(0,40,120,0.18)",
-              }}
-            >
-              {rp.filter_all ?? "Tous les sujets"}
-            </button>
-            {categories.map((cat) => {
-              const article = thematicArticles.find((a) => a.category === cat)!;
-              const isActive = activeCategory === cat;
+            {[null, ...categories].map((cat) => {
+              const on = activeCategory === cat;
               return (
                 <button
-                  key={cat}
+                  key={cat ?? "all"}
                   type="button"
-                  onClick={() => setActiveCategory(isActive ? null : cat)}
-                  className="text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all"
+                  onClick={() => setActiveCategory(cat)}
+                  className="text-sm font-semibold px-4 py-2 rounded-full transition-colors"
                   style={{
-                    background: isActive ? article.categoryColor : article.categoryBg,
-                    color: isActive ? "#fff" : article.categoryColor,
-                    borderColor: isActive ? article.categoryColor : "transparent",
+                    background: on ? "var(--sp-500)" : "#ffffff",
+                    color: on ? "#fff" : "var(--sp-700)",
+                    border: `1px solid ${on ? "var(--sp-500)" : "rgba(0,40,120,0.12)"}`,
+                    boxShadow: on ? "0 8px 18px -10px rgba(0,122,255,0.7)" : "none",
                   }}
                 >
-                  {cat}
+                  {cat ?? rp.filter_all}
                 </button>
               );
             })}
           </div>
 
-          {/* Article count */}
-          <p className="text-xs font-medium mb-6" style={{ color: "#9CA3AF" }}>
-            {filteredArticles.length} article{filteredArticles.length > 1 ? "s" : ""}
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredArticles.map((article) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {grid.map((article) => (
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group flex flex-col rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
-                style={{
-                  border: "1px solid rgba(0,40,120,0.08)",
-                  boxShadow: "0 2px 16px rgba(0,40,120,0.08)",
-                }}
+                className="group flex flex-col gap-3 p-6 rounded-3xl bg-white transition-all hover:-translate-y-1"
+                style={{ border: "1px solid rgba(0,40,120,0.08)", boxShadow: "0 18px 40px -32px rgba(13,48,160,0.55)" }}
               >
-                {/* Card header */}
-                <div
-                  className="relative flex items-end p-6 overflow-hidden"
-                  style={{ background: article.cardBg, minHeight: 120 }}
-                >
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      background: `radial-gradient(ellipse at 20% 50%, ${article.categoryColor} 0%, transparent 70%)`,
-                    }}
-                  />
-                  <div className="relative">
-                    <span
-                      className="inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-3"
-                      style={{ background: article.categoryBg, color: article.categoryColor }}
-                    >
-                      {article.category}
-                    </span>
-                    <h3 className="text-base font-extrabold leading-snug text-white max-w-sm">
-                      {article.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div className="flex flex-col flex-1 p-6 bg-white">
-                  <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "#6b7280" }}>
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5" style={{ color: "#9ca3af" }}>
-                      <ClockIcon />
-                      <span className="text-xs font-medium">{article.readingTime ?? "5 min"}</span>
-                    </div>
-                    <span
-                      className="inline-flex items-center gap-1.5 text-xs font-bold transition-gap"
-                      style={{ color: "var(--sp-500)" }}
-                    >
-                      {rp.read_article}
-                      <span className="transition-transform group-hover:translate-x-1">
-                        <ArrowRight />
-                      </span>
-                    </span>
-                  </div>
+                <span className="self-start text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: article.categoryBg, color: article.categoryColor }}>{article.category}</span>
+                <h3 className="text-[17px] font-extrabold leading-snug" style={{ color: "var(--sp-900)" }}>{article.title}</h3>
+                <p className="text-sm leading-relaxed line-clamp-3" style={{ color: "#5B6B82" }}>{article.excerpt}</p>
+                <div className="mt-auto flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(26,46,73,0.08)" }}>
+                  <span className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: "#9AA3B2" }}><ClockIcon /> {article.readingTime ?? "5 min"}</span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: "var(--sp-500)" }}>
+                    {rp.read_article}<span className="transition-transform group-hover:translate-x-1"><ArrowRight /></span>
+                  </span>
                 </div>
               </Link>
             ))}
@@ -179,12 +139,7 @@ export default function ResourcesContent() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="px-6">
-        <div className="max-w-5xl mx-auto border-t" style={{ borderColor: "rgba(0,40,120,0.08)" }} />
-      </div>
-
-      {/* ── Awards & Press + CTA ── */}
+      {/* ── Prix, presse et actualités ── */}
       <AwardsBlog />
     </>
   );
