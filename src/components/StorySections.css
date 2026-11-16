@@ -36,18 +36,17 @@
 
 /* Avant / Après : chaque barrière (à gauche) est reliée à la réponse de Speakli (à droite) */
 .ba { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); align-items: stretch; gap: 8px 10px; margin-top: clamp(18px, 3vh, 30px); }
-.ba__top { display: grid; gap: 10px; margin-bottom: 4px; }
-.ba__img { display: block; width: 100%; height: clamp(150px, 23vh, 240px); object-fit: cover; object-position: center 35%; border-radius: 18px; }
+.ba__top { position: relative; margin-bottom: 6px; }
+.ba__img { display: block; width: 100%; height: clamp(230px, 36vh, 380px); object-fit: cover; object-position: center 35%; border-radius: 18px; }
 .ba__top--before .ba__img { filter: grayscale(0.25); }
-.ba__head { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-.ba__top--before .ba__head { color: #C2410C; }
-.ba__top--after .ba__head { color: #1A5CE0; }
-.ba__ele { position: relative; display: inline-block; height: 34px; }
+/* Éléphant Speakli en pastille, coin supérieur gauche de chaque photo */
+.ba__head { position: absolute; top: 14px; left: 14px; display: grid; place-items: center; padding: 9px 13px; border-radius: 16px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); box-shadow: 0 10px 24px -14px rgba(4, 20, 70, 0.55); }
+.ba__ele { position: relative; display: inline-block; height: 30px; }
 .ba__ele img { height: 100%; width: auto; display: block; }
-.ba__ele.is-off img { filter: grayscale(1); opacity: 0.45; }
+.ba__ele.is-off img { filter: grayscale(1); opacity: 0.5; }
 /* trait de barre, de bas à gauche vers haut à droite */
 .ba__ele.is-off::after { content: ""; position: absolute; left: -6%; right: -6%; top: 50%; height: 4px; border-radius: 4px; background: #C2410C; transform: translateY(-50%) rotate(-18deg); box-shadow: 0 0 0 2px #fff; }
-.ba__cell { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 14px; font-size: 14px; line-height: 1.35; }
+.ba__cell { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; font-size: 15px; line-height: 1.4; }
 .ba__cell--before { background: #fff; border: 1.5px solid #FBD5C2; color: #1F2A3D; font-weight: 600; box-shadow: 0 10px 24px -20px rgba(194, 65, 12, 0.55); }
 .ba__cell--after { color: #fff; font-weight: 600; background: linear-gradient(120deg, #1677FF 0%, #1A5CE0 60%, #0D30A0 100%); box-shadow: 0 14px 28px -20px rgba(13, 48, 160, 0.8); }
 .ba__ic { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; }
