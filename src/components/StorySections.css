@@ -355,6 +355,9 @@
 .voice-card { width: 300px; flex: none; display: flex; flex-direction: column; gap: 12px; padding: 16px 20px 18px; border-radius: 22px; background: #fff; border: 1px solid rgba(0, 40, 120, 0.08); box-shadow: 0 14px 34px -26px rgba(4, 20, 70, 0.45); }
 .voice-card__logo { height: 30px; width: auto; max-width: 140px; object-fit: contain; object-position: left center; align-self: flex-start; border-radius: 0 !important; }
 .voice-card figcaption { margin-top: auto; }
+.voice-card .voice-card__logos { display: flex; align-items: center; gap: 14px; }
+.voice-card .voice-card__logos .voice-card__logo { max-width: 110px; }
+.voice-card__initials { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #E6EFFF; color: #1A5CE0; font-style: normal; font-size: 14px; font-weight: 800; }
 .voice-card__org { display: flex; align-items: center; height: 30px; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; color: var(--sp-900); }
 .voice-card blockquote { font-size: 14px; line-height: 1.5; color: #2D3748; }
 .voice-card figcaption { display: flex; align-items: center; gap: 10px; }

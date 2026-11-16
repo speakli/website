@@ -450,15 +450,25 @@ export function VoicesSection() {
             {[0, 1].map(copy => s.quotes.map(q => (
               <figure key={`${copy}-${q.name}`} className="voice-card" aria-hidden={copy === 1 || undefined}>
                 {q.logo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={q.logo} alt={q.org} className="voice-card__logo" />
+                  <span className="voice-card__logos">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={q.logo} alt={q.logo2 ? q.org.split(" · ")[0] : q.org} className="voice-card__logo" />
+                    {q.logo2 && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={q.logo2} alt={q.org.split(" · ")[1] ?? ""} className="voice-card__logo" />
+                    )}
+                  </span>
                 ) : (
                   <span className="voice-card__org">{q.org}</span>
                 )}
                 <blockquote>« {q.quote} »</blockquote>
                 <figcaption>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={q.photo} alt="" />
+                  {q.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={q.photo} alt="" />
+                  ) : (
+                    <i className="voice-card__initials" aria-hidden>{q.name.split(" ").map(w => w[0]).join("").replace(".", "")}</i>
+                  )}
                   <span><b>{q.name}</b><small>{q.role}</small></span>
                 </figcaption>
               </figure>
