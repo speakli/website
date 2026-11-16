@@ -104,7 +104,7 @@ function VisualAI({ ui }: { ui: UI }) {
 
 // Transmission ciblée, en direct : Speakli reconnaît la résidente, choisit la cible parmi
 // plusieurs (à la place du soignant), puis rédige Données, Actions, Résultats mot à mot.
-// Tout est piloté en CSS sur .products-visual.is-on (l'onglet dure STEP_MS).
+// Tout est piloté en CSS sur .products.is-live .products-visual.is-on (l'onglet dure STEP_MS).
 const DAR_START = [3.6, 4.85, 6.0];
 const DAR_WORD = 0.055;
 function VisualDAR({ ui }: { ui: UI }) {
@@ -143,7 +143,7 @@ function VisualDAR({ ui }: { ui: UI }) {
 
 // Signature des soins en direct : le vocal est retranscrit mot à mot, puis l'IA associe
 // chaque passage du discours à un soin du plan (fait, refusé, non nécessaire) et détecte
-// un soin ponctuel, avec le commentaire rédigé. Animation CSS sur .products-visual.is-on.
+// un soin ponctuel, avec le commentaire rédigé. Animation CSS sur .products.is-live .products-visual.is-on.
 const CARE_WORD = 0.12;
 const CARE_GAP = 0.45;
 const CARE_TONES = ["green", "red", "grey", "violet"] as const;
@@ -625,18 +625,29 @@ export function ProductBlock({
   const { t } = useLanguage();
   const [index, setIndex] = useState(0);
   const [inView, setInView] = useState(false);
+  const [run, setRun] = useState(0); // change à chaque sortie d'écran : la barre repart de zéro
   const ref = useRef<HTMLElement>(null);
 
+  // Rien ne tourne tant que le bloc n'est pas à l'écran : le premier élément reste affiché,
+  // figé au début de son animation. Dès qu'on quitte le bloc, il revient au premier
+  // élément, pour que tout reparte du début au retour.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.4 });
+    const io = new IntersectionObserver(([e]) => {
+      if (e.intersectionRatio >= 0.35) setInView(true);
+      else if (!e.isIntersecting) {
+        setInView(false);
+        setIndex(0);
+        setRun(r => r + 1);
+      }
+    }, { threshold: [0, 0.35] });
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <section ref={ref} id={id} className={`products products--${tone}`}>
+    <section ref={ref} id={id} className={`products products--${tone}${inView ? " is-live" : ""}`}>
       {anchors?.map(a => <span key={a} id={a} className="products-anchor" aria-hidden />)}
       <div className="max-w-6xl mx-auto w-full">
         <div className="mb-8">
@@ -683,7 +694,7 @@ export function ProductBlock({
                   <span className="products-item__track" aria-hidden>
                     {on && (
                       <i
-                        key={i}
+                        key={`${i}-${run}`}
                         className="products-item__bar"
                         style={{ animationDuration: `${durations?.[i] ?? STEP_MS}ms`, animationPlayState: inView ? "running" : "paused" }}
                         onAnimationEnd={() => setIndex((i + 1) % items.length)}

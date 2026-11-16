@@ -362,7 +362,7 @@ const fr = {
     calculator_tag: "Calculateur interactif",
     calculator_h3: "Votre ROI en 30 secondes",
     calculator_desc: "Fixez vos objectifs et le simulateur calcule en temps réel la valeur du temps libéré et votre gain de dotation GMPS estimé grâce à Speakli.",
-    calculator_cta: "Calculer mon ROI",
+    calculator_cta: "Calculer mon gain PATHOS",
   },
   faq: {
     tag: "FAQ",

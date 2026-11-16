@@ -6,21 +6,21 @@ import Footer from "@/components/Footer";
 const BASE_URL = "https://www.speakli.fr";
 
 export const metadata: Metadata = {
-  title: "Calculateur ROI EHPAD : gain de temps soignant et dotation GMPS",
+  title: "Calculateur PATHOS EHPAD : estimez votre gain de dotation soins (GMPS)",
   description:
-    "Estimez le retour sur investissement d'un logiciel de traçabilité vocale pour votre EHPAD : temps soignant libéré, réduction de la charge administrative et impact sur votre dotation GMPS.",
+    "Calculateur PATHOS gratuit : estimez le gain de dotation soins (GMPS) de votre EHPAD grâce à une traçabilité complète des soins, à partir de votre nombre de lits et de votre PMP. Rapport PDF envoyé par e-mail.",
   openGraph: {
-    title: "Calculateur ROI EHPAD — Speakli",
+    title: "Calculateur PATHOS EHPAD — Speakli",
     description:
-      "Estimez en 30 secondes le gain de temps soignant et l'impact sur votre dotation GMPS grâce à la traçabilité vocale.",
+      "Estimez en 30 secondes le gain de dotation soins (GMPS) de votre EHPAD grâce à une traçabilité complète des soins.",
     url: `${BASE_URL}/roi`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculateur ROI EHPAD — Speakli",
+    title: "Calculateur PATHOS EHPAD — Speakli",
     description:
-      "Estimez le gain de temps soignant et l'impact sur votre dotation GMPS grâce à la traçabilité vocale.",
+      "Estimez le gain de dotation soins (GMPS) de votre EHPAD grâce à une traçabilité complète des soins.",
   },
   alternates: { canonical: `${BASE_URL}/roi` },
 };
@@ -30,7 +30,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
-    { "@type": "ListItem", position: 2, name: "Calculateur ROI", item: `${BASE_URL}/roi` },
+    { "@type": "ListItem", position: 2, name: "Calculateur PATHOS", item: `${BASE_URL}/roi` },
   ],
 };
 

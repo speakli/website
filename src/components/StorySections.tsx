@@ -21,13 +21,17 @@ export function BeforeAfterSection() {
   const { t } = useLanguage();
   const s = t.story;
   const ref = useRef<HTMLElement>(null);
-  // Animation « avant → après », jouée quand la section arrive à l'écran
+  // Animation « avant → après », rejouée à chaque arrivée de la section à l'écran
   const baRef = useRef<HTMLDivElement>(null);
   const [played, setPlayed] = useState(false);
   useEffect(() => {
     const el = baRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setPlayed(true); io.disconnect(); } }, { threshold: 0.45 });
+    // Jouée quand la grille est bien visible, remise à zéro une fois sortie de l'écran
+    const io = new IntersectionObserver(([e]) => {
+      if (e.intersectionRatio >= 0.45) setPlayed(true);
+      else if (!e.isIntersecting) setPlayed(false);
+    }, { threshold: [0, 0.45] });
     io.observe(el);
     return () => io.disconnect();
   }, []);

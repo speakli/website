@@ -104,7 +104,7 @@ export default function TransmissionEhpadContent() {
               className="inline-flex items-center justify-center gap-2 font-semibold px-7 py-4 rounded-xl text-base transition-all duration-200"
               style={{ color: "#fff", border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.06)" }}
             >
-              Calculer mon ROI
+              Calculer mon gain PATHOS
             </Link>
           </div>
         </div>

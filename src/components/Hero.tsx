@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { scrollToNext } from "@/lib/useSnapToNext";
 import { openContact } from "@/lib/contactMode";
 import "./Hero.css";
@@ -42,6 +42,22 @@ export default function Hero() {
   const [revealed, setRevealed] = useState(false);
   const reveal = useCallback(() => setRevealed(true), []);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Quand on quitte le hero, la vidéo s'arrête et revient au début : en remontant, la
+  // vidéo et la génération de documentation (calée sur son temps) repartent de zéro.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      const v = videoRef.current;
+      if (!v) return;
+      if (e.isIntersecting) v.play().catch(() => {});
+      else { v.pause(); v.currentTime = 0; }
+    }, { threshold: 0 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section ref={sectionRef} className={`hero-video${revealed ? " is-revealed" : ""} relative min-h-screen flex flex-col overflow-x-hidden pt-16`}>
       {/* Vidéo de fond muette, lue une fois ; HeroDocGen la relance à chaque cycle d'animation */}

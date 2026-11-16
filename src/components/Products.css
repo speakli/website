@@ -134,14 +134,14 @@
 .dar-chip.is-target::after { content: ""; position: absolute; inset: -5px; border-radius: 999px; border: 2px solid #007AFF; opacity: 0; }
 .dar-res-badge, .dar-card, .dar-row, .dar-w { opacity: 0; }
 .dar-w { display: inline; }
-.products-visual.is-on .dar-res-badge { animation: darIn 0.35s ease 0.9s forwards; }
-.products-visual.is-on .dar-chip { animation: darScan 0.32s ease var(--d) both, darDim 0.4s ease 3.1s forwards; }
-.products-visual.is-on .dar-chip.is-target { animation: darPick 0.3s ease var(--d) forwards; }
-.products-visual.is-on .dar-chip.is-target::after { animation: darTap 0.7s ease var(--d) forwards; }
-.products-visual.is-on .dar-pick__label em { animation: darIn 0.35s ease 3s forwards; }
-.products-visual.is-on .dar-card { animation: darIn 0.4s ease 3.25s forwards; }
-.products-visual.is-on .dar-row { animation: darIn 0.35s ease var(--d) forwards; }
-.products-visual.is-on .dar-w { animation: darWord 0.3s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .dar-res-badge { animation: darIn 0.35s ease 0.9s forwards; }
+.products.is-live .products-visual.is-on .dar-chip { animation: darScan 0.32s ease var(--d) both, darDim 0.4s ease 3.1s forwards; }
+.products.is-live .products-visual.is-on .dar-chip.is-target { animation: darPick 0.3s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .dar-chip.is-target::after { animation: darTap 0.7s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .dar-pick__label em { animation: darIn 0.35s ease 3s forwards; }
+.products.is-live .products-visual.is-on .dar-card { animation: darIn 0.4s ease 3.25s forwards; }
+.products.is-live .products-visual.is-on .dar-row { animation: darIn 0.35s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .dar-w { animation: darWord 0.3s ease var(--d) forwards; }
 @keyframes darIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes darScan { 50% { border-color: #8DBBFF; background: #EAF3FF; color: #1A5CE0; } }
 @keyframes darPick { to { background: #007AFF; border-color: #007AFF; color: #fff; box-shadow: 0 8px 18px -8px rgba(0, 122, 255, 0.8); } }
@@ -246,18 +246,18 @@
 .cs-status__on { opacity: 0; transform: scale(0.8); }
 .cs-comment { margin: 0 6px; font-size: 12px; font-style: italic; line-height: 1.4; color: #6B7280; }
 
-.products-visual.is-on .cs-w { animation: csWord 0.25s ease var(--d) forwards; }
-.products-visual.is-on .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
-.products-visual.is-on .cs-seg { animation: csMark 0.5s ease var(--a) forwards; }
-.products-visual.is-on .cs-item.is-adhoc { animation: csIn 0.4s ease calc(var(--a) - 0.1s) forwards; }
-.products-visual.is-on .cs-status__off { animation: csOff 0.25s ease var(--a) forwards; }
-.products-visual.is-on .cs-status__on { animation: csIn 0.35s ease var(--a) forwards; }
-.products-visual.is-on .cs-comment { animation: csIn 0.45s ease calc(var(--a) + 0.25s) forwards; }
-.products-visual.is-on .cs-item--green .cs-row { animation: csFlashGreen 1.2s ease var(--a) both; }
-.products-visual.is-on .cs-item--red .cs-row { animation: csFlashRed 1.2s ease var(--a) both; }
-.products-visual.is-on .cs-item--grey .cs-row { animation: csFlashGrey 1.2s ease var(--a) both; }
-.products-visual.is-on .cs-item--violet .cs-row { animation: csFlashViolet 1.2s ease var(--a) both; }
-.products-visual.is-on .cs-done { animation: csIn 0.4s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .cs-w { animation: csWord 0.25s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
+.products.is-live .products-visual.is-on .cs-seg { animation: csMark 0.5s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .cs-item.is-adhoc { animation: csIn 0.4s ease calc(var(--a) - 0.1s) forwards; }
+.products.is-live .products-visual.is-on .cs-status__off { animation: csOff 0.25s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .cs-status__on { animation: csIn 0.35s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .cs-comment { animation: csIn 0.45s ease calc(var(--a) + 0.25s) forwards; }
+.products.is-live .products-visual.is-on .cs-item--green .cs-row { animation: csFlashGreen 1.2s ease var(--a) both; }
+.products.is-live .products-visual.is-on .cs-item--red .cs-row { animation: csFlashRed 1.2s ease var(--a) both; }
+.products.is-live .products-visual.is-on .cs-item--grey .cs-row { animation: csFlashGrey 1.2s ease var(--a) both; }
+.products.is-live .products-visual.is-on .cs-item--violet .cs-row { animation: csFlashViolet 1.2s ease var(--a) both; }
+.products.is-live .products-visual.is-on .cs-done { animation: csIn 0.4s ease var(--d) forwards; }
 @keyframes csWord { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
 @keyframes csMark { to { background-size: 100% 100%; } }
 @keyframes csIn { from { opacity: 0; transform: translateY(4px) scale(0.96); } to { opacity: 1; transform: none; } }
@@ -295,12 +295,12 @@
 .vt-hy-bar { display: block; width: 0; background: #22C55E; }
 .vt-add { margin-top: 6px; font-size: 12px; font-weight: 700; color: #16A34A; }
 
-.products-visual.is-on .vt .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
-.products-visual.is-on .vt-card__in { animation: vtOn 0.4s ease var(--a) forwards; }
-.products-visual.is-on .vt-val, .products-visual.is-on .vt-new { animation: csIn 0.4s ease var(--d) forwards; }
-.products-visual.is-on .vt-card--sky .vt-card__in .vt-hy { animation: vtHy 0.9s ease calc(var(--a) + 0.1s) forwards; }
-.products-visual.is-on .vt-card--sky .vt-card__in .vt-pct { animation: vtPct 0.9s ease calc(var(--a) + 0.1s) forwards; }
-.products-visual.is-on .vt-card--sky .vt-card__in .vt-hy-bar { animation: vtBar 0.9s ease calc(var(--a) + 0.1s) forwards; }
+.products.is-live .products-visual.is-on .vt .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
+.products.is-live .products-visual.is-on .vt-card__in { animation: vtOn 0.4s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .vt-val, .products.is-live .products-visual.is-on .vt-new { animation: csIn 0.4s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .vt-card--sky .vt-card__in .vt-hy { animation: vtHy 0.9s ease calc(var(--a) + 0.1s) forwards; }
+.products.is-live .products-visual.is-on .vt-card--sky .vt-card__in .vt-pct { animation: vtPct 0.9s ease calc(var(--a) + 0.1s) forwards; }
+.products.is-live .products-visual.is-on .vt-card--sky .vt-card__in .vt-hy-bar { animation: vtBar 0.9s ease calc(var(--a) + 0.1s) forwards; }
 @keyframes vtOn { 0% { opacity: 0.4; filter: grayscale(0.6); transform: scale(1); } 40% { transform: scale(1.02); } 100% { opacity: 1; filter: none; transform: none; } }
 @keyframes vtHy { to { --hy: 105; } }
 @keyframes vtPct { to { --pct: 70; } }
@@ -348,24 +348,24 @@
 .of-notif span span, .of-notif > span:last-child > span { font-size: 12.5px; color: #4B5563; line-height: 1.35; }
 .of-done { opacity: 0; }
 
-.products-visual.is-on .of-net__s--on { animation: ofHide 0.3s ease var(--cut) forwards; }
-.products-visual.is-on .of-net__s--off { animation: ofShow 0.3s ease var(--cut) forwards, ofShake 0.5s ease var(--cut), ofHide 0.3s ease var(--back) forwards; }
-.products-visual.is-on .of-net__s--back { animation: ofShow 0.35s ease var(--back) forwards; }
+.products.is-live .products-visual.is-on .of-net__s--on { animation: ofHide 0.3s ease var(--cut) forwards; }
+.products.is-live .products-visual.is-on .of-net__s--off { animation: ofShow 0.3s ease var(--cut) forwards, ofShake 0.5s ease var(--cut), ofHide 0.3s ease var(--back) forwards; }
+.products.is-live .products-visual.is-on .of-net__s--back { animation: ofShow 0.35s ease var(--back) forwards; }
 /* Les ondes bougent en continu, avec ou sans connexion */
-.products-visual.is-on .of .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite; }
-.products-visual.is-on .of-box__pending { animation: ofShow 0.3s ease var(--n1) forwards, ofHide 0.3s ease var(--sync) forwards; }
+.products.is-live .products-visual.is-on .of .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite; }
+.products.is-live .products-visual.is-on .of-box__pending { animation: ofShow 0.3s ease var(--n1) forwards, ofHide 0.3s ease var(--sync) forwards; }
 /* Synchronisation seulement une fois tout validé par le soignant */
-.products-visual.is-on .of-box__synced { animation: ofShow 0.3s ease var(--sync) forwards; }
-.products-visual.is-on .of-count { animation: ofCount calc(var(--n3) - var(--n1)) var(--n1) forwards; }
-.products-visual.is-on .of-row { animation: ofDrop 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.2) var(--s) forwards; }
-.products-visual.is-on .of-note { animation: ofHide 0.3s ease var(--c) forwards; }
-.products-visual.is-on .of-doc { animation: ofShow 0.3s ease var(--c) forwards; }
-.products-visual.is-on .of-p1 { animation: ofHide 0.25s ease var(--c) forwards; }
-.products-visual.is-on .of-p2 { animation: ofShow 0.25s ease var(--c) forwards, ofHide 0.25s ease var(--v) forwards; }
-.products-visual.is-on .of-p3 { animation: ofPop 0.35s ease var(--v) forwards; }
-.products-visual.is-on .of-read { animation: ofRead 0.8s ease calc(var(--v) - 0.8s) forwards; }
-.products-visual.is-on .of-notif { animation: ofNotif 1.3s ease var(--notif) forwards; }
-.products-visual.is-on .of-done { animation: ofPop 0.4s ease var(--done) forwards; }
+.products.is-live .products-visual.is-on .of-box__synced { animation: ofShow 0.3s ease var(--sync) forwards; }
+.products.is-live .products-visual.is-on .of-count { animation: ofCount calc(var(--n3) - var(--n1)) var(--n1) forwards; }
+.products.is-live .products-visual.is-on .of-row { animation: ofDrop 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.2) var(--s) forwards; }
+.products.is-live .products-visual.is-on .of-note { animation: ofHide 0.3s ease var(--c) forwards; }
+.products.is-live .products-visual.is-on .of-doc { animation: ofShow 0.3s ease var(--c) forwards; }
+.products.is-live .products-visual.is-on .of-p1 { animation: ofHide 0.25s ease var(--c) forwards; }
+.products.is-live .products-visual.is-on .of-p2 { animation: ofShow 0.25s ease var(--c) forwards, ofHide 0.25s ease var(--v) forwards; }
+.products.is-live .products-visual.is-on .of-p3 { animation: ofPop 0.35s ease var(--v) forwards; }
+.products.is-live .products-visual.is-on .of-read { animation: ofRead 0.8s ease calc(var(--v) - 0.8s) forwards; }
+.products.is-live .products-visual.is-on .of-notif { animation: ofNotif 1.3s ease var(--notif) forwards; }
+.products.is-live .products-visual.is-on .of-done { animation: ofPop 0.4s ease var(--done) forwards; }
 @keyframes ofShow { to { opacity: 1; } }
 @keyframes ofHide { to { opacity: 0; } }
 @keyframes ofDim { to { opacity: 0.45; } }
@@ -374,7 +374,7 @@
 @keyframes ofPop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: none; } }
 @keyframes ofRead { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 @keyframes ofCount { 0% { --n: 1; } 50% { --n: 2; } 100% { --n: 3; } }
-.products-visual.is-on .of-count { animation-timing-function: step-end; }
+.products.is-live .products-visual.is-on .of-count { animation-timing-function: step-end; }
 @keyframes ofNotif {
   0% { opacity: 0; transform: translateY(-16px) scale(0.96); }
   15%, 80% { opacity: 1; transform: none; }
@@ -414,15 +414,15 @@
 .dui-mod__ok { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; color: #2F9E4F; opacity: 0; }
 .dui-done { opacity: 0; }
 
-.products-visual.is-on .dui .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite; }
-.products-visual.is-on .dui-step { animation: duiStep 0.4s ease var(--a) forwards; }
-.products-visual.is-on .dui-load rect { animation: duiLoad var(--load-dur) ease-in-out var(--load) forwards, ofHide 0.3s ease calc(var(--load) + var(--load-dur) + 0.2s) forwards; }
+.products.is-live .products-visual.is-on .dui .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite; }
+.products.is-live .products-visual.is-on .dui-step { animation: duiStep 0.4s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .dui-load rect { animation: duiLoad var(--load-dur) ease-in-out var(--load) forwards, ofHide 0.3s ease calc(var(--load) + var(--load-dur) + 0.2s) forwards; }
 @keyframes duiLoad { to { stroke-dashoffset: 0; } }
-.products-visual.is-on .dui-link i { animation: duiLink 0.4s ease var(--a) forwards; }
-.products-visual.is-on .dui-mod { animation: duiFlash 1.1s ease var(--a) both; }
-.products-visual.is-on .dui-mod__entry { animation: duiEntry 0.45s ease var(--a) forwards; }
-.products-visual.is-on .dui-mod__ok { animation: ofPop 0.3s ease calc(var(--a) + 0.25s) forwards; }
-.products-visual.is-on .dui-done { animation: ofPop 0.4s ease var(--done) forwards; }
+.products.is-live .products-visual.is-on .dui-link i { animation: duiLink 0.4s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .dui-mod { animation: duiFlash 1.1s ease var(--a) both; }
+.products.is-live .products-visual.is-on .dui-mod__entry { animation: duiEntry 0.45s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .dui-mod__ok { animation: ofPop 0.3s ease calc(var(--a) + 0.25s) forwards; }
+.products.is-live .products-visual.is-on .dui-done { animation: ofPop 0.4s ease var(--done) forwards; }
 @keyframes duiStep { 0% { opacity: 0.45; transform: scale(1); } 50% { transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
 @keyframes duiLink { to { transform: scaleX(1); } }
 @keyframes duiEntry { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
@@ -460,26 +460,26 @@
 .act-sig { color: #B45309; }
 .act-done { opacity: 0; }
 
-.products-visual.is-on .act-cnt { animation: actCnt 1.4s ease-out 0.4s forwards; }
-.products-visual.is-on .act-grow { animation: actCnt var(--grow-dur, 2s) ease-in-out var(--grow) forwards; }
-.products-visual.is-on .act-chart { animation: actReveal 1.4s ease 0.2s forwards; }
-.products-visual.is-on .act-donut { animation: actSweep 1.2s ease 0.5s forwards; }
-.products-visual.is-on .act-bar { animation: actBar 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.2) var(--d) forwards; }
-.products-visual.is-on .act-step { animation: actStep 0.4s ease var(--a) forwards; }
-.products-visual.is-on .act-step i { animation: actStepI 0.4s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .act-cnt { animation: actCnt 1.4s ease-out 0.4s forwards; }
+.products.is-live .products-visual.is-on .act-grow { animation: actCnt var(--grow-dur, 2s) ease-in-out var(--grow) forwards; }
+.products.is-live .products-visual.is-on .act-chart { animation: actReveal 1.4s ease 0.2s forwards; }
+.products.is-live .products-visual.is-on .act-donut { animation: actSweep 1.2s ease 0.5s forwards; }
+.products.is-live .products-visual.is-on .act-bar { animation: actBar 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.2) var(--d) forwards; }
+.products.is-live .products-visual.is-on .act-step { animation: actStep 0.4s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .act-step i { animation: actStepI 0.4s ease var(--a) forwards; }
 @keyframes actStepI { to { background: #fff; color: #007AFF; } }
-.products-visual.is-on .act-row { animation: ofDrop 0.45s ease var(--a) forwards; }
-.products-visual.is-on .act-row.is-top { animation: ofDrop 0.45s ease var(--a) forwards, actGlowGold 1.4s ease var(--reward); }
-.products-visual.is-on .act-row.is-top .act-sub--a { animation: ofHide 0.25s ease var(--reward) forwards; }
-.products-visual.is-on .act-row.is-top .act-sub--r { animation: ofPop 0.35s ease var(--reward) forwards; }
-.products-visual.is-on .act-row.is-support { animation: ofDrop 0.45s ease var(--a) forwards, actGlowBlue 1.4s ease var(--coach), actGlowGreen 1.4s ease calc(var(--grow) + 2s); }
-.products-visual.is-on .act-row.is-support .act-sub--a { animation: ofHide 0.25s ease var(--coach) forwards; }
-.products-visual.is-on .act-row.is-support .act-sub--b { animation: ofPop 0.3s ease var(--coach) forwards, ofHide 0.25s ease calc(var(--grow) + 2s) forwards; }
-.products-visual.is-on .act-row.is-support .act-sub--c { animation: ofPop 0.3s ease calc(var(--grow) + 2s) forwards; }
-.products-visual.is-on .act-badge-old { animation: ofHide 0.25s ease calc(var(--grow) + 2s) forwards; }
-.products-visual.is-on .act-badge-new { animation: ofPop 0.3s ease calc(var(--grow) + 2s) forwards; }
-.products-visual.is-on .act-sig { animation: actGreen 0.4s ease calc(var(--grow) + 1.6s) forwards; }
-.products-visual.is-on .act-done { animation: ofPop 0.4s ease var(--done) forwards; }
+.products.is-live .products-visual.is-on .act-row { animation: ofDrop 0.45s ease var(--a) forwards; }
+.products.is-live .products-visual.is-on .act-row.is-top { animation: ofDrop 0.45s ease var(--a) forwards, actGlowGold 1.4s ease var(--reward); }
+.products.is-live .products-visual.is-on .act-row.is-top .act-sub--a { animation: ofHide 0.25s ease var(--reward) forwards; }
+.products.is-live .products-visual.is-on .act-row.is-top .act-sub--r { animation: ofPop 0.35s ease var(--reward) forwards; }
+.products.is-live .products-visual.is-on .act-row.is-support { animation: ofDrop 0.45s ease var(--a) forwards, actGlowBlue 1.4s ease var(--coach), actGlowGreen 1.4s ease calc(var(--grow) + 2s); }
+.products.is-live .products-visual.is-on .act-row.is-support .act-sub--a { animation: ofHide 0.25s ease var(--coach) forwards; }
+.products.is-live .products-visual.is-on .act-row.is-support .act-sub--b { animation: ofPop 0.3s ease var(--coach) forwards, ofHide 0.25s ease calc(var(--grow) + 2s) forwards; }
+.products.is-live .products-visual.is-on .act-row.is-support .act-sub--c { animation: ofPop 0.3s ease calc(var(--grow) + 2s) forwards; }
+.products.is-live .products-visual.is-on .act-badge-old { animation: ofHide 0.25s ease calc(var(--grow) + 2s) forwards; }
+.products.is-live .products-visual.is-on .act-badge-new { animation: ofPop 0.3s ease calc(var(--grow) + 2s) forwards; }
+.products.is-live .products-visual.is-on .act-sig { animation: actGreen 0.4s ease calc(var(--grow) + 1.6s) forwards; }
+.products.is-live .products-visual.is-on .act-done { animation: ofPop 0.4s ease var(--done) forwards; }
 @keyframes actCnt { to { --v: var(--to); } }
 @keyframes actReveal { to { clip-path: inset(0 0 0 0); } }
 @keyframes actSweep { to { --sweep: 100%; } }
@@ -500,11 +500,11 @@
 .sv-answer { padding: 8px 12px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.22); color: #fff; opacity: 0; }
 .sv-answer small { display: block; font-size: 10.5px; color: #A8CFFF; }
 .sv-answer p { font-size: 13px; font-style: italic; }
-.products-visual.is-on .sv-ring { animation: svSweep 2.2s ease 0.4s forwards; }
-.products-visual.is-on .sv-cnt { animation: actCnt 2.2s ease 0.4s forwards; }
-.products-visual.is-on .sv-bar { animation: actBarX 0.8s ease var(--d) forwards; }
-.products-visual.is-on .sv-val { animation: ofPop 0.3s ease calc(var(--d) + 0.6s) forwards; }
-.products-visual.is-on .sv-answer { animation: ofDrop 0.45s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .sv-ring { animation: svSweep 2.2s ease 0.4s forwards; }
+.products.is-live .products-visual.is-on .sv-cnt { animation: actCnt 2.2s ease 0.4s forwards; }
+.products.is-live .products-visual.is-on .sv-bar { animation: actBarX 0.8s ease var(--d) forwards; }
+.products.is-live .products-visual.is-on .sv-val { animation: ofPop 0.3s ease calc(var(--d) + 0.6s) forwards; }
+.products.is-live .products-visual.is-on .sv-answer { animation: ofDrop 0.45s ease var(--d) forwards; }
 @keyframes actBarX { to { transform: scaleX(1); } }
 @keyframes svDot { 50% { opacity: 0.3; } }
 @keyframes svSweep { to { --sweep: 90%; } }

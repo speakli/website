@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s — Speakli",
   },
   description:
-    "Speakli est le logiciel vocal IA qui simplifie les transmissions et la traçabilité des soins en EHPAD. Conforme RGPD, hébergé HDS en France. Déployé dans 40+ EHPAD.",
+    "Speakli est l'assistant vocal IA des soignants en EHPAD : transmissions ciblées, signature du plan de soins et constantes dictées au chevet, intégrées à NETSoins et NETVie. Hébergement HDS, conforme RGPD. Plus de 50 établissements équipés.",
   keywords: [
     "assistant vocal EHPAD",
     "logiciel de transmission EHPAD",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Speakli – L'assistant vocal IA pour soignants en EHPAD",
     description:
-      "Le logiciel vocal qui simplifie les transmissions et la traçabilité des soins en EHPAD. Conformité RGPD, hébergement HDS certifié. 350+ soignants nous font confiance.",
+      "Le logiciel vocal qui simplifie les transmissions et la traçabilité des soins en EHPAD. Conformité RGPD, hébergement HDS certifié. Plus de 50 établissements équipés.",
     url: BASE_URL,
     siteName: "Speakli",
     locale: "fr_FR",
@@ -79,14 +79,10 @@ export const metadata: Metadata = {
     title: "Speakli – Assistant vocal IA pour soignants en EHPAD",
     description:
       "Documentez vos soins par la voix. Traçabilité en temps réel, conformité RGPD, hébergement HDS certifié.",
-    creator: "@speakli_fr",
     images: [`${BASE_URL}/og-image.png`],
   },
   alternates: {
     canonical: BASE_URL,
-  },
-  verification: {
-    google: "speakli-google-site-verification",
   },
 };
 
@@ -142,13 +138,22 @@ const jsonLd = {
           unitText: "sur devis",
         },
       },
+      audience: {
+        "@type": "Audience",
+        audienceType: "EHPAD, établissements médico-sociaux, directions, IDEC, médecins coordonnateurs, soignants",
+      },
+      provider: { "@id": `${BASE_URL}/#organization` },
       featureList: [
         "Documentation vocale des soins",
         "Traçabilité en temps réel",
         "Conformité RGPD",
         "Hébergement HDS certifié (France)",
-        "Interopérabilité avec les logiciels métier",
-        "Tableau de bord et indicateurs qualité",
+        "Transmissions ciblées au format DAR dictées à la voix",
+        "Signature du plan de soins à la voix",
+        "Relevés de constantes et suivis (tension, hydratation, glycémie, selles)",
+        "Fonctionnement hors ligne",
+        "Intégration à NETSoins et NETVie (partenaire officiel Orisha)",
+        "Tableau de pilotage : activité des équipes, enquêtes internes, indicateurs d'impact",
       ],
     },
     {
