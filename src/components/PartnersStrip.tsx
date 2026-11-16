@@ -4,17 +4,20 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const ECOSYSTEM_LOGOS = [
-  { src: "/logos/BPI.jpg",                         alt: "BPI France" },
+  { src: "/logos/bpifrance.png",                   alt: "Bpifrance" },
   { src: "/logos/ans.png",                          alt: "Agence du Numérique en Santé" },
   { src: "/logos/fnadepa-national.png",             alt: "FNADEPA" },
   { src: "/logos/events/hec-incubator.png",         alt: "HEC Incubateur" },
   { src: "/logos/events/hec-launchpad.jpeg",        alt: "HEC Launchpad" },
   { src: "/logos/FHF.jpg",                          alt: "Fédération Hospitalière de France" },
-{ src: "/logos/events/defis-autonomie-logo.png",  alt: "Défi Autonomie" },
+  { src: "/logos/events/defis-autonomie-logo.png",  alt: "Défi Autonomie" },
   { src: "/logos/events/keyrus-logo.png",           alt: "Keyrus" },
-  { src: "/logos/events/silvereco-innov.jpg",       alt: "SilverEco" },
+  { src: "/logos/silvereco-international-festival.png", alt: "SilverEco International Festival" },
   { src: "/logos/events/ieseg-logo.png",            alt: "IESEG" },
   { src: "/logos/events/silver-valley.png",         alt: "Silver Valley" },
+  { src: "/logos/solicare-dark.png",                alt: "Solicare" },
+  { src: "/logos/events/colloque-anm.png",          alt: "Colloque ANM" },
+  { src: "/logos/events/silver-economy-expo.png",   alt: "Silver Economy Expo Paris" },
 ];
 
 const TRACK = [...ECOSYSTEM_LOGOS, ...ECOSYSTEM_LOGOS];

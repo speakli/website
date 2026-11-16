@@ -6,12 +6,12 @@ import AwardsBlog from "@/components/AwardsBlog";
 import { useLanguage } from "@/context/LanguageContext";
 
 const ECOSYSTEM_LOGOS = [
-  { src: "/logos/BPI.jpg",                   alt: "BPI France" },
+  { src: "/logos/bpifrance.png",             alt: "Bpifrance" },
   { src: "/logos/ans.png",                   alt: "Agence du Numérique en Santé" },
   { src: "/logos/events/hec-incubator.png",  alt: "HEC Incubateur" },
   { src: "/logos/events/hec-launchpad.jpeg", alt: "HEC Launchpad" },
   { src: "/logos/FHF.jpg",                   alt: "Fédération Hospitalière de France" },
-  { src: "/logos/silvereco-festival.png",    alt: "SilverEco International Festival" },
+  { src: "/logos/silvereco-international-festival.png", alt: "SilverEco International Festival" },
   { src: "/logos/events/defis-autonomie-logo.png", alt: "Défi Autonomie" },
   { src: "/logos/events/keyrus-logo.png",    alt: "Keyrus" },
   { src: "/logos/events/silver-valley.png", alt: "Silver Valley" },

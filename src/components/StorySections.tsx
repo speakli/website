@@ -280,7 +280,7 @@ export function StakesSection() {
       icons={[ICON.euro, ICON.chat, ICON.award, ICON.shieldHeart]}
       tone="light"
       fillImage
-      image={{ src: "/photos/story/reunion-transmission.png", alt: s.stakes_image_alt }}
+      image={{ src: "/photos/story/soin-trace-sans-effort.jpg", alt: s.stakes_image_alt }}
     />
   );
 }
