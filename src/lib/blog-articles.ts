@@ -132,7 +132,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         heading: "Ce que l'étude nous a appris",
         paragraphs: [
           "Un outil simple et intuitif ne suffit pas : l'accompagnement humain fait la différence, avant (cadrage), pendant (formation) et après le déploiement (rituels avec les référents). Le smartphone professionnel s'impose : 83 % des aides-soignants équipés d'un smartphone sont actifs.",
-          "Les prérequis sont désormais clairs : un wifi de qualité, une IDEC motivée et un smartphone professionnel. Prochain chantier : les plans de soins, pour les alléger, les actualiser et les personnaliser selon la dépendance des résidents.",
+          "Les prérequis sont désormais clairs : un wifi de qualité, une IDEC motivée et un smartphone professionnel.",
         ],
       },
       {
