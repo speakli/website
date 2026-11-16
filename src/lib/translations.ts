@@ -146,11 +146,11 @@ const fr = {
     eco: { title: "Codage PATHOS", rows: [["Chute · 14/10", "Transmission ciblée"], ["Escarre talon droit · stade 2", "Soins et pansements"], ["Douleur · EVA 6/10", "Évaluation et antalgique"]], untraced: "Non tracé · non valorisé", traced: "Tracé · valorisé", pmp: "PMP · Pathos moyen pondéré de l'établissement", resident: "Mme Dubois · Ch. 101", resident_done: "Profil valorisé", macro: "Votre établissement · 80 résidents", valued: "profils valorisés", legend_off: "Sous-valorisé", legend_on: "Valorisé", badge: "Des soins requis justifiés, une dotation soins sécurisée" },
     legal: { family: "Fille de M. Martin · Ch. 204", question: "Bonjour, pourquoi mon père a-t-il un bleu sur le bras gauche ?", analysing: "Speakli analyse la traçabilité…", speakli: "Speakli IA", answer: "Une chute a été tracée hier à 17h12. Deux aides-soignantes ont relevé votre père, l'infirmière a été prévenue et une pommade a été appliquée sur l'hématome.", source: "Transmission ciblée · Chute · hier 17h12", question2: "Et est-ce qu'il a bien participé aux activités cette semaine ?", answer2: "Oui, votre père a participé à 3 activités thérapeutiques cette semaine !", source2: "Animations · 3 participations cette semaine" },
     orga: {
-      name: "Camille L.", role: "Infirmière", period: "Cette semaine",
+      name: "Camille L.", role: "Infirmière · Les Tilleuls", period: "Cette semaine",
       hidden: "Sans traçabilité : un travail invisible", visible: "Avec Speakli : tout est visible",
       acts: ["Toilettes", "Pansements", "Repas", "Écoute", "Glycémies", "Transferts", "Activités", "Mobilité"],
       stats: [["48", "", "transmissions"], ["26", "", "relevés"], ["96", " %", "soins signés"]],
-      from: "Directrice de l'établissement", kudos: "Bravo Camille ! Votre suivi de Mme Dubois cette semaine a fait la différence. Merci.",
+      from: "Directrice · Les Tilleuls", kudos: "Bravo Camille ! Votre suivi de Mme Dubois cette semaine a fait la différence. Merci.",
       badge: "Soignante de la semaine",
     },
     ops: {
@@ -808,11 +808,11 @@ const en: Translations = {
     eco: { title: "PATHOS coding", rows: [["Fall · 14/10", "Focused note"], ["Pressure ulcer, right heel · stage 2", "Care and dressings"], ["Pain · score 6/10", "Assessment and painkiller"]], untraced: "Not logged · not counted", traced: "Logged · counted", pmp: "Facility weighted average PATHOS score (PMP)", resident: "Mrs Dubois · Room 101", resident_done: "Profile fully counted", macro: "Your facility · 80 residents", valued: "profiles fully counted", legend_off: "Under-counted", legend_on: "Fully counted", badge: "Care needs justified, care funding secured" },
     legal: { family: "Mr Martin's daughter · Room 204", question: "Hello, why does my father have a bruise on his left arm?", analysing: "Speakli is analysing the records…", speakli: "Speakli AI", answer: "A fall was logged yesterday at 5:12 pm. Two care assistants helped your father up, the nurse was informed and an ointment was applied to the bruise.", source: "Focused note · Fall · yesterday 5:12 pm", question2: "And did he take part in activities this week?", answer2: "Yes, your father took part in 3 therapeutic activities this week!", source2: "Activities · 3 sessions this week" },
     orga: {
-      name: "Camille L.", role: "Nurse", period: "This week",
+      name: "Camille L.", role: "Nurse · Les Tilleuls", period: "This week",
       hidden: "Without records: invisible work", visible: "With Speakli: everything is visible",
       acts: ["Washing", "Dressings", "Meals", "Listening", "Glucose", "Transfers", "Activities", "Mobility"],
       stats: [["48", "", "notes"], ["26", "", "readings"], ["96", "%", "care signed"]],
-      from: "Facility director", kudos: "Well done Camille! Your follow-up of Mrs Dubois this week made the difference. Thank you.",
+      from: "Director · Les Tilleuls", kudos: "Well done Camille! Your follow-up of Mrs Dubois this week made the difference. Thank you.",
       badge: "Caregiver of the week",
     },
     ops: {

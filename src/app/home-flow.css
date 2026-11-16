@@ -63,45 +63,31 @@
 .home-flow #partenaires { padding-top: 8px; }
 
 /*
- * Rythme de couleurs, uniquement dans les deux bleus Speakli, en bandes pleine largeur
- * sans arrondi ni fondu (comme Granit) et en proportions équilibrées :
- *   bleu clair : Enjeux, Résultats, Contact + partenaires
- *   bleu nuit  : Témoignages, Sécurité + Interopérabilité
- *   blanc      : Produits, Événements, FAQ
+ * Couleurs : essentiellement des dégradés de bleu clair, qui démarrent et finissent tous
+ * sur la même teinte (#F4F8FF) pour s'enchaîner sans démarcation. Un bleu nuit adouci est
+ * réservé à deux sections : Interopérabilité et FAQ.
  */
 .home-flow > section:not(.hero-video) { position: relative; isolation: isolate; }
-.home-flow > :is(#enjeux, #impact, #contact, #partenaires) { background: linear-gradient(180deg, #E4EEFF 0%, #EDF4FF 100%) !important; }
-.home-flow > :is(#assistant-vocal, #evenements, #faq) { background: #fff !important; }
-.home-flow > :is(#temoignages, #securite, #interoperabilite) { background: linear-gradient(180deg, #0D1F3C 0%, #10264A 100%) !important; color: #fff; }
-.home-flow > #interoperabilite { background: linear-gradient(180deg, #10264A 0%, #0D1F3C 100%) !important; }
-.home-flow > #partenaires { border-top: 1px solid rgba(13, 48, 160, 0.08); }
+.home-flow > :is(#enjeux, #assistant-vocal, #temoignages, #impact, #securite, #evenements, #contact, #partenaires) {
+  background: linear-gradient(180deg, #F4F8FF 0%, var(--mid, #E6EFFF) 50%, #F4F8FF 100%) !important;
+}
+.home-flow > :is(#assistant-vocal, #impact, #evenements) { --mid: #FFFFFF; }
+.home-flow > #partenaires { --mid: #F4F8FF; }
+.home-flow > :is(#interoperabilite, #faq) { background: linear-gradient(160deg, #1E3A68 0%, #24467D 55%, #2A5290 100%) !important; color: #fff; }
 
-/* Témoignages sur bleu nuit */
-.home-flow #temoignages .story__eyebrow { color: #7DB5FF; }
-.home-flow #temoignages .story__title { color: #fff; }
-.home-flow #temoignages .story__title span { color: #60AAFF; }
-.home-flow #temoignages .voice-main blockquote { color: #fff; }
-.home-flow #temoignages .voice-main blockquote span { color: #60AAFF; }
-.home-flow #temoignages .voice-main figcaption { color: rgba(255, 255, 255, 0.72); }
-.home-flow #temoignages .voice-main figcaption b { color: #fff; }
-.home-flow #temoignages .voice-main__logo { background: #fff; padding: 6px 10px; border-radius: 10px; }
-.home-flow #temoignages .voice-card { border-color: transparent; }
-
-/* Textes et cartes lisibles sur le bleu nuit */
-.home-flow :is(#securite, #interoperabilite) { color: #fff; }
-.home-flow :is(#securite, #interoperabilite) .trust__eyebrow { color: #7DB5FF; }
-.home-flow :is(#securite, #interoperabilite) .trust__title { color: #fff; }
-.home-flow :is(#securite, #interoperabilite) .trust__title span { color: #60AAFF; }
-.home-flow :is(#securite, #interoperabilite) .trust__lede { color: rgba(255, 255, 255, 0.74); }
-.home-flow #securite .trust__cols { border-top-color: rgba(255, 255, 255, 0.14); }
-.home-flow #securite .trust__cols > div + div { border-left-color: rgba(255, 255, 255, 0.14); }
-.home-flow #securite .trust__cols b { color: #fff; }
-.home-flow #securite .trust__cols span:not(.trust__icon) { color: rgba(255, 255, 255, 0.68); }
-.home-flow #securite .trust__icon { background: rgba(255, 255, 255, 0.08); color: #9CC8FF; border: 1px solid rgba(255, 255, 255, 0.12); }
-.home-flow #securite .secu-globe__img { filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45)); }
-.home-flow #securite .secu-globe__tag { color: var(--sp-900); }
-.home-flow #interoperabilite .isteps::before { background: linear-gradient(90deg, rgba(125, 181, 255, 0.15), rgba(125, 181, 255, 0.55), rgba(125, 181, 255, 0.15)); }
-.home-flow #interoperabilite .istep__visual { box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
-.home-flow #interoperabilite .istep__num { color: #7DB5FF; }
+/* Textes lisibles sur le bleu nuit adouci */
+.home-flow #interoperabilite .trust__eyebrow { color: #A9CCFF; }
+.home-flow #interoperabilite .trust__title { color: #fff; }
+.home-flow #interoperabilite .trust__title span { color: #8EC0FF; }
+.home-flow #interoperabilite .trust__lede { color: rgba(255, 255, 255, 0.8); }
+.home-flow #interoperabilite .isteps::before { background: linear-gradient(90deg, rgba(169, 204, 255, 0.15), rgba(169, 204, 255, 0.6), rgba(169, 204, 255, 0.15)); }
+.home-flow #interoperabilite .istep__visual { box-shadow: 0 30px 60px -32px rgba(4, 16, 48, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+.home-flow #interoperabilite .istep__num { color: #A9CCFF; }
 .home-flow #interoperabilite .istep__title { color: #fff; }
-.home-flow #interoperabilite .istep__text { color: rgba(255, 255, 255, 0.72); }
+.home-flow #interoperabilite .istep__text { color: rgba(255, 255, 255, 0.78); }
+.home-flow #faq .text-center > p:first-child { color: #A9CCFF !important; }
+.home-flow #faq h2 { color: #fff !important; }
+.home-flow #faq h2 span { color: #8EC0FF !important; }
+.home-flow #faq .text-center > p:last-child { color: rgba(255, 255, 255, 0.78) !important; }
+.home-flow #faq > div > p:last-child { color: rgba(255, 255, 255, 0.72) !important; }
+.home-flow #faq > div > p:last-child a { color: #fff !important; text-decoration: underline; text-underline-offset: 3px; }
