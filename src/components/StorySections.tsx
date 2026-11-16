@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import "./StorySections.css";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 import CtaPair from "./CtaPair";
 import { ProductBlock, Card, Label, ICON, type Visual } from "./Products";
 
@@ -17,21 +18,22 @@ const sv = (d: React.ReactNode) => (
 const Check = () => sv(<path d="M5 12.5l4.5 4.5L19 7.5" />);
 const Cross = () => sv(<path d="M6 6l12 12M18 6L6 18" />);
 
+// Frise chronologique de la traçabilité, en trois vagues : la ligne se remplit de gauche à
+// droite, chaque vague apparaît quand la ligne l'atteint, et le logo Speakli arrive sur la
+// troisième. L'animation se rejoue à chaque retour sur la section.
 export function BeforeAfterSection() {
   const { t } = useLanguage();
   const s = t.story;
   const ref = useRef<HTMLElement>(null);
-  // Animation « avant → après », rejouée à chaque arrivée de la section à l'écran
-  const baRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<HTMLDivElement>(null);
   const [played, setPlayed] = useState(false);
   useEffect(() => {
-    const el = baRef.current;
+    const el = tlRef.current;
     if (!el) return;
-    // Jouée quand la grille est bien visible, remise à zéro une fois sortie de l'écran
     const io = new IntersectionObserver(([e]) => {
-      if (e.intersectionRatio >= 0.45) setPlayed(true);
+      if (e.intersectionRatio >= 0.35) setPlayed(true);
       else if (!e.isIntersecting) setPlayed(false);
-    }, { threshold: [0, 0.45] });
+    }, { threshold: [0, 0.35] });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -43,42 +45,45 @@ export function BeforeAfterSection() {
           <h2 className="story__title">{s.ba_title} <span>{s.ba_accent}</span></h2>
         </div>
 
-        <div ref={baRef} className={`ba${played ? " is-played" : ""}`}>
-          <div className="ba__top ba__top--before">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photos/story/avant-speakli.png" alt={s.before_img_alt} className="ba__img" />
-            {/* Éléphant Speakli : barré pour « avant », plein pour « avec Speakli » */}
-            <p className="ba__head">
-              <span className="ba__ele is-off" aria-hidden>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logos/elephant-speakli.svg" alt="" />
-              </span>
-              <span className="sr-only">{s.before}</span>
-            </p>
-          </div>
-          <span aria-hidden />
-          <div className="ba__top ba__top--after">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photos/story/avec-speakli.png" alt={s.after_img_alt} className="ba__img" />
-            {/* Éléphant Speakli : barré pour « avant », plein pour « avec Speakli » */}
-            <p className="ba__head">
-              <span className="ba__ele" aria-hidden>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logos/elephant-speakli.svg" alt="" />
-              </span>
-              <span className="sr-only">{s.after}</span>
-            </p>
-          </div>
-          {s.ba_pairs.map(([before, after], i) => (
-            <Fragment key={before}>
-              <p className="ba__cell ba__cell--before" style={{ ["--i" as string]: i } as React.CSSProperties}><span className="ba__ic"><Cross /></span>{before}</p>
-              <span className="ba__link" style={{ ["--i" as string]: i } as React.CSSProperties} aria-hidden>{sv(<path d="M5 12h14M13 6l6 6-6 6" />)}</span>
-              <p className="ba__cell ba__cell--after" style={{ ["--i" as string]: i } as React.CSSProperties}><span className="ba__ic"><Check /></span>{after}</p>
-            </Fragment>
-          ))}
+        <div ref={tlRef} className={`tl${played ? " is-played" : ""}`}>
+          <div className="tl__rail" aria-hidden><i /></div>
+          <ol className="tl__list">
+            {s.timeline.map((w, i) => {
+              const last = i === s.timeline.length - 1;
+              return (
+                <li key={w.era} className={`tl__wave${last ? " tl__wave--now" : ""}`} style={{ ["--i" as string]: i } as React.CSSProperties}>
+                  <span className="tl__dot" aria-hidden>{last && <Check />}</span>
+                  <p className="tl__when"><b>{w.era}</b><span>{w.years}</span></p>
+                  <article className="tl__card">
+                    <div className="tl__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={w.image} alt={w.alt} loading="lazy" />
+                      {last && (
+                        <span className="tl__logo" aria-hidden>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src="/logos/elephant-speakli.svg" alt="" />
+                        </span>
+                      )}
+                    </div>
+                    <div className="tl__body">
+                      <h3>{w.title}</h3>
+                      <ul>{w.points.map(pt => <li key={pt}>{pt}</li>)}</ul>
+                      <p className="tl__limit">{last ? <Check /> : <Cross />}{w.limit}</p>
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </ol>
         </div>
 
-        <CtaPair align="center" className="mt-7" />
+        <div className="mt-7 flex flex-col items-center gap-4">
+          <Link href="/blog/histoire-evolution-tracabilite-ehpad" className="tl__more">
+            {s.timeline_link}
+            {sv(<path d="M5 12h14M13 6l6 6-6 6" />)}
+          </Link>
+          <CtaPair align="center" />
+        </div>
       </div>
     </section>
   );

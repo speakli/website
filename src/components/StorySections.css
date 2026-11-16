@@ -34,47 +34,67 @@
 }
 .story__punch p { font-size: 19px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
 
-/* Avant / Après : chaque barrière (à gauche) est reliée à la réponse de Speakli (à droite) */
-.ba { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); align-items: stretch; gap: 8px 10px; margin-top: clamp(18px, 3vh, 30px); }
-.ba__top { position: relative; margin-bottom: 6px; }
-.ba__img { display: block; width: 100%; height: clamp(230px, 36vh, 380px); object-fit: cover; object-position: center 35%; border-radius: 18px; }
-.ba__top--before .ba__img { filter: grayscale(0.25); }
-/* Éléphant Speakli en pastille, coin supérieur gauche de chaque photo */
-.ba__head { position: absolute; top: 14px; left: 14px; display: grid; place-items: center; padding: 9px 13px; border-radius: 16px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(6px); box-shadow: 0 10px 24px -14px rgba(4, 20, 70, 0.55); }
-.ba__ele { position: relative; display: inline-block; height: 30px; }
-.ba__ele img { height: 100%; width: auto; display: block; }
-.ba__ele.is-off img { filter: grayscale(1); opacity: 0.5; }
-/* trait de barre, de bas à gauche vers haut à droite */
-.ba__ele.is-off::after { content: ""; position: absolute; left: -6%; right: -6%; top: 50%; height: 4px; border-radius: 4px; background: #C2410C; transform: translateY(-50%) rotate(-18deg); box-shadow: 0 0 0 2px #fff; }
-.ba__cell { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; font-size: 15px; line-height: 1.4; }
-.ba__cell--before { background: #fff; border: 1.5px solid #FBD5C2; color: #1F2A3D; font-weight: 600; box-shadow: 0 10px 24px -20px rgba(194, 65, 12, 0.55); }
-.ba__cell--after { color: #fff; font-weight: 600; background: linear-gradient(120deg, #1677FF 0%, #1A5CE0 60%, #0D30A0 100%); box-shadow: 0 14px 28px -20px rgba(13, 48, 160, 0.8); }
-.ba__ic { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; }
-.ba__ic svg { width: 13px; height: 13px; stroke-width: 3; }
-.ba__cell--before .ba__ic { background: #FDE2D6; color: #C2410C; }
-.ba__cell--after .ba__ic { background: #fff; color: #1A5CE0; }
-.ba__link { align-self: center; justify-self: center; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #1A5CE0; box-shadow: 0 8px 18px -10px rgba(13, 48, 160, 0.6); }
-.ba__link svg { width: 15px; height: 15px; }
+/* Frise chronologique : trois vagues de traçabilité, la ligne se remplit de gauche à droite */
+.tl { position: relative; margin-top: clamp(22px, 4vh, 40px); --step: 1.15s; }
+.tl__rail { position: absolute; left: 4%; right: 4%; top: 15px; height: 4px; border-radius: 4px; background: #DCE6F7; overflow: hidden; }
+.tl__rail i { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #94A3B8 0%, #64748B 45%, #1A5CE0 75%, #007AFF 100%); }
+.tl__list { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 26px); }
+.tl__wave { display: grid; justify-items: center; align-content: start; gap: 10px; }
+.tl__dot { position: relative; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 4px solid #CBD5E1; color: #fff; }
+.tl__dot svg { width: 16px; height: 16px; stroke-width: 3; }
+.tl__wave--now .tl__dot { background: #007AFF; border-color: #CFE2FF; }
+.tl__when { display: grid; justify-items: center; line-height: 1.2; }
+.tl__when b { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #64748B; }
+.tl__wave--now .tl__when b { color: #1A5CE0; }
+.tl__when span { font-size: 15px; font-weight: 700; color: var(--sp-900); }
+.tl__card { width: 100%; overflow: hidden; border-radius: 20px; background: #fff; border: 1px solid #E5EBF5; box-shadow: 0 18px 36px -28px rgba(13, 48, 160, 0.5); }
+.tl__wave--now .tl__card { border: 0; color: #fff; background: linear-gradient(140deg, #1677FF 0%, #1A5CE0 55%, #0D30A0 100%); box-shadow: 0 26px 50px -26px rgba(13, 48, 160, 0.85); }
+.tl__media { position: relative; }
+.tl__media > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center top; }
+.tl__wave:not(.tl__wave--now) .tl__media > img { filter: grayscale(0.35) sepia(0.12); }
+.tl__logo { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; padding: 8px 12px; border-radius: 14px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 10px 24px -12px rgba(4, 20, 70, 0.6); }
+.tl__logo img { height: 28px; width: auto; display: block; }
+.tl__body { padding: 16px 18px 18px; display: grid; gap: 10px; }
+.tl__body h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; color: var(--sp-900); }
+.tl__wave--now .tl__body h3 { color: #fff; }
+.tl__body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.tl__body li { position: relative; padding-left: 14px; font-size: 14px; line-height: 1.4; color: #475569; }
+.tl__body li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: #94A3B8; }
+.tl__wave--now .tl__body li { color: rgba(255, 255, 255, 0.92); }
+.tl__wave--now .tl__body li::before { background: #fff; }
+.tl__limit { display: flex; align-items: center; gap: 8px; margin-top: 2px; padding-top: 10px; border-top: 1px solid #EEF2F7; font-size: 14px; font-weight: 700; color: #C2410C; }
+.tl__limit svg { flex: none; width: 16px; height: 16px; }
+.tl__wave--now .tl__limit { color: #fff; border-top-color: rgba(255, 255, 255, 0.25); }
+.tl__more { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: var(--sp-600); }
+.tl__more svg { width: 16px; height: 16px; }
+.tl__more:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* Animation, ligne par ligne : la barrière apparaît, la flèche part, la réponse Speakli arrive
-   puis la barrière s'estompe */
-.ba__cell, .ba__link, .ba__cell--after .ba__ic { transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.85, 0.25, 1), filter 0.5s ease; }
-.ba:not(.is-played) .ba__cell, .ba:not(.is-played) .ba__link { opacity: 0; }
-.ba:not(.is-played) .ba__cell--before { transform: translateY(6px); }
-.ba:not(.is-played) .ba__link { transform: translateX(-10px); }
-.ba:not(.is-played) .ba__cell--after { transform: translateX(-24px); }
-.ba:not(.is-played) .ba__cell--after .ba__ic { transform: scale(0); }
-.ba.is-played .ba__cell--before { transition-delay: calc(0.2s + var(--i) * 0.45s); }
-.ba.is-played .ba__link { transition-delay: calc(0.45s + var(--i) * 0.45s); }
-.ba.is-played .ba__cell--after { transition-delay: calc(0.65s + var(--i) * 0.45s); }
-.ba.is-played .ba__cell--after .ba__ic { transition-delay: calc(0.85s + var(--i) * 0.45s); transition-timing-function: cubic-bezier(0.3, 1.6, 0.5, 1); }
+/* Animation : la ligne avance, chaque vague apparaît quand elle l'atteint, puis le logo Speakli */
+.tl__rail i { transition: transform calc(var(--step) * 2.4) cubic-bezier(0.45, 0, 0.3, 1) 0.2s; }
+.tl.is-played .tl__rail i { transform: scaleX(1); }
+.tl__wave { transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.2, 0.85, 0.25, 1); }
+.tl:not(.is-played) .tl__wave { opacity: 0; transform: translateY(18px); }
+.tl.is-played .tl__wave { transition-delay: calc(0.2s + var(--i) * var(--step)); }
+.tl__logo { transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+.tl:not(.is-played) .tl__logo { opacity: 0; transform: scale(0.4); }
+.tl.is-played .tl__logo { transition-delay: calc(0.75s + 2 * var(--step)); }
+.tl.is-played .tl__wave--now .tl__card { animation: tlGlow 1.4s ease calc(0.75s + 2 * var(--step)); }
+@keyframes tlGlow { 40% { box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.25), 0 26px 50px -26px rgba(13, 48, 160, 0.85); } }
+
+/* Mobile : frise verticale, la ligne descend */
 @media (max-width: 760px) {
-  .ba { grid-template-columns: minmax(0, 1fr); }
-  .ba > span[aria-hidden]:not(.ba__link) { display: none; }
-  .ba__link { transform: rotate(90deg) !important; }
+  .tl__rail { left: 16px; right: auto; top: 10px; bottom: 10px; width: 4px; height: auto; }
+  .tl__rail i { transform: scaleY(0); transform-origin: top; }
+  .tl.is-played .tl__rail i { transform: scaleY(1); }
+  .tl__list { grid-template-columns: minmax(0, 1fr); padding-left: 44px; gap: 22px; }
+  .tl__wave { position: relative; justify-items: start; }
+  .tl__dot { position: absolute; left: -43px; top: 0; }
+  .tl__when { justify-items: start; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ba__cell, .ba__link, .ba__cell--after .ba__ic { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  .tl__rail i, .tl__wave, .tl__logo { transition: none !important; animation: none !important; }
+  .tl__rail i { transform: none !important; }
+  .tl__wave, .tl__logo { opacity: 1 !important; transform: none !important; }
 }
 
 /* Indicateurs mesurés */
