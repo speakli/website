@@ -195,6 +195,19 @@ export default async function BlogArticlePage({
               {article.excerpt}
             </p>
 
+            {/* Logos institutionnels (ex. ANS pour un projet lauréat) */}
+            {article.partnerLogos && (
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-2xl px-5 py-4 mb-10" style={{ background: "#fff", border: "1px solid var(--sp-100)" }}>
+                {article.partnerLogos.logos.map((logo) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={logo.src} src={logo.src} alt={logo.alt} className="h-10 w-auto" />
+                ))}
+                <p className="text-sm font-medium leading-snug flex-1 min-w-[220px]" style={{ color: "var(--sp-800)" }}>
+                  {article.partnerLogos.label}
+                </p>
+              </div>
+            )}
+
             {/* Hero CTA (e.g. SantéExpo demo booking) */}
             {article.heroCta && (
               <div

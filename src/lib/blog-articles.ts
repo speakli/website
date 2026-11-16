@@ -38,6 +38,7 @@ export interface BlogArticle {
   metaTitle?: string;       // overrides the <title> tag when the display title is too long for SERPs
   metaDescription?: string; // overrides the meta description when the excerpt isn't ideal for search
   relatedLinks?: RelatedLink[]; // internal links to pillar pages / complementary articles, shown before "Autres articles"
+  partnerLogos?: { label: string; logos: BlogImage[] }; // institutional logos shown under the lead (e.g. ANS)
 }
 
 const FR_MONTHS: Record<string, string> = {
@@ -82,7 +83,6 @@ export function parseFrenchDateToISO(display: string): string | undefined {
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "jnis-2026-etude-usage-gcsms-comete-bretagne",
-    isNew: true,
     title: "JNIS 2026 : dérisquer l'IA en EHPAD grâce à une étude d'usage, avec le GCSMS Comète Bretagne",
     metaTitle: "JNIS 2026 : l'étude d'usage Speakli au GCSMS Comète Bretagne",
     metaDescription:
@@ -96,6 +96,10 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     coverLogo: "/photos/blog/jnis-2026-atelier.jpg",
     coverIsPhoto: true,
     cardBg: "#2a1f12",
+    partnerLogos: {
+      label: "Projet lauréat de l'appel à projets Structures 3.0 de l'Agence du Numérique en Santé",
+      logos: [{ src: "/logos/ans.png", alt: "Agence du Numérique en Santé" }],
+    },
     gallery: [
       {
         src: "/photos/blog/jnis-2026-atelier.jpg",
@@ -127,7 +131,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       {
         heading: "Ce que l'étude nous a appris",
         paragraphs: [
-          "Un outil simple et intuitif ne suffit pas : l'accompagnement humain fait la différence, avant (cadrage), pendant (formation) et après le déploiement (rituels avec les référents). Le smartphone professionnel s'impose face à la tablette partagée : 83 % des aides-soignants équipés d'un smartphone sont actifs, contre 49 % avec une tablette.",
+          "Un outil simple et intuitif ne suffit pas : l'accompagnement humain fait la différence, avant (cadrage), pendant (formation) et après le déploiement (rituels avec les référents). Le smartphone professionnel s'impose : 83 % des aides-soignants équipés d'un smartphone sont actifs.",
           "Les prérequis sont désormais clairs : un wifi de qualité, une IDEC motivée et un smartphone professionnel. Prochain chantier : les plans de soins, pour les alléger, les actualiser et les personnaliser selon la dépendance des résidents.",
         ],
       },
@@ -146,7 +150,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "commission-geriatrique-ia-residence-bords-de-seine",
-    isNew: true,
     title: "IA et gériatrie : Speakli à la commission gériatrique de la Résidence Les Bords de Seine",
     metaTitle: "IA et gériatrie : Speakli à la commission gériatrique Emeis",
     category: "Événements & Prises de parole",
@@ -198,7 +201,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "grand-entretien-frederic-serriere-tracabilite-vocale",
-    isNew: true,
     title: "Le Grand Entretien : « Traçabilité vocale, l'IA au service du care »",
     metaTitle: "Le Grand Entretien avec Frédéric Serrière : Speakli et l'IA au service du care",
     category: "Médias",
@@ -229,7 +231,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "oeil-esante-santexpo-2026-ia-vocale-ehpad",
-    isNew: true,
     title: "L'Œil de la e-santé : « IA vocale en EHPAD, comment Speakli simplifie la traçabilité des soins »",
     metaTitle: "L'Œil de la e-santé : IA vocale en EHPAD, l'interview Speakli à SantExpo 2026",
     category: "Médias",
@@ -238,9 +239,15 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "Mai 2026",
     excerpt:
       "Rencontré par L'Œil de la e-santé lors de SantExpo 2026, Ruben Weinstein explique comment l'assistant vocal Speakli permet aux soignants de dicter leurs transmissions après chaque acte, avec une documentation pré-remplie, validée puis synchronisée dans le dossier de soins.",
-    coverLogo: "/photos/blog/santexpo-w692.jpg",
+    coverLogo: "/photos/blog/oeil-esante-santexpo-2026.jpg",
     coverIsPhoto: true,
     cardBg: "#0c1d50",
+    gallery: [
+      {
+        src: "/photos/blog/oeil-esante-santexpo-2026.jpg",
+        alt: "Ruben Weinstein interviewé par L'Œil de la e-santé à SantExpo 2026 : Speakli, l'assistant vocal IA qui libère le temps des soignants en EHPAD",
+      },
+    ],
     externalLink: {
       label: "Lire l'article sur L'Œil de la e-santé",
       href: "https://oeil-esante.media/focus-startup/ia-vocale-en-ehpad-comment-speakli-simplifie-la-tracabilite-des-soins/",
@@ -267,7 +274,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "podcast-vivement-demain-vieillir-demain",
-    isNew: true,
     title: "Podcast Vivement Demain ? : « Vieillir demain, serons-nous vraiment plus libres ? »",
     metaTitle: "Podcast Vivement Demain ? #15 : Speakli parmi les lauréats Silver Valley 2026",
     category: "Médias",
@@ -276,9 +282,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "2026",
     excerpt:
       "Dans l'épisode 15 du podcast Vivement Demain ?, consacré au vieillissement, trois lauréats du prix Silver Valley 2026, dont Speakli, débattent d'autonomie, de solidarité et de nouvelles technologies.",
-    coverLogo: "/photos/blog/silver-valley-laureat-2026.jpg",
+    coverLogo: "/photos/blog/podcast-vivement-demain.jpg",
     coverIsPhoto: true,
-    cardBg: "#1f2a55",
+    cardBg: "#f5c518",
     externalLink: {
       label: "Écouter l'épisode sur votre plateforme",
       href: "https://smartlinks.audiomeans.fr/l/vivement-demain-63ebbeae/15-vieillir-demain-serons-nous-vraiment-plus-libres-403a6dc9",
