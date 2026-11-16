@@ -184,7 +184,7 @@ const fr = {
     voices: {
       eyebrow: "Ils l'utilisent au quotidien", title: "Directions, IDEC et soignants", accent: "en parlent.",
       marquee_hint: "Cliquez pour faire défiler plus vite",
-      featured: { quote: "Avec Speakli, on a du gain de temps et le lien qui n'est jamais coupé avec le résident.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age · interview en vidéo", video: "dDhcaLacDPI", video_title: "Vidéo Speakli aux Pervenches", logo: "/logos/pervenches-homage.png" },
+      featured: { quote: "Avec Speakli, on a du gain de temps et le lien qui n'est jamais coupé avec le résident.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age", video: "dDhcaLacDPI", video_title: "Vidéo Speakli aux Pervenches", logo: "/logos/pervenches-homage.png" },
       quotes: [
         { quote: "Cette application est une vraie révolution. Elle nous permet d'économiser un temps fou. Et en plus, ça nous motive à bien faire notre travail.", name: "Astou B.", role: "IDEC, Résidence du Marais", photo: "/photos/testimonials/astou-b.png", logo: "/logos/clients/residence-marais.png", org: "Résidence du Marais" },
         { quote: "On a vu une adhésion très rapide des équipes, qui se sont vite approprié l'outil car il est très simple d'utilisation.", name: "Séverine Davenet", role: "Directrice, Les Pervenches", photo: "/photos/testimonials/severine-davenet.png", logo: "/logos/pervenches-homage.png", org: "Les Pervenches, Groupe Hom'Age" },
@@ -846,7 +846,7 @@ const en: Translations = {
     voices: {
       eyebrow: "Ils l'utilisent au quotidien", title: "Directions, IDEC et soignants", accent: "en parlent.",
       marquee_hint: "Click to scroll faster",
-      featured: { quote: "With Speakli, we save time and the bond with the resident is never broken.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age · video interview", video: "dDhcaLacDPI", video_title: "Speakli video at Les Pervenches", logo: "/logos/pervenches-homage.png" },
+      featured: { quote: "With Speakli, we save time and the bond with the resident is never broken.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age", video: "dDhcaLacDPI", video_title: "Speakli video at Les Pervenches", logo: "/logos/pervenches-homage.png" },
       quotes: [
         { quote: "This app is a real revolution. It saves us an incredible amount of time, and it motivates us to do our job well.", name: "Astou B.", role: "Care coordinator, Résidence du Marais", photo: "/photos/testimonials/astou-b.png", logo: "/logos/clients/residence-marais.png", org: "Résidence du Marais" },
         { quote: "We saw very rapid adoption from the teams, because the tool is so simple to use.", name: "Séverine Davenet", role: "Director, Les Pervenches", photo: "/photos/testimonials/severine-davenet.png", logo: "/logos/pervenches-homage.png", org: "Les Pervenches, Groupe Hom'Age" },
