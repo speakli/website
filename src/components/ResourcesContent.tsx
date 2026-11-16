@@ -6,6 +6,7 @@ import { BLOG_ARTICLES } from "@/lib/blog-articles";
 import AwardsBlog from "@/components/AwardsBlog";
 import { useLanguage } from "@/context/LanguageContext";
 import CtaPair from "@/components/CtaPair";
+import { TraceabilityTimeline } from "@/components/StorySections";
 
 function ClockIcon() {
   return (
@@ -84,6 +85,9 @@ export default function ResourcesContent() {
       </section>
 
       {/* ── Articles ── */}
+      {/* Petite histoire de la traçabilité : frise des trois vagues */}
+      <TraceabilityTimeline />
+
       <section className="px-4 sm:px-6 py-12 sm:py-16" style={{ background: "linear-gradient(180deg, #ffffff 0%, #F4F8FF 100%)" }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">

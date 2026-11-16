@@ -63,3 +63,44 @@
 /* « Ils nous soutiennent » juste sous le formulaire : on resserre l'espace entre les deux */
 .home-flow #contact { padding-bottom: clamp(24px, 4vh, 40px); }
 .home-flow #partenaires { padding-top: 8px; }
+
+/*
+ * Rythme de couleurs, uniquement dans les deux bleus Speakli :
+ *   - bandes bleu clair (Produits, Résultats, Contact), fondu court et discret ;
+ *   - un bloc bleu nuit net aux coins arrondis pour Sécurité + Interopérabilité,
+ *     sans fondu (un fondu clair → nuit donne une zone grise).
+ */
+.home-flow > :is(#assistant-vocal, #impact, #securite, #interoperabilite, #contact) { position: relative; isolation: isolate; }
+.home-flow > :is(#assistant-vocal, #impact, #contact)::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--band);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 56px, #000 calc(100% - 56px), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 56px, #000 calc(100% - 56px), transparent 100%);
+}
+.home-flow > :is(#assistant-vocal, #impact) { --band: linear-gradient(180deg, #E9F2FF 0%, #E2EEFF 100%); }
+.home-flow > #contact { --band: linear-gradient(120deg, #DCEAFF 0%, #EEF5FF 50%, #D6E6FF 100%); }
+/* Bloc bleu nuit : Sécurité (coins arrondis en haut) puis Interopérabilité (en bas) */
+.home-flow > :is(#securite, #interoperabilite)::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.home-flow > #securite::before { background: linear-gradient(180deg, #0D1F3C 0%, #10264A 100%); border-radius: clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px) 0 0; }
+.home-flow > #interoperabilite::before { background: linear-gradient(180deg, #10264A 0%, #0D1F3C 100%); border-radius: 0 0 clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px); }
+.home-flow > #securite { margin-top: clamp(32px, 5vh, 64px); }
+.home-flow > #interoperabilite { margin-bottom: clamp(32px, 5vh, 64px); }
+
+/* Textes et cartes lisibles sur le bleu nuit */
+.home-flow :is(#securite, #interoperabilite) { color: #fff; }
+.home-flow :is(#securite, #interoperabilite) .trust__eyebrow { color: #7DB5FF; }
+.home-flow :is(#securite, #interoperabilite) .trust__title { color: #fff; }
+.home-flow :is(#securite, #interoperabilite) .trust__title span { color: #60AAFF; }
+.home-flow :is(#securite, #interoperabilite) .trust__lede { color: rgba(255, 255, 255, 0.74); }
+.home-flow #securite .trust__cols { border-top-color: rgba(255, 255, 255, 0.14); }
+.home-flow #securite .trust__cols > div + div { border-left-color: rgba(255, 255, 255, 0.14); }
+.home-flow #securite .trust__cols b { color: #fff; }
+.home-flow #securite .trust__cols span:not(.trust__icon) { color: rgba(255, 255, 255, 0.68); }
+.home-flow #securite .trust__icon { background: rgba(255, 255, 255, 0.08); color: #9CC8FF; border: 1px solid rgba(255, 255, 255, 0.12); }
+.home-flow #securite .secu-globe__img { filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45)); }
+.home-flow #securite .secu-globe__tag { color: var(--sp-900); }
+.home-flow #interoperabilite .isteps::before { background: linear-gradient(90deg, rgba(125, 181, 255, 0.15), rgba(125, 181, 255, 0.55), rgba(125, 181, 255, 0.15)); }
+.home-flow #interoperabilite .istep__visual { box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.home-flow #interoperabilite .istep__num { color: #7DB5FF; }
+.home-flow #interoperabilite .istep__title { color: #fff; }
+.home-flow #interoperabilite .istep__text { color: rgba(255, 255, 255, 0.72); }

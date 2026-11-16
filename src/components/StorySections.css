@@ -34,6 +34,9 @@
 }
 .story__punch p { font-size: 19px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
 
+/* Hauteur naturelle (page Ressources) */
+.story--compact { min-height: 0; padding-top: clamp(56px, 8vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); }
+
 /* Frise chronologique : trois vagues de traçabilité, la ligne se remplit de gauche à droite */
 .tl { position: relative; margin-top: clamp(22px, 4vh, 40px); --step: 1.15s; }
 .tl__rail { position: absolute; left: 4%; right: 4%; top: 15px; height: 4px; border-radius: 4px; background: #DCE6F7; overflow: hidden; }
@@ -51,7 +54,7 @@
 .tl__wave--now .tl__card { border: 0; color: #fff; background: linear-gradient(140deg, #1677FF 0%, #1A5CE0 55%, #0D30A0 100%); box-shadow: 0 26px 50px -26px rgba(13, 48, 160, 0.85); }
 .tl__media { position: relative; }
 .tl__media > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center top; }
-.tl__wave:not(.tl__wave--now) .tl__media > img { filter: grayscale(0.35) sepia(0.12); }
+.tl__wave:not(.tl__wave--now) .tl__media > img { filter: grayscale(0.4); }
 .tl__logo { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; padding: 8px 12px; border-radius: 14px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 10px 24px -12px rgba(4, 20, 70, 0.6); }
 .tl__logo img { height: 28px; width: auto; display: block; }
 .tl__body { padding: 16px 18px 18px; display: grid; gap: 10px; }
@@ -62,7 +65,7 @@
 .tl__body li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: #94A3B8; }
 .tl__wave--now .tl__body li { color: rgba(255, 255, 255, 0.92); }
 .tl__wave--now .tl__body li::before { background: #fff; }
-.tl__limit { display: flex; align-items: center; gap: 8px; margin-top: 2px; padding-top: 10px; border-top: 1px solid #EEF2F7; font-size: 14px; font-weight: 700; color: #C2410C; }
+.tl__limit { display: flex; align-items: center; gap: 8px; margin-top: 2px; padding-top: 10px; border-top: 1px solid #EEF2F7; font-size: 14px; font-weight: 700; color: #0D1F3C; }
 .tl__limit svg { flex: none; width: 16px; height: 16px; }
 .tl__wave--now .tl__limit { color: #fff; border-top-color: rgba(255, 255, 255, 0.25); }
 .tl__more { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: var(--sp-600); }

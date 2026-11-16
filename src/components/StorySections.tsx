@@ -18,10 +18,10 @@ const sv = (d: React.ReactNode) => (
 const Check = () => sv(<path d="M5 12.5l4.5 4.5L19 7.5" />);
 const Cross = () => sv(<path d="M6 6l12 12M18 6L6 18" />);
 
-// Frise chronologique de la traçabilité, en trois vagues : la ligne se remplit de gauche à
+// Frise chronologique de la traçabilité (page Ressources), en trois vagues : la ligne se remplit de gauche à
 // droite, chaque vague apparaît quand la ligne l'atteint, et le logo Speakli arrive sur la
 // troisième. L'animation se rejoue à chaque retour sur la section.
-export function BeforeAfterSection() {
+export function TraceabilityTimeline() {
   const { t } = useLanguage();
   const s = t.story;
   const ref = useRef<HTMLElement>(null);
@@ -38,7 +38,7 @@ export function BeforeAfterSection() {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={ref} id="avant-apres" className="story story--ba">
+    <section ref={ref} id="evolution-tracabilite" className="story story--ba story--compact">
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center">
           <p className="story__eyebrow">{s.ba_eyebrow}</p>

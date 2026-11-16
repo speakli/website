@@ -4,7 +4,7 @@ import { translations } from "@/lib/translations";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
-import { StakesSection, BeforeAfterSection, ImpactSection, VoicesSection } from "@/components/StorySections";
+import { StakesSection, ImpactSection, VoicesSection } from "@/components/StorySections";
 import { SecuritySection, InteropSection } from "@/components/TrustSections";
 import PartnersStrip from "@/components/PartnersStrip";
 import EventsSection from "@/components/EventsSection";
@@ -60,7 +60,6 @@ export default function Home() {
         <Hero />
         <StakesSection />
         <Products />
-        <BeforeAfterSection />
         <VoicesSection />
         <ImpactSection />
         <SecuritySection />
