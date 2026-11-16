@@ -21,7 +21,7 @@ const fr = {
     experience: "L'expérience Speakli",
     experience_links: [
       { title: "Témoignages", desc: "Directions, IDEC et soignants" },
-      { title: "Ressources", desc: "Réglementation, PATHOS, conformité" },
+      { title: "Ressources", desc: "Articles thématiques, actualités et webinaires" },
       { title: "Évènements", desc: "Salons et colloques où nous retrouver" },
       { title: "Calculateur PATHOS", desc: "Estimez votre gain de dotation" },
     ],
@@ -684,7 +684,7 @@ const en: Translations = {
     experience: "The Speakli experience",
     experience_links: [
       { title: "Testimonials", desc: "Managers, head nurses and caregivers" },
-      { title: "Resources", desc: "Regulation, PATHOS, compliance" },
+      { title: "Resources", desc: "Topic articles, news and webinars" },
       { title: "Events", desc: "Trade shows and conferences where to meet us" },
       { title: "PATHOS calculator", desc: "Estimate your funding gain" },
     ],
