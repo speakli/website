@@ -47,13 +47,27 @@ export function BeforeAfterSection() {
           <div className="ba__top ba__top--before">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/photos/story/avant-speakli.png" alt={s.before_img_alt} className="ba__img" />
-            <p className="ba__head">{s.before}</p>
+            {/* Éléphant Speakli : barré pour « avant », plein pour « avec Speakli » */}
+            <p className="ba__head">
+              <span className="ba__ele is-off" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logos/elephant-speakli.svg" alt="" />
+              </span>
+              <span className="sr-only">{s.before}</span>
+            </p>
           </div>
           <span aria-hidden />
           <div className="ba__top ba__top--after">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/photos/story/avec-speakli.png" alt={s.after_img_alt} className="ba__img" />
-            <p className="ba__head">{s.after}</p>
+            {/* Éléphant Speakli : barré pour « avant », plein pour « avec Speakli » */}
+            <p className="ba__head">
+              <span className="ba__ele" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logos/elephant-speakli.svg" alt="" />
+              </span>
+              <span className="sr-only">{s.after}</span>
+            </p>
           </div>
           {s.ba_pairs.map(([before, after], i) => (
             <Fragment key={before}>
