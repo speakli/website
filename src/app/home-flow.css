@@ -73,21 +73,24 @@
 }
 .home-flow > :is(#assistant-vocal, #impact, #evenements) { --mid: #FFFFFF; }
 .home-flow > #partenaires { --mid: #F4F8FF; }
-.home-flow > :is(#interoperabilite, #faq) { background: linear-gradient(160deg, #1E3A68 0%, #24467D 55%, #2A5290 100%) !important; color: #fff; }
+/* Bleu nuit de la bulle de l'éléphant Speakli : le bleu de l'éléphant (#007AFF) y reste lisible */
+.home-flow > :is(#interoperabilite, #faq) { background: linear-gradient(160deg, #16305C 0%, #0F2D5A 100%) !important; color: #fff; }
+/* L'ombre du formulaire passe par-dessus « Ils nous soutiennent » au lieu d'être coupée */
+.home-flow > #contact { z-index: 1; }
 
 /* Textes lisibles sur le bleu nuit adouci */
-.home-flow #interoperabilite .trust__eyebrow { color: #A9CCFF; }
+.home-flow #interoperabilite .trust__eyebrow { color: rgba(255, 255, 255, 0.7); }
 .home-flow #interoperabilite .trust__title { color: #fff; }
-.home-flow #interoperabilite .trust__title span { color: #8EC0FF; }
+.home-flow #interoperabilite .trust__title span { color: #007AFF; }
 .home-flow #interoperabilite .trust__lede { color: rgba(255, 255, 255, 0.8); }
-.home-flow #interoperabilite .isteps::before { background: linear-gradient(90deg, rgba(169, 204, 255, 0.15), rgba(169, 204, 255, 0.6), rgba(169, 204, 255, 0.15)); }
+.home-flow #interoperabilite .isteps::before { background: linear-gradient(90deg, rgba(0, 122, 255, 0.2), rgba(0, 122, 255, 0.7), rgba(0, 122, 255, 0.2)); }
 .home-flow #interoperabilite .istep__visual { box-shadow: 0 30px 60px -32px rgba(4, 16, 48, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
-.home-flow #interoperabilite .istep__num { color: #A9CCFF; }
+.home-flow #interoperabilite .istep__num { color: rgba(255, 255, 255, 0.7); }
 .home-flow #interoperabilite .istep__title { color: #fff; }
 .home-flow #interoperabilite .istep__text { color: rgba(255, 255, 255, 0.78); }
-.home-flow #faq .text-center > p:first-child { color: #A9CCFF !important; }
+.home-flow #faq .text-center > p:first-child { color: rgba(255, 255, 255, 0.7) !important; }
 .home-flow #faq h2 { color: #fff !important; }
-.home-flow #faq h2 span { color: #8EC0FF !important; }
+.home-flow #faq h2 span { color: #007AFF !important; }
 .home-flow #faq .text-center > p:last-child { color: rgba(255, 255, 255, 0.78) !important; }
 .home-flow #faq > div > p:last-child { color: rgba(255, 255, 255, 0.72) !important; }
 .home-flow #faq > div > p:last-child a { color: #fff !important; text-decoration: underline; text-underline-offset: 3px; }
