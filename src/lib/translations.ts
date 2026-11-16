@@ -146,11 +146,11 @@ const fr = {
     eco: { title: "Codage PATHOS", rows: [["Chute · 14/10", "Transmission ciblée"], ["Escarre talon droit · stade 2", "Soins et pansements"], ["Douleur · EVA 6/10", "Évaluation et antalgique"]], untraced: "Non tracé · non valorisé", traced: "Tracé · valorisé", pmp: "PMP · Pathos moyen pondéré de l'établissement", resident: "Mme Dubois · Ch. 101", resident_done: "Profil valorisé", macro: "Votre établissement · 80 résidents", valued: "profils valorisés", legend_off: "Sous-valorisé", legend_on: "Valorisé", badge: "Des soins requis justifiés, une dotation soins sécurisée" },
     legal: { family: "Fille de M. Martin · Ch. 204", question: "Bonjour, pourquoi mon père a-t-il un bleu sur le bras gauche ?", analysing: "Speakli analyse la traçabilité…", speakli: "Speakli IA", answer: "Une chute a été tracée hier à 17h12. Deux aides-soignantes ont relevé votre père, l'infirmière a été prévenue et une pommade a été appliquée sur l'hématome.", source: "Transmission ciblée · Chute · hier 17h12", question2: "Et est-ce qu'il a bien participé aux activités cette semaine ?", answer2: "Oui, votre père a participé à 3 activités thérapeutiques cette semaine !", source2: "Animations · 3 participations cette semaine" },
     orga: {
-      name: "Camille L.", role: "Infirmière · Les Tilleuls", period: "Cette semaine",
+      name: "Camille L.", role: "Infirmière", period: "Cette semaine",
       hidden: "Sans traçabilité : un travail invisible", visible: "Avec Speakli : tout est visible",
       acts: ["Toilettes", "Pansements", "Repas", "Écoute", "Glycémies", "Transferts", "Activités", "Mobilité"],
       stats: [["48", "", "transmissions"], ["26", "", "relevés"], ["96", " %", "soins signés"]],
-      from: "Directrice · Les Tilleuls", kudos: "Bravo Camille ! Votre suivi de Mme Dubois cette semaine a fait la différence. Merci.",
+      from: "Directrice de l'établissement", kudos: "Bravo Camille ! Votre suivi de Mme Dubois cette semaine a fait la différence. Merci.",
       badge: "Soignante de la semaine",
     },
     ops: {
@@ -186,7 +186,6 @@ const fr = {
       marquee_hint: "Cliquez pour faire défiler plus vite",
       featured: { quote: "Avec Speakli, on a du gain de temps et le lien qui n'est jamais coupé avec le résident.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age · interview en vidéo", video: "dDhcaLacDPI", video_title: "Vidéo Speakli aux Pervenches", logo: "/logos/pervenches-homage.png" },
       quotes: [
-        { quote: "Avant Speakli, il m'était quasiment impossible de faire adhérer mes équipes à la traçabilité. C'est simple et intuitif, même pour les vacataires ! Mes équipes ne s'imaginent même plus sans maintenant.", name: "Claire D.", role: "Responsable qualité, Les Tilleuls", photo: "/photos/testimonials/claire-d.png", logo: "", org: "Les Tilleuls" },
         { quote: "Cette application est une vraie révolution. Elle nous permet d'économiser un temps fou. Et en plus, ça nous motive à bien faire notre travail.", name: "Astou B.", role: "IDEC, Résidence du Marais", photo: "/photos/testimonials/astou-b.png", logo: "/logos/clients/residence-marais.png", org: "Résidence du Marais" },
         { quote: "On a vu une adhésion très rapide des équipes, qui se sont vite approprié l'outil car il est très simple d'utilisation.", name: "Séverine Davenet", role: "Directrice, Les Pervenches", photo: "/photos/testimonials/severine-davenet.png", logo: "/logos/pervenches-homage.png", org: "Les Pervenches, Groupe Hom'Age" },
         { quote: "La validation revient toujours au soignant, c'est nous qui décidons. Ça me rapproche évidemment de mes résidents !", name: "Emma Biarnes", role: "Infirmière, EHPAD Les Fleurs Bleues", photo: "/photos/testimonials/emma-biarnes.png", logo: "/logos/clients/fleurs-bleues.jpg", org: "EHPAD Les Fleurs Bleues" },
@@ -809,11 +808,11 @@ const en: Translations = {
     eco: { title: "PATHOS coding", rows: [["Fall · 14/10", "Focused note"], ["Pressure ulcer, right heel · stage 2", "Care and dressings"], ["Pain · score 6/10", "Assessment and painkiller"]], untraced: "Not logged · not counted", traced: "Logged · counted", pmp: "Facility weighted average PATHOS score (PMP)", resident: "Mrs Dubois · Room 101", resident_done: "Profile fully counted", macro: "Your facility · 80 residents", valued: "profiles fully counted", legend_off: "Under-counted", legend_on: "Fully counted", badge: "Care needs justified, care funding secured" },
     legal: { family: "Mr Martin's daughter · Room 204", question: "Hello, why does my father have a bruise on his left arm?", analysing: "Speakli is analysing the records…", speakli: "Speakli AI", answer: "A fall was logged yesterday at 5:12 pm. Two care assistants helped your father up, the nurse was informed and an ointment was applied to the bruise.", source: "Focused note · Fall · yesterday 5:12 pm", question2: "And did he take part in activities this week?", answer2: "Yes, your father took part in 3 therapeutic activities this week!", source2: "Activities · 3 sessions this week" },
     orga: {
-      name: "Camille L.", role: "Nurse · Les Tilleuls", period: "This week",
+      name: "Camille L.", role: "Nurse", period: "This week",
       hidden: "Without records: invisible work", visible: "With Speakli: everything is visible",
       acts: ["Washing", "Dressings", "Meals", "Listening", "Glucose", "Transfers", "Activities", "Mobility"],
       stats: [["48", "", "notes"], ["26", "", "readings"], ["96", "%", "care signed"]],
-      from: "Director · Les Tilleuls", kudos: "Well done Camille! Your follow-up of Mrs Dubois this week made the difference. Thank you.",
+      from: "Facility director", kudos: "Well done Camille! Your follow-up of Mrs Dubois this week made the difference. Thank you.",
       badge: "Caregiver of the week",
     },
     ops: {
@@ -849,7 +848,6 @@ const en: Translations = {
       marquee_hint: "Click to scroll faster",
       featured: { quote: "With Speakli, we save time and the bond with the resident is never broken.", name: "Résidence Les Pervenches", role: "Groupe Hom'Age · video interview", video: "dDhcaLacDPI", video_title: "Speakli video at Les Pervenches", logo: "/logos/pervenches-homage.png" },
       quotes: [
-        { quote: "Before Speakli, it was almost impossible to get my teams on board with record-keeping. It's simple and intuitive, even for temporary staff! My teams can't imagine working without it now.", name: "Claire D.", role: "Quality manager, Les Tilleuls", photo: "/photos/testimonials/claire-d.png", logo: "", org: "Les Tilleuls" },
         { quote: "This app is a real revolution. It saves us an incredible amount of time, and it motivates us to do our job well.", name: "Astou B.", role: "Care coordinator, Résidence du Marais", photo: "/photos/testimonials/astou-b.png", logo: "/logos/clients/residence-marais.png", org: "Résidence du Marais" },
         { quote: "We saw very rapid adoption from the teams, because the tool is so simple to use.", name: "Séverine Davenet", role: "Director, Les Pervenches", photo: "/photos/testimonials/severine-davenet.png", logo: "/logos/pervenches-homage.png", org: "Les Pervenches, Groupe Hom'Age" },
         { quote: "Validation always stays with the caregiver, we are the ones who decide. It brings me closer to my residents!", name: "Emma Biarnes", role: "Nurse, EHPAD Les Fleurs Bleues", photo: "/photos/testimonials/emma-biarnes.png", logo: "/logos/clients/fleurs-bleues.jpg", org: "EHPAD Les Fleurs Bleues" },

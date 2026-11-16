@@ -24,8 +24,6 @@
   padding-bottom: clamp(64px, 9vh, 110px);
 }
 .home-flow .events { padding-top: clamp(64px, 9vh, 110px); padding-bottom: clamp(64px, 9vh, 110px); }
-/* Le header vidéo se fond dans la page */
-.home-flow > .hero-video { border-bottom-left-radius: clamp(28px, 4vw, 56px); border-bottom-right-radius: clamp(28px, 4vw, 56px); overflow: hidden; }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -65,26 +63,29 @@
 .home-flow #partenaires { padding-top: 8px; }
 
 /*
- * Rythme de couleurs, uniquement dans les deux bleus Speakli :
- *   - bandes bleu clair (Produits, Résultats, Contact), fondu court et discret ;
- *   - un bloc bleu nuit net aux coins arrondis pour Sécurité + Interopérabilité,
- *     sans fondu (un fondu clair → nuit donne une zone grise).
+ * Rythme de couleurs, uniquement dans les deux bleus Speakli, en bandes pleine largeur
+ * sans arrondi ni fondu (comme Granit) et en proportions équilibrées :
+ *   bleu clair : Enjeux, Résultats, Contact + partenaires
+ *   bleu nuit  : Témoignages, Sécurité + Interopérabilité
+ *   blanc      : Produits, Événements, FAQ
  */
-.home-flow > :is(#assistant-vocal, #impact, #securite, #interoperabilite, #contact) { position: relative; isolation: isolate; }
-.home-flow > :is(#assistant-vocal, #impact, #contact)::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: var(--band);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 56px, #000 calc(100% - 56px), transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0, #000 56px, #000 calc(100% - 56px), transparent 100%);
-}
-.home-flow > :is(#assistant-vocal, #impact) { --band: linear-gradient(180deg, #E9F2FF 0%, #E2EEFF 100%); }
-.home-flow > #contact { --band: linear-gradient(120deg, #DCEAFF 0%, #EEF5FF 50%, #D6E6FF 100%); }
-/* Bloc bleu nuit : Sécurité (coins arrondis en haut) puis Interopérabilité (en bas) */
-.home-flow > :is(#securite, #interoperabilite)::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.home-flow > #securite::before { background: linear-gradient(180deg, #0D1F3C 0%, #10264A 100%); border-radius: clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px) 0 0; }
-.home-flow > #interoperabilite::before { background: linear-gradient(180deg, #10264A 0%, #0D1F3C 100%); border-radius: 0 0 clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px); }
-.home-flow > #securite { margin-top: clamp(32px, 5vh, 64px); }
-.home-flow > #interoperabilite { margin-bottom: clamp(32px, 5vh, 64px); }
+.home-flow > section:not(.hero-video) { position: relative; isolation: isolate; }
+.home-flow > :is(#enjeux, #impact, #contact, #partenaires) { background: linear-gradient(180deg, #E4EEFF 0%, #EDF4FF 100%) !important; }
+.home-flow > :is(#assistant-vocal, #evenements, #faq) { background: #fff !important; }
+.home-flow > :is(#temoignages, #securite, #interoperabilite) { background: linear-gradient(180deg, #0D1F3C 0%, #10264A 100%) !important; color: #fff; }
+.home-flow > #interoperabilite { background: linear-gradient(180deg, #10264A 0%, #0D1F3C 100%) !important; }
+.home-flow > #partenaires { border-top: 1px solid rgba(13, 48, 160, 0.08); }
+
+/* Témoignages sur bleu nuit */
+.home-flow #temoignages .story__eyebrow { color: #7DB5FF; }
+.home-flow #temoignages .story__title { color: #fff; }
+.home-flow #temoignages .story__title span { color: #60AAFF; }
+.home-flow #temoignages .voice-main blockquote { color: #fff; }
+.home-flow #temoignages .voice-main blockquote span { color: #60AAFF; }
+.home-flow #temoignages .voice-main figcaption { color: rgba(255, 255, 255, 0.72); }
+.home-flow #temoignages .voice-main figcaption b { color: #fff; }
+.home-flow #temoignages .voice-main__logo { background: #fff; padding: 6px 10px; border-radius: 10px; }
+.home-flow #temoignages .voice-card { border-color: transparent; }
 
 /* Textes et cartes lisibles sur le bleu nuit */
 .home-flow :is(#securite, #interoperabilite) { color: #fff; }

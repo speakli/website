@@ -383,3 +383,7 @@
 @media (max-width: 900px) { .kpis--compact { grid-template-columns: 1fr 1fr; } }
 .story--sim { background: linear-gradient(120deg, #c8d9f8 0%, #f4f8ff 40%, #ffffff 55%, #d0eafa 100%); }
 .impact-row--sim { margin-top: clamp(24px, 4vh, 40px); }
+
+/* Frise intégrée dans un article : texte aligné à gauche (le corps d'article est justifié) */
+.tl-embed .tl__body, .tl-embed .tl__body li { text-align: left; }
+.tl-embed .tl { margin-top: 0; }

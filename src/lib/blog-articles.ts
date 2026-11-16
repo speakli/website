@@ -39,6 +39,7 @@ export interface BlogArticle {
   metaDescription?: string; // overrides the meta description when the excerpt isn't ideal for search
   relatedLinks?: RelatedLink[]; // internal links to pillar pages / complementary articles, shown before "Autres articles"
   partnerLogos?: { label: string; logos: BlogImage[] }; // institutional logos shown under the lead (e.g. ANS)
+  timelineAfterSection?: number; // shows the three-wave traceability timeline after this content section
 }
 
 const FR_MONTHS: Record<string, string> = {
@@ -767,6 +768,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   /* ── Thematic articles ─────────────────────────────────── */
   {
     slug: "histoire-evolution-tracabilite-ehpad",
+    timelineAfterSection: 0,
     title: "Traçabilité en EHPAD : petite histoire d'une évolution silencieuse",
     category: "Numérique & IA",
     categoryBg: "#EEF2FF",

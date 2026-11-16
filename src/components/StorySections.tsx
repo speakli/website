@@ -18,10 +18,10 @@ const sv = (d: React.ReactNode) => (
 const Check = () => sv(<path d="M5 12.5l4.5 4.5L19 7.5" />);
 const Cross = () => sv(<path d="M6 6l12 12M18 6L6 18" />);
 
-// Frise chronologique de la traçabilité (page Ressources), en trois vagues : la ligne se remplit de gauche à
+// Frise chronologique de la traçabilité (article « petite histoire de la traçabilité »), en trois vagues : la ligne se remplit de gauche à
 // droite, chaque vague apparaît quand la ligne l'atteint, et le logo Speakli arrive sur la
 // troisième. L'animation se rejoue à chaque retour sur la section.
-export function TraceabilityTimeline() {
+export function TraceabilityTimeline({ embedded = false }: { embedded?: boolean }) {
   const { t } = useLanguage();
   const s = t.story;
   const ref = useRef<HTMLElement>(null);
@@ -37,14 +37,7 @@ export function TraceabilityTimeline() {
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  return (
-    <section ref={ref} id="evolution-tracabilite" className="story story--ba story--compact">
-      <div className="max-w-6xl mx-auto w-full">
-        <div className="text-center">
-          <p className="story__eyebrow">{s.ba_eyebrow}</p>
-          <h2 className="story__title">{s.ba_title} <span>{s.ba_accent}</span></h2>
-        </div>
-
+  const timeline = (
         <div ref={tlRef} className={`tl${played ? " is-played" : ""}`}>
           <div className="tl__rail" aria-hidden><i /></div>
           <ol className="tl__list">
@@ -76,7 +69,16 @@ export function TraceabilityTimeline() {
             })}
           </ol>
         </div>
-
+  );
+  if (embedded) return <div className="tl-embed">{timeline}</div>;
+  return (
+    <section ref={ref} id="evolution-tracabilite" className="story story--ba story--compact">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="text-center">
+          <p className="story__eyebrow">{s.ba_eyebrow}</p>
+          <h2 className="story__title">{s.ba_title} <span>{s.ba_accent}</span></h2>
+        </div>
+        {timeline}
         <div className="mt-7 flex flex-col items-center gap-4">
           <Link href="/blog/histoire-evolution-tracabilite-ehpad" className="tl__more">
             {s.timeline_link}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { TraceabilityTimeline } from "@/components/StorySections";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -328,6 +329,9 @@ export default async function BlogArticlePage({
                       </p>
                     ))}
                   </div>
+                  {article.timelineAfterSection === i && (
+                    <div className="mt-10 -mx-2 sm:-mx-16 lg:-mx-40"><TraceabilityTimeline embedded /></div>
+                  )}
                 </div>
               ))}
             </div>
