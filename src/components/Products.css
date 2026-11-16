@@ -361,9 +361,9 @@
 .products.is-live .products-visual.is-on .of-note { animation: ofHide 0.3s ease var(--c) forwards; }
 .products.is-live .products-visual.is-on .of-doc { animation: ofShow 0.3s ease var(--c) forwards; }
 .products.is-live .products-visual.is-on .of-p1 { animation: ofHide 0.25s ease var(--c) forwards; }
-.products.is-live .products-visual.is-on .of-p2 { animation: ofShow 0.25s ease var(--c) forwards, ofHide 0.25s ease var(--v) forwards; }
-.products.is-live .products-visual.is-on .of-p3 { animation: ofPop 0.35s ease var(--v) forwards; }
-.products.is-live .products-visual.is-on .of-read { animation: ofRead 0.8s ease calc(var(--v) - 0.8s) forwards; }
+.products.is-live .products-visual.is-on .of-p2 { animation: ofShow 0.25s ease var(--c) forwards, ofHide 0.25s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .of-p3 { animation: ofPop 0.35s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .of-read { animation: ofRead 0.8s ease calc(var(--ok) - 0.8s) forwards; }
 .products.is-live .products-visual.is-on .of-notif { animation: ofNotif 1.3s ease var(--notif) forwards; }
 .products.is-live .products-visual.is-on .of-done { animation: ofPop 0.4s ease var(--done) forwards; }
 @keyframes ofShow { to { opacity: 1; } }
@@ -394,7 +394,13 @@
 .dui-step__ic { position: relative; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; }
 .dui-step--1 .dui-step__ic { background: #007AFF; }
 .dui-step--1 img { width: 40px; }
-.dui-step--2 .dui-step__ic { background: #22C55E; border-color: #22C55E; }
+/* 3e étape : « À valider » (attente) puis « Validé » (vert) avant toute intégration */
+.dui-step--2 .dui-step__ic { background: rgba(255, 255, 255, 0.16); }
+.dui-pend, .dui-ok { grid-area: 1 / 1; display: grid; place-items: center; }
+.dui-ok { opacity: 0; transform: scale(0.6); }
+.dui-lbl { display: grid; }
+.dui-lbl > span { grid-area: 1 / 1; justify-self: center; }
+.dui-lbl__b { opacity: 0; }
 .dui-step .cs-wave { height: 28px; gap: 4px; }
 .dui-load { position: absolute; inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); overflow: visible; }
 .dui-load rect { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; }
@@ -423,12 +429,21 @@
 .products.is-live .products-visual.is-on .dui-mod__entry { animation: duiEntry 0.45s ease var(--a) forwards; }
 .products.is-live .products-visual.is-on .dui-mod__ok { animation: ofPop 0.3s ease calc(var(--a) + 0.25s) forwards; }
 .products.is-live .products-visual.is-on .dui-done { animation: ofPop 0.4s ease var(--done) forwards; }
+.products.is-live .products-visual.is-on .dui-step--2 .dui-step__ic { animation: duiOk 0.35s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .dui-step--2 .dui-pend { animation: duiPend 1s ease-in-out calc(var(--load) + var(--load-dur)) 2, ofHide 0.2s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .dui-ok { animation: ofPop 0.35s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .dui-lbl__a { animation: ofHide 0.2s ease var(--ok) forwards; }
+.products.is-live .products-visual.is-on .dui-lbl__b { animation: ofShow 0.25s ease var(--ok) forwards; }
+@keyframes duiOk { to { background: #22C55E; border-color: #22C55E; box-shadow: 0 10px 22px -10px rgba(34, 197, 94, 0.9); } }
+@keyframes duiPend { 50% { transform: scale(1.12); } }
 @keyframes duiStep { 0% { opacity: 0.45; transform: scale(1); } 50% { transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
 @keyframes duiLink { to { transform: scaleX(1); } }
 @keyframes duiEntry { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
 @keyframes duiFlash { 0% { background: transparent; } 25% { background: #EAF7EE; } 100% { background: transparent; } }
 @media (prefers-reduced-motion: reduce) {
-  .dui-step, .dui-mod__entry, .dui-mod__ok, .dui-done { opacity: 1; animation: none !important; }
+  .dui-step, .dui-mod__entry, .dui-mod__ok, .dui-done, .dui-ok, .dui-lbl__b { opacity: 1; transform: none; animation: none !important; }
+  .dui-pend, .dui-lbl__a { display: none; }
+  .dui-step--2 .dui-step__ic { background: #22C55E; border-color: #22C55E; }
   .dui-load { display: none; }
   .dui-link i { transform: none; animation: none !important; }
   .dui .cs-wave i { animation: none !important; }

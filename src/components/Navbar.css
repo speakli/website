@@ -43,7 +43,7 @@
 .snav-secu { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; transition: opacity 0.35s ease;
   background: radial-gradient(70% 60% at 50% 35%, rgba(96, 170, 255, 0.5) 0%, rgba(96, 170, 255, 0) 100%), linear-gradient(160deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%); }
 .snav-secu.is-on { opacity: 1; }
-.snav-secu img { position: absolute; width: 118%; left: -9%; top: 4%; height: auto; opacity: 1 !important; transform: none !important; filter: drop-shadow(0 18px 30px rgba(4, 20, 70, 0.45)); }
+.snav-secu img { position: absolute; width: 80%; left: 10%; top: 5%; height: auto; opacity: 1 !important; transform: none !important; filter: drop-shadow(0 18px 30px rgba(4, 20, 70, 0.45)); }
 .snav-secu ul { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
 .snav-secu li { padding: 5px 10px; border-radius: 999px; background: #fff; color: #0D30A0; font-size: 12px; font-weight: 800; box-shadow: 0 6px 14px -8px rgba(4, 20, 70, 0.6); }
 .snav-interop { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; opacity: 0; transition: opacity 0.35s ease;

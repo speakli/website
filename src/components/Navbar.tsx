@@ -138,7 +138,7 @@ export default function Navbar() {
     { ...n.products_links[3], target: { section: "interoperabilite" }, visual: "interop" },
   ];
   const experience: Item[] = [
-    { ...n.experience_links[0], target: { section: "temoignages" }, image: "/photos/nav/temoignages-pervenches.jpg" },
+    { ...n.experience_links[0], target: { section: "temoignages" }, image: "/photos/nav/temoignages-equipe.jpg" },
     { ...n.experience_links[1], target: { href: "/ressources" }, image: "/photos/nav/ressources-equipe.jpg" },
     { ...n.experience_links[2], target: { section: "evenements" }, image: "/photos/nav/evenements-silvereco.jpg" },
     { ...n.experience_links[3], target: { href: "/roi" }, image: "/photos/etablissements/sainte-famille-solila.png" },

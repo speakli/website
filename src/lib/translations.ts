@@ -287,6 +287,8 @@ const fr = {
       dui_sync: "Synchronisation instantanée",
       dui_live: {
         steps: ["Vocal", "Traitement Speakli", "Validation du soignant"],
+        to_validate: "À valider",
+        validated: "Validé par le soignant",
         docs_title: "Documentation générée",
         validate: "Valider",
         docs: [["Transmission ciblée", "Mme Dubois · Chute"], ["Relevés", "Mme Dubois · Tension, poids"], ["Soins signés", "Mme Dubois · 3 soins"], ["Compte-rendu d'activité", "8 résidents"]],
@@ -950,6 +952,8 @@ const en: Translations = {
       dui_sync: "Instant sync",
       dui_live: {
         steps: ["Voice", "Speakli processing", "Caregiver validation"],
+        to_validate: "To review",
+        validated: "Approved by the caregiver",
         docs_title: "Documentation generated",
         validate: "Validate",
         docs: [["Focused note", "Mrs Dubois · Fall"], ["Readings", "Mrs Dubois · Blood pressure, weight"], ["Care signed", "Mrs Dubois · 3 care items"], ["Activity report", "8 residents"]],

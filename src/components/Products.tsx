@@ -287,8 +287,9 @@ function VisualVitals({ ui }: { ui: UI }) {
 
 // Mode hors ligne, en scène : la connexion tombe, le soignant continue de dicter, les notes
 // vocales tombent dans la boîte mémoire Speakli ; une notification arrive, puis le badge
-// « Connexion retrouvée » ; le soignant relit et valide chaque document. 0 oubli en fin de service.
-const OFF = { cut: 0.9, stored: [1.9, 3.1, 4.3], notif: 5.6, back: 7.0, conv: [7.4, 7.7, 8.0], valid: [8.9, 9.7, 10.5], sync: 11.0, done: 11.6 };
+// « Connexion retrouvée » ; chaque document passe « À valider » puis « Validé » par le soignant ;
+// la boîte n'est « Synchronisée » (0 oubli) qu'une fois tout validé.
+const OFF = { cut: 0.9, stored: [1.9, 3.1, 4.3], notif: 6.9, back: 6.9, conv: [7.4, 7.7, 8.0], valid: [8.9, 9.7, 10.5], sync: 11.0, done: 11.6 };
 function VisualOffline({ ui }: { ui: UI }) {
   const o = ui.offline_live;
   const t = (vars: Record<string, number>) => Object.fromEntries(Object.entries(vars).map(([k, x]) => [k, `${x.toFixed(2)}s`])) as React.CSSProperties;
@@ -326,7 +327,7 @@ function VisualOffline({ ui }: { ui: UI }) {
         </div>
         <div className="grid gap-2 mt-3">
           {ui.offline_notes.map((n, i) => (
-            <div key={n} className="of-row" style={t({ "--s": OFF.stored[i], "--c": OFF.conv[i], "--v": OFF.valid[i] })}>
+            <div key={n} className="of-row" style={t({ "--s": OFF.stored[i], "--c": OFF.conv[i], "--ok": OFF.valid[i] })}>
               <Disc bg="#EAF3FF" color="#007AFF" size={26}><Ic.mic s={13} /></Disc>
               <span className="of-swap flex-1 min-w-0">
                 <span className="of-note">{ui.voice_note} · {n}</span>
@@ -347,15 +348,15 @@ function VisualOffline({ ui }: { ui: UI }) {
   );
 }
 
-// Intégration au DUI : vocal → traitement Speakli (chargement sur le contour) → validation
-// du soignant → injecté directement aux bons endroits dans NETSoins
+// Intégration au DUI : vocal → traitement Speakli (chargement sur le contour) → « À valider »
+// puis « Validé » par le soignant → seulement alors injecté aux bons endroits dans NETSoins
 // (transmissions, relevés, soins, activités).
-const DUI = { steps: [0.3, 1.3, 3.0], load: [1.4, 1.5], mods: [3.7, 4.1, 4.5, 4.9], done: 5.8 };
+const DUI = { steps: [0.3, 1.3, 3.0], load: [1.4, 1.5], ok: 4.3, mods: [5.0, 5.4, 5.8, 6.2], done: 7.1 };
 function VisualDUI({ ui }: { ui: UI }) {
   const d = ui.dui_live;
   const t = (vars: Record<string, number>) => Object.fromEntries(Object.entries(vars).map(([k, x]) => [k, `${x.toFixed(2)}s`])) as React.CSSProperties;
   return (
-    <div className="pv-stack dui" style={t({ "--load": DUI.load[0], "--load-dur": DUI.load[1], "--done": DUI.done })}>
+    <div className="pv-stack dui" style={t({ "--load": DUI.load[0], "--load-dur": DUI.load[1], "--ok": DUI.ok, "--done": DUI.done })}>
       <div className="dui-steps">
         {d.steps.map((label, i) => (
           <Fragment key={label}>
@@ -371,9 +372,18 @@ function VisualDUI({ ui }: { ui: UI }) {
                     <svg className="dui-load" viewBox="0 0 64 64" aria-hidden><rect x="2" y="2" width="60" height="60" rx="19" pathLength={100} /></svg>
                   </>
                 )}
-                {i === 2 && <Ic.check s={22} />}
+                {i === 2 && (
+                  <>
+                    <span className="dui-pend"><Ic.clock s={22} /></span>
+                    <span className="dui-ok"><Ic.check s={22} /></span>
+                  </>
+                )}
               </span>
-              <small>{label}</small>
+              {i === 2 ? (
+                <small className="dui-lbl"><span className="dui-lbl__a">{d.to_validate}</span><span className="dui-lbl__b">{d.validated}</span></small>
+              ) : (
+                <small>{label}</small>
+              )}
             </div>
           </Fragment>
         ))}

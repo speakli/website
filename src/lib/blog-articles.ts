@@ -81,6 +81,230 @@ export function parseFrenchDateToISO(display: string): string | undefined {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "jnis-2026-etude-usage-gcsms-comete-bretagne",
+    isNew: true,
+    title: "JNIS 2026 : dérisquer l'IA en EHPAD grâce à une étude d'usage, avec le GCSMS Comète Bretagne",
+    metaTitle: "JNIS 2026 : l'étude d'usage Speakli au GCSMS Comète Bretagne",
+    metaDescription:
+      "À la Journée nationale de l'innovation en santé, Speakli et le GCSMS Comète Bretagne ont présenté leur étude d'usage : −58 % de temps de saisie des transmissions, +64 % de transmissions ciblées.",
+    category: "Événements & Prises de parole",
+    categoryBg: "#EFF6FF",
+    categoryColor: "#1D4ED8",
+    date: "10 novembre 2026",
+    excerpt:
+      "Invités à la Journée nationale de l'innovation en santé, Ruben Weinstein (Speakli) et le Dr Nicolas Gallay (GCSMS Comète Bretagne) ont présenté l'étude d'usage menée dans 15 EHPAD bretons : méthode, premiers résultats et enseignements pour passer à l'échelle.",
+    coverLogo: "/photos/blog/jnis-2026-atelier.jpg",
+    coverIsPhoto: true,
+    cardBg: "#2a1f12",
+    gallery: [
+      {
+        src: "/photos/blog/jnis-2026-atelier.jpg",
+        alt: "Atelier « Expérimenter en vie réelle : du terrain à la généralisation » à la Journée nationale de l'innovation en santé 2026",
+      },
+    ],
+    content: [
+      {
+        heading: "Un atelier consacré à l'expérimentation en vie réelle",
+        paragraphs: [
+          "Le 10 novembre 2026, la Journée nationale de l'innovation en santé (JNIS), organisée par le ministère chargé de la Santé à la Cité internationale universitaire de Paris, consacrait un atelier à une question clé : comment expérimenter une innovation en vie réelle, du terrain jusqu'à la généralisation ?",
+          "Trois exemples y étaient présentés : un projet « Article 51 » en médecine de ville, une étude d'usage à l'hôpital, et une étude d'usage dans un groupement d'EHPAD. C'est ce dernier cas que Ruben Weinstein, cofondateur de Speakli, et le Dr Nicolas Gallay, directeur médical et de l'innovation du GCSMS Comète Bretagne, ont présenté ensemble, dans le cadre de l'appel à projets Structures 3.0 de l'Agence du Numérique en Santé.",
+        ],
+      },
+      {
+        heading: "Pourquoi une étude d'usage avec le GCSMS Comète Bretagne",
+        paragraphs: [
+          "En EHPAD, la traçabilité est fondamentale : économiquement (PATHOS, GIR), sur le plan médico-légal (ce qui n'est pas tracé n'est pas fait), et pour l'organisation des soins. Sur le terrain, trois barrières freinent pourtant la documentation : l'écrit, le temps et la maîtrise des outils. Les dossiers de soins informatisés permettent de tracer, mais restent sous-exploités par les équipes.",
+          "Speakli a d'abord été construit avec trois EHPAD partenaires, un laboratoire à taille humaine pour prototyper et itérer. Le GCSMS Comète Bretagne, avec 15 EHPAD formés et bientôt 18, représente le passage à l'échelle : tester l'interopérabilité avec NETSoins, industrialiser le déploiement, comprendre les conditions d'adoption et de décrochage, et co-construire avec les cadres de santé. Une coordinatrice dédiée, le directeur médical du groupement et des référents dans chaque établissement accompagnent le projet.",
+        ],
+      },
+      {
+        heading: "Les premiers résultats",
+        paragraphs: [
+          "La mesure compare deux périodes : avant le déploiement (T0, tiré de l'historique NETSoins grâce à l'interopérabilité) et après (T1). L'objectif annoncé était de diviser par deux le temps de saisie des transmissions : il est dépassé, avec −58 % de temps de saisie (1 min 31 contre 3 min 35 par transmission).",
+          "Le volume de transmissions ciblées progresse déjà de +64 %, et la qualité évolue : dans Speakli, on compte deux transmissions ciblées pour une narrative, contre l'inverse avant le déploiement, conformément au format préconisé par les ARS. 97,6 % des documents générés sont validés tels quels par les soignants, 99,2 % des synchronisations avec le logiciel de soins se font sans erreur, et plus de 80 % des soignants souhaitent continuer à utiliser Speakli.",
+        ],
+      },
+      {
+        heading: "Ce que l'étude nous a appris",
+        paragraphs: [
+          "Un outil simple et intuitif ne suffit pas : l'accompagnement humain fait la différence, avant (cadrage), pendant (formation) et après le déploiement (rituels avec les référents). Le smartphone professionnel s'impose face à la tablette partagée : 83 % des aides-soignants équipés d'un smartphone sont actifs, contre 49 % avec une tablette.",
+          "Les prérequis sont désormais clairs : un wifi de qualité, une IDEC motivée et un smartphone professionnel. Prochain chantier : les plans de soins, pour les alléger, les actualiser et les personnaliser selon la dépendance des résidents.",
+        ],
+      },
+      {
+        heading: "La suite",
+        paragraphs: [
+          "Les gains de temps, l'adhésion et la satisfaction des équipes sont déjà mesurés. Les six prochains mois porteront sur les effets médico-économiques : valorisation juste des besoins (PATHOS, GIR), stabilisation des équipes et évolution des hospitalisations.",
+          "« Une étude d'usage ne dit pas seulement si un outil fonctionne. Elle dit comment, et à quelles conditions, il fonctionne dans la durée : embarquer, sensibiliser, s'améliorer, communiquer. Pour que le projet réussisse, pour le fournisseur comme pour l'établissement. » Ruben Weinstein, cofondateur de Speakli.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Premiers résultats de Speakli au GCSMS Comète Bretagne", href: "/blog/gcsms-comete-resultats-ans" },
+      { label: "Conduite du changement numérique en EHPAD : le guide", href: "/blog/conduite-changement-numerique-ehpad" },
+    ],
+  },
+  {
+    slug: "commission-geriatrique-ia-residence-bords-de-seine",
+    isNew: true,
+    title: "IA et gériatrie : Speakli à la commission gériatrique de la Résidence Les Bords de Seine",
+    metaTitle: "IA et gériatrie : Speakli à la commission gériatrique Emeis",
+    category: "Événements & Prises de parole",
+    categoryBg: "#FFF7ED",
+    categoryColor: "#9A3412",
+    date: "5 novembre 2026",
+    excerpt:
+      "Invité à la commission gériatrique annuelle de la Résidence Les Bords de Seine (Emeis), consacrée à l'intelligence artificielle en gériatrie, Ruben Weinstein a présenté Speakli aux côtés du Dr Julien Smadja et de la solution Emobot.",
+    coverLogo: "/photos/blog/commission-geriatrique-speakli.jpg",
+    coverIsPhoto: true,
+    cardBg: "#2f3d2a",
+    gallery: [
+      {
+        src: "/photos/blog/commission-geriatrique-speakli.jpg",
+        alt: "Ruben Weinstein présente Speakli, « La voix des soignants, au cœur du soin », à la commission gériatrique de la Résidence Les Bords de Seine",
+      },
+      {
+        src: "/photos/blog/commission-geriatrique-emobot.jpg",
+        alt: "Le Dr Julien Smadja présente l'apport de l'IA en gérontopsychiatrie lors de la commission gériatrique",
+      },
+    ],
+    externalLink: {
+      label: "Lire le retour de la résidence sur LinkedIn",
+      href: "https://www.linkedin.com/posts/h%C3%A9l%C3%A8ne-d%C3%A9cis_gaezriatrie-intelligenceartificielle-innovationensantaez-ugcPost-7526908793696296961-Lnd9",
+    },
+    content: [
+      {
+        heading: "Une commission gériatrique consacrée à l'intelligence artificielle",
+        paragraphs: [
+          "Le 5 novembre 2026, la Résidence Les Bords de Seine (groupe Emeis) a tenu sa commission gériatrique annuelle, animée par le Dr Olivier Krys, autour d'un sujet au cœur de l'évolution des pratiques : l'intelligence artificielle en gériatrie.",
+          "Deux solutions y ont été présentées. Le Dr Julien Smadja, gérontopsychiatre, a présenté son travail avec Emobot, qui analyse notamment les expressions du visage et la voix pour suivre l'évolution de l'état émotionnel des personnes. Ruben Weinstein, cofondateur de Speakli, a présenté l'assistant vocal IA pensé pour les professionnels du soin.",
+        ],
+      },
+      {
+        heading: "Speakli : une documentation soignante générée à partir de notes vocales",
+        paragraphs: [
+          "À partir d'une simple note vocale, Speakli génère une documentation soignante structurée et exploitable : transmissions ciblées, signature du plan de soins, relevés de constantes. Le soignant relit et valide, puis tout est intégré au dossier de soins de l'établissement. La traçabilité est facilitée et le temps consacré aux tâches administratives diminue.",
+          "La question posée par la commission rejoint la nôtre : comment permettre aux professionnels de consacrer davantage de temps à ce qui fait le cœur de leur métier, observer, écouter, comprendre, prendre soin et créer du lien avec les résidents ?",
+        ],
+      },
+      {
+        heading: "Une même ambition : la technologie au service de l'accompagnement",
+        paragraphs: [
+          "Comme l'a résumé la direction de la résidence à l'issue de la matinée : « L'intelligence artificielle ne remplacera jamais le regard du soignant, son expertise clinique, son discernement ni la richesse de la relation humaine. Mais bien pensée, bien encadrée et intégrée aux pratiques, elle peut devenir un formidable outil d'aide, de prévention et d'amélioration de la qualité des soins. »",
+          "Nous remercions le Dr Olivier Krys, le Dr Julien Smadja et toute l'équipe de la Résidence Les Bords de Seine pour la qualité de ces échanges.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "grand-entretien-frederic-serriere-tracabilite-vocale",
+    isNew: true,
+    title: "Le Grand Entretien : « Traçabilité vocale, l'IA au service du care »",
+    metaTitle: "Le Grand Entretien avec Frédéric Serrière : Speakli et l'IA au service du care",
+    category: "Médias",
+    categoryBg: "#F0FFF4",
+    categoryColor: "#276749",
+    date: "Novembre 2026",
+    excerpt:
+      "Invité du Grand Entretien de Frédéric Serrière, consacré aux dirigeants et acteurs du marché des 50+, Ruben Weinstein revient sur le défi démographique et sur la vision de Speakli : mettre l'IA au service du care.",
+    coverLogo: "/photos/blog/grand-entretien-ruben.jpg",
+    coverIsPhoto: true,
+    cardBg: "#0b1f4d",
+    youtubeUrl: "https://www.youtube.com/embed/785vPYeik1Q",
+    content: [
+      {
+        heading: "Le défi démographique et l'intelligence artificielle",
+        paragraphs: [
+          "Le Grand Entretien, animé par Frédéric Serrière, donne la parole aux dirigeants, experts et innovateurs du marché des 50+. Ruben Weinstein, cofondateur de Speakli, y a échangé sur deux enjeux déterminants pour l'avenir du médico-social : le défi démographique et les perspectives ouvertes par l'intelligence artificielle.",
+        ],
+      },
+      {
+        heading: "L'IA au service du care",
+        paragraphs: [
+          "La vision portée par Speakli : mettre l'IA au service du care, pour permettre aux établissements d'offrir la meilleure qualité d'accompagnement possible aux personnes âgées. Concrètement, l'ambition est triple : libérer du temps aux soignants, renforcer leur autonomie et leurs compétences, et mieux sécuriser et personnaliser les parcours de soins.",
+          "« Un grand merci à Frédéric pour la qualité de cet échange et pour cette superbe opportunité de faire découvrir Speakli, les enjeux que nous adressons et la pertinence de notre démarche dans le contexte actuel. » Ruben Weinstein.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "oeil-esante-santexpo-2026-ia-vocale-ehpad",
+    isNew: true,
+    title: "L'Œil de la e-santé : « IA vocale en EHPAD, comment Speakli simplifie la traçabilité des soins »",
+    metaTitle: "L'Œil de la e-santé : IA vocale en EHPAD, l'interview Speakli à SantExpo 2026",
+    category: "Médias",
+    categoryBg: "#F0FFF4",
+    categoryColor: "#276749",
+    date: "Mai 2026",
+    excerpt:
+      "Rencontré par L'Œil de la e-santé lors de SantExpo 2026, Ruben Weinstein explique comment l'assistant vocal Speakli permet aux soignants de dicter leurs transmissions après chaque acte, avec une documentation pré-remplie, validée puis synchronisée dans le dossier de soins.",
+    coverLogo: "/photos/blog/santexpo-w692.jpg",
+    coverIsPhoto: true,
+    cardBg: "#0c1d50",
+    externalLink: {
+      label: "Lire l'article sur L'Œil de la e-santé",
+      href: "https://oeil-esante.media/focus-startup/ia-vocale-en-ehpad-comment-speakli-simplifie-la-tracabilite-des-soins/",
+    },
+    content: [
+      {
+        heading: "Une interview réalisée à SantExpo 2026",
+        paragraphs: [
+          "À l'occasion de SantExpo 2026, le média spécialisé L'Œil de la e-santé a consacré un « Focus Startup » à Speakli, finaliste des Trophées de l'Innovation du Fonds FHF dans la catégorie « Santé des soignants ».",
+          "Le point de départ est connu des directions d'établissement : en EHPAD et dans le secteur médico-social, la traçabilité quotidienne des soins peut représenter jusqu'à 30 % du temps des équipes soignantes.",
+        ],
+      },
+      {
+        heading: "Quatre étapes, du vocal au dossier de soins",
+        paragraphs: [
+          "L'article détaille le fonctionnement de Speakli : le soignant dicte ses observations après chaque acte, l'IA génère instantanément la documentation, le soignant la relit et la valide, puis elle est synchronisée automatiquement dans le dossier de soins de l'établissement.",
+          "Il revient aussi sur l'adoption de Speakli par des établissements publics, privés et associatifs, et sur le partenariat avec le groupe Emera, dont le déploiement commence par des établissements pilotes.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Speakli à SantExpo 2026, Espace Innovation du Fonds FHF", href: "/blog/santexpo-2026-stand-w692" },
+    ],
+  },
+  {
+    slug: "podcast-vivement-demain-vieillir-demain",
+    isNew: true,
+    title: "Podcast Vivement Demain ? : « Vieillir demain, serons-nous vraiment plus libres ? »",
+    metaTitle: "Podcast Vivement Demain ? #15 : Speakli parmi les lauréats Silver Valley 2026",
+    category: "Médias",
+    categoryBg: "#F0FFF4",
+    categoryColor: "#276749",
+    date: "2026",
+    excerpt:
+      "Dans l'épisode 15 du podcast Vivement Demain ?, consacré au vieillissement, trois lauréats du prix Silver Valley 2026, dont Speakli, débattent d'autonomie, de solidarité et de nouvelles technologies.",
+    coverLogo: "/photos/blog/silver-valley-laureat-2026.jpg",
+    coverIsPhoto: true,
+    cardBg: "#1f2a55",
+    externalLink: {
+      label: "Écouter l'épisode sur votre plateforme",
+      href: "https://smartlinks.audiomeans.fr/l/vivement-demain-63ebbeae/15-vieillir-demain-serons-nous-vraiment-plus-libres-403a6dc9",
+    },
+    content: [
+      {
+        heading: "Un débat sur le vieillissement de demain",
+        paragraphs: [
+          "Vivement Demain ? est le podcast qui donne envie d'être senior. Son épisode 15, « Vieillir demain : serons-nous vraiment plus libres ? », part d'une question simple : et si le véritable défi n'était pas de vivre jusqu'à 100 ans, mais d'avoir encore les moyens, la liberté et l'envie de profiter de la vie ?",
+          "Autonomie, argent, solidarité, nouvelles technologies : l'épisode réunit trois entrepreneurs lauréats du prix Silver Valley 2026, Solalie, Merci Prosper et Speakli, pour un débat sans tabou.",
+        ],
+      },
+      {
+        heading: "Speakli : l'IA au service des professionnels du soin",
+        paragraphs: [
+          "Speakli y présente sa mission : accompagner les professionnels du soin grâce à l'intelligence artificielle, pour qu'ils passent moins de temps sur la documentation et plus de temps auprès des personnes qu'ils accompagnent.",
+          "L'épisode est disponible sur Spotify, Apple Podcasts, Deezer, Amazon Music et toutes les plateformes de podcast. Retrouvez aussi les autres épisodes sur vvdm.fr.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Le site du podcast Vivement Demain ?", href: "https://www.vvdm.fr/" },
+      { label: "Speakli lauréat du prix Silver Valley 2026", href: "/blog/silver-valley-laureat-2026" },
+    ],
+  },
+  {
     slug: "santexpo-2026-stand-w692",
     title: "Speakli à Santexpo 2026 — Espace Innovation du Fonds FHF",
     category: "Événements & Prises de parole",
@@ -136,7 +360,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "silver-valley-laureat-2026",
-    isNew: true,
     title: "Lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
     category: "Prix & Récompenses",
     categoryBg: "#EEF2FF",
@@ -184,7 +407,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "gcsms-comete-resultats-ans",
-    isNew: true,
     title: "Premiers résultats de Speakli au GCSMS Comète Bretagne — AAP ANS Structures 3.0",
     category: "Appel à Projet",
     categoryBg: "#FFF7ED",
@@ -1328,7 +1550,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "silvereco-parole-expert-ia-tracabilite",
-    isNew: true,
     title: "Parole d'expert SilverEco : l'IA vocale qui révolutionne la traçabilité en médico-social",
     category: "Médias & Interviews",
     categoryBg: "#F0FDF4",
@@ -1390,7 +1611,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "fnadepa-35-table-ronde-ia-ethique-ehpad",
-    isNew: true,
     title: "Table ronde FNADEPA 35 : l'IA en EHPAD sous l'angle de l'éthique et du consentement",
     category: "Événements & Prises de parole",
     categoryBg: "#FFF7ED",
