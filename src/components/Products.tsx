@@ -562,25 +562,67 @@ function VisualSurvey({ ui }: { ui: UI }) {
   );
 }
 
+// Indicateurs d'impact en graphiques animés : 12 mois par indicateur, la ligne pointillée
+// marque l'arrivée de Speakli. Chaque courbe se trace, puis la valeur actuelle et l'écart
+// apparaissent. Hausse ou baisse : le vert signale toujours une évolution favorable.
+const IMPACT = { first: 0.4, gap: 0.55, draw: 1.3 };
+const IMP_MONTHS = 12;
+const IMP_DEPLOY = 4; // mois d'arrivée de Speakli
+const num = (v: string) => parseFloat(v.replace(/\s/g, "").replace(",", "."));
+// Série déterministe : stable avant Speakli, puis évolution progressive vers la valeur actuelle
+function impactSeries(t0: number, t1: number, seed: number) {
+  return Array.from({ length: IMP_MONTHS }, (_, m) => {
+    const wobble = Math.sin((m + 1) * (seed + 1.7)) * 0.06 * Math.max(Math.abs(t0), Math.abs(t1));
+    if (m <= IMP_DEPLOY) return t0 + wobble * 0.8;
+    const k = (m - IMP_DEPLOY) / (IMP_MONTHS - 1 - IMP_DEPLOY);
+    const ease = 1 - Math.pow(1 - k, 2.2);
+    return t0 + (t1 - t0) * ease + (m === IMP_MONTHS - 1 ? 0 : wobble * 0.5);
+  });
+}
+function ImpactChart({ t0, t1, seed }: { t0: number; t1: number; seed: number }) {
+  const W = 200, H = 58, X0 = 4, X1 = 194, Y0 = 8, Y1 = 50;
+  const vals = impactSeries(t0, t1, seed);
+  const lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+  const pts = vals.map((v, m) => [X0 + (m * (X1 - X0)) / (IMP_MONTHS - 1), Y1 - ((v - lo) / span) * (Y1 - Y0)] as const);
+  const line = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
+  const area = `${line} L${X1} ${H} L${X0} ${H} Z`;
+  const xd = X0 + (IMP_DEPLOY * (X1 - X0)) / (IMP_MONTHS - 1);
+  const [ex, ey] = pts[pts.length - 1];
+  return (
+    <svg className="imp-chart" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden>
+      <defs>
+        <linearGradient id={`imp-g-${seed}`} x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stopColor="#22C55E" stopOpacity=".28" /><stop offset="1" stopColor="#22C55E" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <line className="imp-deploy" x1={xd} x2={xd} y1={2} y2={H} />
+      <path className="imp-area" d={area} fill={`url(#imp-g-${seed})`} />
+      <path className="imp-line" d={line} pathLength={1} />
+      <circle className="imp-dot" cx={ex} cy={ey} r={3.4} />
+    </svg>
+  );
+}
 function VisualImpact({ ui }: { ui: UI }) {
   const d = ui.dash;
   return (
     <div className="w-full max-w-[440px]">
       <p className="text-white/85 text-sm font-semibold mb-3 text-center">{d.impact_title} · {d.impact_sub}</p>
       <div className="grid grid-cols-2 gap-3">
-        {(d.impact as string[][]).map(([label, t0, t1, delta]) => (
-          <Card key={label}>
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-[12px] text-slate-500 leading-tight min-h-[2.4em]">{label}</p>
-              <span className="pv-delta">{delta}</span>
-            </div>
-            <p className="mt-2 flex items-baseline gap-1.5">
-              <span className="text-sm text-slate-400 line-through decoration-slate-300">{t0}</span>
-              <Ic.arrow s={12} />
-              <b className="text-2xl font-extrabold tracking-tight text-[#0D30A0]">{t1}</b>
-            </p>
-          </Card>
-        ))}
+        {(d.impact as string[][]).map(([label, t0, t1, delta], i) => {
+          const a = IMPACT.first + i * IMPACT.gap;
+          return (
+            <Card key={label} className="imp-card">
+              <div style={{ ["--a" as string]: `${a}s`, ["--b" as string]: `${a + IMPACT.draw}s` } as React.CSSProperties}>
+                <div className="flex items-start justify-between gap-2">
+                  <p className="text-[12px] text-slate-500 leading-tight min-h-[2.4em]">{label}</p>
+                  <span className="pv-delta imp-delta">{delta}</span>
+                </div>
+                <ImpactChart t0={num(t0)} t1={num(t1)} seed={i} />
+                <div className="imp-axis"><span>{t0}</span><span className="imp-axis__tag">Speakli</span><b className="imp-now">{t1}</b></div>
+              </div>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

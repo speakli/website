@@ -539,3 +539,26 @@
 .prod-switch button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 999px; font-size: 13.5px; font-weight: 700; color: #5B6B82; transition: background 0.25s ease, color 0.25s ease; }
 .prod-switch button:hover { color: var(--sp-700); }
 .prod-switch button.is-on { background: linear-gradient(135deg, var(--sp-600) 0%, var(--sp-500) 100%); color: #fff; box-shadow: 0 6px 16px -8px rgba(0, 122, 255, 0.7); }
+
+/* ── Mesurer l'impact : courbes animées ── */
+.imp-card { padding: 12px 12px 10px !important; }
+.imp-chart { display: block; width: 100%; height: 46px; margin-top: 6px; overflow: visible; }
+.imp-deploy { stroke: #94A3B8; stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.imp-line { fill: none; stroke: #22C55E; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.imp-area { opacity: 0; }
+.imp-dot { fill: #fff; stroke: #22C55E; stroke-width: 2; vector-effect: non-scaling-stroke; opacity: 0; }
+.imp-axis { position: relative; display: flex; align-items: baseline; justify-content: space-between; gap: 6px; margin-top: 4px; font-size: 11px; color: #94A3B8; }
+/* sous la ligne pointillée : mois 4 sur 12, entre x = 4 et x = 194 sur 200 */
+.imp-axis__tag { position: absolute; left: 36.5%; bottom: 1px; transform: translateX(-50%); font-size: 10px; font-weight: 700; color: #64748B; }
+.imp-now { font-size: 17px; font-weight: 800; color: #0D30A0; letter-spacing: -0.02em; opacity: 0; }
+.imp-delta { opacity: 0; }
+.products.is-live .products-visual.is-on .imp-line { animation: impDraw 1.3s cubic-bezier(0.45, 0, 0.25, 1) var(--a) forwards; }
+.products.is-live .products-visual.is-on .imp-area { animation: ofShow 0.5s ease var(--b) forwards; }
+.products.is-live .products-visual.is-on .imp-dot,
+.products.is-live .products-visual.is-on .imp-now,
+.products.is-live .products-visual.is-on .imp-delta { animation: ofPop 0.35s ease var(--b) forwards; }
+@keyframes impDraw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .imp-line { stroke-dashoffset: 0; animation: none !important; }
+  .imp-area, .imp-dot, .imp-now, .imp-delta { opacity: 1; animation: none !important; }
+}
