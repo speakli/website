@@ -165,7 +165,7 @@ function VoiceLive({ label, tl, tones }: { label: string; tl: ReturnType<typeof 
     <div className="cs-voice">
       <div className="cs-voice__head">
         <span className="cs-mic"><Ic.mic s={14} /></span>
-        <span className="cs-wave" aria-hidden>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ animationDelay: `${-((i * 0.17) % 0.9).toFixed(2)}s` }} />)}</span>
+        <span className="cs-wave" aria-hidden>{Array.from({ length: 14 }, (_, i) => <i key={i} style={cssTime("--wd", -((i * 0.17) % 0.9))} />)}</span>
         <small>{label}</small>
       </div>
       <p className="cs-text">

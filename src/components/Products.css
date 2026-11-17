@@ -247,7 +247,7 @@
 .cs-comment { margin: 0 6px; font-size: 12px; font-style: italic; line-height: 1.4; color: #6B7280; }
 
 .products.is-live .products-visual.is-on .cs-w { animation: csWord 0.25s ease var(--d) forwards; }
-.products.is-live .products-visual.is-on .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
+.products.is-live .products-visual.is-on .cs-wave i { animation: istepWave2 0.9s ease-in-out var(--wd, 0s) infinite, csStop 0.3s ease var(--end) forwards; }
 .products.is-live .products-visual.is-on .cs-seg { animation: csMark 0.5s ease var(--a) forwards; }
 .products.is-live .products-visual.is-on .cs-item.is-adhoc { animation: csIn 0.4s ease calc(var(--a) - 0.1s) forwards; }
 .products.is-live .products-visual.is-on .cs-status__off { animation: csOff 0.25s ease var(--a) forwards; }
@@ -295,7 +295,7 @@
 .vt-hy-bar { display: block; width: 0; background: #22C55E; }
 .vt-add { margin-top: 6px; font-size: 12px; font-weight: 700; color: #16A34A; }
 
-.products.is-live .products-visual.is-on .vt .cs-wave i { animation: istepWave2 0.9s ease-in-out infinite, csStop 0.3s ease var(--end) forwards; }
+.products.is-live .products-visual.is-on .vt .cs-wave i { animation: istepWave2 0.9s ease-in-out var(--wd, 0s) infinite, csStop 0.3s ease var(--end) forwards; }
 .products.is-live .products-visual.is-on .vt-card__in { animation: vtOn 0.4s ease var(--a) forwards; }
 .products.is-live .products-visual.is-on .vt-val, .products.is-live .products-visual.is-on .vt-new { animation: csIn 0.4s ease var(--d) forwards; }
 .products.is-live .products-visual.is-on .vt-card--sky .vt-card__in .vt-hy { animation: vtHy 0.9s ease calc(var(--a) + 0.1s) forwards; }
