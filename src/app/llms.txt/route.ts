@@ -58,7 +58,6 @@ ${t.faq.items.map(i => `### ${i.question}\n\n${i.answer}`).join("\n\n")}
 - [Logiciel de transmission EHPAD](${BASE_URL}/logiciel-transmission-ehpad) : transmissions ciblées, méthode DAR, intégration au DUI
 - [Calculateur PATHOS](${BASE_URL}/roi) : estimation du gain de dotation soins (GMPS) pour un EHPAD
 - [Ressources](${BASE_URL}/ressources) : articles sur la traçabilité, PATHOS/GMPS, l'IA en EHPAD, la conformité
-- [Partenaires et soutiens](${BASE_URL}/qui-sommes-nous/partenaires-et-soutiens)
 
 ## Articles
 

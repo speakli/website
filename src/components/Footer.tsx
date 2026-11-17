@@ -14,9 +14,6 @@ const SOLUTION_LINKS = [
 ];
 
 const COMPANY_LINKS = [
-  { label: "Partenaires et soutiens", href: "/qui-sommes-nous/partenaires-et-soutiens" },
-  { label: "Nous rejoindre",          href: "/qui-sommes-nous/nous-rejoindre" },
-  { label: "Notre histoire",          href: "/qui-sommes-nous/notre-histoire" },
   { label: "Témoignages",             href: "/#temoignages" },
   { label: "Contact",                 href: "/#contact" },
   { label: "Ressources",              href: "/ressources" },

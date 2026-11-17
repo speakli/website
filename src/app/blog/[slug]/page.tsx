@@ -61,8 +61,8 @@ export default async function BlogArticlePage({
   const otherArticles = BLOG_ARTICLES.filter((a) => a.slug !== slug).slice(0, 3);
 
   const isoDate = parseFrenchDateToISO(article.date);
-  const hubHref = article.isThematic ? "/ressources" : "/qui-sommes-nous/partenaires-et-soutiens";
-  const hubLabel = article.isThematic ? "Ressources" : "Partenaires & Soutiens";
+  const hubHref = article.isThematic ? "/ressources" : "/ressources#blog-recompenses";
+  const hubLabel = article.isThematic ? "Ressources" : "Actualités";
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -396,7 +396,7 @@ export default async function BlogArticlePage({
             {/* Back link */}
             <div className="mt-16 pt-10 border-t" style={{ borderColor: "var(--sp-100)" }}>
               <Link
-                href={article.isThematic ? "/ressources" : "/qui-sommes-nous/partenaires-et-soutiens#blog-recompenses"}
+                href={article.isThematic ? "/ressources" : "/ressources#blog-recompenses"}
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-75"
                 style={{ color: "var(--sp-500)" }}
               >
