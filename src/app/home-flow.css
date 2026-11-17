@@ -30,7 +30,7 @@
     /* Titres, textes et cartes : montée en fondu */
     .home-flow :is(
       .story__eyebrow, .story__title, .story__subtitle,
-      .trust__eyebrow, .trust__title, .trust__lede, .trust__cols > div, .istep,
+      .trust__eyebrow, .trust__title, .trust__lede, .trust__cols > div,
       .events__eyebrow, .events__title, .events__lede, .event,
       .products h2, .products-list, .prod-switch,
       .impact-card, .impact-sim, .impact-pathos, .voice-main > div, .voice-marquee,

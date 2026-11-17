@@ -2,7 +2,7 @@
 import "./TrustSections.css";
 import { useLanguage } from "@/context/LanguageContext";
 import { openContact } from "@/lib/contactMode";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CtaPair from "./CtaPair";
 
 /*
@@ -119,13 +119,69 @@ const StepVisuals = [
 ];
 type Trust = ReturnType<typeof useLanguage>["t"]["trust"];
 
+// Comment s'intègre Speakli ? Frise verticale qui avance au défilement (inspirée de Vocca) :
+// la ligne se remplit, chaque étape s'allume quand on l'atteint, de « je me connecte » à
+// « c'est synchronisé au DUI ».
 export function InteropSection() {
   const { t } = useLanguage();
   const s = t.trust;
   const ref = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(0);
+  // Ordinateur : ligne courbe qui relie les pastilles (calculée sur leur position réelle)
+  const [curve, setCurve] = useState<{ d: string; w: number; h: number } | null>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    let raf = 0;
+    const centers = () => {
+      const r = list.getBoundingClientRect();
+      return [...list.querySelectorAll<HTMLElement>(".itl__pill")].map(p => {
+        const b = p.getBoundingClientRect();
+        return { x: b.left + b.width / 2 - r.left, y: b.top + b.height / 2 - r.top };
+      });
+    };
+    const layout = () => {
+      const c = centers();
+      if (c.length < 2) return;
+      const d = c.reduce((acc, p, i) => {
+        if (i === 0) return `M${p.x} ${p.y}`;
+        const q = c[i - 1], my = (q.y + p.y) / 2;
+        return `${acc} C${q.x} ${my} ${p.x} ${my} ${p.x} ${p.y}`;
+      }, "");
+      setCurve({ d, w: list.offsetWidth, h: list.offsetHeight });
+    };
+    const update = () => {
+      raf = 0;
+      const anchor = window.innerHeight * 0.55;
+      const r = list.getBoundingClientRect();
+      // Mobile : ligne droite qui se remplit
+      list.style.setProperty("--fill", `${Math.max(0, Math.min(r.height, anchor - r.top))}px`);
+      const c = centers();
+      if (c.length) {
+        // Ordinateur : la courbe se trace de la première à la dernière pastille
+        const first = c[0].y + r.top, last = c[c.length - 1].y + r.top;
+        const prog = Math.max(0, Math.min(1, (anchor - first) / Math.max(1, last - first)));
+        pathRef.current?.style.setProperty("stroke-dashoffset", String(1 - prog));
+      }
+      let n = -1;
+      c.forEach((p, k) => { if (p.y + r.top <= anchor) n = k; });
+      setActive(n);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    const onResize = () => { layout(); onScroll(); };
+    layout();
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); if (raf) cancelAnimationFrame(raf); };
+  }, []);
+
   return (
     <section ref={ref} id="interoperabilite" className="trust trust--interop">
-      <div className="max-w-6xl mx-auto w-full">
+      <div className="max-w-5xl mx-auto w-full">
         <div className="text-center max-w-2xl mx-auto">
           <p className="trust__eyebrow">{s.interop_eyebrow}</p>
           <h2 className="trust__title">{s.interop_title} <span>{s.interop_accent}</span></h2>
@@ -133,20 +189,32 @@ export function InteropSection() {
           <CtaPair placement="head" align="center" className="mt-6" />
         </div>
 
-        <ol className="isteps">
+        <ol ref={listRef} className="itl">
+          <span className="itl__rail" aria-hidden><i /></span>
+          {curve && (
+            <svg className="itl__curve" width={curve.w} height={curve.h} viewBox={`0 0 ${curve.w} ${curve.h}`} aria-hidden>
+              <path d={curve.d} className="itl__curve-bg" />
+              <path ref={pathRef} d={curve.d} className="itl__curve-fg" pathLength={1} />
+            </svg>
+          )}
           {s.steps.map((step, i) => {
             const Visual = StepVisuals[i];
+            const on = i <= active;
             return (
-              <li key={step.title} className="istep">
-                <div className="istep__visual"><Visual s={s} /></div>
-                <span className="istep__num">{s.step} {i + 1}</span>
-                <b className="istep__title">{step.title}</b>
-                <p className="istep__text">{step.text}</p>
-                {i === 3 && (
-                  <button type="button" className="istep__cta" onClick={() => openContact("callback")}>
-                    {s.other_dui} <span>{s.lets_talk} →</span>
-                  </button>
-                )}
+              <li key={step.title} className={`itl__step${on ? " is-on" : ""}${i === active ? " is-current" : ""}`}>
+                <span className="itl__pill">{s.step} {i + 1}</span>
+                <article className="itl__card">
+                  <div className="itl__text">
+                    <b className="itl__title">{step.title}</b>
+                    <p className="itl__desc">{step.text}</p>
+                    {i === 3 && (
+                      <button type="button" className="istep__cta" onClick={() => openContact("callback")}>
+                        {s.other_dui} <span>{s.lets_talk} →</span>
+                      </button>
+                    )}
+                  </div>
+                  <div className="istep__visual itl__visual"><Visual s={s} /></div>
+                </article>
               </li>
             );
           })}
