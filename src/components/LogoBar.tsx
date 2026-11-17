@@ -39,10 +39,7 @@ export default function LogoBar({ variant = "default" }: { variant?: "default" |
   const { t } = useLanguage();
   if (variant === "hero") {
     return (
-      <section className="relative z-10 w-full pb-3 lg:pb-16">
-        <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 lg:mb-5 text-center" style={{ color: "rgba(255,255,255,0.75)" }}>
-          {t.logobar.label}
-        </p>
+      <section className="relative z-10 w-full pb-4 lg:pb-16" aria-label={t.logobar.label}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="marquee-wrap">
             <div className="marquee-track marquee-rtl items-center" style={{ height: 56 }}>
@@ -66,10 +63,7 @@ export default function LogoBar({ variant = "default" }: { variant?: "default" |
     );
   }
   return (
-    <section className="py-12" style={{ background: "#ffffff" }}>
-      <p className="text-xs font-bold uppercase tracking-widest mb-7" style={{ color: "var(--sp-500)", textAlign: "center" }}>
-        {t.logobar.label}
-      </p>
+    <section className="py-12" style={{ background: "#ffffff" }} aria-label={t.logobar.label}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="marquee-wrap">
           <div className="marquee-track marquee-rtl">
