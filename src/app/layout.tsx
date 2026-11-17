@@ -177,7 +177,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ fontFamily: "var(--font-geist), sans-serif" }}>
+      <body style={{ fontFamily: "var(--font-geist), sans-serif", overflowX: "clip" }}>
         <Providers>{children}</Providers>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){

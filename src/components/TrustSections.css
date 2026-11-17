@@ -106,7 +106,13 @@
 /* Mobile : les quatre points clés de la sécurité sans sous-titre (pictos + titres seuls) */
 @media (max-width: 767px) {
   #securite .trust__cols span:not(.trust__icon) { display: none; }
-  #securite .trust__cols > div { padding-bottom: 18px; }
+  #securite .trust__cols > div { padding: 18px 8px; }
+  #securite .trust__cols b { font-size: 15px; white-space: nowrap; }
+}
+.trust__t-short { display: none; }
+@media (max-width: 767px) {
+  .trust__t-long { display: none; }
+  .trust__t-short { display: block; }
 }
 
 /* Interopérabilité : frise verticale qui avance au défilement */
@@ -209,3 +215,18 @@
   .ival__vital { display: grid; gap: 0; }
   .ival__vital span { overflow: visible; }
 }
+
+/* Confettis à l'arrivée sur l'étape 4 */
+.itl__step:last-child { z-index: 2; }
+.itl-confetti { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; z-index: 3; }
+@media (min-width: 1024px) {
+  .itl__step:nth-of-type(even):last-child .itl-confetti { left: 23%; }
+  .itl__step:nth-of-type(odd):last-child .itl-confetti { left: 77%; }
+}
+.itl-confetti i { position: absolute; left: 0; top: 0; opacity: 0; animation: confetti 1.6s cubic-bezier(0.15, 0.7, 0.3, 1) forwards; }
+@keyframes confetti {
+  0% { opacity: 1; transform: translate(-50%, -50%) rotate(0) scale(0.4); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y) + 90px)) rotate(var(--r)) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .itl-confetti { display: none; } }

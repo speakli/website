@@ -301,78 +301,92 @@ export function ImpactSection() {
   const perDay = (n * TRANSMISSIONS_PER_DAY * MIN_SAVED_PER_TRANSMISSION) / 60;
   const perYear = perDay * DAYS_PER_ETP;
   const etp = perYear / (DAYS_PER_ETP * HOURS_PER_DAY);
+  const range = Math.min(150, Math.max(10, n));
   return (
     <section ref={ref} id="impact" className="story story--impact">
       <div className="max-w-6xl mx-auto w-full">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
-          <div className="max-w-3xl">
+        <div className="impact-layout">
+          <div className="impact-intro">
             <p className="story__eyebrow">{s.eyebrow}</p>
             <h2 className="story__title">{s.title} <span>{s.accent}</span></h2>
+            <p className="impact-intro__lede">{s.lede}</p>
+            <CtaPair placement="head" className="mt-7" />
           </div>
-          <CtaPair placement="head" />
-        </div>
 
-        <div className="impact-cards">
-          {s.cards.map(c => (
-            <article key={c.title} className="impact-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.image} alt={c.alt} style={{ objectPosition: c.focus }} />
-              <div>
-                <b>{c.title}</b><span>{c.text}</span>
-                <p className="impact-card__metric">
-                  <strong>{c.metric}</strong><small>{c.metric_label}</small>
+          {/* Cartes qui se superposent au défilement : chiffre, proposition de valeur, établissement */}
+          <div className="impact-stack">
+            {s.cards.map((c, i) => (
+              <article key={c.title} className="impact-scard" style={{ "--i": i } as React.CSSProperties}>
+                <div className="impact-scard__head">
+                  <h3>{c.title}</h3>
+                  <p className="impact-scard__metric"><strong>{c.metric}</strong><small>{c.metric_label}</small></p>
+                </div>
+                <div className="impact-scard__media">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.logo} alt={c.org} title={c.org} />
+                  <img src={c.image} alt={c.alt} style={{ objectPosition: c.focus }} loading="lazy" />
+                </div>
+                <div className="impact-scard__body">
+                  {c.body.map(para => <p key={para}>{para}</p>)}
+                </div>
+                <p className="impact-scard__org">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.logo} alt="" />
+                  <span>{c.org}</span>
                 </p>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
 
-
-        <div className="impact-row">
-          <div className="impact-sim">
-            <p className="impact-sim__label">{s.sim_label}</p>
-            <p className="impact-sim__scope">{s.sim_scope}</p>
-            <div className="impact-sim__input">
-              <label className="impact-sim__field">
-                <span>{s.sim_input}</span>
+        {/* Simulateur de temps rendu + calculateur PATHOS */}
+        <div className="impact-calc">
+          <div className="impact-calc__in">
+            <p className="impact-calc__tag">{s.sim_label}</p>
+            <h3 className="impact-calc__title">{s.sim_title}</h3>
+            <label className="impact-calc__field">
+              <span>{s.sim_input}</span>
+              <span className="impact-calc__num">
                 <input
                   type="number" inputMode="numeric" min={1} max={2000} value={n === 0 ? "" : n}
                   onChange={e => setN(Math.max(0, Math.min(2000, Math.round(Number(e.target.value) || 0))))}
                   aria-describedby="impact-sim-out"
                 />
-                <span>{s.sim_unit}</span>
-              </label>
-              <input type="range" min={10} max={150} step={5} value={Math.min(150, Math.max(10, n))} onChange={e => setN(Number(e.target.value))} aria-label={`${s.sim_input} ${s.sim_unit}`} />
-            </div>
-            <output id="impact-sim-out" className="impact-sim__out">
-              <span><b>{fmt(perDay, 1)} h</b><small>{s.per_day}</small></span>
-              <span><b>{fmt(perYear)} h</b><small>{s.per_year}</small></span>
-              <span className="is-main"><b>{fmt(etp, 1)}</b><small>{s.etp}</small></span>
-            </output>
-            <div className="impact-sim__foot">
-              <p>{s.method}</p>
-              <span className="impact-sim__src">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logos/ans.png" alt="Agence du Numérique en Santé" className="h-8" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logos/gcsms.png" alt="GCSMS Comète Bretagne" className="h-10" />
-                <small>{s.source}</small>
+                <small>{s.sim_unit}</small>
               </span>
-            </div>
+            </label>
+            <input
+              className="impact-calc__range" type="range" min={10} max={150} step={5} value={range}
+              onChange={e => setN(Number(e.target.value))} aria-label={`${s.sim_input} ${s.sim_unit}`}
+              style={{ "--p": `${((range - 10) / 140) * 100}%` } as React.CSSProperties}
+            />
+            <div className="impact-calc__scale" aria-hidden><span>10</span><span>150</span></div>
+            <p className="impact-calc__method"><b>{s.sim_scope}</b> {s.method}</p>
+            <span className="impact-calc__src">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/ans.png" alt="Agence du Numérique en Santé" className="h-7" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/gcsms.png" alt="GCSMS Comète Bretagne" className="h-9" />
+              <small>{s.source}</small>
+            </span>
           </div>
-          <div className="impact-pathos">
-            <p className="impact-pathos__tag">{s.pathos_tag}</p>
+          <output id="impact-sim-out" className="impact-calc__out">
+            <span className="impact-calc__main"><b>{fmt(etp, 1)}</b><small>{s.etp}</small></span>
+            <span className="impact-calc__row"><b>{fmt(perDay, 1)} h</b><small>{s.per_day}</small></span>
+            <span className="impact-calc__row"><b>{fmt(perYear)} h</b><small>{s.per_year}</small></span>
+          </output>
+        </div>
+        <a href="/roi" className="impact-pathos">
+          <span className="impact-pathos__txt">
+            <span className="impact-pathos__tag">{s.pathos_tag}</span>
             <b>{s.pathos_title}</b>
             <span>{s.pathos_text}</span>
-            <a href="/roi" className="impact-pathos__cta">
-              {s.pathos_cta}
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </a>
-          </div>
-        </div>
-        <CtaPair placement="foot" align="center" className="mt-6" />
+          </span>
+          <span className="impact-pathos__cta">
+            {s.pathos_cta}
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </span>
+        </a>
+        <CtaPair placement="foot" align="center" className="mt-8" />
       </div>
     </section>
   );

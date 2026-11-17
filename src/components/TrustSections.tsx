@@ -17,8 +17,11 @@ const svg = (children: React.ReactNode) => (
 );
 // Mêmes pictos que la réassurance du header : bouclier HDS, mention RGPD, étoiles de l'UE
 const ICONS = [
-  // Hébergement HDS
-  svg(<><path d="M12 2.8l7.5 3v5.6c0 4.6-3.1 8.4-7.5 9.8-4.4-1.4-7.5-5.2-7.5-9.8V5.8l7.5-3z" /><path d="M8.6 12.2l2.4 2.4 4.6-4.8" /></>),
+  // Hébergement HDS : bouclier avec la mention HDS, comme dans le header
+  <svg key="hds" viewBox="0 0 34 38" width="30" height="33" aria-hidden>
+    <path d="M17 1.5l14 5.4v10.3c0 8.7-5.9 15.6-14 18.3C8.9 32.8 3 25.9 3 17.2V6.9L17 1.5z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    <text x="17" y="21.5" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="currentColor" style={{ letterSpacing: "0.02em" }}>HDS</text>
+  </svg>,
   // RGPD
   null,
   // Traitements IA dans l'UE
@@ -57,7 +60,8 @@ export function SecuritySection() {
           {s.secu_points.map((p, i) => (
             <div key={p.title}>
               <span className="trust__icon">{ICONS[i] ?? <b className="trust__mark" aria-hidden>{t.hero.rgpd_mark}</b>}</span>
-              <b>{p.title}</b>
+              <b className="trust__t-long">{p.title}</b>
+              <b className="trust__t-short">{p.short}</b>
               <span>{p.text}</span>
             </div>
           ))}
@@ -143,6 +147,28 @@ const StepVisuals = [
     );
   },
 ];
+// Confettis autour de l'étape 4 : pièces pré-calculées (pseudo-aléatoire déterministe)
+const CONFETTI_COLORS = ["#007AFF", "#60A5FA", "#A8CFFF", "#FFFFFF", "#22C55E", "#7C5CF0", "#FACC15"];
+const CONFETTI = Array.from({ length: 80 }, (_, i) => {
+  const r = (k: number) => { const x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
+  const a = r(1) * Math.PI * 2;
+  const dist = 140 + r(2) * 260;
+  return {
+    x: Math.round(Math.cos(a) * dist * 1.3), y: Math.round(Math.sin(a) * dist * 0.75 - 40),
+    rot: Math.round(r(3) * 720 - 360), delay: (r(4) * 0.18).toFixed(2), dur: (1.3 + r(5) * 0.8).toFixed(2),
+    w: 7 + Math.round(r(6) * 7), h: r(7) > 0.5 ? 7 + Math.round(r(8) * 9) : 5, round: r(9) > 0.75,
+    color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+  };
+});
+function Confetti() {
+  return (
+    <span className="itl-confetti" aria-hidden>
+      {CONFETTI.map((c, i) => (
+        <i key={i} style={{ "--x": `${c.x}px`, "--y": `${c.y}px`, "--r": `${c.rot}deg`, animationDelay: `${c.delay}s`, animationDuration: `${c.dur}s`, width: c.w, height: c.h, background: c.color, borderRadius: c.round ? "50%" : 2 } as React.CSSProperties} />
+      ))}
+    </span>
+  );
+}
 type Trust = ReturnType<typeof useLanguage>["t"]["trust"];
 
 // Comment s'intègre Speakli ? Frise verticale qui avance au défilement (inspirée de Vocca) :
@@ -154,6 +180,9 @@ export function InteropSection() {
   const ref = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
+  // Confettis : relancés à chaque fois qu'on atteint l'étape 4 en descendant
+  const [burst, setBurst] = useState(0);
+  const prevActive = useRef(0);
   // Ordinateur : ligne courbe qui relie les pastilles (calculée sur leur position réelle)
   const [curve, setCurve] = useState<{ d: string; w: number; h: number } | null>(null);
   const pathRef = useRef<SVGPathElement>(null);
@@ -194,6 +223,8 @@ export function InteropSection() {
       }
       let n = -1;
       c.forEach((p, k) => { if (p.y + r.top <= anchor) n = k; });
+      if (n === 3 && prevActive.current < 3 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) setBurst(b => b + 1);
+      prevActive.current = n;
       setActive(n);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
@@ -241,6 +272,7 @@ export function InteropSection() {
                   </div>
                   <div className={`istep__visual itl__visual${i === 2 ? " itl__visual--docs" : ""}`}><Visual s={s} /></div>
                 </article>
+                {i === 3 && burst > 0 && <Confetti key={burst} />}
               </li>
             );
           })}

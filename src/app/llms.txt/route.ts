@@ -46,7 +46,7 @@ ${list(p.dashboard)}
 
 ## Résultats mesurés chez nos clients
 
-${t.story.impact.cards.map(c => `- **${c.metric} ${c.metric_label}** (${c.org}) : ${c.title}. ${c.text}`).join("\n")}
+${t.story.impact.cards.map(c => `- **${c.metric} ${c.metric_label}** (${c.org}) : ${c.title}. ${c.body.join(" ")}`).join("\n")}
 
 ## Questions fréquentes
 
