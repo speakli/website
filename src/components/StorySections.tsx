@@ -408,9 +408,11 @@ export function VoicesSection() {
   const ref = useRef<HTMLElement>(null);
   const f = s.featured;
   // Défilement des cartes : lent en continu, en pause au survol, et chaque clic
-  // donne un élan qui accélère le défilement puis retombe progressivement
+  // donne un élan qui accélère le défilement puis retombe progressivement.
+  // Au doigt (ou à la souris) : on fait glisser les cartes, et le lâcher garde l'élan du geste.
   const trackRef = useRef<HTMLDivElement>(null);
-  const marquee = useRef({ x: 0, boost: 0, hover: false });
+  const marquee = useRef({ x: 0, boost: 0, hover: false, drag: false });
+  const drag = useRef({ id: -1, lastX: 0, lastT: 0, v: 0, moved: 0 });
   useEffect(() => {
     const el = trackRef.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -421,11 +423,11 @@ export function VoicesSection() {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       const m = marquee.current;
-      const speed = (m.hover ? 0 : BASE) + m.boost;
+      const speed = m.drag ? 0 : (m.hover ? 0 : BASE) + m.boost;
       m.boost *= Math.pow(0.12, dt); // l'élan retombe en ~1,5 s
-      if (m.boost < 1) m.boost = 0;
+      if (Math.abs(m.boost) < 1) m.boost = 0;
       const loop = el.scrollWidth / 2 + 7;
-      m.x = (m.x + speed * dt) % loop;
+      m.x = (((m.x + speed * dt) % loop) + loop) % loop;
       el.style.transform = `translateX(${-m.x}px)`;
       raf = requestAnimationFrame(tick);
     };
@@ -465,9 +467,37 @@ export function VoicesSection() {
 
         <div
           className="voice-marquee"
-          onMouseEnter={() => { marquee.current.hover = true; }}
-          onMouseLeave={() => { marquee.current.hover = false; }}
-          onClick={() => { marquee.current.boost = Math.min(marquee.current.boost + 900, 2400); }}
+          onPointerEnter={e => { if (e.pointerType === "mouse") marquee.current.hover = true; }}
+          onPointerLeave={e => { if (e.pointerType === "mouse") marquee.current.hover = false; }}
+          onPointerDown={e => {
+            if (e.pointerType === "mouse" && e.button !== 0) return;
+            drag.current = { id: e.pointerId, lastX: e.clientX, lastT: performance.now(), v: 0, moved: 0 };
+            marquee.current.drag = true;
+            marquee.current.boost = 0;
+          }}
+          onPointerMove={e => {
+            const d = drag.current;
+            if (d.id !== e.pointerId || !marquee.current.drag) return;
+            const dx = e.clientX - d.lastX, now = performance.now(), dt = Math.max(1, now - d.lastT);
+            d.moved += Math.abs(dx);
+            if (d.moved > 6 && !e.currentTarget.hasPointerCapture(e.pointerId)) e.currentTarget.setPointerCapture(e.pointerId);
+            marquee.current.x -= dx;
+            d.v = 0.7 * (-dx / dt) * 1000 + 0.3 * d.v; // px/s, lissé
+            d.lastX = e.clientX; d.lastT = now;
+          }}
+          onPointerUp={e => {
+            const d = drag.current;
+            if (d.id !== e.pointerId) return;
+            marquee.current.drag = false;
+            d.id = -1;
+            // Lâcher : on garde la vitesse du geste (dans les deux sens), qui retombe ensuite
+            if (d.moved > 6 && performance.now() - d.lastT < 120) marquee.current.boost = Math.max(-3000, Math.min(3000, d.v - 38));
+          }}
+          onPointerCancel={() => { marquee.current.drag = false; drag.current.id = -1; }}
+          onClick={() => {
+            if (drag.current.moved > 6) return; // c'était un glissé, pas un clic
+            marquee.current.boost = Math.min(marquee.current.boost + 900, 2400);
+          }}
           title={s.marquee_hint}
         >
           <div ref={trackRef} className="voice-track">

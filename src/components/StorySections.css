@@ -390,7 +390,8 @@
 .voice-main__video { width: 100%; aspect-ratio: 16 / 9; height: auto; max-height: 42vh; border: 0; border-radius: 24px; background: #0D30A0; box-shadow: 0 24px 50px -28px rgba(4, 20, 70, 0.6); }
 /* Cartes qui défilent de droite à gauche (la liste est doublée pour boucler sans saut) */
 .voice-marquee { margin-top: clamp(14px, 2.2vh, 22px); overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
-.voice-marquee { cursor: pointer; user-select: none; }
+.voice-marquee { cursor: pointer; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.voice-marquee img { -webkit-user-drag: none; pointer-events: none; }
 .voice-track { display: flex; gap: 14px; width: max-content; padding: 4px 0 18px; will-change: transform; }
 .voice-card { width: 300px; flex: none; display: flex; flex-direction: column; gap: 12px; padding: 16px 20px 18px; border-radius: 22px; background: #fff; border: 1px solid rgba(0, 40, 120, 0.08); box-shadow: 0 14px 34px -26px rgba(4, 20, 70, 0.45); }
 .voice-card__logo { height: 30px; width: auto; max-width: 140px; object-fit: contain; object-position: left center; align-self: flex-start; border-radius: 0 !important; }
@@ -409,7 +410,7 @@
   .voice-main { grid-template-columns: 1fr; }
 
 }
-@media (prefers-reduced-motion: reduce) { .voice-marquee { overflow-x: auto; cursor: auto; } }
+@media (prefers-reduced-motion: reduce) { .voice-marquee { overflow-x: auto; cursor: auto; touch-action: auto; } }
 
 .impact-kpis-title { margin: clamp(12px, 2vh, 20px) 0 10px; }
 .kpis--compact { gap: 12px; }

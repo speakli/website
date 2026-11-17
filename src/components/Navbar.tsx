@@ -170,7 +170,19 @@ export default function Navbar() {
   return (
     <header className={`snav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
       <div className="snav__in">
-        <Link className="snav__brand" href="/" aria-label="Speakli, accueil">
+        <Link
+          className="snav__brand"
+          href="/"
+          aria-label="Speakli, accueil"
+          onClick={e => {
+            // Logo : vrai rechargement de la page d'accueil, en haut de page
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+            e.preventDefault();
+            if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+            window.scrollTo({ top: 0, behavior: "instant" });
+            window.location.assign("/");
+          }}
+        >
           <Image src="/logo-speakli-navbar.png" alt="Speakli" width={152} height={30} priority />
         </Link>
 
