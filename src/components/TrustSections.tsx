@@ -237,7 +237,21 @@ export function InteropSection() {
         return { x: b.left + b.width / 2 - r.left, y: b.top + b.height / 2 - r.top };
       });
     };
+    // Titres des étapes sur une seule ligne : même taille pour les quatre, réduite juste
+    // assez pour que le plus long tienne à côté de son picto
+    const fitTitles = () => {
+      const ts = [...list.querySelectorAll<HTMLElement>(".itl__title")];
+      if (!ts.length) return;
+      ts.forEach(e => { e.style.fontSize = ""; });
+      const base = parseFloat(getComputedStyle(ts[0]).fontSize);
+      const scale = Math.min(1, ...ts.map(e => {
+        const fixed = (e.firstElementChild as HTMLElement).offsetWidth + parseFloat(getComputedStyle(e).columnGap || "0");
+        return (e.clientWidth - fixed) / Math.max(1, e.scrollWidth - fixed);
+      }));
+      if (scale < 1) ts.forEach(e => { e.style.fontSize = `${Math.floor(base * scale * 10) / 10}px`; });
+    };
     const layout = () => {
+      fitTitles();
       const c = centers();
       if (c.length < 2) return;
       const d = c.reduce((acc, p, i) => {
@@ -273,7 +287,7 @@ export function InteropSection() {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); if (raf) cancelAnimationFrame(raf); };
-  }, []);
+  }, [s.steps]);
 
   return (
     <section ref={ref} id="interoperabilite" className="trust trust--interop">

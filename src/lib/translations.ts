@@ -660,7 +660,7 @@ const en: Translations = {
       { title: "I log in", text: "Log in to Speakli on your mobile device, smartphone or tablet." },
       { title: "I document by voice", text: "Dictate your activity in real time, at the resident's bedside. Speakli structures notes, care and vital signs." },
       { title: "I validate", text: "A human always stays in the loop: checking remains the professional's responsibility." },
-      { title: "It's synced to the care software", text: "Documentation is synced automatically to your care software. No double entry." },
+      { title: "Synced to your care software", text: "Documentation is synced automatically to your care software. No double entry." },
     ],
     ui_residents: ["Mrs Dubois · Room 101", "Mr Noël · Room 023"],
     ui_plan: "Care plan",
