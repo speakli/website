@@ -102,3 +102,9 @@
 @media (prefers-reduced-motion: reduce) {
   .secu-globe__img, .secu-globe__pin i, .istep-wave i { animation: none; }
 }
+
+/* Mobile : les quatre points clés de la sécurité sans sous-titre (pictos + titres seuls) */
+@media (max-width: 767px) {
+  #securite .trust__cols span:not(.trust__icon) { display: none; }
+  #securite .trust__cols > div { padding-bottom: 18px; }
+}
