@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { scrollToNext } from "@/lib/useSnapToNext";
 import { openContact } from "@/lib/contactMode";
 import "./Hero.css";
@@ -37,10 +37,6 @@ export default function Hero() {
   const { t } = useLanguage();
   const h = t.hero;
   const videoRef = useRef<HTMLVideoElement>(null);
-  // Intro : pendant les 3 premières secondes de la vidéo, on ne voit que la soignante et la
-  // résidente ; le texte, les boutons, les logos et le voile apparaissent ensuite (une fois).
-  const [revealed, setRevealed] = useState(false);
-  const reveal = useCallback(() => setRevealed(true), []);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Quand on quitte le hero, la vidéo s'arrête et revient au début : en remontant, la
@@ -59,7 +55,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`hero-video${revealed ? " is-revealed" : ""} relative min-h-[100svh] flex flex-col overflow-x-hidden pt-16`}>
+    // overflow-x « clip » (et non hidden) : hidden ferait du header une zone défilante qui
+    // capterait la molette tant que le texte est en train d'apparaître.
+    <section ref={sectionRef} className="hero-video relative min-h-[100svh] flex flex-col pt-16" style={{ overflowX: "clip" }}>
       {/* Vidéo de fond muette, lue une fois ; HeroDocGen la relance à chaque cycle d'animation */}
       <video
         ref={videoRef}
@@ -71,7 +69,7 @@ export default function Hero() {
         <source src="/hero/soignante-chevet-v3-720.mp4" type="video/mp4" media="(max-width: 767px)" />
         <source src="/hero/soignante-chevet-v3.mp4" type="video/mp4" />
       </video>
-      <div className="hero-video__shade hero-reveal" aria-hidden />
+      <div className="hero-video__shade" aria-hidden />
 
       <div className="relative z-10 flex-1 flex items-center max-w-6xl mx-auto px-4 sm:px-6 pt-3 pb-2 sm:py-12 w-full">
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-4 lg:gap-12 items-center w-full">
@@ -154,7 +152,7 @@ export default function Hero() {
 
           {/* ── Right: un vocal → toute la documentation (kakemono Speakli V2) ── */}
           <div className="relative flex justify-center lg:justify-end order-first lg:order-none">
-            <HeroDocGen videoRef={videoRef} onIntroDone={reveal} />
+            <HeroDocGen videoRef={videoRef} />
           </div>
 
         </div>

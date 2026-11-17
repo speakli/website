@@ -21,16 +21,17 @@ const T = { title: 44, body: 37, small: 31 };
 // Séquence de l'animation, calée sur la vidéo de fond et de même durée qu'elle
 // (public/hero/soignante-chevet-v3.mp4, 15,1 s : elle dicte de 0,3 à 8,7 s, relit et
 // valide vers 10 s, dit « Voilà, c'est documenté », range son téléphone vers 12 s) :
-//   0 → 3 s       on ne voit que la soignante et la résidente
-//   3 s           le téléphone apparaît (le titre et les boutons du header aussi, au 1er cycle)
-//   3,3 → 7,8 s   retranscription live, mot à mot
+//   0 → 1 s       on ne voit que la soignante et la résidente (le texte du header, lui,
+//                 est affiché dès l'arrivée sur la page)
+//   1 s           le téléphone apparaît
+//   1,3 → 7,8 s   retranscription live, mot à mot
 //   7,8 → 10 s    éléphant Speakli
 //   10 s          les 4 cartes apparaissent une à une, toutes les CARD_GAP secondes
 //   14,5 → 15,1 s fondu de sortie : l'animation se termine pile avec la vidéo,
 //                 puis les deux repartent ensemble.
 const VIDEO_DURATION = 15.1;
-export const INTRO = 3;
-const SPEAK_START = 3.3;
+const INTRO = 1;
+const SPEAK_START = 1.3;
 const SPEAK_END = 7.8;
 const TAP = 10;
 const CARD_GAP = 0.75;
@@ -59,11 +60,13 @@ function useDocGenClock(videoRef?: React.RefObject<HTMLVideoElement | null>): Do
         v.currentTime = 0;
         v.play().catch(() => {});
       } else if (v && !v.paused && v.readyState >= 2) {
+        // Vidéo arrivée après coup (connexion lente) : elle rattrape l'animation déjà lancée
+        // au lieu de la faire repartir de zéro
+        if (fallback) { v.currentTime = ((now - start) / 1000) % CYCLE; fallback = false; }
         t = v.currentTime;
         start = now - t * 1000;
-        fallback = false;
-      } else if (fallback || !v || now - mounted > 4000) {
-        // Vidéo absente ou bloquée : horloge interne
+      } else if (fallback || !v || now - mounted > 1500) {
+        // Vidéo absente, bloquée ou encore en chargement après 1,5 s : horloge interne
         fallback = true;
         t = ((now - start) / 1000) % CYCLE;
       }
@@ -341,13 +344,10 @@ const RIGHT: Card[] = [
 // Ordre d'apparition : transmission, hydratation, tension, soins
 const ORDER: Record<string, number> = { transmission: 0, hydration: 1, tension: 2, care: 3 };
 
-export default function HeroDocGen({ videoRef, onIntroDone }: { videoRef?: React.RefObject<HTMLVideoElement | null>; onIntroDone?: () => void }) {
+export default function HeroDocGen({ videoRef }: { videoRef?: React.RefObject<HTMLVideoElement | null> }) {
   const { t } = useLanguage();
   const d = t.hero.docgen;
   const { t: time, reduced } = useDocGenClock(videoRef);
-  // Fin de l'intro (vidéo seule) : le header affiche son contenu
-  const introDone = reduced || time >= INTRO;
-  useEffect(() => { if (introDone) onIntroDone?.(); }, [introDone, onIntroDone]);
   const voice = !reduced && time < SPEAK_END;
   const transcriptOn = !reduced && time < TAP;
   const elephant = reduced || (time >= SPEAK_END && time < FADE_OUT);
