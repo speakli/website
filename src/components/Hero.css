@@ -39,27 +39,12 @@
   .hero-video { background: #0b1f3f url("/hero/soignante-chevet-v3-poster.jpg") center 40% / cover no-repeat; }
 }
 
-/* Flèche « voir la suite » en bas du header */
-.hero-scroll {
-  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); z-index: 10;
-  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-  color: #fff; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(6px); cursor: pointer;
-  animation: heroScrollBounce 2s ease-in-out infinite;
-  transition: background 0.2s ease;
-}
-.hero-scroll:hover { background: rgba(255, 255, 255, 0.25); }
-@keyframes heroScrollBounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
-@media (prefers-reduced-motion: reduce) { .hero-scroll { animation: none; } }
-
 /* Arrivée : le contenu du header apparaît tout de suite, en CSS pur (sans attendre la vidéo
    ni le chargement du JavaScript), avec un fondu court */
 .hero-reveal { animation: heroIn 0.55s cubic-bezier(0.2, 0.85, 0.25, 1) 0.05s both; }
 .hero-reveal--late { animation-delay: 0.3s; }
-.hero-scroll.hero-reveal { animation: heroFade 0.5s ease 0.3s both, heroScrollBounce 2s ease-in-out 0.8s infinite; }
 @keyframes heroIn { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
-@keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .hero-reveal, .hero-scroll.hero-reveal { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-reveal { animation: none; } }
 
 /* Mobile (façon Vocca) : téléphone au centre, titre et boutons dessous, clients visibles
    sans scroller ; tout tient dans la hauteur de l'écran */
@@ -68,7 +53,6 @@
   .hero-video .dg { width: min(86vw, 45svh, 380px); }
   .hero-video .hero-reveal svg.flex-none { display: none; }
   .hero-video h1 { text-align: center; }
-  .hero-scroll { display: none; }
 }
 /* Petits téléphones : téléphone et titre plus compacts pour garder les clients à l'écran */
 @media (max-width: 1023px) and (max-height: 740px) {

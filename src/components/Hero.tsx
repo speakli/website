@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { scrollToNext } from "@/lib/useSnapToNext";
 import { openContact } from "@/lib/contactMode";
 import "./Hero.css";
 import ShinyText from "./ShinyText";
@@ -161,17 +160,6 @@ export default function Hero() {
       {/* Logos clients, visibles sans scroller */}
       <div className="hero-reveal hero-reveal--late relative z-10"><LogoBar variant="hero" /></div>
 
-      {/* Flèche vers le bloc suivant */}
-      <button
-        type="button"
-        className="hero-scroll hero-reveal hero-reveal--late"
-        aria-label={h.scroll_next}
-        onClick={() => scrollToNext(sectionRef.current)}
-      >
-        <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden>
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
     </section>
   );
 }

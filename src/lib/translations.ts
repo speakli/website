@@ -68,7 +68,6 @@ const fr = {
     cta_demo: "Demander une démo",
     cta_callback: "Être rappelé",
     rgpd_mark: "RGPD",
-    scroll_next: "Voir la suite",
     trust: [
       { icon: "shield", label: "" },
       { icon: "eu", label: "Données\ndans l'UE" },
@@ -630,7 +629,6 @@ const en: Translations = {
     cta_demo: "Request a demo",
     cta_callback: "Get a call back",
     rgpd_mark: "GDPR",
-    scroll_next: "See more",
     trust: [
       { icon: "shield", label: "" },
       { icon: "eu", label: "Data hosted\nin the EU" },
