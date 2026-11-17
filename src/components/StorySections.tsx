@@ -176,19 +176,23 @@ const StakeLegal: Visual = () => {
             <span className="chat-avatar chat-avatar--family" aria-hidden>F</span>
             <div><small>{d.family}</small><p>{q}</p></div>
           </div>
-          <div className={`chat-typing chat-step${n}`}>
-            <span className="chat-avatar chat-avatar--speakli" aria-hidden>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/hero/elephant-white.svg" alt="" />
-            </span>
-            <span>{d.analysing}</span><i /><i /><i />
-          </div>
-          <div className={`chat-msg chat-msg--speakli chat-step${n}`}>
-            <div><small>{d.speakli}</small><p>{a}</p><span className="chat-source"><Ok /> {src}</span></div>
-            <span className="chat-avatar chat-avatar--speakli" aria-hidden>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/hero/elephant-white.svg" alt="" />
-            </span>
+          {/* La réponse réserve sa place dès le départ : « analyse… » s'affiche par-dessus,
+              la question reste donc à la même hauteur pendant toute l'animation */}
+          <div className="chat-reply">
+            <div className={`chat-typing chat-step${n}`}>
+              <span className="chat-avatar chat-avatar--speakli" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/hero/elephant-white.svg" alt="" />
+              </span>
+              <span>{d.analysing}</span><i /><i /><i />
+            </div>
+            <div className={`chat-msg chat-msg--speakli chat-step${n}`}>
+              <div><small>{d.speakli}</small><p>{a}</p><span className="chat-source"><Ok /> {src}</span></div>
+              <span className="chat-avatar chat-avatar--speakli" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/hero/elephant-white.svg" alt="" />
+              </span>
+            </div>
           </div>
         </Fragment>
       ))}

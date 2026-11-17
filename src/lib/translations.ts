@@ -81,7 +81,7 @@ const fr = {
     secu_accent: "restent en France.",
     secu_lede: "Avec Speakli, vos données sont sécurisées, hébergées, chiffrées puis archivées en France. La sécurité des données de nos clients est notre priorité.",
     secu_tag: "Hébergeur certifié HDS",
-    secu_tag_sub: "France · Union européenne",
+    secu_tag_sub: "Paris, France · Union européenne",
     secu_points: [
       { title: "Infrastructure certifiée HDS", short: "Certifié HDS", text: "Hébergement agréé pour les données de santé, comme l'exige la loi." },
       { title: "Conforme RGPD", short: "Conforme RGPD", text: "Données des résidents traitées en France, sans transfert hors de l'Union européenne." },
@@ -644,7 +644,7 @@ const en: Translations = {
     secu_accent: "stays in France.",
     secu_lede: "With Speakli, your data is secured, hosted, encrypted and archived in France. Keeping our clients' data safe is our top priority.",
     secu_tag: "HDS-certified hosting",
-    secu_tag_sub: "France · European Union",
+    secu_tag_sub: "Paris, France · European Union",
     secu_points: [
       { title: "HDS-certified infrastructure", short: "HDS certified", text: "Hosting approved for health data, as required by French law." },
       { title: "GDPR compliant", short: "GDPR compliant", text: "Residents' data processed in France, never transferred outside the EU." },

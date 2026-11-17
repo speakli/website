@@ -65,16 +65,16 @@
 /*
  * Couleurs : essentiellement des dégradés de bleu clair, qui démarrent et finissent tous
  * sur la même teinte (#F4F8FF) pour s'enchaîner sans démarcation. Un bleu nuit adouci est
- * réservé à deux sections : Interopérabilité et FAQ.
+ * réservé à trois sections : Résultats et impacts mesurés, Interopérabilité et FAQ.
  */
 .home-flow > section:not(.hero-video) { position: relative; isolation: isolate; }
-.home-flow > :is(#enjeux, #assistant-vocal, #temoignages, #impact, #securite, #evenements, #contact, #partenaires) {
+.home-flow > :is(#enjeux, #assistant-vocal, #temoignages, #securite, #evenements, #contact, #partenaires) {
   background: linear-gradient(180deg, #F4F8FF 0%, var(--mid, #E6EFFF) 50%, #F4F8FF 100%) !important;
 }
-.home-flow > :is(#assistant-vocal, #impact, #evenements) { --mid: #FFFFFF; }
+.home-flow > :is(#assistant-vocal, #evenements) { --mid: #FFFFFF; }
 .home-flow > #partenaires { --mid: #F4F8FF; }
 /* Bleu nuit de la bulle de l'éléphant Speakli : le bleu de l'éléphant (#007AFF) y reste lisible */
-.home-flow > :is(#interoperabilite, #faq) { background: linear-gradient(160deg, #16305C 0%, #0F2D5A 100%) !important; color: #fff; }
+.home-flow > :is(#impact, #interoperabilite, #faq) { background: linear-gradient(160deg, #16305C 0%, #0F2D5A 100%) !important; color: #fff; }
 /* L'ombre du formulaire passe par-dessus « Ils nous soutiennent » au lieu d'être coupée */
 .home-flow > #contact { z-index: 1; }
 
@@ -88,6 +88,13 @@
 .home-flow #interoperabilite .istep__num { color: rgba(255, 255, 255, 0.7); }
 .home-flow #interoperabilite .istep__title { color: #fff; }
 .home-flow #interoperabilite .istep__text { color: rgba(255, 255, 255, 0.78); }
+.home-flow #impact .story__eyebrow { color: rgba(255, 255, 255, 0.7); }
+.home-flow #impact .story__title { color: #fff; }
+.home-flow #impact .story__title span { color: #007AFF; }
+.home-flow #impact .impact-intro__lede { color: rgba(255, 255, 255, 0.8); }
+.home-flow #impact :is(.impact-scard, .impact-calc) { border-color: transparent; box-shadow: 0 30px 60px -32px rgba(4, 16, 48, 0.6); }
+/* Bannière PATHOS : bleu nuit sur bleu nuit, on la détache par un fond translucide et un liseré */
+.home-flow #impact .impact-pathos { background: rgba(255, 255, 255, 0.07); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16); }
 .home-flow #faq .text-center > p:first-child { color: rgba(255, 255, 255, 0.7) !important; }
 .home-flow #faq h2 { color: #fff !important; }
 .home-flow #faq h2 span { color: #007AFF !important; }

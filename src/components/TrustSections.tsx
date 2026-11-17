@@ -133,7 +133,7 @@ const StepVisuals = [
           <div className="ival__doc" style={{ "--i": 0 } as React.CSSProperties}>
             <small><i className="ival__dot ival__dot--blue" />{d.target}</small>
             <b>{d.target_tag}</b>
-            <span className="ival__dar">{d.dar.map(x => <em key={x}>{x}</em>)}</span>
+            <span className="ival__dar">{d.dar.map(x => <span key={x}><em>{x}</em><i aria-hidden /></span>)}</span>
           </div>
           <div className="ival__doc" style={{ "--i": 1 } as React.CSSProperties}>
             <small><i className="ival__dot ival__dot--sky" />{d.vitals}</small>

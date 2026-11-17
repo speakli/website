@@ -272,13 +272,15 @@
 .chat-avatar--speakli { background: #007AFF; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35); }
 .chat-avatar--speakli img { width: 24px; height: auto; }
 .chat-source { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; padding: 4px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.14); font-size: 11px; font-weight: 600; }
+.chat-reply { position: relative; }
+.chat-reply .chat-typing { position: absolute; left: 0; top: 50%; translate: 0 -50%; }
 .chat-typing { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; font-weight: 600; }
 .chat-typing i { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: chatDot 1s ease-in-out infinite; }
 .chat-typing i:nth-of-type(2) { animation-delay: 0.15s; }
 .chat-typing i:nth-of-type(3) { animation-delay: 0.3s; }
 @keyframes chatDot { 50% { opacity: 0.3; transform: translateY(-3px); } }
 /* Lecture : question → « analyse… » → réponse */
-.stake-chat > * { opacity: 0; transform: translateY(10px); }
+.stake-chat :is(.chat-msg, .chat-typing) { opacity: 0; transform: translateY(10px); }
 /* 1re question/réponse, puis la 2e (l'onglet dure 9 s) */
 .products.is-live .products-visual.is-on .chat-msg--family.chat-step0 { animation: chatIn 0.5s ease 0.3s forwards; }
 .products.is-live .products-visual.is-on .chat-typing.chat-step0 { animation: chatIn 0.4s ease 0.9s forwards, chatOut 0.3s ease 2.2s forwards; }
@@ -287,9 +289,9 @@
 .products.is-live .products-visual.is-on .chat-typing.chat-step1 { animation: chatIn 0.4s ease 4.8s forwards, chatOut 0.3s ease 6s forwards; }
 .products.is-live .products-visual.is-on .chat-msg--speakli.chat-step1 { animation: chatIn 0.5s ease 6.1s forwards; }
 @keyframes chatIn { to { opacity: 1; transform: none; } }
-@keyframes chatOut { to { opacity: 0; height: 0; margin: -6px 0; } }
+@keyframes chatOut { to { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .stake-chat > * { opacity: 1; transform: none; animation: none !important; }
+  .stake-chat :is(.chat-msg, .chat-typing) { opacity: 1; transform: none; animation: none !important; }
   .chat-typing { display: none; }
   .eco-pmp__value { --pmp: 275; animation: none !important; }
   .eco-micro { display: none; }
