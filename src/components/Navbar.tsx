@@ -142,7 +142,7 @@ export default function Navbar() {
   }, [open]);
 
   const products: Item[] = [
-    { ...n.products_links[0], target: { section: "assistant-vocal" }, image: "/products/assistant-soignant.jpg" },
+    { ...n.products_links[0], target: { section: "assistant-vocal" }, image: "/products/assistant-soignante-chevet.jpg" },
     { ...n.products_links[1], target: { section: "tableau-de-pilotage" }, image: "/products/pilotage-idec.jpg" },
     { ...n.products_links[2], target: { section: "securite" }, visual: "secu" },
     { ...n.products_links[3], target: { section: "interoperabilite" }, visual: "interop" },

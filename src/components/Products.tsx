@@ -805,7 +805,7 @@ export default function Products() {
   );
 
   return which === "assistant" ? (
-    <ProductBlock key="assistant" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.assistant_head} items={p.assistant} visuals={ASSISTANT_VISUALS} icons={ASSISTANT_ICONS} durations={ASSISTANT_DURATIONS} tone="light" image={{ src: "/products/assistant-soignant.jpg", alt: p.assistant_head.image_alt }} />
+    <ProductBlock key="assistant" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.assistant_head} items={p.assistant} visuals={ASSISTANT_VISUALS} icons={ASSISTANT_ICONS} durations={ASSISTANT_DURATIONS} tone="light" image={{ src: "/products/assistant-soignante-chevet.jpg", alt: p.assistant_head.image_alt }} />
   ) : (
     <ProductBlock key="dashboard" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.dashboard_head} items={p.dashboard} visuals={DASHBOARD_VISUALS} icons={DASHBOARD_ICONS} durations={[14000, 10000, STEP_MS]} note={p.ui.illustration} tone="light" fillImage image={{ src: "/products/pilotage-idec.jpg", alt: p.dashboard_head.image_alt }} />
   );

@@ -219,7 +219,7 @@ const fr = {
   },
   products: {
     section_label: "Les solutions Speakli",
-    assistant_head: { eyebrow: "L'assistant vocal IA", title: "Le pouvoir de la voix", title_accent: "au service des soignants.", image_alt: "Aide-soignant dictant une note vocale sur son téléphone en sortant d'une chambre" },
+    assistant_head: { eyebrow: "L'assistant vocal IA", title: "Le pouvoir de la voix", title_accent: "au service des soignants.", image_alt: "Soignante dictant une note vocale sur son téléphone au chevet d'une résidente souriante" },
     dashboard_head: { eyebrow: "Le tableau de pilotage", title: "De la donnée de qualité,", title_accent: "pour un établissement sécurisé.", image_alt: "Infirmière coordinatrice animant une réunion de transmission avec le tableau de pilotage sur sa tablette" },
     assistant: [
       { title: "IA spécialisée", text: "Entraînée sur le vocabulaire du soin, Speakli reconnaît le résident dont vous parlez et reformule vos mots en langage clinique : « mal au ventre » devient « douleur abdominale »." },
@@ -781,7 +781,7 @@ const en: Translations = {
   },
   products: {
     section_label: "Speakli solutions",
-    assistant_head: { eyebrow: "The AI voice assistant", title: "The power of voice", title_accent: "for caregivers.", image_alt: "Care assistant dictating a voice note on his phone as he leaves a room" },
+    assistant_head: { eyebrow: "The AI voice assistant", title: "The power of voice", title_accent: "for caregivers.", image_alt: "Caregiver dictating a voice note on her phone at the bedside of a smiling resident" },
     dashboard_head: { eyebrow: "The management dashboard", title: "Quality data,", title_accent: "for a safer facility.", image_alt: "Nurse coordinator leading a handover meeting with the dashboard on her tablet" },
     assistant: [
       { title: "Specialised AI", text: "Trained on care vocabulary, Speakli recognises the resident you are talking about and turns your words into clinical language: \"tummy ache\" becomes \"abdominal pain\"." },
