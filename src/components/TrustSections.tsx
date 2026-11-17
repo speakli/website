@@ -91,17 +91,43 @@ const StepVisuals = [
       </div>
     );
   },
-  // 3. Validation par le soignant
+  // 3. Validation par le soignant : les éléments de documentation générés (comme dans le
+  // header) apparaissent un à un, puis le soignant valide.
   function StepValidate({ s }: { s: Trust }) {
+    const d = s.ui_docs;
     return (
-      <div className="istep-ui">
-        <small className="istep-label">{s.ui_to_validate}</small>
-        <span className="istep-lines" aria-hidden><i /><i /><i style={{ width: "60%" }} /></span>
-        <span className="istep-validate">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
-          {s.ui_validate}
-        </span>
-        <small className="istep-checked">{s.ui_checked}</small>
+      <div className="ival">
+        <div className="ival__grid">
+          <div className="ival__doc" style={{ "--i": 0 } as React.CSSProperties}>
+            <small><i className="ival__dot ival__dot--blue" />{d.target}</small>
+            <b>{d.target_tag}</b>
+            <span className="ival__dar">{d.dar.map(x => <em key={x}>{x}</em>)}</span>
+          </div>
+          <div className="ival__doc" style={{ "--i": 1 } as React.CSSProperties}>
+            <small><i className="ival__dot ival__dot--sky" />{d.vitals}</small>
+            <span className="ival__vital"><span>{d.hydration}</span><b>105 cL</b></span>
+            <span className="ival__bar" aria-hidden><i /></span>
+            <span className="ival__vital"><span>{d.bp}</span><b>13/8</b></span>
+            <svg className="ival__spark" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden><path d="M2 16 L20 12 L38 14 L56 7 L74 10 L98 5" /></svg>
+          </div>
+          <div className="ival__doc" style={{ "--i": 2 } as React.CSSProperties}>
+            <small><i className="ival__dot ival__dot--green" />{d.care}</small>
+            {d.care_items.map(c => (
+              <span key={c} className="ival__care">{c}<em><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></em></span>
+            ))}
+          </div>
+          <div className="ival__doc" style={{ "--i": 3 } as React.CSSProperties}>
+            <small><i className="ival__dot ival__dot--violet" />{d.comment}</small>
+            <p>« {d.comment_text} »</p>
+          </div>
+        </div>
+        <div className="ival__foot">
+          <span className="istep-validate">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+            {s.ui_validate}
+          </span>
+          <small className="ival__checked">{s.ui_checked}</small>
+        </div>
       </div>
     );
   },
@@ -213,7 +239,7 @@ export function InteropSection() {
                       </button>
                     )}
                   </div>
-                  <div className="istep__visual itl__visual"><Visual s={s} /></div>
+                  <div className={`istep__visual itl__visual${i === 2 ? " itl__visual--docs" : ""}`}><Visual s={s} /></div>
                 </article>
               </li>
             );

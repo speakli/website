@@ -41,3 +41,10 @@
 .event__link:hover { text-decoration: underline; }
 @media (max-width: 1023px) { .events__layout { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .events__list { grid-template-columns: 1fr; } }
+
+/* Mobile / tablette : la colonne ressources prend sa hauteur naturelle (sinon elle
+   passe sous les boutons d'action) */
+@media (max-width: 1023px) {
+  .events__res { height: auto; min-height: 0; }
+  .events__res ul { grid-auto-rows: auto; }
+}

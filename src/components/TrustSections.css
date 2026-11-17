@@ -162,3 +162,50 @@
   .itl__step:nth-of-type(odd) .itl__pill { transform: translateX(28px); }
   .itl__step:nth-of-type(even) .itl__pill { transform: translateX(-28px); }
 }
+
+/* Étape « Je valide » : les éléments de documentation générés (comme dans le header) */
+.itl__visual--docs { height: auto; min-height: 180px; padding: 12px; }
+.ival { width: 100%; max-width: 360px; display: grid; gap: 10px; }
+.ival__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ival__doc {
+  display: grid; align-content: start; gap: 4px; min-width: 0; padding: 9px 10px; border-radius: 14px; background: #fff;
+  box-shadow: 0 12px 26px -18px rgba(4, 20, 70, 0.7); color: var(--sp-900);
+  opacity: 0; transform: translateY(8px) scale(0.97);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.2, 0.85, 0.25, 1);
+  transition-delay: calc(0.15s + var(--i) * 0.22s);
+}
+.ival__doc small { display: flex; align-items: flex-start; gap: 5px; font-size: 10.5px; font-weight: 700; line-height: 1.25; color: #6B7A90; }
+.ival__doc b { font-size: 12.5px; font-weight: 800; }
+.ival__doc p { font-size: 11.5px; line-height: 1.35; font-style: italic; color: #4B5563; }
+.ival__dot { flex: none; width: 7px; height: 7px; border-radius: 50%; margin-top: 2px; }
+.ival__dot--blue { background: #007AFF; }
+.ival__dot--sky { background: #38BDF8; }
+.ival__dot--green { background: #22C55E; }
+.ival__dot--violet { background: #7C5CF0; }
+.ival__dar { display: flex; gap: 4px; }
+.ival__dar em { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: #EAF3FF; color: #1A5CE0; font-size: 10.5px; font-style: normal; font-weight: 800; }
+.ival__vital { display: flex; align-items: baseline; justify-content: space-between; gap: 4px; font-size: 11px; color: #6B7A90; min-width: 0; }
+.ival__vital span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ival__vital b { font-size: 12px; color: #1A5CE0; white-space: nowrap; }
+.ival__bar { display: block; height: 5px; border-radius: 3px; background: #EEF2F7; overflow: hidden; }
+.ival__bar i { display: block; height: 100%; width: 0; border-radius: 3px; background: linear-gradient(90deg, #8EAEF6, #2F6BF0); transition: width 0.8s ease calc(0.5s + var(--i) * 0.22s); }
+.ival__spark { width: 100%; height: 18px; overflow: visible; }
+.ival__spark path { fill: none; stroke: #007AFF; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 140; stroke-dashoffset: 140; transition: stroke-dashoffset 1s ease 0.7s; }
+.ival__care { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 11.5px; font-weight: 600; }
+.ival__care em { display: grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: #22C55E; color: #fff; }
+.ival__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; opacity: 0; transition: opacity 0.4s ease 1.2s; }
+.ival__foot .istep-validate { padding: 6px 12px; font-size: 12px; }
+.ival__checked { font-size: 11px; font-weight: 600; color: #fff; opacity: 0.9; }
+.itl__step.is-on .ival__doc { opacity: 1; transform: none; }
+.itl__step.is-on .ival__bar i { width: 70%; }
+.itl__step.is-on .ival__spark path { stroke-dashoffset: 0; }
+.itl__step.is-on .ival__foot { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .ival__doc, .ival__foot { opacity: 1; transform: none; transition: none; }
+  .ival__bar i { width: 70%; transition: none; }
+  .ival__spark path { stroke-dashoffset: 0; transition: none; }
+}
+@media (max-width: 767px) {
+  .ival__vital { display: grid; gap: 0; }
+  .ival__vital span { overflow: visible; }
+}
