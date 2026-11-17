@@ -94,9 +94,20 @@
   max-height: 75svh; overflow-y: auto; overscroll-behavior: contain;
   background: #fff; padding: 4px 22px 22px; display: flex; flex-direction: column;
   box-shadow: 0 24px 40px -20px rgba(4, 20, 70, 0.35);
+  /* Ouverture : le menu se déroule depuis la barre */
+  clip-path: inset(0 0 100% 0); visibility: hidden;
+  transition: clip-path 0.38s cubic-bezier(0.3, 0.8, 0.25, 1), visibility 0.38s;
 }
+.snav__drawer.is-on { clip-path: inset(0 0 -60px 0); visibility: visible; }
+.snav__drawer > * { opacity: 0; transform: translateY(-6px); transition: opacity 0.25s ease, transform 0.3s ease; }
+.snav__drawer.is-on > * { opacity: 1; transform: none; }
+.snav__drawer.is-on > :nth-child(1) { transition-delay: 0.06s; }
+.snav__drawer.is-on > :nth-child(2) { transition-delay: 0.1s; }
+.snav__drawer.is-on > :nth-child(3) { transition-delay: 0.14s; }
+.snav__drawer.is-on > :nth-child(4) { transition-delay: 0.18s; }
 /* Voile léger sur la page derrière le menu ; un clic dessus referme le menu */
-.snav__backdrop { position: fixed; inset: 0; top: calc(64px + env(safe-area-inset-top, 0px)); background: rgba(5, 18, 42, 0.25); }
+.snav__backdrop { position: fixed; inset: 0; top: calc(64px + env(safe-area-inset-top, 0px)); background: rgba(5, 18, 42, 0.25); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s; }
+.snav__backdrop.is-on { opacity: 1; visibility: visible; }
 .snav-acc { border-bottom: 1px solid rgba(26, 46, 73, 0.08); }
 .snav-acc__head {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -105,7 +116,12 @@
 }
 .snav-acc__head svg { transition: transform 0.25s ease; color: var(--sp-700); }
 .snav-acc.is-open .snav-acc__head svg { transform: rotate(180deg); }
-.snav-acc__list { display: grid; gap: 2px; padding: 0 0 12px; }
+/* Groupe qui se déplie en douceur */
+.snav-acc__body { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.35s cubic-bezier(0.3, 0.8, 0.25, 1), opacity 0.3s ease; }
+.snav-acc.is-open .snav-acc__body { grid-template-rows: 1fr; opacity: 1; }
+.snav-acc__body > * { overflow: hidden; min-height: 0; }
+.snav-acc__list { display: grid; gap: 2px; }
+.snav-acc__list > :last-child { margin-bottom: 12px; }
 .snav-acc__list button { display: grid; gap: 2px; text-align: left; padding: 10px 12px; border-radius: 12px; background: none; border: 0; cursor: pointer; }
 .snav-acc__list button:hover { background: #EAF3FF; }
 .snav-acc__list strong { font-size: 16px; font-weight: 600; color: var(--sp-900); }
@@ -127,4 +143,9 @@
 @media (max-width: 640px) {
   .snav__in { padding: 0 16px; gap: 12px; }
   .snav__brand img { height: 28px; }
+}
+
+@media (min-width: 1081px) { .snav__drawer, .snav__backdrop { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .snav__drawer, .snav__drawer > *, .snav__backdrop, .snav-acc__body { transition: none !important; }
 }

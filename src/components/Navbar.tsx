@@ -133,6 +133,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!open) { const t = setTimeout(() => setGroup(null), 350); return () => clearTimeout(t); }
+  }, [open]);
+
+  useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
     return () => { document.documentElement.style.overflow = ""; };
   }, [open]);
@@ -194,20 +198,21 @@ export default function Navbar() {
       </div>
 
       {/* Menu mobile plein écran, en accordéon (inspiré de Vocca) */}
-      {open && <div className="snav__backdrop" aria-hidden onClick={() => setOpen(false)} />}
-      {open && (
-        <div className="snav__drawer">
+      {/* Toujours présents pour pouvoir animer l'ouverture et la fermeture */}
+      <div className={`snav__backdrop${open ? " is-on" : ""}`} aria-hidden onClick={() => setOpen(false)} />
+      {(
+        <div className={`snav__drawer${open ? " is-on" : ""}`} aria-hidden={!open} inert={!open}>
           {([["products", n.products, products], ["experience", n.experience, experience]] as const).map(([key, label, list]) => (
             <div key={key} className={`snav-acc${group === key ? " is-open" : ""}`}>
               <button type="button" className="snav-acc__head" aria-expanded={group === key} onClick={() => setGroup(g => (g === key ? null : key))}>
                 {label}
                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden><path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
-              {group === key && (
+              <div className="snav-acc__body" inert={group !== key}>
                 <div className="snav-acc__list">
                   {list.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
                 </div>
-              )}
+              </div>
             </div>
           ))}
           <div className="snav-acc snav-acc--lang"><LanguagePicker /></div>
