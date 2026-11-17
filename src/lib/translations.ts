@@ -299,7 +299,6 @@ const fr = {
       dui_sync: "Synchronisation instantanée",
       dui_live: {
         steps: ["Vocal", "Traitement Speakli", "Validation du soignant"],
-        to_validate: "À valider",
         validated: "Validé par le soignant",
         docs_title: "Documentation générée",
         validate: "Valider",
@@ -862,7 +861,6 @@ const en: Translations = {
       dui_sync: "Instant sync",
       dui_live: {
         steps: ["Voice", "Speakli processing", "Caregiver validation"],
-        to_validate: "To review",
         validated: "Approved by the caregiver",
         docs_title: "Documentation generated",
         validate: "Validate",

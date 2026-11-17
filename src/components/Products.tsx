@@ -348,10 +348,10 @@ function VisualOffline({ ui }: { ui: UI }) {
   );
 }
 
-// Intégration au DUI : vocal → traitement Speakli (chargement sur le contour) → « À valider »
-// puis « Validé » par le soignant → seulement alors injecté aux bons endroits dans NETSoins
+// Intégration au DUI : vocal → traitement Speakli (chargement sur le contour) → « Validé » par
+// le soignant, sans temps d'attente → seulement alors injecté aux bons endroits dans NETSoins
 // (transmissions, relevés, soins, activités).
-const DUI = { steps: [0.3, 1.3, 3.0], load: [1.4, 1.5], ok: 4.3, mods: [5.0, 5.4, 5.8, 6.2], done: 7.1 };
+const DUI = { steps: [0.3, 1.3, 3.0], load: [1.4, 1.5], ok: 3.0, mods: [3.7, 4.1, 4.5, 4.9], done: 5.8 };
 function VisualDUI({ ui }: { ui: UI }) {
   const d = ui.dui_live;
   const t = (vars: Record<string, number>) => Object.fromEntries(Object.entries(vars).map(([k, x]) => [k, `${x.toFixed(2)}s`])) as React.CSSProperties;
@@ -373,14 +373,11 @@ function VisualDUI({ ui }: { ui: UI }) {
                   </>
                 )}
                 {i === 2 && (
-                  <>
-                    <span className="dui-pend"><Ic.clock s={22} /></span>
-                    <span className="dui-ok"><Ic.check s={22} /></span>
-                  </>
+                  <span className="dui-ok"><Ic.check s={22} /></span>
                 )}
               </span>
               {i === 2 ? (
-                <small className="dui-lbl"><span className="dui-lbl__a">{d.to_validate}</span><span className="dui-lbl__b">{d.validated}</span></small>
+                <small className="dui-lbl"><span className="dui-lbl__a">{label}</span><span className="dui-lbl__b">{d.validated}</span></small>
               ) : (
                 <small>{label}</small>
               )}
