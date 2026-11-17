@@ -100,17 +100,6 @@ export function SecuritySection() {
   );
 }
 
-// Pictos à gauche des titres des étapes : connexion, voix, validation, synchronisation
-const stepIc = (children: React.ReactNode) => (
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{children}</svg>
-);
-const STEP_ICONS = [
-  stepIc(<><rect x="6" y="2.5" width="12" height="19" rx="2.5" /><path d="M10.5 18.5h3" /></>),
-  stepIc(<><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21" /></>),
-  stepIc(<><circle cx="12" cy="12" r="9" /><path d="M8 12.5l2.8 2.8L16.5 9.5" /></>),
-  stepIc(<><path d="M20 11a8 8 0 00-14.3-4.9L4 8M4 4v4h4" /><path d="M4 13a8 8 0 0014.3 4.9L20 16M20 20v-4h-4" /></>),
-];
-
 // « Comment s'intègre Speakli ? » : les 4 étapes, du smartphone au logiciel de soins
 const StepVisuals = [
   // 1. Connexion à Speakli
@@ -238,16 +227,13 @@ export function InteropSection() {
       });
     };
     // Titres des étapes sur une seule ligne : même taille pour les quatre, réduite juste
-    // assez pour que le plus long tienne à côté de son picto
+    // assez pour que le plus long tienne
     const fitTitles = () => {
       const ts = [...list.querySelectorAll<HTMLElement>(".itl__title")];
       if (!ts.length) return;
       ts.forEach(e => { e.style.fontSize = ""; });
       const base = parseFloat(getComputedStyle(ts[0]).fontSize);
-      const scale = Math.min(1, ...ts.map(e => {
-        const fixed = (e.firstElementChild as HTMLElement).offsetWidth + parseFloat(getComputedStyle(e).columnGap || "0");
-        return (e.clientWidth - fixed) / Math.max(1, e.scrollWidth - fixed);
-      }));
+      const scale = Math.min(1, ...ts.map(e => e.clientWidth / Math.max(1, e.scrollWidth)));
       if (scale < 1) ts.forEach(e => { e.style.fontSize = `${Math.floor(base * scale * 10) / 10}px`; });
     };
     const layout = () => {
@@ -315,7 +301,7 @@ export function InteropSection() {
                 <span className="itl__pill">{s.step} {i + 1}</span>
                 <article className="itl__card">
                   <div className="itl__text">
-                    <b className="itl__title"><span className="itl__ic">{STEP_ICONS[i]}</span>{step.title}</b>
+                    <b className="itl__title">{step.title}</b>
                     <p className="itl__desc">{step.text}</p>
                     {i === 3 && (
                       <button type="button" className="istep__cta" onClick={() => openContact("callback")}>
