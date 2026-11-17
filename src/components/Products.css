@@ -593,3 +593,13 @@
   .products-item button { padding: 4px 2px 3px; }
   .products-item__text { font-size: 13px; }
 }
+
+/* Assistant vocal (6 onglets), ordinateur : photo plus haute pour voir la soignante et la
+   résidente en entier, menu un peu plus compact pour compenser */
+@media (min-width: 1024px) {
+  .products[data-items="6"] .products-photo { aspect-ratio: 16 / 7.5; object-position: 50% 45%; }
+  .products[data-items="6"] .products-list { gap: 0; }
+  .products[data-items="6"] .products-item button { gap: 4px; padding: 5px 4px 4px; }
+  .products[data-items="6"] .products-item b { font-size: 16.5px; }
+  .products[data-items="6"] .products-item__text { font-size: 14px; line-height: 1.5; }
+}
