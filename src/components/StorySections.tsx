@@ -360,14 +360,16 @@ export function ImpactSection() {
               style={{ "--p": `${((range - 10) / 140) * 100}%` } as React.CSSProperties}
             />
             <div className="impact-calc__scale" aria-hidden><span>10</span><span>150</span></div>
-            <p className="impact-calc__method"><b>{s.sim_scope}</b> {s.method}</p>
-            <span className="impact-calc__src">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logos/ans.png" alt="Agence du Numérique en Santé" className="h-7" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logos/gcsms.png" alt="GCSMS Comète Bretagne" className="h-9" />
-              <small>{s.source}</small>
-            </span>
+            {/* Source mise en avant : résultats mesurés dans le cadre de Structures 3.0 */}
+            <div className="impact-calc__src">
+              <p>{s.source}</p>
+              <span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logos/ans.png" alt="Agence du Numérique en Santé" className="h-10" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logos/gcsms.png" alt="GCSMS Comète Bretagne" className="h-12" />
+              </span>
+            </div>
           </div>
           <output id="impact-sim-out" className="impact-calc__out">
             <span className="impact-calc__main"><b>{fmt(etp, 1)}</b><small>{s.etp}</small></span>

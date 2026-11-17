@@ -341,11 +341,10 @@
 .impact-calc__range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #007AFF; box-shadow: 0 4px 12px -2px rgba(0, 122, 255, 0.5); }
 .impact-calc__range:focus-visible { outline: 2px solid #007AFF; outline-offset: 4px; }
 .impact-calc__scale { display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px; font-weight: 600; color: #9AA3B2; }
-.impact-calc__method { margin-top: 18px; font-size: 12px; line-height: 1.5; color: #7A8699; }
-.impact-calc__method b { color: #0D30A0; font-weight: 700; }
-.impact-calc__src { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 14px; }
+.impact-calc__src { display: grid; gap: 12px; margin-top: 24px; padding: 16px 18px; border-radius: 18px; background: #F4F8FF; border: 1px solid #DCE8FB; }
+.impact-calc__src p { font-size: 14.5px; font-weight: 700; line-height: 1.4; color: #0D30A0; }
+.impact-calc__src span { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
 .impact-calc__src img { width: auto; object-fit: contain; }
-.impact-calc__src small { font-size: 11px; line-height: 1.3; color: #9AA3B2; }
 .impact-calc__out { display: grid; grid-template-rows: 1fr auto auto; padding: clamp(22px, 3vw, 36px); color: #fff; background: radial-gradient(80% 60% at 70% 20%, rgba(96, 170, 255, 0.45) 0%, rgba(96, 170, 255, 0) 100%), linear-gradient(150deg, #1677FF 0%, #1A5CE0 50%, #0D30A0 100%); }
 .impact-calc__main { display: grid; align-content: center; gap: 4px; padding-bottom: 18px; }
 .impact-calc__main b { font-size: clamp(64px, 7vw, 96px); font-weight: 800; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
