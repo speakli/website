@@ -298,8 +298,11 @@ export function ImpactSection() {
   const s = t.story.impact;
   const ref = useRef<HTMLElement>(null);
   const [n, setN] = useState(30);
-  const perDay = (n * TRANSMISSIONS_PER_DAY * MIN_SAVED_PER_TRANSMISSION) / 60;
-  const perYear = perDay * DAYS_PER_ETP;
+  // n = effectif total de soignants. Chacun gagne du temps les jours où il travaille
+  // (DAYS_PER_ETP par an) ; comme ils se relaient, l'établissement en profite tous les jours :
+  // le gain quotidien est donc le gain annuel réparti sur 365 jours.
+  const perYear = (n * DAYS_PER_ETP * TRANSMISSIONS_PER_DAY * MIN_SAVED_PER_TRANSMISSION) / 60;
+  const perDay = perYear / 365;
   const etp = perYear / (DAYS_PER_ETP * HOURS_PER_DAY);
   const range = Math.min(150, Math.max(10, n));
   return (
