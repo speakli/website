@@ -36,6 +36,27 @@ export function SecuritySection() {
   // Position de Paris sur le globe (viewBox 440 × 440)
   const ref = useRef<HTMLElement>(null);
   const paris = { left: `${(202.5 / 440) * 100}%`, top: `${(195.3 / 440) * 100}%` };
+  // Zoom sur la France piloté par le défilement : nul tant que le globe entre à l'écran,
+  // maximal quand il atteint le milieu de la fenêtre (--z de 0 à 1).
+  const globeRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = globeRef.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const center = r.top + r.height / 2;
+      const vh = window.innerHeight;
+      const t = Math.min(1, Math.max(0, (vh * 0.85 - center) / (vh * 0.35)));
+      el.style.setProperty("--z", (t * t * (3 - 2 * t)).toFixed(3));
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(raf); };
+  }, []);
   return (
     <section ref={ref} id="securite" className="trust trust--secu">
       <div className="max-w-6xl mx-auto w-full">
@@ -46,10 +67,17 @@ export function SecuritySection() {
             <p className="trust__lede">{s.secu_lede}</p>
             <CtaPair placement="head" className="mt-7" />
           </div>
-          <div className="secu-globe">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/securite/globe-europe.svg" alt={s.globe_alt} className="secu-globe__img" />
-            <span className="secu-globe__pin" style={paris} aria-hidden><i /></span>
+          <div className="secu-globe" ref={globeRef}>
+            <div className="secu-globe__stage">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/securite/globe-europe.svg" alt={s.globe_alt} className="secu-globe__img" />
+              {/* Loupe : la sphère vue de plus près, centrée sur Paris, dans le disque du globe */}
+              <span className="secu-globe__lens" aria-hidden>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/securite/globe-europe.svg" alt="" />
+              </span>
+              <span className="secu-globe__pin" style={paris} aria-hidden><i /></span>
+            </div>
             <span className="secu-globe__tag" style={paris}>
               <b>{s.secu_tag}</b>
               <small>{s.secu_tag_sub}</small>
