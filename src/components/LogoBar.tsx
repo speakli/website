@@ -39,8 +39,8 @@ export default function LogoBar({ variant = "default" }: { variant?: "default" |
   const { t } = useLanguage();
   if (variant === "hero") {
     return (
-      <section className="relative z-10 w-full pb-16">
-        <p className="text-xs font-bold uppercase tracking-widest mb-5 text-center" style={{ color: "rgba(255,255,255,0.75)" }}>
+      <section className="relative z-10 w-full pb-4 lg:pb-16">
+        <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-2 lg:mb-5 text-center" style={{ color: "rgba(255,255,255,0.75)" }}>
           {t.logobar.label}
         </p>
         <div className="max-w-6xl mx-auto px-6">
@@ -52,7 +52,7 @@ export default function LogoBar({ variant = "default" }: { variant?: "default" |
                   key={i}
                   src={logo.src}
                   alt={i < HERO_LOGOS.length ? logo.alt : ""}
-                  className="flex-shrink-0 mx-8 sm:mx-10"
+                  className="flex-shrink-0 mx-6 sm:mx-10"
                   style={{
                     height: logo.h, width: "auto", maxWidth: 170, objectFit: "contain", opacity: 0.9,
                     filter: logo.filter ? "brightness(0) invert(1)" : undefined,

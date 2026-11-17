@@ -123,6 +123,7 @@ export default function Navbar() {
   const n = t.nav;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [group, setGroup] = useState<"products" | "experience" | null>("products");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -130,6 +131,11 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => { document.documentElement.style.overflow = ""; };
+  }, [open]);
 
   const products: Item[] = [
     { ...n.products_links[0], target: { section: "assistant-vocal" }, image: "/products/assistant-soignant.jpg" },
@@ -180,21 +186,34 @@ export default function Navbar() {
             aria-expanded={open}
             onClick={() => setOpen(o => !o)}
           >
-            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
               {open ? <path d="M15 5L5 15M5 5l10 10" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Menu mobile */}
+      {/* Menu mobile plein écran, en accordéon (inspiré de Vocca) */}
       {open && (
         <div className="snav__drawer">
-          <p className="snav__group">{n.products}</p>
-          {products.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
-          <p className="snav__group">{n.experience}</p>
-          {experience.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
-          <button type="button" className="snav-btn snav-btn--ghost snav__drawer-cta" onClick={() => { setOpen(false); openContact("callback"); }}>{n.callback}</button>
+          {([["products", n.products, products], ["experience", n.experience, experience]] as const).map(([key, label, list]) => (
+            <div key={key} className={`snav-acc${group === key ? " is-open" : ""}`}>
+              <button type="button" className="snav-acc__head" aria-expanded={group === key} onClick={() => setGroup(g => (g === key ? null : key))}>
+                {label}
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden><path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </button>
+              {group === key && (
+                <div className="snav-acc__list">
+                  {list.map(it => <button key={it.title} type="button" onClick={() => go(it.target)}><strong>{it.title}</strong><span>{it.desc}</span></button>)}
+                </div>
+              )}
+            </div>
+          ))}
+          <div className="snav-acc snav-acc--lang"><LanguagePicker /></div>
+          <div className="snav__drawer-ctas">
+            <a className="snav-btn" href={DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{n.demo}</a>
+            <button type="button" className="snav-btn snav-btn--ghost" onClick={() => { setOpen(false); openContact("callback"); }}>{n.callback}</button>
+          </div>
         </div>
       )}
     </header>

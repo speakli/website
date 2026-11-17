@@ -59,3 +59,17 @@
 .hero-video.is-revealed .hero-reveal:not(.hero-video__shade):not(.hero-scroll) { transform: none; }
 .hero-video.is-revealed .hero-reveal--late { transition-delay: 0.4s; }
 @media (prefers-reduced-motion: reduce) { .hero-reveal { transition: none; } }
+
+/* Mobile (façon Vocca) : téléphone au centre, titre et boutons dessous, clients visibles
+   sans scroller ; tout tient dans la hauteur de l'écran */
+@media (max-width: 1023px) {
+  .hero-video .dg { width: min(64vw, 34svh, 300px); }
+  .hero-video h1 { text-align: center; }
+  .hero-scroll { display: none; }
+}
+/* Petits téléphones : téléphone et titre plus compacts pour garder les clients à l'écran */
+@media (max-width: 1023px) and (max-height: 740px) {
+  .hero-video .dg { width: min(52vw, 25svh); }
+  .hero-video h1 { font-size: 25px; margin-bottom: 14px; }
+  .hero-video .hero-reveal a, .hero-video .hero-reveal > div > button { padding-top: 11px; padding-bottom: 11px; }
+}

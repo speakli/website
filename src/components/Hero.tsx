@@ -8,14 +8,14 @@ import HeroDocGen from "./HeroDocGen";
 import LogoBar from "./LogoBar";
 import { useLanguage } from "@/context/LanguageContext";
 
+// Pictos de réassurance, sobres : « RGPD », cercle d'étoiles européen, bouclier « HDS »
 function TrustIcon({ kind, mark }: { kind: "shield" | "eu" | "rgpd"; mark: string }) {
   if (kind === "rgpd") {
-    return <span className="text-lg font-extrabold tracking-tight" style={{ color: "#fff" }} aria-hidden>{mark}</span>;
+    return <span className="text-[17px] font-extrabold tracking-tight" style={{ color: "#fff" }}>{mark}</span>;
   }
   if (kind === "eu") {
-    // Cercle de 12 étoiles (points) façon drapeau européen
     return (
-      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden>
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden>
         {Array.from({ length: 12 }, (_, i) => {
           const a = (i / 12) * 2 * Math.PI;
           return <circle key={i} cx={(16 + 12 * Math.cos(a)).toFixed(2)} cy={(16 + 12 * Math.sin(a)).toFixed(2)} r="1.9" fill="currentColor" />;
@@ -24,9 +24,9 @@ function TrustIcon({ kind, mark }: { kind: "shield" | "eu" | "rgpd"; mark: strin
     );
   }
   return (
-    <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.6" viewBox="0 0 24 24" aria-hidden>
-      <path d="M12 2.8l7.5 3v5.6c0 4.6-3.1 8.4-7.5 9.8-4.4-1.4-7.5-5.2-7.5-9.8V5.8l7.5-3z" strokeLinejoin="round" />
-      <path d="M8.6 12.2l2.4 2.4 4.6-4.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="34" height="38" viewBox="0 0 34 38" aria-label="HDS" role="img">
+      <path d="M17 1.5l14 5.4v10.3c0 8.7-5.9 15.6-14 18.3C8.9 32.8 3 25.9 3 17.2V6.9L17 1.5z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <text x="17" y="21.5" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="currentColor" style={{ letterSpacing: "0.02em" }}>HDS</text>
     </svg>
   );
 }
@@ -59,7 +59,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`hero-video${revealed ? " is-revealed" : ""} relative min-h-screen flex flex-col overflow-x-hidden pt-16`}>
+    <section ref={sectionRef} className={`hero-video${revealed ? " is-revealed" : ""} relative min-h-[100svh] flex flex-col overflow-x-hidden pt-16`}>
       {/* Vidéo de fond muette, lue une fois ; HeroDocGen la relance à chaque cycle d'animation */}
       <video
         ref={videoRef}
@@ -73,12 +73,12 @@ export default function Hero() {
       </video>
       <div className="hero-video__shade hero-reveal" aria-hidden />
 
-      <div className="relative z-10 flex-1 flex items-center max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12 w-full">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-12 items-center w-full">
+      <div className="relative z-10 flex-1 flex items-center max-w-6xl mx-auto px-4 sm:px-6 pt-3 pb-2 sm:py-12 w-full">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-4 lg:gap-12 items-center w-full">
 
           {/* ── Left: copy ── */}
           <div className="hero-reveal">
-            <h1 className="text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-[30px] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight mb-5 sm:mb-6">
               {h.h1.map((line, li) => (
                 <span key={li} className="block">
                   {line.map(([text, accent], si) => (
@@ -98,7 +98,7 @@ export default function Hero() {
             </h1>
 
             <p
-              className="text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg font-medium"
+              className="hidden sm:block text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg font-medium"
               style={{ color: "rgba(255,255,255,0.88)" }}
             >
               {h.subtitle.split("\n").map((line, i) => (
@@ -106,12 +106,12 @@ export default function Hero() {
               ))}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 sm:max-w-[30rem]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 mb-5 sm:mb-10 sm:max-w-[30rem]">
               <a
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-white font-bold px-5 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-white font-bold px-5 py-3.5 sm:py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   background: "linear-gradient(135deg, var(--sp-600) 0%, var(--sp-500) 100%)",
                   boxShadow: "0 4px 24px rgba(0,122,255,0.40), 0 1px 0 rgba(255,255,255,0.15) inset",
@@ -126,7 +126,7 @@ export default function Hero() {
               </a>
               <button
                 type="button"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold px-5 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/25"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold px-5 py-3.5 sm:py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/25"
                 style={{ color: "#fff", border: "1px solid rgba(255,255,255,0.45)", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)" }}
                 onClick={() => openContact("callback")}
               >
@@ -138,20 +138,22 @@ export default function Hero() {
             </div>
 
             {/* Réassurance : HDS, données dans l'UE, RGPD */}
-            <ul className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4">
+            <ul className="flex flex-wrap items-center justify-center lg:justify-start gap-x-7 gap-y-3">
               {h.trust.map(({ icon, label }) => (
-                <li key={icon} className="flex items-center gap-3" style={{ color: "#fff" }}>
+                <li key={icon} className="flex items-center gap-2.5" style={{ color: "#fff" }}>
                   <TrustIcon kind={icon} mark={h.rgpd_mark} />
-                  <span className="text-sm font-medium leading-tight" style={{ color: "rgba(255,255,255,0.85)" }}>
-                    {label.split("\n").map((l, i) => <span key={i} className="block">{l}</span>)}
-                  </span>
+                  {label && (
+                    <span className="text-[13px] sm:text-sm font-medium leading-tight" style={{ color: "rgba(255,255,255,0.85)" }}>
+                      {label.split("\n").map((l, i) => <span key={i} className="block">{l}</span>)}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
           {/* ── Right: un vocal → toute la documentation (kakemono Speakli V2) ── */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end order-first lg:order-none">
             <HeroDocGen videoRef={videoRef} onIntroDone={reveal} />
           </div>
 

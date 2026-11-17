@@ -70,9 +70,9 @@ const fr = {
     rgpd_mark: "RGPD",
     scroll_next: "Voir la suite",
     trust: [
-      { icon: "shield", label: "Infrastructure\ncertifiée HDS" },
+      { icon: "shield", label: "" },
       { icon: "eu", label: "Données\ndans l'UE" },
-      { icon: "rgpd", label: "Conforme\nRGPD" },
+      { icon: "rgpd", label: "" },
     ] as { icon: "shield" | "eu" | "rgpd"; label: string }[],
   },
   trust: {
@@ -733,9 +733,9 @@ const en: Translations = {
     rgpd_mark: "GDPR",
     scroll_next: "See more",
     trust: [
-      { icon: "shield", label: "HDS-certified\ninfrastructure" },
+      { icon: "shield", label: "" },
       { icon: "eu", label: "Data hosted\nin the EU" },
-      { icon: "rgpd", label: "GDPR\ncompliant" },
+      { icon: "rgpd", label: "" },
     ] as { icon: "shield" | "eu" | "rgpd"; label: string }[],
   },
   trust: {
