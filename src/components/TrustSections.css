@@ -145,7 +145,8 @@
   opacity: 0.55; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.85, 0.25, 1);
 }
 .itl__step.is-on .itl__card { opacity: 1; transform: none; }
-.itl__title { display: block; font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.01em; color: var(--sp-900); }
+.itl__title { display: flex; align-items: center; gap: 12px; font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.01em; color: var(--sp-900); }
+.itl__ic { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #EAF3FF; color: var(--sp-600); }
 .itl__desc { margin-top: 10px; font-size: 16px; line-height: 1.6; color: #5B6B82; }
 .itl__visual { height: 190px; }
 @media (max-width: 767px) {
