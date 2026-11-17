@@ -104,7 +104,7 @@ function VisualAI({ ui }: { ui: UI }) {
 
 // Transmission ciblée, en direct : Speakli reconnaît la résidente, choisit la cible parmi
 // plusieurs (à la place du soignant), puis rédige Données, Actions, Résultats mot à mot.
-// Tout est piloté en CSS sur .products.is-live .products-visual.is-on (l'onglet dure STEP_MS).
+// Tout est piloté en CSS sur .products.is-live .products-visual.is-on (durée : ASSISTANT_DURATIONS).
 const DAR_START = [3.6, 4.85, 6.0];
 const DAR_WORD = 0.055;
 function VisualDAR({ ui }: { ui: UI }) {
@@ -648,8 +648,24 @@ export const ICON = {
   award: li(<><circle cx="12" cy="9" r="6" /><path d="M8.5 14L7 21l5-3 5 3-1.5-7" /></>),
   shieldHeart: li(<><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z" /><path d="M12 15.5l-2.8-2.7a1.8 1.8 0 012.8-2.2 1.8 1.8 0 012.8 2.2z" /></>),
 };
-// La signature des soins et les constantes racontent une scène dictée : on leur laisse plus de temps
-const ASSISTANT_DURATIONS = [STEP_MS, STEP_MS, 15000, 11000, 13500, STEP_MS];
+// Durée de chaque onglet = fin de la dernière animation de son visuel (mesurée dans le
+// navigateur, délais compris) + une courte pause sur l'état final, puis on passe au suivant.
+// À recalculer si une animation change de durée.
+const END_HOLD = 1000;
+const until = (animEndMs: number) => animEndMs + END_HOLD;
+const ASSISTANT_DURATIONS = [
+  6000,        // IA spécialisée : visuel statique, temps de lecture
+  until(6850), // Transmission ciblée : dernier mot du « R »
+  until(9280), // Signature des soins : dernier soin signé
+  until(5750), // Constantes vitales : dernier pourcentage
+  until(12000), // Mode hors ligne : « aucune perte »
+  until(6200), // Intégration au DUI : badge final
+];
+const DASHBOARD_DURATIONS = [
+  until(11800), // Piloter l'activité : classement final
+  until(3900),  // Écouter vos équipes : dernière valeur
+  until(4950),  // Mesurer l'impact : courbe complète
+];
 const ASSISTANT_ICONS = [ICON.sparkles, ICON.target, ICON.signature, ICON.pulse, ICON.wifiOff, ICON.plug];
 const DASHBOARD_ICONS = [ICON.bars, ICON.heart, ICON.trend];
 
@@ -807,6 +823,6 @@ export default function Products() {
   return which === "assistant" ? (
     <ProductBlock key="assistant" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.assistant_head} items={p.assistant} visuals={ASSISTANT_VISUALS} icons={ASSISTANT_ICONS} durations={ASSISTANT_DURATIONS} tone="light" image={{ src: "/products/assistant-soignante-chevet.jpg", alt: p.assistant_head.image_alt }} />
   ) : (
-    <ProductBlock key="dashboard" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.dashboard_head} items={p.dashboard} visuals={DASHBOARD_VISUALS} icons={DASHBOARD_ICONS} durations={[14000, 10000, STEP_MS]} note={p.ui.illustration} tone="light" fillImage image={{ src: "/products/pilotage-idec.jpg", alt: p.dashboard_head.image_alt }} />
+    <ProductBlock key="dashboard" id="assistant-vocal" anchors={["tableau-de-pilotage"]} switcher={switcher} head={p.dashboard_head} items={p.dashboard} visuals={DASHBOARD_VISUALS} icons={DASHBOARD_ICONS} durations={DASHBOARD_DURATIONS} note={p.ui.illustration} tone="light" fillImage image={{ src: "/products/pilotage-idec.jpg", alt: p.dashboard_head.image_alt }} />
   );
 }
