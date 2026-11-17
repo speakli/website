@@ -63,13 +63,15 @@
 /* Mobile (façon Vocca) : téléphone au centre, titre et boutons dessous, clients visibles
    sans scroller ; tout tient dans la hauteur de l'écran */
 @media (max-width: 1023px) {
-  .hero-video .dg { width: min(64vw, 34svh, 300px); }
+  /* Téléphone plus grand ; titre, boutons et pictos descendus et resserrés en dessous */
+  .hero-video .dg { width: min(86vw, 45svh, 380px); }
+  .hero-video .hero-reveal svg.flex-none { display: none; }
   .hero-video h1 { text-align: center; }
   .hero-scroll { display: none; }
 }
 /* Petits téléphones : téléphone et titre plus compacts pour garder les clients à l'écran */
 @media (max-width: 1023px) and (max-height: 740px) {
-  .hero-video .dg { width: min(52vw, 25svh); }
+  .hero-video .dg { width: min(72vw, 38svh); }
   .hero-video h1 { font-size: 25px; margin-bottom: 14px; }
   .hero-video .hero-reveal a, .hero-video .hero-reveal > div > button { padding-top: 11px; padding-bottom: 11px; }
 }

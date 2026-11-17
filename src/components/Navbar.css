@@ -91,7 +91,7 @@
 /* Le menu ne prend que la hauteur de son contenu : la page reste visible dessous (cf. Vocca) */
 .snav__drawer {
   position: fixed; left: 0; right: 0; top: calc(64px + env(safe-area-inset-top, 0px));
-  max-height: calc(100svh - 64px - env(safe-area-inset-top, 0px)); overflow-y: auto;
+  max-height: 75svh; overflow-y: auto; overscroll-behavior: contain;
   background: #fff; padding: 4px 22px 22px; display: flex; flex-direction: column;
   box-shadow: 0 24px 40px -20px rgba(4, 20, 70, 0.35);
 }

@@ -39,8 +39,8 @@ export default function LogoBar({ variant = "default" }: { variant?: "default" |
   const { t } = useLanguage();
   if (variant === "hero") {
     return (
-      <section className="relative z-10 w-full pb-4 lg:pb-16">
-        <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-2 lg:mb-5 text-center" style={{ color: "rgba(255,255,255,0.75)" }}>
+      <section className="relative z-10 w-full pb-3 lg:pb-16">
+        <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 lg:mb-5 text-center" style={{ color: "rgba(255,255,255,0.75)" }}>
           {t.logobar.label}
         </p>
         <div className="max-w-6xl mx-auto px-6">

@@ -78,7 +78,7 @@ export default function Hero() {
 
           {/* ── Left: copy ── */}
           <div className="hero-reveal">
-            <h1 className="text-[30px] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight mb-5 sm:mb-6">
+            <h1 className="text-[27px] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight mb-4 sm:mb-6">
               {h.h1.map((line, li) => (
                 <span key={li} className="block">
                   {line.map(([text, accent], si) => (
@@ -106,12 +106,12 @@ export default function Hero() {
               ))}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 mb-5 sm:mb-10 sm:max-w-[30rem]">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4 sm:mb-10 sm:max-w-[30rem]">
               <a
                 href={DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-white font-bold px-5 py-3.5 sm:py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-white font-bold px-3 sm:px-5 py-3 sm:py-4 rounded-xl text-[15px] sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   background: "linear-gradient(135deg, var(--sp-600) 0%, var(--sp-500) 100%)",
                   boxShadow: "0 4px 24px rgba(0,122,255,0.40), 0 1px 0 rgba(255,255,255,0.15) inset",
@@ -126,7 +126,7 @@ export default function Hero() {
               </a>
               <button
                 type="button"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold px-5 py-3.5 sm:py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/25"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold px-3 sm:px-5 py-3 sm:py-4 rounded-xl text-[15px] sm:text-base transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/25"
                 style={{ color: "#fff", border: "1px solid rgba(255,255,255,0.45)", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)" }}
                 onClick={() => openContact("callback")}
               >
