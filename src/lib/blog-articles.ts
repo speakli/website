@@ -244,12 +244,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     coverLogo: "/photos/blog/oeil-esante-santexpo-2026.jpg",
     coverIsPhoto: true,
     cardBg: "#0c1d50",
-    gallery: [
-      {
-        src: "/photos/blog/oeil-esante-santexpo-2026.jpg",
-        alt: "Ruben Weinstein interviewé par L'Œil de la e-santé à SantExpo 2026 : Speakli, l'assistant vocal IA qui libère le temps des soignants en EHPAD",
-      },
-    ],
+    youtubeUrl: "https://www.youtube.com/embed/DrJug_Yc1Qc?rel=0",
     externalLink: {
       label: "Lire l'article sur L'Œil de la e-santé",
       href: "https://oeil-esante.media/focus-startup/ia-vocale-en-ehpad-comment-speakli-simplifie-la-tracabilite-des-soins/",
