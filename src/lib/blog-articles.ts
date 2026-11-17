@@ -28,6 +28,7 @@ export interface BlogArticle {
   gallery?: BlogImage[];
   youtubeUrl?: string;
   externalLink?: { label: string; href: string };
+  pressLinks?: { source: string; label: string; href: string }[]; // « Ils en parlent » : articles de presse et pages officielles
   content: BlogSection[];
   isThematic?: boolean; // thematic articles vs press/awards
   isUpcoming?: boolean; // upcoming event (shown separately at the top)
@@ -367,20 +368,20 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "silver-valley-laureat-2026",
-    title: "Lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
+    title: "Lauréat du Prix Silver Valley 2026, catégorie Médico-social et sanitaire",
     category: "Prix & Récompenses",
     categoryBg: "#EEF2FF",
     categoryColor: "#3B4FCF",
-    date: "2026",
+    date: "Juin 2026",
     excerpt:
-      "Speakli est désigné lauréat du Prix Silver Valley 2026 dans la catégorie Sanitaire & Médico-social. Une reconnaissance de l'écosystème de référence de la Silver Économie pour l'impact de notre assistant vocal IA dans les EHPAD.",
+      "Dès sa première participation, Speakli est désigné lauréat du Prix Silver Valley 2026 dans la catégorie Médico-social et sanitaire. SilverEco y consacre un article : « Speakli enchaîne les distinctions au sein de la Silver Économie ».",
     coverLogo: "/photos/blog/silver-valley-laureat-2026.jpg",
     coverIsPhoto: true,
     cardBg: "#1a2e4a",
     gallery: [
       {
         src: "/photos/blog/silver-valley-laureat-2026.jpg",
-        alt: "Speakli lauréat Silver Valley 2026 — Catégorie Sanitaire & Médico-social",
+        alt: "Speakli lauréat du Prix Silver Valley 2026, catégorie Médico-social et sanitaire",
       },
     ],
     youtubeUrl: "https://www.youtube.com/embed/N4V-jiRgJ-c",
@@ -388,6 +389,18 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       label: "Voir l'annonce sur LinkedIn",
       href: "https://www.linkedin.com/posts/speakli_silvervalley-silvereconomie-grandage-activity-7472532174186033152-orG6",
     },
+    pressLinks: [
+      {
+        source: "SilverEco",
+        label: "Speakli enchaîne les distinctions au sein de la Silver Économie",
+        href: "https://www.silvereco.fr/speakli-enchaine-les-distinctions-au-sein-de-la-silver-economie/",
+      },
+      {
+        source: "Silver Valley",
+        label: "Les lauréats du Prix Silver Valley, édition 2026",
+        href: "https://silvervalley.fr/prix-silver-valley/precedents-laureats-du-prix-silver-valley/",
+      },
+    ],
     content: [
       {
         heading: "Silver Valley, l'écosystème de référence de la Silver Économie",
@@ -397,9 +410,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         ],
       },
       {
-        heading: "Speakli distingué dans la catégorie Sanitaire & Médico-social",
+        heading: "Speakli distingué dans la catégorie Médico-social et sanitaire",
         paragraphs: [
-          "En 2026, Speakli a été désigné lauréat du Prix Silver Valley dans la catégorie Sanitaire & Médico-social. Cette distinction récompense les solutions numériques qui apportent un impact mesurable et concret sur la qualité des soins et les conditions de travail des professionnels en EHPAD et en structures médico-sociales.",
+          "En juin 2026, pour sa toute première participation, Speakli a été désigné lauréat du Prix Silver Valley dans la catégorie Médico-social et sanitaire, aux côtés de Merci Prosper, Solalie et Les SuperActifs. Cette distinction récompense les solutions numériques qui apportent un impact mesurable et concret sur la qualité des soins et les conditions de travail des professionnels en EHPAD et en structures médico-sociales.",
           "Pour Speakli, c'est une validation directe de notre approche : un assistant vocal IA conçu pour le terrain, pensé avec et pour les soignants, qui réduit la charge documentaire et restitue du temps au soin.",
         ],
       },
@@ -408,6 +421,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         paragraphs: [
           "Être reconnu par Silver Valley, c'est être reconnu par les acteurs qui font la Silver Économie au quotidien. Ce prix valide non seulement la pertinence de notre solution, mais aussi son ancrage réel dans les établissements : aujourd'hui présent dans plus de 40 EHPAD, Speakli est utilisé chaque jour par des équipes soignantes qui ont fait le choix de la dictée vocale IA pour alléger leur travail administratif.",
           "Cette distinction vient s'ajouter aux Trophées SilverEco 2025, au Prix Entrepreneur IESEG 2026 et à notre sélection dans le programme ANS Structure 3.0 — autant de signaux qui confirment que Speakli répond à un besoin structurel du secteur.",
+          "Le portail SilverEco a salué ce parcours dans un article intitulé « Speakli enchaîne les distinctions au sein de la Silver Économie », qui revient sur le doublé des Trophées SilverEco 2025 (Prix Coup de Cœur du Public et Prix de la Meilleure Innovation Managériale, Qualité de Vie au Travail & RSE) puis sur ce prix Silver Valley 2026.",
         ],
       },
     ],
@@ -434,6 +448,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       label: "Voir l'annonce sur LinkedIn",
       href: "https://www.linkedin.com/posts/speakli_ehpad-santenumerique-ia-activity-7472166052815212545-l7fp",
     },
+    pressLinks: [
+      {
+        source: "Agence du Numérique en Santé",
+        label: "Speakli – Traçabilité vocale et pilotage intelligent de la traçabilité en EHPAD",
+        href: "https://esante.gouv.fr/speakli-tracabilite-vocale-et-pilotage-intelligent-de-la-tracabilite-en-ehpad",
+      },
+    ],
     content: [
       {
         heading: "Un déploiement au sein du GCSMS Comète Bretagne",
@@ -565,6 +586,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         alt: "GCSMS Comète Bretagne",
       },
     ],
+    pressLinks: [
+      {
+        source: "Agence du Numérique en Santé",
+        label: "Speakli – Traçabilité vocale et pilotage intelligent de la traçabilité en EHPAD",
+        href: "https://esante.gouv.fr/speakli-tracabilite-vocale-et-pilotage-intelligent-de-la-tracabilite-en-ehpad",
+      },
+    ],
     content: [
       {
         heading: "L'ANS et le programme Structure 3.0",
@@ -577,6 +605,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         heading: "Speakli sélectionné au sein du GCSMS Comète Bretagne",
         paragraphs: [
           "En janvier 2026, Speakli a été désigné lauréat de l'appel à projet ANS Structure 3.0. Ce résultat ouvre la voie au déploiement de la solution au sein du GCSMS Comète Bretagne — un groupement de coopération sanitaire et médico-sociale qui regroupe plus de 45 structures en Bretagne — en commençant par 18 EHPAD publics en phase pilote.",
+          "L'Agence du Numérique en Santé présente le projet sur esante.gouv.fr : le GCSMS Comète Bretagne y teste Speakli, compagnon vocal des soignants qui rédige des transmissions structurées grâce à l'IA et donne aux cadres de santé un tableau de bord pour piloter le volume et la qualité de la traçabilité. L'évaluation porte sur le temps administratif gagné, la qualité et l'exhaustivité des transmissions, la satisfaction des équipes et l'impact organisationnel.",
           "Ce partenariat institutionnel est une étape majeure : il valide la conformité de notre solution aux exigences de sécurité, d'interopérabilité et de gouvernance des données définies par l'ANS, et ouvre la voie à un déploiement à l'échelle nationale.",
         ],
       },

@@ -252,6 +252,35 @@ export default async function BlogArticlePage({
               </a>
             )}
 
+            {/* Ils en parlent : articles de presse et pages officielles */}
+            {article.pressLinks && article.pressLinks.length > 0 && (
+              <div className="mb-12">
+                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--sp-500)" }}>Ils en parlent</p>
+                <ul className="grid gap-3">
+                  {article.pressLinks.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between gap-4 rounded-2xl border bg-white px-5 py-4 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                        style={{ borderColor: "var(--sp-100)" }}
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-xs font-bold mb-1" style={{ color: "var(--sp-500)" }}>{l.source}</span>
+                          <span className="block font-semibold text-[15px] leading-snug" style={{ color: "var(--sp-900)" }}>{l.label}</span>
+                        </span>
+                        <svg className="flex-shrink-0 transition-transform group-hover:translate-x-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sp-500)" strokeWidth="2.5" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M15 3h6v6M10 14L21 3" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Photo gallery */}
             {article.gallery && article.gallery.length > 0 && (
               <div
