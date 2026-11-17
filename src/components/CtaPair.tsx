@@ -1,14 +1,16 @@
 "use client";
 import { useLanguage } from "@/context/LanguageContext";
 import { openContact } from "@/lib/contactMode";
+import "./CtaPair.css";
 
 // Boutons d'action réutilisés dans toutes les sections : démo (HubSpot) + être rappelé
 export const DEMO_URL = "https://meetings-eu1.hubspot.com/ruben-weinstein";
 
-export default function CtaPair({ align = "start", className = "", onDark = false }: { align?: "start" | "center"; className?: string; onDark?: boolean }) {
+// placement « head » : sous le titre, ordinateur uniquement ; « foot » : sous les visuels, mobile uniquement
+export default function CtaPair({ align = "start", className = "", onDark = false, placement }: { align?: "start" | "center"; className?: string; onDark?: boolean; placement?: "head" | "foot" }) {
   const { t } = useLanguage();
   return (
-    <div className={`flex flex-wrap gap-2.5 ${align === "center" ? "justify-center" : ""} ${className}`}>
+    <div className={`flex flex-wrap gap-2.5 ${align === "center" ? "justify-center" : ""} ${placement ? `cta-${placement}` : ""} ${className}`}>
       <a
         href={DEMO_URL}
         target="_blank"

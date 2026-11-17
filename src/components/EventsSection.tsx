@@ -18,7 +18,7 @@ export default function EventsSection() {
             <h2 className="events__title">{e.title} <span>{e.accent}</span></h2>
             <p className="events__lede">{e.lede}</p>
           </div>
-          <CtaPair />
+          <CtaPair placement="head" />
         </div>
 
         <div className="events__layout">
@@ -74,6 +74,7 @@ export default function EventsSection() {
           </ul>
         </aside>
         </div>
+        <CtaPair placement="foot" align="center" className="mt-8" />
       </div>
     </section>
   );

@@ -390,3 +390,9 @@
 /* Frise intégrée dans un article : texte aligné à gauche (le corps d'article est justifié) */
 .tl-embed .tl__body, .tl-embed .tl__body li { text-align: left; }
 .tl-embed .tl { margin-top: 0; }
+
+/* Vidéo du témoignage centrée sur mobile */
+@media (max-width: 900px) {
+  .voice-main > * { min-width: 0; }
+  .voice-main__video { display: block; max-height: none; margin-inline: auto; }
+}

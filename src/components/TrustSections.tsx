@@ -41,7 +41,7 @@ export function SecuritySection() {
             <p className="trust__eyebrow">{s.secu_eyebrow}</p>
             <h2 className="trust__title">{s.secu_title} <span>{s.secu_accent}</span></h2>
             <p className="trust__lede">{s.secu_lede}</p>
-            <CtaPair className="mt-7" />
+            <CtaPair placement="head" className="mt-7" />
           </div>
           <div className="secu-globe">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,6 +62,7 @@ export function SecuritySection() {
             </div>
           ))}
         </div>
+        <CtaPair placement="foot" align="center" className="mt-8" />
       </div>
     </section>
   );
@@ -129,7 +130,7 @@ export function InteropSection() {
           <p className="trust__eyebrow">{s.interop_eyebrow}</p>
           <h2 className="trust__title">{s.interop_title} <span>{s.interop_accent}</span></h2>
           <p className="trust__lede mx-auto">{s.interop_lede}</p>
-          <CtaPair align="center" className="mt-6" />
+          <CtaPair placement="head" align="center" className="mt-6" />
         </div>
 
         <ol className="isteps">
@@ -150,6 +151,7 @@ export function InteropSection() {
             );
           })}
         </ol>
+        <CtaPair placement="foot" align="center" className="mt-8" />
       </div>
     </section>
   );

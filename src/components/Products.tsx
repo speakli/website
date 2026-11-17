@@ -699,7 +699,7 @@ export function ProductBlock({
   }, []);
 
   return (
-    <section ref={ref} id={id} className={`products products--${tone}${inView ? " is-live" : ""}`}>
+    <section ref={ref} id={id} data-items={items.length} className={`products products--${tone}${inView ? " is-live" : ""}`}>
       {anchors?.map(a => <span key={a} id={a} className="products-anchor" aria-hidden />)}
       <div className="max-w-6xl mx-auto w-full">
         <div className="mb-8">
@@ -708,7 +708,7 @@ export function ProductBlock({
               {/* Sur-titre, puis le sélecteur des deux solutions et les boutons, puis le titre sur toute la largeur */}
               <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 mb-6">
                 <div>{switcher}</div>
-                <CtaPair />
+                <CtaPair placement="head" />
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.2rem] font-extrabold tracking-tight leading-[1.15]" style={{ color: "var(--sp-900)" }}>
                 {head.title} <span style={{ color: "var(--sp-500)" }}>{head.title_accent}</span>
@@ -722,12 +722,12 @@ export function ProductBlock({
                   {head.title} <span style={{ color: "var(--sp-500)" }}>{head.title_accent}</span>
                 </h2>
               </div>
-              <CtaPair />
+              <CtaPair placement="head" />
             </div>
           )}
         </div>
 
-        <div className={`grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-14 ${fillImage ? "items-start lg:items-stretch" : "items-start"}`}>
+        <div className={`grid lg:grid-cols-[0.85fr_1.15fr] gap-4 lg:gap-14 ${fillImage ? "items-start lg:items-stretch" : "items-start"}`}>
           {/* Liste des fonctionnalités avec barre de chargement */}
           <div className="order-2 lg:order-1 flex flex-col gap-4">
           {image && (
@@ -769,6 +769,7 @@ export function ProductBlock({
             {note && <p className="products-stage__note">{note}</p>}
           </div>
         </div>
+        <CtaPair placement="foot" align="center" className="mt-6" />
       </div>
     </section>
   );

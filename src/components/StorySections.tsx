@@ -309,7 +309,7 @@ export function ImpactSection() {
             <p className="story__eyebrow">{s.eyebrow}</p>
             <h2 className="story__title">{s.title} <span>{s.accent}</span></h2>
           </div>
-          <CtaPair />
+          <CtaPair placement="head" />
         </div>
 
         <div className="impact-cards">
@@ -372,6 +372,7 @@ export function ImpactSection() {
             </a>
           </div>
         </div>
+        <CtaPair placement="foot" align="center" className="mt-6" />
       </div>
     </section>
   );
@@ -416,7 +417,7 @@ export function VoicesSection() {
             <p className="story__eyebrow">{s.eyebrow}</p>
             <h2 className="story__title">{s.title} <span>{s.accent}</span></h2>
           </div>
-          <CtaPair />
+          <CtaPair placement="head" />
         </div>
 
         <figure className="voice-main">
@@ -475,6 +476,7 @@ export function VoicesSection() {
             )))}
           </div>
         </div>
+        <CtaPair placement="foot" align="center" className="mt-2" />
       </div>
     </section>
   );
