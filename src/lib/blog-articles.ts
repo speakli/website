@@ -384,7 +384,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         alt: "Speakli lauréat du Prix Silver Valley 2026, catégorie Médico-social et sanitaire",
       },
     ],
-    youtubeUrl: "https://www.youtube.com/embed/N4V-jiRgJ-c",
     externalLink: {
       label: "Voir l'annonce sur LinkedIn",
       href: "https://www.linkedin.com/posts/speakli_silvervalley-silvereconomie-grandage-activity-7472532174186033152-orG6",
