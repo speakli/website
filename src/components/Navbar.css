@@ -88,16 +88,20 @@
 
 .snav__burger { display: none; padding: 8px; border-radius: 10px; background: none; border: 0; color: var(--sp-900); cursor: pointer; }
 /* Menu mobile plein écran : accordéons, langue, boutons d'action */
+/* Le menu ne prend que la hauteur de son contenu : la page reste visible dessous (cf. Vocca) */
 .snav__drawer {
-  position: fixed; left: 0; right: 0; bottom: 0; top: calc(64px + env(safe-area-inset-top, 0px));
-  overflow-y: auto; background: #fff; padding: 12px 22px calc(28px + env(safe-area-inset-bottom, 0px));
-  display: flex; flex-direction: column;
+  position: fixed; left: 0; right: 0; top: calc(64px + env(safe-area-inset-top, 0px));
+  max-height: calc(100svh - 64px - env(safe-area-inset-top, 0px)); overflow-y: auto;
+  background: #fff; padding: 4px 22px 22px; display: flex; flex-direction: column;
+  box-shadow: 0 24px 40px -20px rgba(4, 20, 70, 0.35);
 }
+/* Voile léger sur la page derrière le menu ; un clic dessus referme le menu */
+.snav__backdrop { position: fixed; inset: 0; top: calc(64px + env(safe-area-inset-top, 0px)); background: rgba(5, 18, 42, 0.25); }
 .snav-acc { border-bottom: 1px solid rgba(26, 46, 73, 0.08); }
 .snav-acc__head {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 18px 2px; background: none; border: 0; cursor: pointer;
-  font-size: 21px; font-weight: 600; letter-spacing: -0.01em; color: var(--sp-900); text-align: left;
+  padding: 15px 2px; background: none; border: 0; cursor: pointer;
+  font-size: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--sp-900); text-align: left;
 }
 .snav-acc__head svg { transition: transform 0.25s ease; color: var(--sp-700); }
 .snav-acc.is-open .snav-acc__head svg { transform: rotate(180deg); }
@@ -106,8 +110,8 @@
 .snav-acc__list button:hover { background: #EAF3FF; }
 .snav-acc__list strong { font-size: 16px; font-weight: 600; color: var(--sp-900); }
 .snav-acc__list span { font-size: 13px; color: #7A8699; }
-.snav-acc--lang { padding: 14px 0; }
-.snav__drawer-ctas { display: grid; gap: 10px; margin-top: auto; padding-top: 24px; }
+.snav-acc--lang { padding: 12px 0; }
+.snav__drawer-ctas { display: grid; gap: 10px; padding-top: 20px; }
 .snav__drawer-ctas .snav-btn { display: flex; justify-content: center; width: 100%; padding: 15px; font-size: 16px; border-radius: 14px; }
 
 @media (max-width: 1080px) {

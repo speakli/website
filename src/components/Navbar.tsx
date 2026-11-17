@@ -123,7 +123,7 @@ export default function Navbar() {
   const n = t.nav;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [group, setGroup] = useState<"products" | "experience" | null>("products");
+  const [group, setGroup] = useState<"products" | "experience" | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -194,6 +194,7 @@ export default function Navbar() {
       </div>
 
       {/* Menu mobile plein écran, en accordéon (inspiré de Vocca) */}
+      {open && <div className="snav__backdrop" aria-hidden onClick={() => setOpen(false)} />}
       {open && (
         <div className="snav__drawer">
           {([["products", n.products, products], ["experience", n.experience, experience]] as const).map(([key, label, list]) => (
