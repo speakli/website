@@ -569,9 +569,12 @@
   .products-stage { height: min(480px, 56svh); border-radius: 22px; }
   .products[data-items="6"] .products-stage { height: min(390px, 44svh); }
   .products-visual { padding: 8px; }
-  .products-visual > * { zoom: 0.8; }
-  .products[data-items="3"] .products-visual > * { zoom: 0.86; }
-  .products[data-items="6"] .products-visual > * { zoom: 0.7; }
+  /* Visuel réduit pour tenir dans le cadre : mise à l'échelle par transform (et non `zoom`,
+     que Safari iOS n'applique pas au texte). --zb = échelle maximale ; --z = échelle réelle,
+     calculée en JS (ProductBlock) pour que le visuel tienne toujours en entier dans le cadre. */
+  .products-visual > * { --zb: 0.8; flex: none; width: calc(100% / var(--z, var(--zb))); transform: scale(var(--z, var(--zb))); }
+  .products[data-items="3"] .products-visual > * { --zb: 0.86; }
+  .products[data-items="6"] .products-visual > * { --zb: 0.7; }
   .products-list { gap: 0; }
   .products-item button { gap: 3px; padding: 6px 2px 5px; }
   .products-item b { font-size: 15px; gap: 10px; }
@@ -588,8 +591,8 @@
 @media (max-width: 1023px) and (max-height: 740px) {
   .products-stage { height: 60svh; }
   .products[data-items="6"] .products-stage { height: 52svh; }
-  .products-visual > *, .products[data-items="3"] .products-visual > * { zoom: 0.7; }
-  .products[data-items="6"] .products-visual > * { zoom: 0.64; }
+  .products-visual > *, .products[data-items="3"] .products-visual > * { --zb: 0.7; }
+  .products[data-items="6"] .products-visual > * { --zb: 0.64; }
   .products-item button { padding: 4px 2px 3px; }
   .products-item__text { font-size: 13px; }
 }

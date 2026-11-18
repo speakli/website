@@ -692,6 +692,38 @@ export function ProductBlock({
   const [inView, setInView] = useState(false);
   const [run, setRun] = useState(0); // change à chaque sortie d'écran : la barre repart de zéro
   const ref = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  // Mobile et tablette : chaque visuel est réduit (transform: scale) juste assez pour tenir en
+  // entier dans le cadre, quelle que soit la hauteur d'écran (barres de Safari comprises).
+  // La hauteur d'un visuel ne change pas pendant son animation : on la mesure une fois.
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const mq = window.matchMedia("(max-width: 1023px)");
+    const fit = () => {
+      stage.querySelectorAll<HTMLElement>(".products-visual").forEach(v => {
+        const c = v.firstElementChild as HTMLElement | null;
+        if (!c) return;
+        c.style.removeProperty("--z");
+        if (!mq.matches) return;
+        const cs = getComputedStyle(v);
+        const avail = v.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 4;
+        const base = parseFloat(getComputedStyle(c).getPropertyValue("--zb")) || 1;
+        // Deux passes : la largeur dépend de l'échelle, et la hauteur de la largeur
+        for (let k = 0; k < 2; k++) {
+          const z = Math.min(base, avail / Math.max(1, c.offsetHeight));
+          c.style.setProperty("--z", z.toFixed(3));
+        }
+      });
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(stage);
+    mq.addEventListener("change", fit);
+    document.fonts?.ready.then(fit);
+    return () => { ro.disconnect(); mq.removeEventListener("change", fit); };
+  }, [items]);
 
   // Rien ne tourne tant que le bloc n'est pas à l'écran : le premier élément reste affiché,
   // figé au début de son animation. Dès qu'on quitte le bloc, il revient au premier
@@ -773,7 +805,7 @@ export function ProductBlock({
           </div>
 
           {/* Visuel de la fonctionnalité active */}
-          <div className="products-stage order-1 lg:order-2" aria-hidden>
+          <div ref={stageRef} className="products-stage order-1 lg:order-2" aria-hidden>
             {visuals.map((V, i) => (
               <div key={i} className={`products-visual${i === index ? " is-on" : ""}`}>
                 <V ui={t.products.ui} />
